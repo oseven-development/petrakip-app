@@ -4,8 +4,8 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-} from '@ionic/react';
-import Header from '../../components/header';
+} from '@ionic/react'
+import Header from '../../components/header'
 
 const Moments: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const Moments: React.FC = () => {
         </IonHeader>
       </IonContent>
     </IonPage>
-  );
-};
+  )
+}
 
-export default Moments;
+export default Moments

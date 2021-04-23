@@ -1,8 +1,8 @@
-import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { PropsWithChildren } from 'react';
+import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
+import { PropsWithChildren } from 'react'
 
 interface HeaderProps {
-  pageTitle: string;
+  pageTitle: string
 }
 
 const Header: React.FC<HeaderProps> = ({ pageTitle }) => {
@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ pageTitle }) => {
         </IonToolbar>
       </IonHeader>
     </IonPage>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
