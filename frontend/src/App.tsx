@@ -9,7 +9,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { albums, person, image } from 'ionicons/icons';
 import Moments from './pages/moments';
 import Reflections from './pages/reflections';
 import Profile from './pages/profile';
@@ -53,15 +53,15 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="moments" href="/moments">
-            <IonIcon icon={triangle} />
+            <IonIcon icon={image} />
             <IonLabel>Momente</IonLabel>
           </IonTabButton>
           <IonTabButton tab="reflections" href="/reflections">
-            <IonIcon icon={ellipse} />
+            <IonIcon icon={albums} />
             <IonLabel>Reflexionen</IonLabel>
           </IonTabButton>
           <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={square} />
+            <IonIcon icon={person} />
             <IonLabel>Profil</IonLabel>
           </IonTabButton>
         </IonTabBar>

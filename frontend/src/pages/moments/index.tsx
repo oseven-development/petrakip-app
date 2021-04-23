@@ -1,14 +1,11 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../../components/ExploreContainer';
+import Header from '../../components/header';
 
 const Moments: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+     <Header pageTitle={'Momente'} />
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
