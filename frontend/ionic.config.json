@@ -1,0 +1,7 @@
+{
+  "name": "petrakip-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
