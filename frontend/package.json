@@ -47,7 +47,8 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "@ionic/eslint-config/recommended"
     ]
   },
   "prettier": "@ionic/prettier-config",
@@ -67,6 +68,8 @@
     "@aws-amplify/cli": "4.49.0",
     "@capacitor/cli": "2.4.7",
     "@ionic/cli": "6.13.1",
-    "@ionic/prettier-config": "^1.0.1"
+    "@ionic/eslint-config": "^0.3.0",
+    "@ionic/prettier-config": "^1.0.1",
+    "eslint": "^7.24.0"
   }
 }
