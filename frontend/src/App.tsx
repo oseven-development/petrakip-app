@@ -81,4 +81,6 @@ const App: React.FC = () => (
   </IonApp>
 )
 
-export default withAuthenticator(App)
+export default App
+// TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
+// export default withAuthenticator(App)
