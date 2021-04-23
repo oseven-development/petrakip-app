@@ -1,5 +1,6 @@
 {
   "name": "petrakip-app",
+  "description": "An Ionic project",
   "version": "0.0.1",
   "private": false,
   "scripts": {
@@ -49,6 +50,7 @@
       "react-app/jest"
     ]
   },
+  "prettier": "@ionic/prettier-config",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -64,7 +66,7 @@
   "devDependencies": {
     "@aws-amplify/cli": "4.49.0",
     "@capacitor/cli": "2.4.7",
-    "@ionic/cli": "6.13.1"
-  },
-  "description": "An Ionic project"
+    "@ionic/cli": "6.13.1",
+    "@ionic/prettier-config": "^1.0.1"
+  }
 }

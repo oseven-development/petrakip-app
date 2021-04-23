@@ -1,10 +1,16 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
 import Header from '../../components/header';
 
 const Moments: React.FC = () => {
   return (
     <IonPage>
-     <Header pageTitle={'Momente'} />
+      <Header pageTitle={'Momente'} />
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
