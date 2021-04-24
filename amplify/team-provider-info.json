@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-petrakipapp-dev-214257-authRole",
+      "UnauthRoleArn": "arn:aws:iam::891511646143:role/amplify-petrakipapp-dev-214257-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::891511646143:role/amplify-petrakipapp-dev-214257-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-petrakipapp-dev-214257-deployment",
+      "UnauthRoleName": "amplify-petrakipapp-dev-214257-unauthRole",
+      "StackName": "amplify-petrakipapp-dev-214257",
+      "StackId": "arn:aws:cloudformation:eu-central-1:891511646143:stack/amplify-petrakipapp-dev-214257/1c08e3e0-a46c-11eb-a515-0afc0d5077b8",
+      "AmplifyAppId": "d39prjkteal18t"
+    },
+    "categories": {
+      "auth": {
+        "petrakipauth": {}
+      }
+    }
+  }
+}
