@@ -1,11 +1,11 @@
 import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
 import { PropsWithChildren } from 'react'
 
-interface HeaderProps {
+interface Props {
   pageTitle: string
 }
 
-const Header: React.FC<HeaderProps> = ({ pageTitle }) => {
+const Header: React.FC<Props> = ({ pageTitle }) => {
   return (
     <IonPage>
       <IonHeader>
