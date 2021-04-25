@@ -22,6 +22,8 @@ This documentation is the documentation for how to start, build and deploy the a
 - [Capacitor Documentation](https://capacitorjs.com/docs/basics/configuring-your-app)
 - [Customize Login](https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels)
 
+---
+
 # 🚀 Getting Stared
 
 ## Set up development environment
