@@ -11,13 +11,13 @@ import {
 } from '@ionic/react'
 
 import { IonReactRouter } from '@ionic/react-router'
-import Amplify from 'aws-amplify'
+// import Amplify from 'aws-amplify'
 
 import { albums, person, image } from 'ionicons/icons'
 
 import { Redirect, Route } from 'react-router-dom'
 
-import awsExports from './aws-exports'
+// import awsExports from './aws-exports'
 import Moments from './pages/moments'
 import Profile from './pages/profile'
 import Reflections from './pages/reflections'
@@ -42,7 +42,7 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 
-Amplify.configure(awsExports)
+// Amplify.configure(awsExports)
 
 const App: React.FC = () => (
   <IonApp>
