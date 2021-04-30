@@ -17,7 +17,7 @@ export const getProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const listProfileSettingss = /* GraphQL */ `
   query ListProfileSettingss(
     $filter: ModelProfileSettingsFilterInput
@@ -39,7 +39,7 @@ export const listProfileSettingss = /* GraphQL */ `
       nextToken
     }
   }
-`;
+`
 export const getReflexion = /* GraphQL */ `
   query GetReflexion($id: ID!) {
     getReflexion(id: $id) {
@@ -73,7 +73,7 @@ export const getReflexion = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const listReflexions = /* GraphQL */ `
   query ListReflexions(
     $filter: ModelReflexionFilterInput
@@ -99,7 +99,7 @@ export const listReflexions = /* GraphQL */ `
       nextToken
     }
   }
-`;
+`
 export const getMoment = /* GraphQL */ `
   query GetMoment($id: ID!) {
     getMoment(id: $id) {
@@ -127,7 +127,7 @@ export const getMoment = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const listMoments = /* GraphQL */ `
   query ListMoments(
     $filter: ModelMomentFilterInput
@@ -150,4 +150,4 @@ export const listMoments = /* GraphQL */ `
       nextToken
     }
   }
-`;
+`
