@@ -12,5 +12,22 @@
       "service": "S3",
       "providerPlugin": "awscloudformation"
     }
+  },
+  "api": {
+    "petrakipApi4data": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authpetrakipauth"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
   }
 }

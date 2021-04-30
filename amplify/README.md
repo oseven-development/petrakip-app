@@ -37,10 +37,17 @@ amplify env pull
 amplify push
 ```
 
-4. build application
+4. build application and publishes it to s3
 
 ```bash
 amplify publish
+```
+
+5. generate code for frontend
+   Generates GraphQL statements(queries, mutations and eventHandlers) and type annotations.
+
+```bash
+amplify codegen
 ```
 
 # Data model and API structure
