@@ -54,8 +54,21 @@ amplify codegen
 
 Petrakip needs logical objects that complex data, such as images or videos, as part of their structure. For example, a Moment type can contain a picture. With AWS AppSync, we can model these as GraphQL types, referred to as complex objects. If any of the mutations have a variable with bucket, key, region, mimeType and localUri fields, the SDK uploads the file to Amazon S3 for you.
 
-[reference example](https://github.com/aws-samples/aws-amplify-graphql/blob/master/schema.graphql)
+- [reference example](https://github.com/aws-samples/aws-amplify-graphql/blob/master/schema.graphql)
+- [data model as code](./backend/api/petrakipApi4data/schema.grahpql)
+- [many to many](https://docs.amplify.aws/lib/datastore/relational/q/platform/js#many-to-many)
+- [union types are not supported](https://github.com/aws-amplify/amplify-cli/issues/6537)
 
-[data model as code]()
+**Architecture**
 
 ![backend diagram](../docs/assets/backend_diagram.png)
+
+## Update schema
+
+You can compile the backend/api/~apiname~/schema.graphql by running:
+
+```bash
+amplify api gql-compile
+```
+
+and view the compiled schema output in [amplify/backend/api/petrakipApi4data/build/schema.graphql](./backend/api/petrakipApi4data/build/schema.graphql).
