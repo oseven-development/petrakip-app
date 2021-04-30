@@ -1,27 +1,7 @@
 # petra-kip-app
 
-## Setup backend
+# Documentations
 
-1. init profile
+### [🖥 Frontend](./frontend/README.md)
 
-```bash
-amplify init
-```
-
-2. amplify pull/create `aws-exports.js`
-
-```bash
-amplify env pull
-```
-
-3. push new aws services
-
-```bash
-amplify push
-```
-
-4. build application
-
-```bash
-amplify publish
-```
+### [⚙️ Backend](./amplify/README.md)
