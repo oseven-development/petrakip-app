@@ -77,7 +77,7 @@ export type CreateReflexionInput = {
   id?: string | null
   createdAt?: string | null
   title?: string | null
-  contentType?: MimeType | null
+  contentType?: ContentType | null
   content?: string | null
   asset?: S3ObjectInput | null
   topic?: string | null
@@ -90,7 +90,7 @@ export type CreateReflexionInput = {
   orientationQuestions?: Array<OrientationQuestionsInput | null> | null
 }
 
-export enum MimeType {
+export enum ContentType {
   image = 'image',
   video = 'video',
   text = 'text',
@@ -109,7 +109,7 @@ export type OrientationQuestionsInput = {
 export type ModelReflexionConditionInput = {
   createdAt?: ModelStringInput | null
   title?: ModelStringInput | null
-  contentType?: ModelMimeTypeInput | null
+  contentType?: ModelContentTypeInput | null
   content?: ModelStringInput | null
   topic?: ModelStringInput | null
   subTopic?: ModelStringInput | null
@@ -147,9 +147,9 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null
 }
 
-export type ModelMimeTypeInput = {
-  eq?: MimeType | null
-  ne?: MimeType | null
+export type ModelContentTypeInput = {
+  eq?: ContentType | null
+  ne?: ContentType | null
 }
 
 export type ModelBooleanInput = {
@@ -164,7 +164,7 @@ export type Reflexion = {
   id?: string
   createdAt?: string | null
   title?: string | null
-  contentType?: MimeType | null
+  contentType?: ContentType | null
   content?: string | null
   asset?: S3Object
   topic?: string | null
@@ -214,7 +214,7 @@ export type Moment = {
   id?: string
   createdAt?: string | null
   title?: string
-  contentType?: MimeType | null
+  contentType?: ContentType | null
   content?: string | null
   asset?: S3Object
   tags?: Array<string | null> | null
@@ -230,7 +230,7 @@ export type UpdateReflexionInput = {
   id: string
   createdAt?: string | null
   title?: string | null
-  contentType?: MimeType | null
+  contentType?: ContentType | null
   content?: string | null
   asset?: S3ObjectInput | null
   topic?: string | null
@@ -251,7 +251,7 @@ export type CreateMomentInput = {
   id?: string | null
   createdAt?: string | null
   title: string
-  contentType?: MimeType | null
+  contentType?: ContentType | null
   content?: string | null
   asset?: S3ObjectInput | null
   tags?: Array<string | null> | null
@@ -263,7 +263,7 @@ export type CreateMomentInput = {
 export type ModelMomentConditionInput = {
   createdAt?: ModelStringInput | null
   title?: ModelStringInput | null
-  contentType?: ModelMimeTypeInput | null
+  contentType?: ModelContentTypeInput | null
   content?: ModelStringInput | null
   tags?: ModelStringInput | null
   deleted?: ModelBooleanInput | null
@@ -276,7 +276,7 @@ export type UpdateMomentInput = {
   id: string
   createdAt?: string | null
   title?: string | null
-  contentType?: MimeType | null
+  contentType?: ContentType | null
   content?: string | null
   asset?: S3ObjectInput | null
   tags?: Array<string | null> | null
@@ -347,7 +347,7 @@ export type ModelReflexionFilterInput = {
   id?: ModelIDInput | null
   createdAt?: ModelStringInput | null
   title?: ModelStringInput | null
-  contentType?: ModelMimeTypeInput | null
+  contentType?: ModelContentTypeInput | null
   content?: ModelStringInput | null
   topic?: ModelStringInput | null
   subTopic?: ModelStringInput | null
@@ -370,7 +370,7 @@ export type ModelMomentFilterInput = {
   id?: ModelIDInput | null
   createdAt?: ModelStringInput | null
   title?: ModelStringInput | null
-  contentType?: ModelMimeTypeInput | null
+  contentType?: ModelContentTypeInput | null
   content?: ModelStringInput | null
   tags?: ModelStringInput | null
   deleted?: ModelBooleanInput | null
@@ -463,7 +463,7 @@ export type CreateReflexionMutation = {
     id: string
     createdAt?: string | null
     title?: string | null
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -506,7 +506,7 @@ export type UpdateReflexionMutation = {
     id: string
     createdAt?: string | null
     title?: string | null
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -549,7 +549,7 @@ export type DeleteReflexionMutation = {
     id: string
     createdAt?: string | null
     title?: string | null
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -592,7 +592,7 @@ export type CreateMomentMutation = {
     id: string
     createdAt?: string | null
     title: string
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -628,7 +628,7 @@ export type UpdateMomentMutation = {
     id: string
     createdAt?: string | null
     title: string
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -664,7 +664,7 @@ export type DeleteMomentMutation = {
     id: string
     createdAt?: string | null
     title: string
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -705,7 +705,7 @@ export type CreateReflexionMomentMutation = {
       id: string
       createdAt?: string | null
       title?: string | null
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       topic?: string | null
       subTopic?: string | null
@@ -721,7 +721,7 @@ export type CreateReflexionMomentMutation = {
       id: string
       createdAt?: string | null
       title: string
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       tags?: Array<string | null> | null
       deleted?: boolean | null
@@ -751,7 +751,7 @@ export type UpdateReflexionMomentMutation = {
       id: string
       createdAt?: string | null
       title?: string | null
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       topic?: string | null
       subTopic?: string | null
@@ -767,7 +767,7 @@ export type UpdateReflexionMomentMutation = {
       id: string
       createdAt?: string | null
       title: string
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       tags?: Array<string | null> | null
       deleted?: boolean | null
@@ -797,7 +797,7 @@ export type DeleteReflexionMomentMutation = {
       id: string
       createdAt?: string | null
       title?: string | null
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       topic?: string | null
       subTopic?: string | null
@@ -813,7 +813,7 @@ export type DeleteReflexionMomentMutation = {
       id: string
       createdAt?: string | null
       title: string
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       tags?: Array<string | null> | null
       deleted?: boolean | null
@@ -879,7 +879,7 @@ export type GetReflexionQuery = {
     id: string
     createdAt?: string | null
     title?: string | null
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -925,7 +925,7 @@ export type ListReflexionsQuery = {
       id: string
       createdAt?: string | null
       title?: string | null
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       topic?: string | null
       subTopic?: string | null
@@ -950,7 +950,7 @@ export type GetMomentQuery = {
     id: string
     createdAt?: string | null
     title: string
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -989,7 +989,7 @@ export type ListMomentsQuery = {
       id: string
       createdAt?: string | null
       title: string
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       tags?: Array<string | null> | null
       deleted?: boolean | null
@@ -1075,7 +1075,7 @@ export type OnCreateReflexionSubscription = {
     id: string
     createdAt?: string | null
     title?: string | null
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -1118,7 +1118,7 @@ export type OnUpdateReflexionSubscription = {
     id: string
     createdAt?: string | null
     title?: string | null
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -1161,7 +1161,7 @@ export type OnDeleteReflexionSubscription = {
     id: string
     createdAt?: string | null
     title?: string | null
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -1204,7 +1204,7 @@ export type OnCreateMomentSubscription = {
     id: string
     createdAt?: string | null
     title: string
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -1240,7 +1240,7 @@ export type OnUpdateMomentSubscription = {
     id: string
     createdAt?: string | null
     title: string
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -1276,7 +1276,7 @@ export type OnDeleteMomentSubscription = {
     id: string
     createdAt?: string | null
     title: string
-    contentType?: MimeType | null
+    contentType?: ContentType | null
     content?: string | null
     asset?: {
       __typename: 'S3Object'
@@ -1316,7 +1316,7 @@ export type OnCreateReflexionMomentSubscription = {
       id: string
       createdAt?: string | null
       title?: string | null
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       topic?: string | null
       subTopic?: string | null
@@ -1332,7 +1332,7 @@ export type OnCreateReflexionMomentSubscription = {
       id: string
       createdAt?: string | null
       title: string
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       tags?: Array<string | null> | null
       deleted?: boolean | null
@@ -1361,7 +1361,7 @@ export type OnUpdateReflexionMomentSubscription = {
       id: string
       createdAt?: string | null
       title?: string | null
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       topic?: string | null
       subTopic?: string | null
@@ -1377,7 +1377,7 @@ export type OnUpdateReflexionMomentSubscription = {
       id: string
       createdAt?: string | null
       title: string
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       tags?: Array<string | null> | null
       deleted?: boolean | null
@@ -1406,7 +1406,7 @@ export type OnDeleteReflexionMomentSubscription = {
       id: string
       createdAt?: string | null
       title?: string | null
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       topic?: string | null
       subTopic?: string | null
@@ -1422,7 +1422,7 @@ export type OnDeleteReflexionMomentSubscription = {
       id: string
       createdAt?: string | null
       title: string
-      contentType?: MimeType | null
+      contentType?: ContentType | null
       content?: string | null
       tags?: Array<string | null> | null
       deleted?: boolean | null

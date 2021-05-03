@@ -6,7 +6,7 @@ type S3Object {
   region: String!
 }
 
-enum MimeType {
+enum ContentType {
   image
   video
   text
@@ -43,7 +43,7 @@ type Reflexion
   id: ID!
   createdAt: AWSDateTime
   title: String
-  contentType: MimeType
+  contentType: ContentType
   content: String
   asset: S3Object
   topic: String
@@ -70,7 +70,7 @@ type Moment
   id: ID!
   createdAt: AWSDateTime
   title: String!
-  contentType: MimeType
+  contentType: ContentType
   content: String
   asset: S3Object
   tags: [String]
