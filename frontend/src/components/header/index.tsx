@@ -1,20 +1,17 @@
-import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
-import { PropsWithChildren } from 'react'
+import { IonHeader, IonTitle, IonToolbar } from '@ionic/react'
 
 interface Props {
-  pageTitle: string
+  children: string
 }
 
-const Header: React.FC<Props> = ({ pageTitle }) => {
+const Header: React.FC<Props> = ({ children }) => {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>{pageTitle}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-    </IonPage>
+    <IonHeader>
+      <IonToolbar>
+        <IonTitle>{children}</IonTitle>
+      </IonToolbar>
+    </IonHeader>
   )
 }
 
-export default Header
+export { Header }

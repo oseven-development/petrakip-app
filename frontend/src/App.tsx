@@ -18,9 +18,7 @@ import { albums, person, image } from 'ionicons/icons'
 import { Redirect, Route } from 'react-router-dom'
 
 // import awsExports from './aws-exports'
-import Moments from './pages/moments'
-import Profile from './pages/profile'
-import Reflections from './pages/reflections'
+import { Moments, Profile, Reflections } from './pages'
 
 /* Core CSS required for Ionic components to work properly */
 
