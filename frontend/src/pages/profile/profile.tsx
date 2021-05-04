@@ -4,8 +4,8 @@ import { Header } from '../../components'
 const Profile: React.FC = () => {
   return (
     <IonPage>
-      <Header>profile</Header>
-      <IonContent fullscreen>profile</IonContent>
+      <Header>Profil</Header>
+      <IonContent fullscreen>profile-dummy-content</IonContent>
     </IonPage>
   )
 }

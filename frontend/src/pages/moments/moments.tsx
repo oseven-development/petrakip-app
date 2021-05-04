@@ -4,8 +4,8 @@ import { Header } from '../../components'
 const Moments: React.FC = () => {
   return (
     <IonPage>
-      <Header>moments</Header>
-      <IonContent fullscreen>moments</IonContent>
+      <Header>Momente</Header>
+      <IonContent fullscreen>moments-dummy-content</IonContent>
     </IonPage>
   )
 }

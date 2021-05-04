@@ -13,12 +13,12 @@ import {
 import { IonReactRouter } from '@ionic/react-router'
 // import Amplify from 'aws-amplify'
 
-import { albums, person, image } from 'ionicons/icons'
+import { albums, person, image, barChart } from 'ionicons/icons'
 
 import { Redirect, Route } from 'react-router-dom'
 
 // import awsExports from './aws-exports'
-import { Moments, Profile, Reflections } from './pages'
+import { Moments, Profile, Reflections, Progress } from './pages'
 
 /* Core CSS required for Ionic components to work properly */
 
@@ -56,6 +56,9 @@ const App: React.FC = () => (
           <Route path="/profile">
             <Profile />
           </Route>
+          <Route path="/progress">
+            <Progress />
+          </Route>
           <Route exact path="/">
             <Redirect to="/moments" />
           </Route>
@@ -72,6 +75,10 @@ const App: React.FC = () => (
           <IonTabButton tab="profile" href="/profile">
             <IonIcon icon={person} />
             <IonLabel>Profil</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="progress" href="/progress">
+            <IonIcon icon={barChart} />
+            <IonLabel>Fortschritt</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
