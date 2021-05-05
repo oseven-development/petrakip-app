@@ -1,0 +1,102 @@
+# General Types and Enums
+
+type S3Object {
+  bucket: String!
+  key: String!
+  region: String!
+}
+
+enum ContentType {
+  image
+  video
+  text
+  audio
+}
+
+enum ReflexionState {
+  started
+  awaitingFollowUpQuestions
+  completed
+}
+
+type Comment {
+  createdAt: AWSDateTime!
+  content: String!
+}
+
+type OrientationQuestions {
+  question: String!
+}
+
+# Model types -> create DynamoDB tables
+
+type ProfileSettings @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  profileImage: S3Object
+  age: Int
+}
+
+type Reflexion
+  @model
+  @auth(
+    rules: [
+      # Defaults to use the "owner" field.
+      { allow: owner }
+      # Authorizes every "email" in sharedUsers[] to read the reflexions
+      { allow: owner, ownerField: "sharedUsers", operations: [read] }
+    ]
+  ) {
+  id: ID!
+  createdAt: AWSDateTime
+  title: String
+  contentType: ContentType
+  content: String
+  asset: S3Object
+  topic: String
+  subTopic: String
+  niveau: String
+  indicators: [String]
+  state: ReflexionState
+  deleted: Boolean
+  sharedUsers: [String]
+  comments: [Comment]
+  orientationQuestions: [OrientationQuestions]
+  moments: [ReflexionMoment] @connection(keyName: "byReflexion", fields: ["id"])
+}
+
+type Moment
+  @model
+  @auth(
+    rules: [
+      # Defaults to use the "owner" field.
+      { allow: owner }
+      # Authorizes every "email" in sharedUsers[] to read the reflexions
+      { allow: owner, ownerField: "sharedUsers", operations: [read] }
+    ]
+  ) {
+  id: ID!
+  createdAt: AWSDateTime
+  title: String!
+  contentType: ContentType
+  content: String
+  asset: S3Object
+  tags: [String]
+  deleted: Boolean
+  sharedUsers: [String]
+  comments: [Comment]
+  reflexion: [ReflexionMoment] @connection(keyName: "byMoment", fields: ["id"])
+}
+
+# Many-to-Many
+# You can implement many to many using two 1-M @connections, an @key, and a joining @model. For example
+type ReflexionMoment
+  @model(queries: null)
+  @key(name: "byReflexion", fields: ["reflexionID", "momentID"])
+  @key(name: "byMoment", fields: ["momentID", "reflexionID"])
+  @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  reflexionID: ID!
+  momentID: ID!
+  reflexion: Reflexion! @connection(fields: ["reflexionID"])
+  moment: Moment! @connection(fields: ["momentID"])
+}

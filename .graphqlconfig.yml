@@ -1,0 +1,18 @@
+projects:
+  petrakipApi4data:
+    schemaPath: amplify/backend/api/petrakipApi4data/build/schema.graphql
+    includes:
+      - frontend/src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: frontend/src/API.ts
+        docsFilePath: frontend/src/graphql
+        region: eu-central-1
+        apiId: null
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3
