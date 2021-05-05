@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from '@ionic/react'
 import { Header } from '../../components'
 
-const Progress: React.FC = () => {
+export const ProgressView: React.FC = () => {
   return (
     <IonPage>
       <Header>Fortschritt</Header>
@@ -9,5 +9,3 @@ const Progress: React.FC = () => {
     </IonPage>
   )
 }
-
-export { Progress }

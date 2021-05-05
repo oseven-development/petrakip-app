@@ -18,7 +18,12 @@ import { albums, person, image, barChart } from 'ionicons/icons'
 import { Redirect, Route } from 'react-router-dom'
 
 // import awsExports from './aws-exports'
-import { Moments, Profile, Reflections, Progress } from './pages'
+import {
+  MomentsView,
+  ProfileView,
+  ReflectionsView,
+  ProgressView,
+} from './pages'
 
 /* Core CSS required for Ionic components to work properly */
 
@@ -48,16 +53,16 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/moments">
-            <Moments />
+            <MomentsView />
           </Route>
           <Route exact path="/reflections">
-            <Reflections />
+            <ReflectionsView />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <ProfileView />
           </Route>
           <Route path="/progress">
-            <Progress />
+            <ProgressView />
           </Route>
           <Route exact path="/">
             <Redirect to="/moments" />

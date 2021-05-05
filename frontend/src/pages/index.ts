@@ -1,4 +1,9 @@
-export { Moments } from './moments/moments'
-export { Profile } from './profile/profile'
-export { Progress } from './progress/progress'
-export { Reflections } from './reflections/reflections'
+/* Moments */
+export { MomentsView } from './moments/momentsView'
+export { MomentDetailView } from './moments/momentDetailView'
+/* Moments */
+export { ProfileView } from './profile/profileView'
+/* Moments */
+export { ProgressView } from './progress/progressView'
+/* Moments */
+export { ReflectionsView } from './reflections/reflectionsView'

@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from '@ionic/react'
 import { Header } from '../../components'
 
-const Moments: React.FC = () => {
+export const MomentsView: React.FC = () => {
   return (
     <IonPage>
       <Header>Momente</Header>
@@ -9,5 +9,3 @@ const Moments: React.FC = () => {
     </IonPage>
   )
 }
-
-export { Moments }

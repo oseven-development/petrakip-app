@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from '@ionic/react'
 import { Header } from '../../components'
 
-const Profile: React.FC = () => {
+export const ProfileView: React.FC = () => {
   return (
     <IonPage>
       <Header>Profil</Header>
@@ -9,5 +9,3 @@ const Profile: React.FC = () => {
     </IonPage>
   )
 }
-
-export { Profile }

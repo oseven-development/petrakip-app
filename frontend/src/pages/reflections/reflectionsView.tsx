@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from '@ionic/react'
 import { Header } from '../../components'
 
-const Reflections: React.FC = () => {
+export const ReflectionsView: React.FC = () => {
   return (
     <IonPage>
       <Header>Reflexionen</Header>
@@ -9,5 +9,3 @@ const Reflections: React.FC = () => {
     </IonPage>
   )
 }
-
-export { Reflections }
