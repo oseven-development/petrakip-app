@@ -1,9 +1,12 @@
 /* Moments */
 export { MomentsView } from './moments/momentsView'
 export { MomentDetailView } from './moments/momentDetailView'
-/* Moments */
+
+/* Profile */
 export { ProfileView } from './profile/profileView'
-/* Moments */
+
+/* Progress */
 export { ProgressView } from './progress/progressView'
-/* Moments */
+
+/* Reflections */
 export { ReflectionsView } from './reflections/reflectionsView'
