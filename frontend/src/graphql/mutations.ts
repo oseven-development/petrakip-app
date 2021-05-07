@@ -23,7 +23,7 @@ export const createProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const updateProfileSettings = /* GraphQL */ `
   mutation UpdateProfileSettings(
     $input: UpdateProfileSettingsInput!
@@ -45,7 +45,7 @@ export const updateProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const deleteProfileSettings = /* GraphQL */ `
   mutation DeleteProfileSettings(
     $input: DeleteProfileSettingsInput!
@@ -67,7 +67,7 @@ export const deleteProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const createReflexion = /* GraphQL */ `
   mutation CreateReflexion(
     $input: CreateReflexionInput!
@@ -109,7 +109,7 @@ export const createReflexion = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const updateReflexion = /* GraphQL */ `
   mutation UpdateReflexion(
     $input: UpdateReflexionInput!
@@ -151,7 +151,7 @@ export const updateReflexion = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const deleteReflexion = /* GraphQL */ `
   mutation DeleteReflexion(
     $input: DeleteReflexionInput!
@@ -193,7 +193,7 @@ export const deleteReflexion = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const createMoment = /* GraphQL */ `
   mutation CreateMoment(
     $input: CreateMomentInput!
@@ -228,7 +228,7 @@ export const createMoment = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const updateMoment = /* GraphQL */ `
   mutation UpdateMoment(
     $input: UpdateMomentInput!
@@ -263,7 +263,7 @@ export const updateMoment = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const deleteMoment = /* GraphQL */ `
   mutation DeleteMoment(
     $input: DeleteMomentInput!
@@ -298,7 +298,7 @@ export const deleteMoment = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const createReflexionMoment = /* GraphQL */ `
   mutation CreateReflexionMoment(
     $input: CreateReflexionMomentInput!
@@ -350,7 +350,7 @@ export const createReflexionMoment = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const updateReflexionMoment = /* GraphQL */ `
   mutation UpdateReflexionMoment(
     $input: UpdateReflexionMomentInput!
@@ -402,7 +402,7 @@ export const updateReflexionMoment = /* GraphQL */ `
       owner
     }
   }
-`;
+`
 export const deleteReflexionMoment = /* GraphQL */ `
   mutation DeleteReflexionMoment(
     $input: DeleteReflexionMomentInput!
@@ -454,4 +454,4 @@ export const deleteReflexionMoment = /* GraphQL */ `
       owner
     }
   }
-`;
+`
