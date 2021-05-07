@@ -1,4 +1,4 @@
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { withAuthenticator } from '@aws-amplify/ui-react'
 
 import {
   IonApp,
@@ -11,13 +11,13 @@ import {
 } from '@ionic/react'
 
 import { IonReactRouter } from '@ionic/react-router'
-// import Amplify from 'aws-amplify'
+import Amplify from 'aws-amplify'
 
 import { albums, person, image, barChart } from 'ionicons/icons'
 
 import { Redirect, Route } from 'react-router-dom'
 
-// import awsExports from './aws-exports'
+import awsExports from './aws-exports'
 import {
   MomentsView,
   ProfileView,
@@ -45,7 +45,7 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 
-// Amplify.configure(awsExports)
+Amplify.configure(awsExports)
 
 const App: React.FC = () => (
   <IonApp>
@@ -91,6 +91,6 @@ const App: React.FC = () => (
   </IonApp>
 )
 
-export default App
+// export default App
 // TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
-// export default withAuthenticator(App)
+export default withAuthenticator(App)
