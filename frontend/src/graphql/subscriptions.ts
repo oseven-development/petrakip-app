@@ -20,7 +20,7 @@ export const onCreateProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onUpdateProfileSettings = /* GraphQL */ `
   subscription OnUpdateProfileSettings($owner: String!) {
     onUpdateProfileSettings(owner: $owner) {
@@ -39,7 +39,7 @@ export const onUpdateProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onDeleteProfileSettings = /* GraphQL */ `
   subscription OnDeleteProfileSettings($owner: String!) {
     onDeleteProfileSettings(owner: $owner) {
@@ -58,7 +58,7 @@ export const onDeleteProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onCreateReflexion = /* GraphQL */ `
   subscription OnCreateReflexion($owner: String!, $sharedUsers: String!) {
     onCreateReflexion(owner: $owner, sharedUsers: $sharedUsers) {
@@ -97,7 +97,7 @@ export const onCreateReflexion = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onUpdateReflexion = /* GraphQL */ `
   subscription OnUpdateReflexion($owner: String!, $sharedUsers: String!) {
     onUpdateReflexion(owner: $owner, sharedUsers: $sharedUsers) {
@@ -136,7 +136,7 @@ export const onUpdateReflexion = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onDeleteReflexion = /* GraphQL */ `
   subscription OnDeleteReflexion($owner: String!, $sharedUsers: String!) {
     onDeleteReflexion(owner: $owner, sharedUsers: $sharedUsers) {
@@ -175,7 +175,7 @@ export const onDeleteReflexion = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onCreateMoment = /* GraphQL */ `
   subscription OnCreateMoment($owner: String!, $sharedUsers: String!) {
     onCreateMoment(owner: $owner, sharedUsers: $sharedUsers) {
@@ -207,7 +207,7 @@ export const onCreateMoment = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onUpdateMoment = /* GraphQL */ `
   subscription OnUpdateMoment($owner: String!, $sharedUsers: String!) {
     onUpdateMoment(owner: $owner, sharedUsers: $sharedUsers) {
@@ -239,7 +239,7 @@ export const onUpdateMoment = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onDeleteMoment = /* GraphQL */ `
   subscription OnDeleteMoment($owner: String!, $sharedUsers: String!) {
     onDeleteMoment(owner: $owner, sharedUsers: $sharedUsers) {
@@ -271,7 +271,7 @@ export const onDeleteMoment = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onCreateReflexionMoment = /* GraphQL */ `
   subscription OnCreateReflexionMoment($owner: String!) {
     onCreateReflexionMoment(owner: $owner) {
@@ -320,7 +320,7 @@ export const onCreateReflexionMoment = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onUpdateReflexionMoment = /* GraphQL */ `
   subscription OnUpdateReflexionMoment($owner: String!) {
     onUpdateReflexionMoment(owner: $owner) {
@@ -369,7 +369,7 @@ export const onUpdateReflexionMoment = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const onDeleteReflexionMoment = /* GraphQL */ `
   subscription OnDeleteReflexionMoment($owner: String!) {
     onDeleteReflexionMoment(owner: $owner) {
@@ -418,4 +418,4 @@ export const onDeleteReflexionMoment = /* GraphQL */ `
       owner
     }
   }
-`
+`;
