@@ -1,6 +1,4 @@
-import { PropsCardWrapper } from './cardWrapper'
-
-export interface ImageVariant extends Omit<PropsCardWrapper, 'children'> {
+export interface ImageVariant {
   variant: 'image'
   image: string
 }

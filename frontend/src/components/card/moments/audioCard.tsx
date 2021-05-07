@@ -1,6 +1,4 @@
-import { PropsCardWrapper } from './cardWrapper'
-
-export interface AudioVariant extends Omit<PropsCardWrapper, 'children'> {
+export interface AudioVariant {
   variant: 'audio'
   audio: string
 }
