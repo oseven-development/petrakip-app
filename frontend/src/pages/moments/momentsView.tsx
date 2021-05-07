@@ -1,11 +1,16 @@
-import { IonContent, IonPage } from '@ionic/react'
-import { Header } from '../../components'
+import { IonRouterOutlet } from '@ionic/react'
+import { Route, RouteComponentProps } from '@ionic/react-router'
 
-export const MomentsView: React.FC = () => {
+import { MomentsCreateNewView } from './momentsCreateNewView'
+import { MomentDetailView } from './momentsDetailView'
+import { MomentsListView } from './momentsListView'
+
+export const MomentsView: React.FC<RouteComponentProps> = ({ match }) => {
   return (
-    <IonPage>
-      <Header>Momente</Header>
-      <IonContent fullscreen>moments-dummy-content</IonContent>
-    </IonPage>
+    <IonRouterOutlet>
+      <Route exact path={match.url} component={MomentsListView} />
+      <Route path={`${match.url}/:id`} component={MomentDetailView} />
+      <Route path={`${match.url}/create`} component={MomentsCreateNewView} />
+    </IonRouterOutlet>
   )
 }
