@@ -57,6 +57,9 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          <Route exact path="/">
+            <Redirect to="/moments" />
+          </Route>
           {/* Moments routes  */}
           <Route exact path={'/moments'} component={MomentsListView} />
           <Route path={`/moments/details/:id`} component={MomentsDetailView} />
