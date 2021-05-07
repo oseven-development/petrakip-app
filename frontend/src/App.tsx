@@ -52,9 +52,10 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/moments">
-            <MomentsView />
-          </Route>
+          <Route
+            path="/dashboard"
+            render={props => <MomentsView {...props} />}
+          />
           <Route exact path="/reflections">
             <ReflectionsView />
           </Route>
@@ -64,9 +65,7 @@ const App: React.FC = () => (
           <Route path="/progress">
             <ProgressView />
           </Route>
-          <Route exact path="/">
-            <Redirect to="/moments" />
-          </Route>
+          <Route exact path="/" render={() => <Redirect to="/moments" />} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="moments" href="/moments">
