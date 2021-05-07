@@ -84,6 +84,7 @@ export type CreateReflexionInput = {
   subTopic?: string | null
   niveau?: string | null
   indicators?: Array<string | null> | null
+  state?: ReflexionState | null
   deleted?: boolean | null
   sharedUsers?: Array<string | null> | null
   comments?: Array<CommentInput | null> | null
@@ -95,6 +96,12 @@ export enum ContentType {
   video = 'video',
   text = 'text',
   audio = 'audio',
+}
+
+export enum ReflexionState {
+  started = 'started',
+  awaitingFollowUpQuestions = 'awaitingFollowUpQuestions',
+  completed = 'completed',
 }
 
 export type CommentInput = {
@@ -115,6 +122,7 @@ export type ModelReflexionConditionInput = {
   subTopic?: ModelStringInput | null
   niveau?: ModelStringInput | null
   indicators?: ModelStringInput | null
+  state?: ModelReflexionStateInput | null
   deleted?: ModelBooleanInput | null
   and?: Array<ModelReflexionConditionInput | null> | null
   or?: Array<ModelReflexionConditionInput | null> | null
@@ -152,6 +160,11 @@ export type ModelContentTypeInput = {
   ne?: ContentType | null
 }
 
+export type ModelReflexionStateInput = {
+  eq?: ReflexionState | null
+  ne?: ReflexionState | null
+}
+
 export type ModelBooleanInput = {
   ne?: boolean | null
   eq?: boolean | null
@@ -171,6 +184,7 @@ export type Reflexion = {
   subTopic?: string | null
   niveau?: string | null
   indicators?: Array<string | null> | null
+  state?: ReflexionState | null
   deleted?: boolean | null
   sharedUsers?: Array<string | null> | null
   comments?: Array<Comment | null> | null
@@ -237,6 +251,7 @@ export type UpdateReflexionInput = {
   subTopic?: string | null
   niveau?: string | null
   indicators?: Array<string | null> | null
+  state?: ReflexionState | null
   deleted?: boolean | null
   sharedUsers?: Array<string | null> | null
   comments?: Array<CommentInput | null> | null
@@ -353,6 +368,7 @@ export type ModelReflexionFilterInput = {
   subTopic?: ModelStringInput | null
   niveau?: ModelStringInput | null
   indicators?: ModelStringInput | null
+  state?: ModelReflexionStateInput | null
   deleted?: ModelBooleanInput | null
   sharedUsers?: ModelStringInput | null
   and?: Array<ModelReflexionFilterInput | null> | null
@@ -475,6 +491,7 @@ export type CreateReflexionMutation = {
     subTopic?: string | null
     niveau?: string | null
     indicators?: Array<string | null> | null
+    state?: ReflexionState | null
     deleted?: boolean | null
     sharedUsers?: Array<string | null> | null
     comments?: Array<{
@@ -518,6 +535,7 @@ export type UpdateReflexionMutation = {
     subTopic?: string | null
     niveau?: string | null
     indicators?: Array<string | null> | null
+    state?: ReflexionState | null
     deleted?: boolean | null
     sharedUsers?: Array<string | null> | null
     comments?: Array<{
@@ -561,6 +579,7 @@ export type DeleteReflexionMutation = {
     subTopic?: string | null
     niveau?: string | null
     indicators?: Array<string | null> | null
+    state?: ReflexionState | null
     deleted?: boolean | null
     sharedUsers?: Array<string | null> | null
     comments?: Array<{
@@ -711,6 +730,7 @@ export type CreateReflexionMomentMutation = {
       subTopic?: string | null
       niveau?: string | null
       indicators?: Array<string | null> | null
+      state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
       updatedAt: string
@@ -757,6 +777,7 @@ export type UpdateReflexionMomentMutation = {
       subTopic?: string | null
       niveau?: string | null
       indicators?: Array<string | null> | null
+      state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
       updatedAt: string
@@ -803,6 +824,7 @@ export type DeleteReflexionMomentMutation = {
       subTopic?: string | null
       niveau?: string | null
       indicators?: Array<string | null> | null
+      state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
       updatedAt: string
@@ -891,6 +913,7 @@ export type GetReflexionQuery = {
     subTopic?: string | null
     niveau?: string | null
     indicators?: Array<string | null> | null
+    state?: ReflexionState | null
     deleted?: boolean | null
     sharedUsers?: Array<string | null> | null
     comments?: Array<{
@@ -931,6 +954,7 @@ export type ListReflexionsQuery = {
       subTopic?: string | null
       niveau?: string | null
       indicators?: Array<string | null> | null
+      state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
       updatedAt: string
@@ -1087,6 +1111,7 @@ export type OnCreateReflexionSubscription = {
     subTopic?: string | null
     niveau?: string | null
     indicators?: Array<string | null> | null
+    state?: ReflexionState | null
     deleted?: boolean | null
     sharedUsers?: Array<string | null> | null
     comments?: Array<{
@@ -1130,6 +1155,7 @@ export type OnUpdateReflexionSubscription = {
     subTopic?: string | null
     niveau?: string | null
     indicators?: Array<string | null> | null
+    state?: ReflexionState | null
     deleted?: boolean | null
     sharedUsers?: Array<string | null> | null
     comments?: Array<{
@@ -1173,6 +1199,7 @@ export type OnDeleteReflexionSubscription = {
     subTopic?: string | null
     niveau?: string | null
     indicators?: Array<string | null> | null
+    state?: ReflexionState | null
     deleted?: boolean | null
     sharedUsers?: Array<string | null> | null
     comments?: Array<{
@@ -1322,6 +1349,7 @@ export type OnCreateReflexionMomentSubscription = {
       subTopic?: string | null
       niveau?: string | null
       indicators?: Array<string | null> | null
+      state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
       updatedAt: string
@@ -1367,6 +1395,7 @@ export type OnUpdateReflexionMomentSubscription = {
       subTopic?: string | null
       niveau?: string | null
       indicators?: Array<string | null> | null
+      state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
       updatedAt: string
@@ -1412,6 +1441,7 @@ export type OnDeleteReflexionMomentSubscription = {
       subTopic?: string | null
       niveau?: string | null
       indicators?: Array<string | null> | null
+      state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
       updatedAt: string

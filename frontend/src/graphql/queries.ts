@@ -57,6 +57,7 @@ export const getReflexion = /* GraphQL */ `
       subTopic
       niveau
       indicators
+      state
       deleted
       sharedUsers
       comments {
@@ -91,6 +92,7 @@ export const listReflexions = /* GraphQL */ `
         subTopic
         niveau
         indicators
+        state
         deleted
         sharedUsers
         updatedAt

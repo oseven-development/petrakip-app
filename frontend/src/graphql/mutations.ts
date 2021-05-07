@@ -79,6 +79,7 @@ export const createReflexion = /* GraphQL */ `
       subTopic
       niveau
       indicators
+      state
       deleted
       sharedUsers
       comments {
@@ -116,6 +117,7 @@ export const updateReflexion = /* GraphQL */ `
       subTopic
       niveau
       indicators
+      state
       deleted
       sharedUsers
       comments {
@@ -153,6 +155,7 @@ export const deleteReflexion = /* GraphQL */ `
       subTopic
       niveau
       indicators
+      state
       deleted
       sharedUsers
       comments {
@@ -282,6 +285,7 @@ export const createReflexionMoment = /* GraphQL */ `
         subTopic
         niveau
         indicators
+        state
         deleted
         sharedUsers
         updatedAt
@@ -324,6 +328,7 @@ export const updateReflexionMoment = /* GraphQL */ `
         subTopic
         niveau
         indicators
+        state
         deleted
         sharedUsers
         updatedAt
@@ -366,6 +371,7 @@ export const deleteReflexionMoment = /* GraphQL */ `
         subTopic
         niveau
         indicators
+        state
         deleted
         sharedUsers
         updatedAt

@@ -1,4 +1,4 @@
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { withAuthenticator } from '@aws-amplify/ui-react'
 
 import {
   IonApp,
@@ -11,18 +11,23 @@ import {
 } from '@ionic/react'
 
 import { IonReactRouter } from '@ionic/react-router'
-// import Amplify from 'aws-amplify'
+import Amplify from 'aws-amplify'
 
 import { albums, person, image, barChart } from 'ionicons/icons'
 
 import { Redirect, Route } from 'react-router-dom'
 
-// import awsExports from './aws-exports'
+import awsExports from './aws-exports'
 import {
-  MomentsView,
-  ProfileView,
-  ReflectionsView,
-  ProgressView,
+  MomentsListView,
+  MomentsCreateNewView,
+  MomentsDetailView,
+  ProgressDetailView,
+  ReflectionsCreateNewView,
+  ReflectionsDetailView,
+  ReflectionsListView,
+  ProfileDetailView,
+  ProfileChangePasswordView,
 } from './pages'
 
 /* Core CSS required for Ionic components to work properly */
@@ -45,28 +50,38 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 
-// Amplify.configure(awsExports)
+Amplify.configure(awsExports)
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/moments">
-            <MomentsView />
-          </Route>
-          <Route exact path="/reflections">
-            <ReflectionsView />
-          </Route>
-          <Route path="/profile">
-            <ProfileView />
-          </Route>
-          <Route path="/progress">
-            <ProgressView />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/moments" />
-          </Route>
+          {/* Moments routes  */}
+          <Route exact path={'/moments'} component={MomentsListView} />
+          <Route path={`/moments/details/:id`} component={MomentsDetailView} />
+          <Route path={`/moments/create`} component={MomentsCreateNewView} />
+
+          {/* Reflections routes */}
+          <Route exact path={'/reflections'} component={ReflectionsListView} />
+          <Route
+            path={`/reflections/details/:id`}
+            component={ReflectionsDetailView}
+          />
+          <Route
+            path={`/reflections/create`}
+            component={ReflectionsCreateNewView}
+          />
+
+          {/* profile routes */}
+          <Route exact path={'/profile'} component={ProfileDetailView} />
+          <Route
+            path={`/profile/changepassword`}
+            component={ProfileChangePasswordView}
+          />
+
+          {/* progress routes */}
+          <Route exact path={'/progress'} component={ProgressDetailView} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="moments" href="/moments">
@@ -91,6 +106,6 @@ const App: React.FC = () => (
   </IonApp>
 )
 
-export default App
+// export default App
 // TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
-// export default withAuthenticator(App)
+export default withAuthenticator(App)

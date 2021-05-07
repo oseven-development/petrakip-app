@@ -1,12 +1,16 @@
 /* Moments */
-export { MomentsView } from './moments/momentsView'
-export { MomentDetailView } from './moments/momentDetailView'
+export { MomentsListView } from './moments/momentsListView'
+export { MomentsDetailView } from './moments/momentsDetailView'
+export { MomentsCreateNewView } from './moments/momentsCreateNewView'
 
 /* Profile */
-export { ProfileView } from './profile/profileView'
+export { ProfileDetailView } from './profile/profileDetailView'
+export { ProfileChangePasswordView } from './profile/profileChangePasswordView'
 
 /* Progress */
-export { ProgressView } from './progress/progressView'
+export { ProgressDetailView } from './progress/progressDetailView'
 
 /* Reflections */
-export { ReflectionsView } from './reflections/reflectionsView'
+export { ReflectionsListView } from './reflections/reflectionsListView'
+export { ReflectionsDetailView } from './reflections/reflectionsDetailView'
+export { ReflectionsCreateNewView } from './reflections/reflectionsCreateNewView'
