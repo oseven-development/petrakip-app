@@ -1,6 +1,4 @@
-import { PropsCardWrapper } from './cardWrapper'
-
-export interface VideoVariant extends Omit<PropsCardWrapper, 'children'> {
+export interface VideoVariant {
   variant: 'video'
   video: string
 }
