@@ -19,10 +19,15 @@ import { Redirect, Route } from 'react-router-dom'
 
 import awsExports from './aws-exports'
 import {
-  MomentsView,
-  ProfileView,
-  ReflectionsView,
-  ProgressView,
+  MomentsListView,
+  MomentsCreateNewView,
+  MomentsDetailView,
+  ProgressDetailView,
+  ReflectionsCreateNewView,
+  ReflectionsDetailView,
+  ReflectionsListView,
+  ProfileDetailView,
+  ProfileChangePasswordView,
 } from './pages'
 
 /* Core CSS required for Ionic components to work properly */
@@ -52,20 +57,31 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          {/* Moments routes  */}
+          <Route exact path={'/moments'} component={MomentsListView} />
+          <Route path={`/moments/details/:id`} component={MomentsDetailView} />
+          <Route path={`/moments/create`} component={MomentsCreateNewView} />
+
+          {/* Reflections routes */}
+          <Route exact path={'/reflections'} component={ReflectionsListView} />
           <Route
-            path="/dashboard"
-            render={props => <MomentsView {...props} />}
+            path={`/reflections/details/:id`}
+            component={ReflectionsDetailView}
           />
-          <Route exact path="/reflections">
-            <ReflectionsView />
-          </Route>
-          <Route path="/profile">
-            <ProfileView />
-          </Route>
-          <Route path="/progress">
-            <ProgressView />
-          </Route>
-          <Route exact path="/" render={() => <Redirect to="/moments" />} />
+          <Route
+            path={`/reflections/create`}
+            component={ReflectionsCreateNewView}
+          />
+
+          {/* profile routes */}
+          <Route exact path={'/profile'} component={ProfileDetailView} />
+          <Route
+            path={`/profile/changepassword`}
+            component={ProfileChangePasswordView}
+          />
+
+          {/* progress routes */}
+          <Route exact path={'/progress'} component={ProgressDetailView} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="moments" href="/moments">

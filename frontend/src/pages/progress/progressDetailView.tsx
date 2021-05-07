@@ -1,7 +1,10 @@
 import { IonContent, IonPage } from '@ionic/react'
+import { RouteComponentProps } from 'react-router-dom'
 import { Header } from '../../components'
 
-export const ProgressView: React.FC = () => {
+interface Props extends RouteComponentProps<{}> {}
+
+export const ProgressDetailView: React.FC<Props> = ({ history }) => {
   return (
     <IonPage>
       <Header>Fortschritt</Header>

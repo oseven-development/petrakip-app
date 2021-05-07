@@ -1,11 +1,19 @@
 import { IonContent, IonPage } from '@ionic/react'
 import { Header } from '../../components'
+import { RouteComponentProps } from 'react-router'
 
-export const MomentDetailView: React.FC = () => {
+interface Props
+  extends RouteComponentProps<{
+    id: string
+  }> {}
+
+export const MomentsDetailView: React.FC<Props> = ({ match, history }) => {
   return (
     <IonPage>
-      <Header>Momente Details</Header>
-      <IonContent fullscreen>moments-details-dummy-content</IonContent>
+      <Header>Momente {match.params.id}</Header>
+      <IonContent fullscreen>
+        moments-details-dummy-content {match.params.id}
+      </IonContent>
     </IonPage>
   )
 }

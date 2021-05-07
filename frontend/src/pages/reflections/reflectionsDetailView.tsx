@@ -7,11 +7,13 @@ interface Props
     id: string
   }> {}
 
-export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
+export const ReflectionsDetailView: React.FC<Props> = ({ match, history }) => {
   return (
     <IonPage>
-      <Header>Momente Erstellen</Header>
-      <IonContent fullscreen>moments-details-dummy-content</IonContent>
+      <Header>Reflektion Details</Header>
+      <IonContent fullscreen>
+        moments-details-dummy-content {match.params.id}
+      </IonContent>
     </IonPage>
   )
 }
