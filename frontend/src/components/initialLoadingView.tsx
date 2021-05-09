@@ -14,9 +14,11 @@ const InitialLoadingView: React.FC<InitialLoadingViewProps> = ({
 }) => {
   const history = useHistory()
 
-  Amplify.Auth.currentAuthenticatedUser()
-    .then(() => history.push(appPath))
-    .catch(() => history.push(loginPath))
+  setTimeout(() => {
+    Amplify.Auth.currentAuthenticatedUser()
+      .then(() => history.push(appPath))
+      .catch(() => history.push(loginPath))
+  }, 2000)
 
   return (
     <IonPage>
