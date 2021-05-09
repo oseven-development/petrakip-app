@@ -16,6 +16,7 @@ import {
 
 import './loginPage.css'
 import { useHistory } from 'react-router-dom'
+import Amplify from '@aws-amplify/core'
 
 const LoginPage: React.FC = () => {
   const [mail, setMail] = useState('')
@@ -73,11 +74,23 @@ const LoginPage: React.FC = () => {
                 /**
                  * TODO: Dummy solution for now
                  */
-                setLoginLoading(true)
                 console.log(`Trying to login with ${mail} and ${password}`)
-                setTimeout(() => {
-                  history.push('/app/tab1')
-                }, 2000)
+                setLoginLoading(true)
+                Amplify.Auth.signIn(mail, password)
+                  .then((user: any) => {
+                    setLoginLoading(false)
+                    console.log(user)
+                    if (user) {
+                      history.push('/app/moments')
+                    } else {
+                      // TODO: unknown error
+                    }
+                  })
+                  .catch((error: any) => {
+                    // TODO: handle error
+                    console.error(`Error occurred: `, error)
+                    setLoginLoading(false)
+                  })
               }}
             >
               {loginLoading ? <IonSpinner /> : 'Anmelden'}
