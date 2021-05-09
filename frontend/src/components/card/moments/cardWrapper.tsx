@@ -28,14 +28,14 @@ export const CardWrapper = ({
     </IonCardHeader>
     <IonCardContent>
       {children}
-      <IonButton color="medium" size="small">
-        <IonIcon slot="icon-only" icon={star} />
+      <IonButton color="transparent" size="small" fill="clear">
+        <IonIcon slot="icon-only" color="secondary" icon={star} />
       </IonButton>
-      <IonButton color="medium" size="small">
-        <IonIcon slot="icon-only" icon={share} />
+      <IonButton color="transparent" size="small" fill="clear">
+        <IonIcon slot="icon-only" color="secondary" icon={share} />
       </IonButton>
-      <IonButton color="medium" size="small">
-        <IonIcon slot="icon-only" icon={trash} />
+      <IonButton color="transparent" size="small" fill="clear">
+        <IonIcon slot="icon-only" color="secondary" icon={trash} />
       </IonButton>
     </IonCardContent>
   </IonCard>
