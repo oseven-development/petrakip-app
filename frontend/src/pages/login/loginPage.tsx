@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import {
   IonButton,
   IonCard,
@@ -15,16 +16,17 @@ import {
 } from '@ionic/react'
 
 import './loginPage.css'
-import { useHistory } from 'react-router-dom'
 import Amplify from '@aws-amplify/core'
 
-const LoginPage: React.FC = () => {
+interface LoginPageProps {
+  setLoggedIn(loggedIn: boolean): void
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ setLoggedIn }) => {
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
 
   const [loginLoading, setLoginLoading] = useState(false)
-
-  const history = useHistory()
 
   return (
     <IonPage>
@@ -81,7 +83,7 @@ const LoginPage: React.FC = () => {
                     setLoginLoading(false)
                     console.log(user)
                     if (user) {
-                      history.push('/app/moments')
+                      setLoggedIn(true)
                     } else {
                       // TODO: unknown error
                     }
@@ -104,6 +106,10 @@ const LoginPage: React.FC = () => {
       </IonContent>
     </IonPage>
   )
+}
+
+LoginPage.propTypes = {
+  setLoggedIn: PropTypes.func.isRequired,
 }
 
 export default LoginPage

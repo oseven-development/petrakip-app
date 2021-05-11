@@ -50,89 +50,78 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 import LoginPage from './pages/login/loginPage'
-import InitialLoadingView from './components/initialLoadingView'
+import { useState } from 'react'
 
 Amplify.configure(awsExports)
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <InitialLoadingView loginPath="/login" appPath="/app/moments" />
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <Route path="/app">
-          <IonTabs>
-            <IonRouterOutlet>
-              {/* Moments routes  */}
-              <Route exact path={'/app/moments'} component={MomentsListView} />
-              <Route
-                path={`/app/moments/details/:id`}
-                component={MomentsDetailView}
-              />
-              <Route
-                path={`/app/moments/create`}
-                component={MomentsCreateNewView}
-              />
+const App: React.FC = () => {
+  const [loggedIn, setLoggedIn] = useState(false)
 
-              {/* Reflections routes */}
-              <Route
-                exact
-                path={'/app/reflections'}
-                component={ReflectionsListView}
-              />
-              <Route
-                path={`/app/reflections/details/:id`}
-                component={ReflectionsDetailView}
-              />
-              <Route
-                path={`/app/reflections/create`}
-                component={ReflectionsCreateNewView}
-              />
+  if (!loggedIn) {
+    return <LoginPage setLoggedIn={setLoggedIn} />
+  }
 
-              {/* profile routes */}
-              <Route
-                exact
-                path={'/app/profile'}
-                component={ProfileDetailView}
-              />
-              <Route
-                path={`/app/profile/changepassword`}
-                component={ProfileChangePasswordView}
-              />
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            {/* Moments routes  */}
+            <Route exact path={'/moments'} component={MomentsListView} />
+            <Route
+              path={`/moments/details/:id`}
+              component={MomentsDetailView}
+            />
+            <Route path={`/moments/create`} component={MomentsCreateNewView} />
 
-              {/* progress routes */}
-              <Route
-                exact
-                path={'/app/progress'}
-                component={ProgressDetailView}
-              />
-            </IonRouterOutlet>
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="moments" href="/app/moments">
-                <IonIcon icon={image} />
-                <IonLabel>Momente</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="reflections" href="/app/reflections">
-                <IonIcon icon={albums} />
-                <IonLabel>Reflexionen</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="profile" href="/app/profile">
-                <IonIcon icon={person} />
-                <IonLabel>Profil</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="progress" href="/app/progress">
-                <IonIcon icon={barChart} />
-                <IonLabel>Fortschritt</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-)
+            {/* Reflections routes */}
+            <Route
+              exact
+              path={'/reflections'}
+              component={ReflectionsListView}
+            />
+            <Route
+              path={`/reflections/details/:id`}
+              component={ReflectionsDetailView}
+            />
+            <Route
+              path={`/reflections/create`}
+              component={ReflectionsCreateNewView}
+            />
+
+            {/* profile routes */}
+            <Route exact path={'/profile'} component={ProfileDetailView} />
+            <Route
+              path={`/profile/changepassword`}
+              component={ProfileChangePasswordView}
+            />
+
+            {/* progress routes */}
+            <Route exact path={'/progress'} component={ProgressDetailView} />
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="moments" href="/moments">
+              <IonIcon icon={image} />
+              <IonLabel>Momente</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="reflections" href="/reflections">
+              <IonIcon icon={albums} />
+              <IonLabel>Reflexionen</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon icon={person} />
+              <IonLabel>Profil</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="progress" href="/progress">
+              <IonIcon icon={barChart} />
+              <IonLabel>Fortschritt</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  )
+}
 
 export default App
 // TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
