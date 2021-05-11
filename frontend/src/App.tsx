@@ -15,7 +15,7 @@ import Amplify from 'aws-amplify'
 
 import { albums, person, image, barChart } from 'ionicons/icons'
 
-import { Route } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 
 import awsExports from './aws-exports'
 import {
@@ -56,6 +56,10 @@ Amplify.configure(awsExports)
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false)
+
+  Amplify.Auth.currentAuthenticatedUser()
+    .then(() => setLoggedIn(true))
+    .catch(() => setLoggedIn(false))
 
   if (!loggedIn) {
     return <LoginPage setLoggedIn={setLoggedIn} />
@@ -98,6 +102,11 @@ const App: React.FC = () => {
 
             {/* progress routes */}
             <Route exact path={'/progress'} component={ProgressDetailView} />
+
+            {/* redirect from home */}
+            <Route exact path={'/'}>
+              <Redirect to="/moments" />
+            </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="moments" href="/moments">
