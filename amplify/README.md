@@ -50,6 +50,17 @@ amplify publish
 amplify codegen
 ```
 
+You can find the generated files at `frontend/graphql/` and `frontend/API.ts`.
+
+6. generate model code for frontend and datastore
+   Models can also be generated using the Amplify CLI directly. In your terminal, make sure you are in your project/root folder and execute the codegen command
+
+```bash
+amplify codegen models
+```
+
+You can find the generated files at `frontend/models/`.
+
 # Data model and API structure
 
 Petrakip needs logical objects that complex data, such as images or videos, as part of their structure. For example, a Moment type can contain a picture. With AWS AppSync, we can model these as GraphQL types, referred to as complex objects. If any of the mutations have a variable with bucket, key, region, mimeType and localUri fields, the SDK uploads the file to Amazon S3 for you.

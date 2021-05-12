@@ -6,6 +6,7 @@ export type CreateProfileSettingsInput = {
   id?: string | null
   profileImage?: S3ObjectInput | null
   age?: number | null
+  _version?: number | null
 }
 
 export type S3ObjectInput = {
@@ -51,6 +52,9 @@ export type ProfileSettings = {
   id?: string
   profileImage?: S3Object
   age?: number | null
+  _version?: number
+  _deleted?: boolean | null
+  _lastChangedAt?: number
   createdAt?: string
   updatedAt?: string
   owner?: string | null
@@ -67,10 +71,12 @@ export type UpdateProfileSettingsInput = {
   id: string
   profileImage?: S3ObjectInput | null
   age?: number | null
+  _version?: number | null
 }
 
 export type DeleteProfileSettingsInput = {
   id?: string | null
+  _version?: number | null
 }
 
 export type CreateReflexionInput = {
@@ -89,6 +95,7 @@ export type CreateReflexionInput = {
   sharedUsers?: Array<string | null> | null
   comments?: Array<CommentInput | null> | null
   orientationQuestions?: Array<OrientationQuestionsInput | null> | null
+  _version?: number | null
 }
 
 export enum ContentType {
@@ -190,6 +197,9 @@ export type Reflexion = {
   comments?: Array<Comment | null> | null
   orientationQuestions?: Array<OrientationQuestions | null> | null
   moments?: ModelReflexionMomentConnection
+  _version?: number
+  _deleted?: boolean | null
+  _lastChangedAt?: number
   updatedAt?: string
   owner?: string | null
 }
@@ -209,6 +219,7 @@ export type ModelReflexionMomentConnection = {
   __typename: 'ModelReflexionMomentConnection'
   items?: Array<ReflexionMoment | null> | null
   nextToken?: string | null
+  startedAt?: number | null
 }
 
 export type ReflexionMoment = {
@@ -218,6 +229,9 @@ export type ReflexionMoment = {
   momentID?: string
   reflexion?: Reflexion
   moment?: Moment
+  _version?: number
+  _deleted?: boolean | null
+  _lastChangedAt?: number
   createdAt?: string
   updatedAt?: string
   owner?: string | null
@@ -236,6 +250,9 @@ export type Moment = {
   sharedUsers?: Array<string | null> | null
   comments?: Array<Comment | null> | null
   reflexion?: ModelReflexionMomentConnection
+  _version?: number
+  _deleted?: boolean | null
+  _lastChangedAt?: number
   updatedAt?: string
   owner?: string | null
 }
@@ -256,10 +273,12 @@ export type UpdateReflexionInput = {
   sharedUsers?: Array<string | null> | null
   comments?: Array<CommentInput | null> | null
   orientationQuestions?: Array<OrientationQuestionsInput | null> | null
+  _version?: number | null
 }
 
 export type DeleteReflexionInput = {
   id?: string | null
+  _version?: number | null
 }
 
 export type CreateMomentInput = {
@@ -273,6 +292,7 @@ export type CreateMomentInput = {
   deleted?: boolean | null
   sharedUsers?: Array<string | null> | null
   comments?: Array<CommentInput | null> | null
+  _version?: number | null
 }
 
 export type ModelMomentConditionInput = {
@@ -298,16 +318,19 @@ export type UpdateMomentInput = {
   deleted?: boolean | null
   sharedUsers?: Array<string | null> | null
   comments?: Array<CommentInput | null> | null
+  _version?: number | null
 }
 
 export type DeleteMomentInput = {
   id?: string | null
+  _version?: number | null
 }
 
 export type CreateReflexionMomentInput = {
   id?: string | null
   reflexionID: string
   momentID: string
+  _version?: number | null
 }
 
 export type ModelReflexionMomentConditionInput = {
@@ -338,10 +361,12 @@ export type UpdateReflexionMomentInput = {
   id: string
   reflexionID?: string | null
   momentID?: string | null
+  _version?: number | null
 }
 
 export type DeleteReflexionMomentInput = {
   id?: string | null
+  _version?: number | null
 }
 
 export type ModelProfileSettingsFilterInput = {
@@ -356,6 +381,7 @@ export type ModelProfileSettingsConnection = {
   __typename: 'ModelProfileSettingsConnection'
   items?: Array<ProfileSettings | null> | null
   nextToken?: string | null
+  startedAt?: number | null
 }
 
 export type ModelReflexionFilterInput = {
@@ -380,6 +406,7 @@ export type ModelReflexionConnection = {
   __typename: 'ModelReflexionConnection'
   items?: Array<Reflexion | null> | null
   nextToken?: string | null
+  startedAt?: number | null
 }
 
 export type ModelMomentFilterInput = {
@@ -400,6 +427,16 @@ export type ModelMomentConnection = {
   __typename: 'ModelMomentConnection'
   items?: Array<Moment | null> | null
   nextToken?: string | null
+  startedAt?: number | null
+}
+
+export type ModelReflexionMomentFilterInput = {
+  id?: ModelIDInput | null
+  reflexionID?: ModelIDInput | null
+  momentID?: ModelIDInput | null
+  and?: Array<ModelReflexionMomentFilterInput | null> | null
+  or?: Array<ModelReflexionMomentFilterInput | null> | null
+  not?: ModelReflexionMomentFilterInput | null
 }
 
 export type CreateProfileSettingsMutationVariables = {
@@ -418,6 +455,9 @@ export type CreateProfileSettingsMutation = {
       region: string
     } | null
     age?: number | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -440,6 +480,9 @@ export type UpdateProfileSettingsMutation = {
       region: string
     } | null
     age?: number | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -462,6 +505,9 @@ export type DeleteProfileSettingsMutation = {
       region: string
     } | null
     age?: number | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -506,7 +552,11 @@ export type CreateReflexionMutation = {
     moments?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -550,7 +600,11 @@ export type UpdateReflexionMutation = {
     moments?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -594,7 +648,11 @@ export type DeleteReflexionMutation = {
     moments?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -630,7 +688,11 @@ export type CreateMomentMutation = {
     reflexion?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -666,7 +728,11 @@ export type UpdateMomentMutation = {
     reflexion?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -702,7 +768,11 @@ export type DeleteMomentMutation = {
     reflexion?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -733,6 +803,9 @@ export type CreateReflexionMomentMutation = {
       state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
@@ -746,9 +819,15 @@ export type CreateReflexionMomentMutation = {
       tags?: Array<string | null> | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -780,6 +859,9 @@ export type UpdateReflexionMomentMutation = {
       state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
@@ -793,9 +875,15 @@ export type UpdateReflexionMomentMutation = {
       tags?: Array<string | null> | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -827,6 +915,9 @@ export type DeleteReflexionMomentMutation = {
       state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
@@ -840,12 +931,44 @@ export type DeleteReflexionMomentMutation = {
       tags?: Array<string | null> | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
+  } | null
+}
+
+export type SyncProfileSettingsQueryVariables = {
+  filter?: ModelProfileSettingsFilterInput | null
+  limit?: number | null
+  nextToken?: string | null
+  lastSync?: number | null
+}
+
+export type SyncProfileSettingsQuery = {
+  syncProfileSettings?: {
+    __typename: 'ModelProfileSettingsConnection'
+    items?: Array<{
+      __typename: 'ProfileSettings'
+      id: string
+      age?: number | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
+      createdAt: string
+      updatedAt: string
+      owner?: string | null
+    } | null> | null
+    nextToken?: string | null
+    startedAt?: number | null
   } | null
 }
 
@@ -864,6 +987,9 @@ export type GetProfileSettingsQuery = {
       region: string
     } | null
     age?: number | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -883,11 +1009,50 @@ export type ListProfileSettingssQuery = {
       __typename: 'ProfileSettings'
       id: string
       age?: number | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       createdAt: string
       updatedAt: string
       owner?: string | null
     } | null> | null
     nextToken?: string | null
+    startedAt?: number | null
+  } | null
+}
+
+export type SyncReflexionsQueryVariables = {
+  filter?: ModelReflexionFilterInput | null
+  limit?: number | null
+  nextToken?: string | null
+  lastSync?: number | null
+}
+
+export type SyncReflexionsQuery = {
+  syncReflexions?: {
+    __typename: 'ModelReflexionConnection'
+    items?: Array<{
+      __typename: 'Reflexion'
+      id: string
+      createdAt?: string | null
+      title?: string | null
+      contentType?: ContentType | null
+      content?: string | null
+      topic?: string | null
+      subTopic?: string | null
+      niveau?: string | null
+      indicators?: Array<string | null> | null
+      state?: ReflexionState | null
+      deleted?: boolean | null
+      sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
+      updatedAt: string
+      owner?: string | null
+    } | null> | null
+    nextToken?: string | null
+    startedAt?: number | null
   } | null
 }
 
@@ -928,7 +1093,11 @@ export type GetReflexionQuery = {
     moments?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -957,10 +1126,45 @@ export type ListReflexionsQuery = {
       state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     } | null> | null
     nextToken?: string | null
+    startedAt?: number | null
+  } | null
+}
+
+export type SyncMomentsQueryVariables = {
+  filter?: ModelMomentFilterInput | null
+  limit?: number | null
+  nextToken?: string | null
+  lastSync?: number | null
+}
+
+export type SyncMomentsQuery = {
+  syncMoments?: {
+    __typename: 'ModelMomentConnection'
+    items?: Array<{
+      __typename: 'Moment'
+      id: string
+      createdAt?: string | null
+      title: string
+      contentType?: ContentType | null
+      content?: string | null
+      tags?: Array<string | null> | null
+      deleted?: boolean | null
+      sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
+      updatedAt: string
+      owner?: string | null
+    } | null> | null
+    nextToken?: string | null
+    startedAt?: number | null
   } | null
 }
 
@@ -993,7 +1197,11 @@ export type GetMomentQuery = {
     reflexion?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -1018,10 +1226,41 @@ export type ListMomentsQuery = {
       tags?: Array<string | null> | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     } | null> | null
     nextToken?: string | null
+    startedAt?: number | null
+  } | null
+}
+
+export type SyncReflexionMomentsQueryVariables = {
+  filter?: ModelReflexionMomentFilterInput | null
+  limit?: number | null
+  nextToken?: string | null
+  lastSync?: number | null
+}
+
+export type SyncReflexionMomentsQuery = {
+  syncReflexionMoments?: {
+    __typename: 'ModelReflexionMomentConnection'
+    items?: Array<{
+      __typename: 'ReflexionMoment'
+      id: string
+      reflexionID: string
+      momentID: string
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
+      createdAt: string
+      updatedAt: string
+      owner?: string | null
+    } | null> | null
+    nextToken?: string | null
+    startedAt?: number | null
   } | null
 }
 
@@ -1040,6 +1279,9 @@ export type OnCreateProfileSettingsSubscription = {
       region: string
     } | null
     age?: number | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -1061,6 +1303,9 @@ export type OnUpdateProfileSettingsSubscription = {
       region: string
     } | null
     age?: number | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -1082,6 +1327,9 @@ export type OnDeleteProfileSettingsSubscription = {
       region: string
     } | null
     age?: number | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -1126,7 +1374,11 @@ export type OnCreateReflexionSubscription = {
     moments?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -1170,7 +1422,11 @@ export type OnUpdateReflexionSubscription = {
     moments?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -1214,7 +1470,11 @@ export type OnDeleteReflexionSubscription = {
     moments?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -1250,7 +1510,11 @@ export type OnCreateMomentSubscription = {
     reflexion?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -1286,7 +1550,11 @@ export type OnUpdateMomentSubscription = {
     reflexion?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -1322,7 +1590,11 @@ export type OnDeleteMomentSubscription = {
     reflexion?: {
       __typename: 'ModelReflexionMomentConnection'
       nextToken?: string | null
+      startedAt?: number | null
     } | null
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     updatedAt: string
     owner?: string | null
   } | null
@@ -1352,6 +1624,9 @@ export type OnCreateReflexionMomentSubscription = {
       state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
@@ -1365,9 +1640,15 @@ export type OnCreateReflexionMomentSubscription = {
       tags?: Array<string | null> | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -1398,6 +1679,9 @@ export type OnUpdateReflexionMomentSubscription = {
       state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
@@ -1411,9 +1695,15 @@ export type OnUpdateReflexionMomentSubscription = {
       tags?: Array<string | null> | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
@@ -1444,6 +1734,9 @@ export type OnDeleteReflexionMomentSubscription = {
       state?: ReflexionState | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
@@ -1457,9 +1750,15 @@ export type OnDeleteReflexionMomentSubscription = {
       tags?: Array<string | null> | null
       deleted?: boolean | null
       sharedUsers?: Array<string | null> | null
+      _version: number
+      _deleted?: boolean | null
+      _lastChangedAt: number
       updatedAt: string
       owner?: string | null
     }
+    _version: number
+    _deleted?: boolean | null
+    _lastChangedAt: number
     createdAt: string
     updatedAt: string
     owner?: string | null
