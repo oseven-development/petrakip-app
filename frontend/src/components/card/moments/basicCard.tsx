@@ -4,17 +4,17 @@ import { ImageVariant, ImageVariantCard } from './imageCard'
 import { TextVariant, TextVariantCard } from './textCard'
 import { VideoVariant, VideoVariantCard } from './videoCard'
 
-export type Variant = 'text' | 'image' | 'video' | 'audio'
+export type Variant = 'text' | 'image' | 'audio' | 'video'
 
 export interface DefaultProps extends Omit<PropsCardWrapper, 'children'> {
   variant: Variant
   momentId: number
 }
 
-type TextVariantWithProps = TextVariant & DefaultProps
-type ImageVariantWithProps = ImageVariant & DefaultProps
-type AudioVariantWithProps = AudioVariant & DefaultProps
-type VideoVariantWithProps = VideoVariant & DefaultProps
+export type TextVariantWithProps = TextVariant & DefaultProps
+export type ImageVariantWithProps = ImageVariant & DefaultProps
+export type AudioVariantWithProps = AudioVariant & DefaultProps
+export type VideoVariantWithProps = VideoVariant & DefaultProps
 
 type Props =
   | TextVariantWithProps
@@ -22,10 +22,10 @@ type Props =
   | AudioVariantWithProps
   | VideoVariantWithProps
 
-function Card(props: TextVariantWithProps): JSX.Element
-function Card(props: ImageVariantWithProps): JSX.Element
-function Card(props: AudioVariantWithProps): JSX.Element
-function Card(props: VideoVariantWithProps): JSX.Element
+// function Card(props: TextVariantWithProps): JSX.Element
+// function Card(props: ImageVariantWithProps): JSX.Element
+// function Card(props: AudioVariantWithProps): JSX.Element
+// function Card(props: VideoVariantWithProps): JSX.Element
 function Card(props: Props): JSX.Element {
   const { title, subtitle, momentId } = props
 
