@@ -1,5 +1,3 @@
-import { IonRouterLink } from '@ionic/react'
-
 import { AudioVariant, AudioVariantCard } from './audioCard'
 import { PropsCardWrapper, CardWrapper } from './cardWrapper'
 import { ImageVariant, ImageVariantCard } from './imageCard'
@@ -29,14 +27,14 @@ function Card(props: ImageVariantWithProps): JSX.Element
 function Card(props: AudioVariantWithProps): JSX.Element
 function Card(props: VideoVariantWithProps): JSX.Element
 function Card(props: Props): JSX.Element {
+  const { title, subtitle, momentId } = props
+
   return (
-    <CardWrapper title={props.title} subtitle={props.subtitle}>
-      <IonRouterLink routerLink={`/moments/details/${props.momentId}`}>
-        {props.variant === 'text' && <TextVariantCard {...props} />}
-        {props.variant === 'image' && <ImageVariantCard {...props} />}
-        {props.variant === 'audio' && <AudioVariantCard {...props} />}
-        {props.variant === 'video' && <VideoVariantCard {...props} />}
-      </IonRouterLink>
+    <CardWrapper {...{ title, subtitle, momentId }}>
+      {props.variant === 'text' && <TextVariantCard {...props} />}
+      {props.variant === 'image' && <ImageVariantCard {...props} />}
+      {props.variant === 'audio' && <AudioVariantCard {...props} />}
+      {props.variant === 'video' && <VideoVariantCard {...props} />}
     </CardWrapper>
   )
 }

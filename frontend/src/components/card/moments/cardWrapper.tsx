@@ -4,39 +4,29 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCard,
-  IonButton,
-  IonIcon,
+  IonRouterLink,
 } from '@ionic/react'
-
-import { star, trash, share } from 'ionicons/icons'
 
 export interface PropsCardWrapper {
   title: string
   subtitle?: string
-  children?: (false | JSX.Element)[] | JSX.Element
+  momentId: number
+  children?: (false | JSX.Element)[]
 }
 
 export const CardWrapper = ({
   children,
   title,
   subtitle,
+  momentId,
 }: PropsCardWrapper) => (
   <IonCard>
     <IonCardHeader>
       <IonCardSubtitle>{subtitle}</IonCardSubtitle>
-      <IonCardTitle>{title}</IonCardTitle>
+      <IonRouterLink routerLink={`/moments/details/${momentId}`}>
+        <IonCardTitle>{title}</IonCardTitle>
+      </IonRouterLink>
     </IonCardHeader>
-    <IonCardContent>
-      {children}
-      <IonButton color="transparent" size="small" fill="clear">
-        <IonIcon slot="icon-only" color="secondary" icon={star} />
-      </IonButton>
-      <IonButton color="transparent" size="small" fill="clear">
-        <IonIcon slot="icon-only" color="secondary" icon={share} />
-      </IonButton>
-      <IonButton color="transparent" size="small" fill="clear">
-        <IonIcon slot="icon-only" color="secondary" icon={trash} />
-      </IonButton>
-    </IonCardContent>
+    <IonCardContent>{children}</IonCardContent>
   </IonCard>
 )
