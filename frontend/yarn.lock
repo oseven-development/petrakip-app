@@ -2566,6 +2566,13 @@
   dependencies:
     "@types/cordova" latest
 
+"@ionic-native/media-capture@^5.33.0":
+  version "5.33.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/media-capture/-/media-capture-5.33.0.tgz#83d997c71f7e6050d2e0b3cacf15587fa927f87a"
+  integrity sha512-aQTnonVSeijpuZ9B7oYJCjIDqgFVhNdvqkx9vUoaO359BtJGpGS1rNPjEovt4DsqV7oe7TkbmBd8DMEwnB3A2g==
+  dependencies:
+    "@types/cordova" latest
+
 "@ionic-native/video-capture-plus@^5.33.0":
   version "5.33.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/video-capture-plus/-/video-capture-plus-5.33.0.tgz#a911d81c938b77a6c6c7ad40110575c4e034ad11"
@@ -5286,10 +5293,10 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-cordova-plugin-video-capture-plus@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-video-capture-plus/-/cordova-plugin-video-capture-plus-1.0.0.tgz#6a47aa611403c128f7f753eb534074b218f8050d"
-  integrity sha512-Ldxm2sn54Ghy0y35Lspt3y6Vckm9LKD0ImA/uPP1uYTk+QI1MZkRV3xrt1NzGCUIxlaw2c1VfQAXSNAug/+pog==
+cordova-plugin-media-capture@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-media-capture/-/cordova-plugin-media-capture-3.0.3.tgz#9e04494245ad620f27fef49850fce2bfb342426e"
+  integrity sha512-pVQOrNM7VAuVUMXibAlMGIArrftHPrRs4dUCoE+e2HEFUp3LmN3Yj539LjdUxcWmz/A/cHC65m9E3DS56YJhcg==
 
 core-js-compat@^3.6.2, core-js-compat@^3.9.0, core-js-compat@^3.9.1:
   version "3.11.0"

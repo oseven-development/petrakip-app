@@ -47,3 +47,37 @@ yarn serve
 ```bash
 yarn start
 ```
+
+# Deploying To Device Using Capacitor/CLI
+
+```bash
+yarn ionic build
+yarn ionic cap sync ios
+```
+
+After you make changes to web code, you typically run the following command.
+
+```bash
+yarn ionic cap copy ios
+```
+
+After changes to native code/plugins
+
+```bash
+yarn ionic cap sync ios
+```
+
+Open up the IDE
+
+```bash
+yarn ionic cap open ios
+```
+
+Using Live Reload To Debug Application
+When developing the remainder of the application, I used live reload commands which are listed below.
+
+```bash
+yarn ionic cap run ios -l --external
+
+yarn ionic cap run android -l --external
+```
