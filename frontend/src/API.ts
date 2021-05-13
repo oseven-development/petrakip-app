@@ -116,11 +116,6 @@ export type CommentInput = {
   content: string
 }
 
-export type CommentInput = {
-  createdAt: string
-  content: string
-}
-
 export type OrientationQuestionsInput = {
   question: string
 }
@@ -170,11 +165,6 @@ export type ModelSizeInput = {
 export type ModelContentTypeInput = {
   eq?: ContentType | null
   ne?: ContentType | null
-}
-
-export type ModelReflexionStateInput = {
-  eq?: ReflexionState | null
-  ne?: ReflexionState | null
 }
 
 export type ModelReflexionStateInput = {
