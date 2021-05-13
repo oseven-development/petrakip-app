@@ -15,9 +15,6 @@ export const createProfileSettings = /* GraphQL */ `
         region
       }
       age
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -37,9 +34,6 @@ export const updateProfileSettings = /* GraphQL */ `
         region
       }
       age
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -59,9 +53,6 @@ export const deleteProfileSettings = /* GraphQL */ `
         region
       }
       age
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -100,11 +91,7 @@ export const createReflexion = /* GraphQL */ `
       }
       moments {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -142,11 +129,7 @@ export const updateReflexion = /* GraphQL */ `
       }
       moments {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -184,11 +167,7 @@ export const deleteReflexion = /* GraphQL */ `
       }
       moments {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -219,11 +198,7 @@ export const createMoment = /* GraphQL */ `
       }
       reflexion {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -254,11 +229,7 @@ export const updateMoment = /* GraphQL */ `
       }
       reflexion {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -289,11 +260,7 @@ export const deleteMoment = /* GraphQL */ `
       }
       reflexion {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -321,9 +288,6 @@ export const createReflexionMoment = /* GraphQL */ `
         state
         deleted
         sharedUsers
-        _version
-        _deleted
-        _lastChangedAt
         updatedAt
         owner
       }
@@ -336,15 +300,9 @@ export const createReflexionMoment = /* GraphQL */ `
         tags
         deleted
         sharedUsers
-        _version
-        _deleted
-        _lastChangedAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -373,9 +331,6 @@ export const updateReflexionMoment = /* GraphQL */ `
         state
         deleted
         sharedUsers
-        _version
-        _deleted
-        _lastChangedAt
         updatedAt
         owner
       }
@@ -388,15 +343,9 @@ export const updateReflexionMoment = /* GraphQL */ `
         tags
         deleted
         sharedUsers
-        _version
-        _deleted
-        _lastChangedAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -425,9 +374,6 @@ export const deleteReflexionMoment = /* GraphQL */ `
         state
         deleted
         sharedUsers
-        _version
-        _deleted
-        _lastChangedAt
         updatedAt
         owner
       }
@@ -440,15 +386,9 @@ export const deleteReflexionMoment = /* GraphQL */ `
         tags
         deleted
         sharedUsers
-        _version
-        _deleted
-        _lastChangedAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
