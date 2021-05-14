@@ -51,85 +51,99 @@ import '@ionic/react/css/display.css'
 import './theme/variables.css'
 import LoginPage from './pages/login/loginPage'
 import { useState } from 'react'
+import AuthState from './model/authState'
+import RegisterPage from './pages/login/registerPage'
 
 Amplify.configure(awsExports)
 
 const App: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [authState, setAuthState] = useState(AuthState.LoggedOut)
 
-  Amplify.Auth.currentAuthenticatedUser()
-    .then(() => setLoggedIn(true))
-    .catch(() => setLoggedIn(false))
-
-  if (!loggedIn) {
-    return <LoginPage setLoggedIn={setLoggedIn} />
+  if (authState === AuthState.LoggedOut) {
+    Amplify.Auth.currentAuthenticatedUser()
+      .then(() => setAuthState(AuthState.LoggedIn))
+      .catch(() => setAuthState(AuthState.LoggedOut))
   }
 
-  return (
-    <IonApp>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            {/* Moments routes  */}
-            <Route exact path={'/moments'} component={MomentsListView} />
-            <Route
-              path={`/moments/details/:id`}
-              component={MomentsDetailView}
-            />
-            <Route path={`/moments/create`} component={MomentsCreateNewView} />
+  switch (authState) {
+    case AuthState.LoggedOut:
+      return <LoginPage setAuthState={setAuthState} />
+    case AuthState.Registering:
+      return <RegisterPage />
+    case AuthState.LoggedIn:
+      return (
+        <IonApp>
+          <IonReactRouter>
+            <IonTabs>
+              <IonRouterOutlet>
+                {/* Moments routes  */}
+                <Route exact path={'/moments'} component={MomentsListView} />
+                <Route
+                  path={`/moments/details/:id`}
+                  component={MomentsDetailView}
+                />
+                <Route
+                  path={`/moments/create`}
+                  component={MomentsCreateNewView}
+                />
 
-            {/* Reflections routes */}
-            <Route
-              exact
-              path={'/reflections'}
-              component={ReflectionsListView}
-            />
-            <Route
-              path={`/reflections/details/:id`}
-              component={ReflectionsDetailView}
-            />
-            <Route
-              path={`/reflections/create`}
-              component={ReflectionsCreateNewView}
-            />
+                {/* Reflections routes */}
+                <Route
+                  exact
+                  path={'/reflections'}
+                  component={ReflectionsListView}
+                />
+                <Route
+                  path={`/reflections/details/:id`}
+                  component={ReflectionsDetailView}
+                />
+                <Route
+                  path={`/reflections/create`}
+                  component={ReflectionsCreateNewView}
+                />
 
-            {/* profile routes */}
-            <Route exact path={'/profile'} component={ProfileDetailView} />
-            <Route
-              path={`/profile/changepassword`}
-              component={ProfileChangePasswordView}
-            />
+                {/* profile routes */}
+                <Route exact path={'/profile'} component={ProfileDetailView} />
+                <Route
+                  path={`/profile/changepassword`}
+                  component={ProfileChangePasswordView}
+                />
 
-            {/* progress routes */}
-            <Route exact path={'/progress'} component={ProgressDetailView} />
+                {/* progress routes */}
+                <Route
+                  exact
+                  path={'/progress'}
+                  component={ProgressDetailView}
+                />
 
-            {/* redirect from home */}
-            <Route exact path={'/'}>
-              <Redirect to="/moments" />
-            </Route>
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="moments" href="/moments">
-              <IonIcon icon={image} />
-              <IonLabel>Momente</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="reflections" href="/reflections">
-              <IonIcon icon={albums} />
-              <IonLabel>Reflexionen</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="profile" href="/profile">
-              <IonIcon icon={person} />
-              <IonLabel>Profil</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="progress" href="/progress">
-              <IonIcon icon={barChart} />
-              <IonLabel>Fortschritt</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </IonApp>
-  )
+                {/* redirect from home */}
+                <Route exact path={'/'}>
+                  <Redirect to="/moments" />
+                </Route>
+              </IonRouterOutlet>
+              <IonTabBar slot="bottom">
+                <IonTabButton tab="moments" href="/moments">
+                  <IonIcon icon={image} />
+                  <IonLabel>Momente</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="reflections" href="/reflections">
+                  <IonIcon icon={albums} />
+                  <IonLabel>Reflexionen</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="profile" href="/profile">
+                  <IonIcon icon={person} />
+                  <IonLabel>Profil</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="progress" href="/progress">
+                  <IonIcon icon={barChart} />
+                  <IonLabel>Fortschritt</IonLabel>
+                </IonTabButton>
+              </IonTabBar>
+            </IonTabs>
+          </IonReactRouter>
+        </IonApp>
+      )
+  }
 }
 
 export default App

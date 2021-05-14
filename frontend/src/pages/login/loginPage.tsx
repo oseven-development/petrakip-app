@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import {
   IonButton,
   IonCard,
@@ -17,12 +16,13 @@ import {
 
 import './loginPage.css'
 import Amplify from '@aws-amplify/core'
+import AuthState from '../../model/authState'
 
 interface LoginPageProps {
-  setLoggedIn(loggedIn: boolean): void
+  setAuthState(authState: AuthState): void
 }
 
-const LoginPage: React.FC<LoginPageProps> = ({ setLoggedIn }) => {
+const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -83,7 +83,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setLoggedIn }) => {
                     setLoginLoading(false)
                     console.log(user)
                     if (user) {
-                      setLoggedIn(true)
+                      setAuthState(AuthState.LoggedIn)
                     } else {
                       // TODO: unknown error
                     }
@@ -98,7 +98,13 @@ const LoginPage: React.FC<LoginPageProps> = ({ setLoggedIn }) => {
               {loginLoading ? <IonSpinner /> : 'Anmelden'}
             </IonButton>
             {/* TODO: set correct href to register page */}
-            <IonButton expand="block" fill="outline" href="/app/tab2">
+            <IonButton
+              expand="block"
+              fill="outline"
+              onClick={() => {
+                setAuthState(AuthState.Registering)
+              }}
+            >
               Registrieren
             </IonButton>
           </div>
@@ -106,10 +112,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ setLoggedIn }) => {
       </IonContent>
     </IonPage>
   )
-}
-
-LoginPage.propTypes = {
-  setLoggedIn: PropTypes.func.isRequired,
 }
 
 export default LoginPage
