@@ -1,9 +1,7 @@
 const institutions = [
   'Freie Universität Berlin',
-  'FAU Erlangen-Nürnberg',
-  'TU Nürnberg',
-  'Ludwig-Maximilian-Uni München',
-  'Schule der freien Künste Berlin',
+  'Friedrich-Alexander-Universität Erlangen-Nürnberg',
+  'PH Schwyz',
 ]
 
 export default institutions
