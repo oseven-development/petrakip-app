@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { usePlatform } from './usePlatform'
 
-export const useWebMediaRecorder = () => {
-  const platform = usePlatform()
-  console.log(platform)
-  const [audioURL, setAudioURL] = useState('')
+export const audioOptions = { audio: true, video: false }
+export const videoOptions = { audio: true, video: true }
+export const photoOptions = { audio: true, video: false }
+
+export const useWebMediaRecorder = (options: any) => {
+  const [audioURL, setAudioURL] = useState({})
   const [isRecording, setIsRecording] = useState(false)
   const [recorder, setRecorder]: any = useState(null)
 
@@ -12,7 +13,7 @@ export const useWebMediaRecorder = () => {
     // Lazily obtain recorder first time we're recording.
     if (recorder === null) {
       if (isRecording) {
-        requestRecorder().then(setRecorder, console.error)
+        requestRecorder(options).then(setRecorder, console.error)
       }
       return
     }
@@ -26,11 +27,12 @@ export const useWebMediaRecorder = () => {
 
     // Obtain the audio when ready.
     const handleData = (e: any) => {
-      setAudioURL(URL.createObjectURL(e.data))
+      console.log(e.data.type)
+      setAudioURL({ data: URL.createObjectURL(e.data), type: e.data.type })
     }
     recorder.addEventListener('dataavailable', handleData)
     return () => recorder.removeEventListener('dataavailable', handleData)
-  }, [recorder, isRecording])
+  }, [recorder, isRecording, options])
 
   const toggleRecording = () => {
     setIsRecording(!isRecording)
@@ -39,7 +41,7 @@ export const useWebMediaRecorder = () => {
   return [audioURL, isRecording, toggleRecording]
 }
 
-async function requestRecorder() {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+async function requestRecorder(options: any) {
+  const stream = await navigator.mediaDevices.getUserMedia(options)
   return new MediaRecorder(stream)
 }
