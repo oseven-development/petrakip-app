@@ -73,9 +73,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
             <IonButton
               expand="block"
               onClick={() => {
-                /**
-                 * TODO: Dummy solution for now
-                 */
                 console.log(`Trying to login with ${mail} and ${password}`)
                 setLoginLoading(true)
                 Amplify.Auth.signIn(mail, password)
@@ -83,13 +80,14 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
                     setLoginLoading(false)
                     console.log(user)
                     if (user) {
+                      // TODO: user daten in context laden?
                       setAuthState(AuthState.LoggedIn)
                     } else {
-                      // TODO: unknown error
+                      // TODO: unknown error, show toast
                     }
                   })
                   .catch((error: any) => {
-                    // TODO: handle error
+                    // TODO: handle error, show toast
                     console.error(`Error occurred: `, error)
                     setLoginLoading(false)
                   })

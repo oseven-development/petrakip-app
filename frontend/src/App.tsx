@@ -69,7 +69,7 @@ const App: React.FC = () => {
     case AuthState.LoggedOut:
       return <LoginPage setAuthState={setAuthState} />
     case AuthState.Registering:
-      return <RegisterPage />
+      return <RegisterPage setAuthState={setAuthState} />
     case AuthState.LoggedIn:
       return (
         <IonApp>

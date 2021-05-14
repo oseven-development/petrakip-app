@@ -1,0 +1,14 @@
+.terms {
+  display: flex;
+  align-items: center;
+}
+
+.terms :not(:last-child) {
+  margin-right: 1rem;
+}
+
+.terms-link {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
