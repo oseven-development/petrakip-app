@@ -6,7 +6,7 @@ import { playCircle, pauseCircle } from 'ionicons/icons'
 
 export interface AudioVariant {
   variant: 'audio'
-  audio: string
+  audioSrc: string
 }
 export const AudioVariantCard: React.FC<AudioVariant> = props => {
   const [play, setPlay] = React.useState(true)

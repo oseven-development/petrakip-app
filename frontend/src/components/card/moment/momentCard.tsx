@@ -8,7 +8,6 @@ export type Variant = 'text' | 'image' | 'audio' | 'video'
 
 export interface DefaultProps extends Omit<PropsCardWrapper, 'children'> {
   variant: Variant
-  momentId: number
 }
 
 export type TextVariantWithProps = TextVariant & DefaultProps

@@ -1,6 +1,6 @@
 export interface VideoVariant {
   variant: 'video'
-  video: string
+  videoSrc: string
 }
 export const VideoVariantCard: React.FC<VideoVariant> = props => (
   <video width="100%" controls>
