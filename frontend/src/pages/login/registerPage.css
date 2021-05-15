@@ -1,3 +1,7 @@
+.name-card {
+  margin: 1rem 0;
+}
+
 .terms {
   display: flex;
   align-items: center;

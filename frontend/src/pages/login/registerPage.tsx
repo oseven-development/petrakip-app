@@ -49,9 +49,9 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
         </IonHeader>
         <div className="login-container">
           <h2>Name:</h2>
-          <IonCard>
+          <IonCard class="name-card">
             <IonCardContent>
-              <IonItem>
+              <IonItem slot="start">
                 <IonLabel position="stacked">Vorname</IonLabel>
                 <IonInput
                   autocomplete="name"
@@ -63,7 +63,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
                   onIonChange={e => setForename(e.detail.value ?? '')}
                 ></IonInput>
               </IonItem>
-              <IonItem>
+              <IonItem slot="start">
                 <IonLabel position="stacked">Nachname</IonLabel>
                 <IonInput
                   autocomplete="family-name"
@@ -119,7 +119,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
             </IonLabel>
           </div>
 
-          <IonModal isOpen={showTermsModal} cssClass="">
+          <IonModal isOpen={showTermsModal}>
             <h1>Terms and Conditions</h1>
             <IonButton onClick={() => setShowTermsModal(false)}>
               Gelesen
@@ -127,6 +127,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
           </IonModal>
 
           <IonButton
+            disabled={!(forename && surname && institution && agreedToTerms)}
             expand="block"
             onClick={() => {
               console.log('Start clicked')

@@ -28,6 +28,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
 
   const [loginLoading, setLoginLoading] = useState(false)
 
+  var buttonDisabled = !(mail && password)
+
   return (
     <IonPage>
       <IonHeader>
@@ -71,6 +73,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
           </IonCard>
           <div className="button-container">
             <IonButton
+              disabled={buttonDisabled}
               expand="block"
               onClick={() => {
                 console.log(`Trying to login with ${mail} and ${password}`)
@@ -97,6 +100,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
             </IonButton>
             {/* TODO: set correct href to register page */}
             <IonButton
+              disabled={buttonDisabled}
               expand="block"
               fill="outline"
               onClick={() => {
