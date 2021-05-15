@@ -47,7 +47,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
           <p>Willkommen bei Metapholio, bitte melden sie sich an:</p>
           <IonCard className="input-card">
             <IonCardContent>
-              <IonItem>
+              <IonItem class="ion-no-padding">
                 <IonLabel position="stacked">Mailadresse</IonLabel>
                 <IonInput
                   autocomplete="email"
@@ -59,7 +59,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
                   onIonChange={e => setMail(e.detail.value ?? '')}
                 ></IonInput>
               </IonItem>
-              <IonItem>
+              <IonItem class="ion-no-padding">
                 <IonLabel position="stacked">Passwort</IonLabel>
                 <IonInput
                   pattern="password"

@@ -8,6 +8,7 @@ import {
   IonHeader,
   IonInput,
   IonItem,
+  IonItemGroup,
   IonLabel,
   IonModal,
   IonPage,
@@ -34,6 +35,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
 
   const [registerLoading, setRegisterLoading] = useState(false)
 
+  const customPopoverOptions = {
+    header: 'Institution auswählen:',
+    cssClass: 'institution-select',
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -51,47 +57,55 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
           <h2>Name:</h2>
           <IonCard class="name-card">
             <IonCardContent>
-              <IonItem slot="start">
-                <IonLabel position="stacked">Vorname</IonLabel>
-                <IonInput
-                  autocomplete="name"
-                  inputmode="text"
-                  pattern="text"
-                  placeholder="Vorname eingeben"
-                  type="text"
-                  value={forename}
-                  onIonChange={e => setForename(e.detail.value ?? '')}
-                ></IonInput>
-              </IonItem>
-              <IonItem slot="start">
-                <IonLabel position="stacked">Nachname</IonLabel>
-                <IonInput
-                  autocomplete="family-name"
-                  inputmode="text"
-                  pattern="text"
-                  placeholder="Nachname eingeben"
-                  type="text"
-                  value={surname}
-                  onIonChange={e => setSurname(e.detail.value ?? '')}
-                ></IonInput>
-              </IonItem>
+              <IonItemGroup>
+                <IonItem class="ion-no-padding">
+                  <IonLabel position="stacked">Vorname</IonLabel>
+                  <IonInput
+                    autocomplete="name"
+                    inputmode="text"
+                    pattern="text"
+                    placeholder="Vorname eingeben"
+                    type="text"
+                    value={forename}
+                    onIonChange={e => setForename(e.detail.value ?? '')}
+                  ></IonInput>
+                </IonItem>
+                <IonItem class="ion-no-padding">
+                  <IonLabel position="stacked">Nachname</IonLabel>
+                  <IonInput
+                    autocomplete="family-name"
+                    inputmode="text"
+                    pattern="text"
+                    placeholder="Nachname eingeben"
+                    type="text"
+                    value={surname}
+                    onIonChange={e => setSurname(e.detail.value ?? '')}
+                  ></IonInput>
+                </IonItem>
+              </IonItemGroup>
             </IonCardContent>
           </IonCard>
 
           <h2>Institution:</h2>
-          <IonCard>
+          <IonCard className="name-card">
             <IonCardContent>
-              <IonItem>
+              <IonItem class="ion-no-padding">
                 <IonSelect
+                  interfaceOptions={customPopoverOptions}
+                  className="institution-select"
                   value={institution}
                   onIonChange={e => setInstitution(e.detail.value)}
-                  interface="popover"
+                  interface="action-sheet"
                   placeholder="Institution auswählen"
                   cancelText="Abbrechen"
                   okText="Auswählen"
                 >
                   {institutions.map((e, index) => (
-                    <IonSelectOption key={index} value={e}>
+                    <IonSelectOption
+                      className="institution-select"
+                      key={index}
+                      value={e}
+                    >
                       {e}
                     </IonSelectOption>
                   ))}
