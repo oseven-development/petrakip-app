@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import {
+  IonBackButton,
   IonButton,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCheckbox,
@@ -44,7 +46,10 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Metapholio</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/" />
+          </IonButtons>
+          <IonTitle slot="primary">Metapholio</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
