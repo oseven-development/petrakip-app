@@ -1,6 +1,6 @@
 const institutions = [
   'Freie Universität Berlin',
-  'Friedrich-Alexander-Universität Erlangen-Nürnberg',
+  'FAU Erlangen-Nürnberg',
   'PH Schwyz',
 ]
 
