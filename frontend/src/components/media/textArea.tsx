@@ -43,7 +43,7 @@ const ModalExample: React.FC<Props> = ({ setMedia }) => {
           expand="full"
           onClick={() => setShowModal(false)}
         >
-          Close Modal
+          Eingabe beenden
         </IonButton>
       </IonModal>
       <IonButton
