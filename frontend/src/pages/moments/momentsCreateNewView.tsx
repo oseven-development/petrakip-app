@@ -35,26 +35,32 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
       <Header>Moment Erstellen</Header>
       <IonContent fullscreen>
         <LargeHeader>Moment Erstellen</LargeHeader>
-        {media?.type?.includes('audio') ? (
-          <audio className="ion-padding" src={media.data} controls />
-        ) : media?.type?.includes('video') ? (
-          <video className="ion-padding" src={media.data} controls />
-        ) : media?.type?.includes('image') ? (
-          <IonImg className="ion-padding" src={media.data} alt="test" />
-        ) : media?.type?.includes('text') ? (
-          <IonTextarea
-            className="ion-padding"
-            disabled
-            readonly
-            value={media.data}
-          ></IonTextarea>
-        ) : (
-          <IonImg
-            className="ion-padding"
-            src={`assets/placeholder.jpeg`}
-            alt="test"
-          />
-        )}
+        <div
+          className="ion-margin"
+          style={{
+            height: 200,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {media?.type?.includes('audio') ? (
+            <audio src={media.data} controls />
+          ) : media?.type?.includes('video') ? (
+            <video style={{ height: 200 }} src={media.data} controls />
+          ) : media?.type?.includes('image') ? (
+            <IonImg style={{ height: 200 }} src={media.data} alt="test" />
+          ) : media?.type?.includes('text') ? (
+            <IonTextarea disabled readonly value={media.data}></IonTextarea>
+          ) : (
+            <IonImg
+              style={{ height: 200 }}
+              src={`assets/placeholder.jpeg`}
+              alt="test"
+            />
+          )}
+        </div>
+
         <IonList>
           <IonItem>
             <IonInput
