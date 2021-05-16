@@ -18,7 +18,7 @@ const ImageRecorder: React.FC<Props> = ({ setMedia }) => {
     setMedia({ data: URL.createObjectURL(data), type: data.type })
   }
 
-  return platform === 'ios' ? (
+  return platform === 'xx' ? (
     <div>not implemented</div>
   ) : (
     <React.Fragment>
@@ -36,6 +36,7 @@ const ImageRecorder: React.FC<Props> = ({ setMedia }) => {
         />
         <IonButton
           color="primary"
+          expand="full"
           onClick={() => {
             // @ts-ignore
             fileInput?.current?.click()

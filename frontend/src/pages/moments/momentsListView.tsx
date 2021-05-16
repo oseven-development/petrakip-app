@@ -9,6 +9,7 @@ import {
 } from '@ionic/react'
 import { Header } from '../../components'
 import { RouteComponentProps } from 'react-router'
+import { LargeHeader } from '../../components/header'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -17,6 +18,7 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
     <IonPage>
       <Header>Momente List View</Header>
       <IonContent fullscreen>
+        <LargeHeader>Momente List View</LargeHeader>
         <IonButton routerLink="/moments/create" color="primary">
           Erstellen
         </IonButton>

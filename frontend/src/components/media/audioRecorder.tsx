@@ -19,12 +19,12 @@ const AudioRecorder: React.FC<Props> = ({ setMedia }) => {
   }, [audioURL, setMedia])
 
   return platform === 'ios' ? (
-    <IonPage>
-      <div>not implemented</div>
-    </IonPage>
+    <IonButton color="primary" expand="full" disabled onClick={toggleRecording}>
+      Audioaufnahme nicht verfügbar
+    </IonButton>
   ) : (
-    <IonButton onClick={toggleRecording}>
-      Web Audio {isRecording ? 'stoppen' : 'starten'}
+    <IonButton color="primary" expand="full" onClick={toggleRecording}>
+      Audioaufnahme {isRecording ? 'stoppen' : 'starten'}
     </IonButton>
   )
 }
