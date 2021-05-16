@@ -53,6 +53,7 @@ import LoginPage from './pages/login/loginPage'
 import { useState } from 'react'
 import AuthState from './model/authState'
 import RegisterPage from './pages/login/registerPage'
+import { RegisterProvider } from './model/registerContext'
 
 Amplify.configure(awsExports)
 
@@ -67,9 +68,17 @@ const App: React.FC = () => {
 
   switch (authState) {
     case AuthState.LoggedOut:
-      return <LoginPage setAuthState={setAuthState} />
+      return (
+        <RegisterProvider>
+          <LoginPage setAuthState={setAuthState} />
+        </RegisterProvider>
+      )
     case AuthState.Registering:
-      return <RegisterPage setAuthState={setAuthState} />
+      return (
+        <RegisterProvider>
+          <RegisterPage setAuthState={setAuthState} />
+        </RegisterProvider>
+      )
     case AuthState.LoggedIn:
       return (
         <IonApp>

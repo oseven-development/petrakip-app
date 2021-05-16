@@ -17,6 +17,7 @@ import {
 import './loginPage.css'
 import Amplify from '@aws-amplify/core'
 import AuthState from '../../model/authState'
+import { useRegisterUpdate } from '../../model/registerContext'
 
 interface LoginPageProps {
   setAuthState(authState: AuthState): void
@@ -27,6 +28,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
   const [password, setPassword] = useState('')
 
   const [loginLoading, setLoginLoading] = useState(false)
+
+  const registerContextUpdate = useRegisterUpdate()
 
   var buttonDisabled = !(mail && password)
 
@@ -83,7 +86,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
                     setLoginLoading(false)
                     console.log(user)
                     if (user) {
-                      // TODO: user daten in context laden?
                       setAuthState(AuthState.LoggedIn)
                     } else {
                       // TODO: unknown error, show toast
@@ -98,12 +100,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
             >
               {loginLoading ? <IonSpinner /> : 'Anmelden'}
             </IonButton>
-            {/* TODO: set correct href to register page */}
             <IonButton
               disabled={buttonDisabled}
               expand="block"
               fill="outline"
               onClick={() => {
+                registerContextUpdate.setMailAndPassword(mail, password)
                 setAuthState(AuthState.Registering)
               }}
             >

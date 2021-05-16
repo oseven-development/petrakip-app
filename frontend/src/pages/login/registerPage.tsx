@@ -23,6 +23,8 @@ import {
 import AuthState from '../../model/authState'
 import institutions from '../../data/institutions'
 import './registerPage.css'
+import { useRegister } from '../../model/registerContext'
+import Auth from '@aws-amplify/auth'
 
 interface RegisterPageProps {
   setAuthState(authState: AuthState): void
@@ -36,6 +38,8 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
   const [showTermsModal, setShowTermsModal] = useState(false)
 
   const [registerLoading, setRegisterLoading] = useState(false)
+
+  const registerContext = useRegister()
 
   const customPopoverOptions = {
     header: 'Institution auswählen:',
@@ -149,11 +153,36 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
             disabled={!(forename && surname && institution && agreedToTerms)}
             expand="block"
             onClick={() => {
-              console.log('Start clicked')
               setRegisterLoading(true)
-              setTimeout(() => {
-                setAuthState(AuthState.LoggedIn)
-              }, 2000)
+
+              console.log(
+                `Logging in with ${registerContext.mail} and ${registerContext.password}`,
+              )
+
+              Auth.signUp({
+                username: registerContext.mail,
+                password: registerContext.password,
+                attributes: {
+                  given_name: forename,
+                  family_name: surname,
+                  email: registerContext.mail,
+                  preferred_username: institution,
+                },
+              })
+                .then(result => {
+                  /**
+                   * Object is of type ISignUpResult and has:
+                   * user: CognitoUser
+                   * userConfirmed: boolean
+                   * userSub: string
+                   */
+                  console.log('Signup confirmed with sub: ', result.userSub)
+                  setAuthState(AuthState.LoggedIn)
+                })
+                .catch(error => {
+                  // TODO: show toast
+                  console.error('Error signing up: ', error)
+                })
             }}
           >
             {registerLoading ? <IonSpinner /> : 'Los gehts'}
