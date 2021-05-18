@@ -8,6 +8,7 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonNav,
   IonPage,
   IonSpinner,
   IonTitle,
@@ -53,80 +54,82 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Metapholio</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <div className="container">
-          <p>Willkommen bei Metapholio, bitte melden sie sich an:</p>
-          <IonCard className="input-card">
-            <IonCardContent>
-              <IonItem class="ion-no-padding">
-                <IonLabel position="stacked">Mailadresse</IonLabel>
-                <IonInput
-                  autocomplete="email"
-                  inputmode="email"
-                  pattern="email"
-                  placeholder="Mailadresse eingeben"
-                  type="email"
-                  value={mail}
-                  onIonChange={e => setMail(e.detail.value ?? '')}
-                ></IonInput>
-              </IonItem>
-              <IonItem class="ion-no-padding">
-                <IonLabel position="stacked">Passwort</IonLabel>
-                <IonInput
-                  pattern="password"
-                  placeholder="Passwort eingeben"
-                  type="password"
-                  value={password}
-                  onIonChange={e => setPassword(e.detail.value ?? '')}
-                ></IonInput>
-              </IonItem>
-            </IonCardContent>
-          </IonCard>
-          <div className="button-container">
-            <IonButton
-              disabled={buttonDisabled}
-              expand="block"
-              onClick={() => {
-                console.log(`Trying to login with ${mail} and ${password}`)
-                setLoginLoading(true)
-                Amplify.Auth.signIn(mail, password)
-                  .then((user: any) => {
-                    setLoginLoading(false)
-                    console.log(user)
-                    if (user) {
-                      setAuthState(AuthState.LoggedIn)
-                    } else {
-                      showError()
+        <IonNav>
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Metapholio</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <div className="container">
+            <p>Willkommen bei Metapholio, bitte melden sie sich an:</p>
+            <IonCard className="input-card">
+              <IonCardContent>
+                <IonItem class="ion-no-padding">
+                  <IonLabel position="stacked">Mailadresse</IonLabel>
+                  <IonInput
+                    autocomplete="email"
+                    inputmode="email"
+                    pattern="email"
+                    placeholder="Mailadresse eingeben"
+                    type="email"
+                    value={mail}
+                    onIonChange={e => setMail(e.detail.value ?? '')}
+                  ></IonInput>
+                </IonItem>
+                <IonItem class="ion-no-padding">
+                  <IonLabel position="stacked">Passwort</IonLabel>
+                  <IonInput
+                    pattern="password"
+                    placeholder="Passwort eingeben"
+                    type="password"
+                    value={password}
+                    onIonChange={e => setPassword(e.detail.value ?? '')}
+                  ></IonInput>
+                </IonItem>
+              </IonCardContent>
+            </IonCard>
+            <div className="button-container">
+              <IonButton
+                disabled={buttonDisabled}
+                expand="block"
+                onClick={() => {
+                  console.log(`Trying to login with ${mail} and ${password}`)
+                  setLoginLoading(true)
+                  Amplify.Auth.signIn(mail, password)
+                    .then((user: any) => {
                       setLoginLoading(false)
-                    }
-                  })
-                  .catch((error: any) => {
-                    showError(error.message)
-                    console.error(`Error occurred: `, error)
+                      console.log(user)
+                      if (user) {
+                        setAuthState(AuthState.LoggedIn)
+                      } else {
+                        showError()
+                        setLoginLoading(false)
+                      }
+                    })
+                    .catch((error: any) => {
+                      showError(error.message)
+                      console.error(`Error occurred: `, error)
 
-                    setLoginLoading(false)
-                  })
-              }}
-            >
-              {loginLoading ? <IonSpinner /> : 'Anmelden'}
-            </IonButton>
-            <IonButton
-              disabled={buttonDisabled}
-              expand="block"
-              fill="outline"
-              onClick={() => {
-                registerContextUpdate.setMailAndPassword(mail, password)
-                setAuthState(AuthState.Registering)
-              }}
-            >
-              Registrieren
-            </IonButton>
+                      setLoginLoading(false)
+                    })
+                }}
+              >
+                {loginLoading ? <IonSpinner /> : 'Anmelden'}
+              </IonButton>
+              <IonButton
+                disabled={buttonDisabled}
+                expand="block"
+                fill="outline"
+                onClick={() => {
+                  registerContextUpdate.setMailAndPassword(mail, password)
+                  setAuthState(AuthState.Registering)
+                }}
+              >
+                Registrieren
+              </IonButton>
+            </div>
           </div>
-        </div>
+        </IonNav>
       </IonContent>
     </IonPage>
   )

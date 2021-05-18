@@ -11,7 +11,7 @@ import {
 } from '@ionic/react'
 
 import { IonReactRouter } from '@ionic/react-router'
-import Amplify from 'aws-amplify'
+import Amplify, { Hub } from 'aws-amplify'
 
 import { albums, person, image, barChart } from 'ionicons/icons'
 
@@ -61,23 +61,40 @@ Amplify.configure(awsExports)
 const App: React.FC = () => {
   const [authState, setAuthState] = useState(AuthState.LoggedOut)
 
+  // Details for all auth states can be found here:
+  // https://docs.amplify.aws/lib/auth/auth-events/q/platform/js
+  const authListener = (data: any) => {
+    switch (data.payload.event) {
+      case 'signIn':
+      case 'signUp':
+        Amplify.Auth.currentUserAuthenticated().then((result: any) => {
+          setAuthState(
+            result.userConfirmed ? AuthState.LoggedIn : AuthState.ConfirmSignUp,
+          )
+        })
+        break
+      case 'signOut':
+        setAuthState(AuthState.LoggedOut)
+    }
+  }
+
   useEffect(() => {
+    // initial check if authenticated or not
     Amplify.Auth.currentAuthenticatedUser()
       .then((result: any) => {
-        if (result.userConfirmed) {
-          setAuthState(AuthState.LoggedIn)
-        } else {
-          setAuthState(AuthState.ConfirmSignUp)
-        }
+        setAuthState(
+          result.userConfirmed ? AuthState.LoggedIn : AuthState.ConfirmSignUp,
+        )
       })
       .catch(() => setAuthState(AuthState.LoggedOut))
 
+    // continuously checking for auth events
+    Hub.listen('auth', authListener)
+
     return () => {
-      console.log('Finished with that')
+      Hub.remove('auth', authListener)
     }
   }, [])
-
-  // TODO: change to subscribe to the hub: https://docs.amplify.aws/lib/utilities/hub/q/platform/js
 
   switch (authState) {
     case AuthState.LoggedOut:
