@@ -1,6 +1,7 @@
 enum AuthState {
   LoggedOut,
   Registering,
+  ConfirmSignUp,
   LoggedIn,
 }
 

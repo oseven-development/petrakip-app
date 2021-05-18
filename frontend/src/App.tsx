@@ -50,21 +50,34 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 import LoginPage from './pages/login/loginPage'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AuthState from './model/authState'
 import RegisterPage from './pages/login/registerPage'
 import { RegisterProvider } from './model/registerContext'
+import ConfirmSignUpPage from './pages/login/confirmSignUpPage'
 
 Amplify.configure(awsExports)
 
 const App: React.FC = () => {
   const [authState, setAuthState] = useState(AuthState.LoggedOut)
 
-  if (authState === AuthState.LoggedOut) {
+  useEffect(() => {
     Amplify.Auth.currentAuthenticatedUser()
-      .then(() => setAuthState(AuthState.LoggedIn))
+      .then((result: any) => {
+        if (result.userConfirmed) {
+          setAuthState(AuthState.LoggedIn)
+        } else {
+          setAuthState(AuthState.ConfirmSignUp)
+        }
+      })
       .catch(() => setAuthState(AuthState.LoggedOut))
-  }
+
+    return () => {
+      console.log('Finished with that')
+    }
+  }, [])
+
+  // TODO: change to subscribe to the hub: https://docs.amplify.aws/lib/utilities/hub/q/platform/js
 
   switch (authState) {
     case AuthState.LoggedOut:
@@ -77,6 +90,12 @@ const App: React.FC = () => {
       return (
         <RegisterProvider>
           <RegisterPage setAuthState={setAuthState} />
+        </RegisterProvider>
+      )
+    case AuthState.ConfirmSignUp:
+      return (
+        <RegisterProvider>
+          <ConfirmSignUpPage />
         </RegisterProvider>
       )
     case AuthState.LoggedIn:

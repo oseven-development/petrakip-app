@@ -62,7 +62,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
             <IonTitle size="large">Metapholio</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <div className="login-container">
+        <div className="container">
           <h2>Name:</h2>
           <IonCard class="name-card">
             <IonCardContent>
@@ -163,7 +163,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
                 username: registerContext.mail,
                 password: registerContext.password,
                 attributes: {
-                  given_name: forename,
+                  name: forename,
                   family_name: surname,
                   email: registerContext.mail,
                   preferred_username: institution,
@@ -177,7 +177,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
                    * userSub: string
                    */
                   console.log('Signup confirmed with sub: ', result.userSub)
-                  setAuthState(AuthState.LoggedIn)
+                  if (result.userConfirmed) {
+                    setAuthState(AuthState.LoggedIn)
+                  } else {
+                    setAuthState(AuthState.ConfirmSignUp)
+                  }
                 })
                 .catch(error => {
                   // TODO: show toast

@@ -46,7 +46,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
             <IonTitle size="large">Metapholio</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <div className="login-container">
+        <div className="container">
           <p>Willkommen bei Metapholio, bitte melden sie sich an:</p>
           <IonCard className="input-card">
             <IonCardContent>
