@@ -12,6 +12,7 @@ import {
   IonSpinner,
   IonTitle,
   IonToolbar,
+  useIonToast,
 } from '@ionic/react'
 
 import './loginPage.css'
@@ -26,12 +27,23 @@ interface LoginPageProps {
 const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
+  const [presentToast] = useIonToast()
 
   const [loginLoading, setLoginLoading] = useState(false)
 
   const registerContextUpdate = useRegisterUpdate()
 
   var buttonDisabled = !(mail && password)
+
+  const showError = (message?: string) => {
+    presentToast(
+      `Fehler: ${
+        message ||
+        'Etwas ist schiefgelaufen, bitte versuchen Sie es später noch einmal!'
+      }`,
+      2000,
+    )
+  }
 
   return (
     <IonPage>
@@ -88,12 +100,14 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
                     if (user) {
                       setAuthState(AuthState.LoggedIn)
                     } else {
-                      // TODO: unknown error, show toast
+                      showError()
+                      setLoginLoading(false)
                     }
                   })
                   .catch((error: any) => {
-                    // TODO: handle error, show toast
+                    showError(error.message)
                     console.error(`Error occurred: `, error)
+
                     setLoginLoading(false)
                   })
               }}
