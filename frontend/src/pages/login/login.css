@@ -1,3 +1,21 @@
+.container {
+  margin: 2rem;
+}
+
+.container > :not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.button-container :not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.input-card {
+  margin: 1rem 0;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+}
+
 .name-card {
   margin: 1rem 0;
 }

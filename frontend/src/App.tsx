@@ -11,7 +11,7 @@ import {
 } from '@ionic/react'
 
 import { IonReactRouter } from '@ionic/react-router'
-import Amplify, { Hub } from 'aws-amplify'
+import Amplify, { Auth, Hub } from 'aws-amplify'
 
 import { albums, person, image, barChart } from 'ionicons/icons'
 
@@ -67,11 +67,9 @@ const App: React.FC = () => {
     switch (data.payload.event) {
       case 'signIn':
       case 'signUp':
-        Amplify.Auth.currentUserAuthenticated().then((result: any) => {
-          setAuthState(
-            result.userConfirmed ? AuthState.LoggedIn : AuthState.ConfirmSignUp,
-          )
-        })
+        Auth.currentAuthenticatedUser().then((user: any) =>
+          setAuthState(user ? AuthState.LoggedIn : AuthState.ConfirmSignUp),
+        )
         break
       case 'signOut':
         setAuthState(AuthState.LoggedOut)
@@ -80,12 +78,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // initial check if authenticated or not
-    Amplify.Auth.currentAuthenticatedUser()
-      .then((result: any) => {
-        setAuthState(
-          result.userConfirmed ? AuthState.LoggedIn : AuthState.ConfirmSignUp,
-        )
-      })
+    Auth.currentAuthenticatedUser()
+      .then((user: any) =>
+        setAuthState(user ? AuthState.LoggedIn : AuthState.ConfirmSignUp),
+      )
       .catch(() => setAuthState(AuthState.LoggedOut))
 
     // continuously checking for auth events

@@ -11,13 +11,16 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  useIonToast,
 } from '@ionic/react'
 import React, { useEffect, useState } from 'react'
 import { useRegister } from '../../model/registerContext'
+import './login.css'
 
 const ConfirmSignUpPage: React.FC = () => {
   const [mail, setMail] = useState('')
   const [confirmationCode, setConfirmationCode] = useState('')
+  const [presentToast] = useIonToast()
 
   const registerContext = useRegister()
 
@@ -81,6 +84,36 @@ const ConfirmSignUpPage: React.FC = () => {
             }}
           >
             Bestätigen
+          </IonButton>
+          <IonButton
+            expand="block"
+            fill="clear"
+            size="small"
+            onClick={() => {
+              if (mail) {
+                Auth.resendSignUp(mail).catch(error => {
+                  presentToast(
+                    `Fehler: ${
+                      error?.message ||
+                      'Bitte versuchen Sie es später noch einmal.'
+                    }`,
+                    2000,
+                  )
+                })
+                presentToast('Der Bestätigungscode wurde erneut gesendet', 2000)
+              } else {
+                presentToast('Bitte geben sie Ihre Mailadresse an', 2000)
+              }
+            }}
+          >
+            Code erneut zusenden
+          </IonButton>
+          <IonButton
+            expand="block"
+            fill="outline"
+            onClick={() => Auth.signOut()}
+          >
+            Ausloggen
           </IonButton>
         </div>
       </IonContent>

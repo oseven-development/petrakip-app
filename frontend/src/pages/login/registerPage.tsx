@@ -19,10 +19,11 @@ import {
   IonSpinner,
   IonTitle,
   IonToolbar,
+  useIonToast,
 } from '@ionic/react'
 import AuthState from '../../model/authState'
 import institutions from '../../data/institutions'
-import './registerPage.css'
+import './login.css'
 import { useRegister } from '../../model/registerContext'
 import Auth from '@aws-amplify/auth'
 
@@ -38,6 +39,8 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
   const [showTermsModal, setShowTermsModal] = useState(false)
 
   const [registerLoading, setRegisterLoading] = useState(false)
+
+  const [presentToast] = useIonToast()
 
   const registerContext = useRegister()
 
@@ -182,10 +185,17 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
                   } else {
                     setAuthState(AuthState.ConfirmSignUp)
                   }
+                  setRegisterLoading(false)
                 })
                 .catch(error => {
-                  // TODO: show toast
-                  console.error('Error signing up: ', error)
+                  presentToast(
+                    `Fehler: ${
+                      error?.message ||
+                      'Bitte versuchen Sie es später noch einmal.'
+                    }`,
+                    2000,
+                  )
+                  setRegisterLoading(false)
                 })
             }}
           >

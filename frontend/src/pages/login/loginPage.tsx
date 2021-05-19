@@ -16,7 +16,7 @@ import {
   useIonToast,
 } from '@ionic/react'
 
-import './loginPage.css'
+import './login.css'
 import Amplify from '@aws-amplify/core'
 import AuthState from '../../model/authState'
 import { useRegisterUpdate } from '../../model/registerContext'
@@ -109,6 +109,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
                     .catch((error: any) => {
                       showError(error.message)
                       console.error(`Error occurred: `, error)
+                      if (error.name === 'UserNotConfirmedException') {
+                        setAuthState(AuthState.ConfirmSignUp)
+                      }
 
                       setLoginLoading(false)
                     })
