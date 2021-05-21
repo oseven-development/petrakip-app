@@ -28,6 +28,33 @@ const ConfirmSignUpPage: React.FC = () => {
     setMail(registerContext.mail)
   }, [registerContext.mail])
 
+  const confirmSignUp = () => {
+    Auth.confirmSignUp(mail, confirmationCode)
+      .then(result => {
+        console.log('Successfully confirmed: ', result)
+        Auth.signIn(mail, registerContext.password)
+      })
+      .catch(error => {
+        console.error('Error during confirmation: ', error)
+      })
+  }
+
+  const resendSignUp = () => {
+    if (mail) {
+      Auth.resendSignUp(mail).catch(error => {
+        presentToast(
+          `Fehler: ${
+            error?.message || 'Bitte versuchen Sie es später noch einmal.'
+          }`,
+          2000,
+        )
+      })
+      presentToast('Der Bestätigungscode wurde erneut gesendet', 2000)
+    } else {
+      presentToast('Bitte geben sie Ihre Mailadresse an', 2000)
+    }
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -72,16 +99,7 @@ const ConfirmSignUpPage: React.FC = () => {
           <IonButton
             disabled={!(mail && confirmationCode)}
             expand="block"
-            onClick={() => {
-              Auth.confirmSignUp(mail, confirmationCode)
-                .then(result => {
-                  console.log('Successfully confirmed: ', result)
-                  Auth.signIn(mail, registerContext.password)
-                })
-                .catch(error => {
-                  console.error('Error during confirmation: ', error)
-                })
-            }}
+            onClick={() => confirmSignUp}
           >
             Bestätigen
           </IonButton>
@@ -89,22 +107,7 @@ const ConfirmSignUpPage: React.FC = () => {
             expand="block"
             fill="clear"
             size="small"
-            onClick={() => {
-              if (mail) {
-                Auth.resendSignUp(mail).catch(error => {
-                  presentToast(
-                    `Fehler: ${
-                      error?.message ||
-                      'Bitte versuchen Sie es später noch einmal.'
-                    }`,
-                    2000,
-                  )
-                })
-                presentToast('Der Bestätigungscode wurde erneut gesendet', 2000)
-              } else {
-                presentToast('Bitte geben sie Ihre Mailadresse an', 2000)
-              }
-            }}
+            onClick={() => resendSignUp}
           >
             Code erneut zusenden
           </IonButton>
