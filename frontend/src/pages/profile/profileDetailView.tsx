@@ -14,15 +14,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
           Password ändern
         </IonButton>
         <IonButton
-          onClick={() =>
-            Auth.signOut()
-              .then(result => {
-                console.log(result)
-              })
-              .catch(error => {
-                console.error(error)
-              })
-          }
+          onClick={() => Auth.signOut().then(console.log).catch(console.error)}
         >
           Ausloggen
         </IonButton>
