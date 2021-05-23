@@ -9,9 +9,9 @@ import {
   IonSelect,
   IonSelectOption,
   IonButton,
-  IonFooter,
-  IonItemDivider,
+  useIonToast,
   IonTextarea,
+  IonToast,
 } from '@ionic/react'
 import { Header } from '../../components'
 import { RouteComponentProps } from 'react-router'
@@ -30,6 +30,7 @@ export interface Moment {
 interface Props extends RouteComponentProps<{}> {}
 
 export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
+  const [isToastPresent, setIsToastPresent] = useState(false)
   const [media, setMedia]: [any, Dispatch<SetStateAction<any>>] = useState({
     type: '',
     data: '',
@@ -43,6 +44,14 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
     title: '',
     tags: [''],
   })
+
+  const createNewMoment = () => {
+    if (moment.title.length === 0) {
+      setIsToastPresent(true)
+    } else {
+      createMomentAPI({ moment, media })
+    }
+  }
 
   return (
     <IonPage>
@@ -130,14 +139,16 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
 
         <TextRecorder setMedia={setMedia} />
       </IonContent>
-      <IonButton
-        expand="full"
-        onClick={() => {
-          createMomentAPI({ moment, media })
-        }}
-      >
+      <IonButton expand="full" onClick={createNewMoment}>
         Moment erstellen
       </IonButton>
+      <IonToast
+        isOpen={isToastPresent}
+        onDidDismiss={() => setIsToastPresent(!isToastPresent)}
+        message="Du hast keinen Titel für den Moment definiert"
+        duration={2000}
+        color={'danger'}
+      />
     </IonPage>
   )
 }
