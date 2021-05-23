@@ -9,17 +9,15 @@ import {
   IonSelect,
   IonSelectOption,
   IonButton,
-  useIonToast,
   IonTextarea,
   IonToast,
 } from '@ionic/react'
-import { Header } from '../../components'
 import { RouteComponentProps } from 'react-router'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { AudioRecorder } from '../../components/media/audioRecorder'
 import { VideoRecorder } from '../../components/media/videoRecorder'
 import { ImageRecorder } from '../../components/media/imageRecorder'
-import { LargeHeader } from '../../components/header'
+import { LargeHeader, Header } from '../../components/header'
 import { TextRecorder } from '../../components/media/TextRecorder'
 import { createMomentAPI, Media } from '../../api/moment/createMoment'
 
@@ -31,10 +29,9 @@ interface Props extends RouteComponentProps<{}> {}
 
 export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
   const [isToastPresent, setIsToastPresent] = useState(false)
-  const [media, setMedia]: [any, Dispatch<SetStateAction<any>>] = useState({
+  const [media, setMedia]: [Media, Dispatch<SetStateAction<Media>>] = useState({
     type: '',
     data: '',
-    displayData: '',
     name: '',
   })
   const [moment, setMoment]: [
@@ -117,6 +114,7 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
                 setMoment({ ...moment, tags: e.detail.value! })
               }}
             >
+              {/* TODO: neeed correct tags */}
               <IonSelectOption value="bacon">Bacon</IonSelectOption>
               <IonSelectOption value="olives">Black Olives</IonSelectOption>
               <IonSelectOption value="xcheese">Extra Cheese</IonSelectOption>

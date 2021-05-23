@@ -24,6 +24,7 @@ export function usePhoto() {
 }
 // REF https://stackoverflow.com/questions/61373241/react-ionic-video-recording
 // TODO: can only be used on a device.
+// WIP: This hook is in work in progress
 
 export function useVideo() {
   const [videoCapture, setVideoCapture] = useState({})

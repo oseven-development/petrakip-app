@@ -6,9 +6,8 @@ import { createMoment } from '../../graphql/mutations'
 
 export interface Media {
   name: string
-  data: File | string
+  data: File | string | any
   type: string
-  displayData: URL
 }
 
 export const createMomentAPI = async ({

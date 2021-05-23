@@ -1,21 +1,12 @@
 import {
   IonButton,
-  IonContent,
   IonHeader,
-  IonItem,
   IonModal,
-  IonPage,
-  IonText,
   IonTextarea,
   IonTitle,
   IonToolbar,
-  useIonModal,
 } from '@ionic/react'
-import React, { useRef, useState } from 'react'
-
-import { usePlatform } from '../../hooks/usePlatform'
-import { Header, LargeHeader } from '../header'
-
+import React, { useState } from 'react'
 interface Props {
   setMedia: React.Dispatch<React.SetStateAction<any>>
 }

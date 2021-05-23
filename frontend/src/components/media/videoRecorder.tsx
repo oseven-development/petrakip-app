@@ -1,4 +1,4 @@
-import { IonButton, IonText } from '@ionic/react'
+import { IonButton } from '@ionic/react'
 import React, { useRef } from 'react'
 
 import { usePlatform } from '../../hooks/usePlatform'
