@@ -1,4 +1,4 @@
-import { IonButton, IonPage } from '@ionic/react'
+import { IonButton } from '@ionic/react'
 import { useEffect } from 'react'
 
 import { usePlatform } from '../../hooks/usePlatform'

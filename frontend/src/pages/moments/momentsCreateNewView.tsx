@@ -15,20 +15,36 @@ import {
 } from '@ionic/react'
 import { Header } from '../../components'
 import { RouteComponentProps } from 'react-router'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { AudioRecorder } from '../../components/media/audioRecorder'
 import { VideoRecorder } from '../../components/media/videoRecorder'
 import { ImageRecorder } from '../../components/media/imageRecorder'
 import { LargeHeader } from '../../components/header'
 import { ModalExample } from '../../components/media/textArea'
+
+interface Moment {
+  title: string
+  tags: string[]
+}
+interface Media {
+  type: string
+  data: string
+}
+
 interface Props extends RouteComponentProps<{}> {}
 
 export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
-  const [media, setMedia]: any = useState(null)
-  const [text, setText]: any = useState(null)
-  const [tags, setTags]: any = useState(null)
-
-  console.log(media)
+  const [media, setMedia]: [Media, Dispatch<SetStateAction<Media>>] = useState({
+    type: '',
+    data: '',
+  })
+  const [moment, setMoment]: [
+    Moment,
+    Dispatch<SetStateAction<Moment>>,
+  ] = useState({
+    title: '',
+    tags: [''],
+  })
 
   return (
     <IonPage>
@@ -64,9 +80,11 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
         <IonList>
           <IonItem>
             <IonInput
-              value={text}
+              value={moment.title}
               placeholder="Title"
-              onIonChange={e => setText(e.detail.value!)}
+              onIonChange={e =>
+                setMoment({ ...moment, title: e.detail.value! })
+              }
               clearInput
               required
             ></IonInput>
@@ -75,11 +93,11 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
           <IonItem>
             <IonLabel>Tags</IonLabel>
             <IonSelect
-              value={tags}
+              value={moment.tags}
               multiple={true}
               cancelText="Abbrechem"
               okText="Hinzufügen"
-              onIonChange={e => setTags(e.detail.value)}
+              onIonChange={e => setMoment({ ...moment, tags: e.detail.value! })}
             >
               <IonSelectOption value="bacon">Bacon</IonSelectOption>
               <IonSelectOption value="olives">Black Olives</IonSelectOption>
