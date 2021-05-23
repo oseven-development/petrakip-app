@@ -27,8 +27,11 @@ export const useWebMediaRecorder = (options: any) => {
 
     // Obtain the audio when ready.
     const handleData = (e: any) => {
-      console.log(e.data.type)
-      setAudioURL({ data: URL.createObjectURL(e.data), type: e.data.type })
+      setAudioURL({
+        name: e.data.name,
+        data: e.data,
+        type: e.data.type,
+      })
     }
     recorder.addEventListener('dataavailable', handleData)
     return () => recorder.removeEventListener('dataavailable', handleData)

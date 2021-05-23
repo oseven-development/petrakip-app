@@ -20,23 +20,21 @@ import { AudioRecorder } from '../../components/media/audioRecorder'
 import { VideoRecorder } from '../../components/media/videoRecorder'
 import { ImageRecorder } from '../../components/media/imageRecorder'
 import { LargeHeader } from '../../components/header'
-import { ModalExample } from '../../components/media/textArea'
+import { TextRecorder } from '../../components/media/TextRecorder'
+import { createMomentAPI, Media } from '../../api/moment/createMoment'
 
-interface Moment {
+export interface Moment {
   title: string
   tags: string[]
 }
-interface Media {
-  type: string
-  data: string
-}
-
 interface Props extends RouteComponentProps<{}> {}
 
 export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
-  const [media, setMedia]: [Media, Dispatch<SetStateAction<Media>>] = useState({
+  const [media, setMedia]: [any, Dispatch<SetStateAction<any>>] = useState({
     type: '',
     data: '',
+    displayData: '',
+    name: '',
   })
   const [moment, setMoment]: [
     Moment,
@@ -61,11 +59,19 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
           }}
         >
           {media?.type?.includes('audio') ? (
-            <audio src={media.data} controls />
+            <audio src={URL.createObjectURL(media.data)} controls />
           ) : media?.type?.includes('video') ? (
-            <video style={{ height: 200 }} src={media.data} controls />
+            <video
+              style={{ height: 200 }}
+              src={URL.createObjectURL(media.data)}
+              controls
+            />
           ) : media?.type?.includes('image') ? (
-            <IonImg style={{ height: 200 }} src={media.data} alt="test" />
+            <IonImg
+              style={{ height: 200 }}
+              src={URL.createObjectURL(media.data)}
+              alt="test"
+            />
           ) : media?.type?.includes('text') ? (
             <IonTextarea disabled readonly value={media.data}></IonTextarea>
           ) : (
@@ -97,7 +103,10 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
               multiple={true}
               cancelText="Abbrechem"
               okText="Hinzufügen"
-              onIonChange={e => setMoment({ ...moment, tags: e.detail.value! })}
+              onIonChange={e => {
+                console.log(e.detail.value!)
+                setMoment({ ...moment, tags: e.detail.value! })
+              }}
             >
               <IonSelectOption value="bacon">Bacon</IonSelectOption>
               <IonSelectOption value="olives">Black Olives</IonSelectOption>
@@ -119,9 +128,16 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
 
         <ImageRecorder setMedia={setMedia} />
 
-        <ModalExample setMedia={setMedia} />
+        <TextRecorder setMedia={setMedia} />
       </IonContent>
-      <IonButton expand="full">Moment erstellen</IonButton>
+      <IonButton
+        expand="full"
+        onClick={() => {
+          createMomentAPI({ moment, media })
+        }}
+      >
+        Moment erstellen
+      </IonButton>
     </IonPage>
   )
 }

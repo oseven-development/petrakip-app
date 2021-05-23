@@ -20,7 +20,7 @@ interface Props {
   setMedia: React.Dispatch<React.SetStateAction<any>>
 }
 
-const ModalExample: React.FC<Props> = ({ setMedia }) => {
+const TextRecorder: React.FC<Props> = ({ setMedia }) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
@@ -35,7 +35,13 @@ const ModalExample: React.FC<Props> = ({ setMedia }) => {
           className="ion-padding"
           autofocus
           placeholder="Text hier eingeben"
-          onIonChange={e => setMedia({ data: e.detail.value!, type: 'text' })}
+          onIonChange={e =>
+            setMedia({
+              data: e.detail.value!,
+              type: 'text',
+              displayData: e.detail.value!,
+            })
+          }
         ></IonTextarea>
 
         <IonButton
@@ -57,4 +63,4 @@ const ModalExample: React.FC<Props> = ({ setMedia }) => {
   )
 }
 
-export { ModalExample }
+export { TextRecorder }

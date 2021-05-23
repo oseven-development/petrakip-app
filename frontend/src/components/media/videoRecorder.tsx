@@ -14,8 +14,11 @@ const VideoRecorder: React.FC<Props> = ({ setMedia }) => {
   const onSelectFile = (e: any) => {
     const data =
       (e.nativeEvent.target as HTMLInputElement).files?.item(0) || ({} as File)
-    console.log(data)
-    setMedia({ data: URL.createObjectURL(data), type: data.type })
+    setMedia({
+      name: data.name,
+      data: data,
+      type: data.type,
+    })
   }
 
   return platform === 'xx' ? (
