@@ -18,14 +18,9 @@ import {
 
 import './login.css'
 import Amplify from '@aws-amplify/core'
-import AuthState from '../../model/authState'
 import { useRegisterUpdate } from '../../model/registerContext'
 
-interface LoginPageProps {
-  setAuthState(authState: AuthState): void
-}
-
-const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
+const LoginPage: React.FC = (props: any) => {
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
   const [presentToast] = useIonToast()
@@ -34,7 +29,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
 
   const registerContextUpdate = useRegisterUpdate()
 
-  var buttonDisabled = !(mail && password)
+  if (props.authState !== 'signIn') {
+    return null
+  }
+
+  console.log('[LoginPage] Props: ', props)
 
   const showError = (message?: string) => {
     presentToast(
@@ -44,6 +43,37 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
       }`,
       2000,
     )
+  }
+
+  const tryLogin = () => {
+    setLoginLoading(true)
+    Amplify.Auth.signIn(mail, password)
+      .then((user: any) => {
+        setLoginLoading(false)
+        console.log(user)
+        if (user) {
+          // setAuthState(AuthState.LoggedIn)
+        } else {
+          showError()
+          setLoginLoading(false)
+        }
+      })
+      .catch((error: any) => {
+        showError(error.message)
+        console.error(`Error occurred: `, error)
+        if (error.name === 'UserNotConfirmedException') {
+          // setAuthState(AuthState.ConfirmSignUp)
+        }
+
+        setLoginLoading(false)
+      })
+  }
+
+  const registerClicked = () => {
+    registerContextUpdate.setMailAndPassword(mail, password)
+
+    props.onStateChange('signUp')
+    // setAuthState(AuthState.Registering)
   }
 
   return (
@@ -90,43 +120,16 @@ const LoginPage: React.FC<LoginPageProps> = ({ setAuthState }) => {
             </IonCard>
             <div className="button-container">
               <IonButton
-                disabled={buttonDisabled}
+                disabled={!(mail && password)}
                 expand="block"
-                onClick={() => {
-                  console.log(`Trying to login with ${mail} and ${password}`)
-                  setLoginLoading(true)
-                  Amplify.Auth.signIn(mail, password)
-                    .then((user: any) => {
-                      setLoginLoading(false)
-                      console.log(user)
-                      if (user) {
-                        setAuthState(AuthState.LoggedIn)
-                      } else {
-                        showError()
-                        setLoginLoading(false)
-                      }
-                    })
-                    .catch((error: any) => {
-                      showError(error.message)
-                      console.error(`Error occurred: `, error)
-                      if (error.name === 'UserNotConfirmedException') {
-                        setAuthState(AuthState.ConfirmSignUp)
-                      }
-
-                      setLoginLoading(false)
-                    })
-                }}
+                onClick={() => tryLogin}
               >
                 {loginLoading ? <IonSpinner /> : 'Anmelden'}
               </IonButton>
               <IonButton
-                disabled={buttonDisabled}
                 expand="block"
                 fill="outline"
-                onClick={() => {
-                  registerContextUpdate.setMailAndPassword(mail, password)
-                  setAuthState(AuthState.Registering)
-                }}
+                onClick={() => registerClicked()}
               >
                 Registrieren
               </IonButton>

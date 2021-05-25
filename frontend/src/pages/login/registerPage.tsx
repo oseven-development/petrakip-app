@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {
-  IonBackButton,
   IonButton,
   IonButtons,
   IonCard,
@@ -21,32 +20,76 @@ import {
   IonToolbar,
   useIonToast,
 } from '@ionic/react'
-import AuthState from '../../model/authState'
-import institutions from '../../data/institutions'
+import { institutions } from '../../data/institutions'
 import './login.css'
-import { useRegister } from '../../model/registerContext'
 import Auth from '@aws-amplify/auth'
 
-interface RegisterPageProps {
-  setAuthState(authState: AuthState): void
+interface UserProps {
+  mail: string
+  password: string
+  forename: string
+  surname: string
+  institution: string
+  agreedToTerms: boolean
 }
 
-const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
-  const [forename, setForename] = useState('')
-  const [surname, setSurname] = useState('')
-  const [institution, setInstitution] = useState('')
-  const [agreedToTerms, setAgreedToTerms] = useState(false)
+const RegisterPage: React.FC = (props: any) => {
+  const [userProps, setUserProps] = useState<UserProps>({
+    mail: '',
+    password: '',
+    forename: '',
+    surname: '',
+    institution: '',
+    agreedToTerms: false,
+  })
   const [showTermsModal, setShowTermsModal] = useState(false)
-
   const [registerLoading, setRegisterLoading] = useState(false)
 
   const [presentToast] = useIonToast()
 
-  const registerContext = useRegister()
+  if (props.authState !== 'signUp') {
+    return null
+  }
 
   const customPopoverOptions = {
     header: 'Institution auswählen:',
     cssClass: 'institution-select',
+  }
+
+  const confirmSignUp = (result: any) => {
+    /**
+     * Object is of type ISignUpResult and has:
+     * user: CognitoUser
+     * userConfirmed: boolean
+     * userSub: string
+     */
+    console.log('[RegisterPage] result of signUp call: ', result)
+    setRegisterLoading(false)
+  }
+
+  const signUp = () => {
+    setRegisterLoading(true)
+
+    Auth.signUp({
+      username: userProps.mail,
+      password: userProps.password,
+      attributes: {
+        name: userProps.forename,
+        family_name: userProps.surname,
+        email: userProps.mail,
+        preferred_username: userProps.institution,
+      },
+    })
+      .then(result => confirmSignUp(result))
+      .catch(error => {
+        presentToast(
+          `Fehler: ${
+            error?.message || 'Bitte versuchen Sie es später noch einmal.'
+          }`,
+          2000,
+        )
+        setRegisterLoading(false)
+      })
   }
 
   return (
@@ -54,7 +97,14 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
+            <IonButton
+              color="primary"
+              onClick={() => {
+                props.onStateChange('signIn')
+              }}
+            >
+              Zurück
+            </IonButton>
           </IonButtons>
           <IonTitle slot="primary">Metapholio</IonTitle>
         </IonToolbar>
@@ -66,6 +116,40 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
           </IonToolbar>
         </IonHeader>
         <div className="container">
+          <h2>Logindaten:</h2>
+          <IonCard className="input-card">
+            <IonCardContent>
+              <IonItem class="ion-no-padding">
+                <IonLabel position="stacked">Mailadresse</IonLabel>
+                <IonInput
+                  autocomplete="email"
+                  inputmode="email"
+                  pattern="email"
+                  placeholder="Mailadresse eingeben"
+                  type="email"
+                  value={userProps.mail}
+                  onIonChange={e =>
+                    setUserProps({ ...userProps, mail: e.detail.value ?? '' })
+                  }
+                ></IonInput>
+              </IonItem>
+              <IonItem class="ion-no-padding">
+                <IonLabel position="stacked">Passwort</IonLabel>
+                <IonInput
+                  pattern="password"
+                  placeholder="Passwort eingeben"
+                  type="password"
+                  value={userProps.password}
+                  onIonChange={e =>
+                    setUserProps({
+                      ...userProps,
+                      password: e.detail.value ?? '',
+                    })
+                  }
+                ></IonInput>
+              </IonItem>
+            </IonCardContent>
+          </IonCard>
           <h2>Name:</h2>
           <IonCard class="name-card">
             <IonCardContent>
@@ -78,8 +162,13 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
                     pattern="text"
                     placeholder="Vorname eingeben"
                     type="text"
-                    value={forename}
-                    onIonChange={e => setForename(e.detail.value ?? '')}
+                    value={userProps.forename}
+                    onIonChange={e =>
+                      setUserProps({
+                        ...userProps,
+                        forename: e.detail.value ?? '',
+                      })
+                    }
                   ></IonInput>
                 </IonItem>
                 <IonItem class="ion-no-padding">
@@ -90,8 +179,13 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
                     pattern="text"
                     placeholder="Nachname eingeben"
                     type="text"
-                    value={surname}
-                    onIonChange={e => setSurname(e.detail.value ?? '')}
+                    value={userProps.surname}
+                    onIonChange={e =>
+                      setUserProps({
+                        ...userProps,
+                        surname: e.detail.value ?? '',
+                      })
+                    }
                   ></IonInput>
                 </IonItem>
               </IonItemGroup>
@@ -105,20 +199,22 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
                 <IonSelect
                   interfaceOptions={customPopoverOptions}
                   className="institution-select"
-                  value={institution}
-                  onIonChange={e => setInstitution(e.detail.value)}
+                  value={userProps.institution}
+                  onIonChange={e =>
+                    setUserProps({ ...userProps, institution: e.detail.value })
+                  }
                   interface="action-sheet"
                   placeholder="Institution auswählen"
                   cancelText="Abbrechen"
                   okText="Auswählen"
                 >
-                  {institutions.map((e, index) => (
+                  {institutions.map((institution, index) => (
                     <IonSelectOption
                       className="institution-select"
-                      key={index}
-                      value={e}
+                      key={`institution-selection-${index}`}
+                      value={institution}
                     >
-                      {e}
+                      {institution}
                     </IonSelectOption>
                   ))}
                 </IonSelect>
@@ -128,8 +224,10 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
 
           <div className="terms">
             <IonCheckbox
-              checked={agreedToTerms}
-              onIonChange={e => setAgreedToTerms(e.detail.checked)}
+              checked={userProps.agreedToTerms}
+              onIonChange={e =>
+                setUserProps({ ...userProps, agreedToTerms: e.detail.checked })
+              }
             />
             <IonLabel>
               Hiermit bestätige ich, dass ich die{' '}
@@ -153,51 +251,18 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ setAuthState }) => {
           </IonModal>
 
           <IonButton
-            disabled={!(forename && surname && institution && agreedToTerms)}
-            expand="block"
-            onClick={() => {
-              setRegisterLoading(true)
-
-              console.log(
-                `Logging in with ${registerContext.mail} and ${registerContext.password}`,
+            disabled={
+              !(
+                userProps.mail &&
+                userProps.password &&
+                userProps.forename &&
+                userProps.surname &&
+                userProps.institution &&
+                userProps.agreedToTerms
               )
-
-              Auth.signUp({
-                username: registerContext.mail,
-                password: registerContext.password,
-                attributes: {
-                  name: forename,
-                  family_name: surname,
-                  email: registerContext.mail,
-                  preferred_username: institution,
-                },
-              })
-                .then(result => {
-                  /**
-                   * Object is of type ISignUpResult and has:
-                   * user: CognitoUser
-                   * userConfirmed: boolean
-                   * userSub: string
-                   */
-                  console.log('Signup confirmed with sub: ', result.userSub)
-                  if (result.userConfirmed) {
-                    setAuthState(AuthState.LoggedIn)
-                  } else {
-                    setAuthState(AuthState.ConfirmSignUp)
-                  }
-                  setRegisterLoading(false)
-                })
-                .catch(error => {
-                  presentToast(
-                    `Fehler: ${
-                      error?.message ||
-                      'Bitte versuchen Sie es später noch einmal.'
-                    }`,
-                    2000,
-                  )
-                  setRegisterLoading(false)
-                })
-            }}
+            }
+            expand="block"
+            onClick={() => signUp}
           >
             {registerLoading ? <IonSpinner /> : 'Los gehts'}
           </IonButton>

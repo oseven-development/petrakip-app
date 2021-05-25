@@ -1,4 +1,11 @@
-// import { withAuthenticator } from '@aws-amplify/ui-react'
+import {
+  ConfirmSignIn,
+  ConfirmSignUp,
+  ForgotPassword,
+  RequireNewPassword,
+  VerifyContact,
+  withAuthenticator,
+} from 'aws-amplify-react'
 
 import {
   IonApp,
@@ -11,7 +18,7 @@ import {
 } from '@ionic/react'
 
 import { IonReactRouter } from '@ionic/react-router'
-import Amplify, { Auth, Hub } from 'aws-amplify'
+import Amplify from 'aws-amplify'
 
 import { albums, person, image, barChart } from 'ionicons/icons'
 
@@ -50,143 +57,89 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 import LoginPage from './pages/login/loginPage'
-import { useEffect, useState } from 'react'
-import AuthState from './model/authState'
 import RegisterPage from './pages/login/registerPage'
 import { RegisterProvider } from './model/registerContext'
 import ConfirmSignUpPage from './pages/login/confirmSignUpPage'
+import { useState } from 'react'
 
 Amplify.configure(awsExports)
 
 const App: React.FC = () => {
-  const [authState, setAuthState] = useState(AuthState.LoggedOut)
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            {/* Moments routes  */}
+            <Route exact path={'/moments'} component={MomentsListView} />
+            <Route
+              path={`/moments/details/:id`}
+              component={MomentsDetailView}
+            />
+            <Route path={`/moments/create`} component={MomentsCreateNewView} />
 
-  // Details for all auth states can be found here:
-  // https://docs.amplify.aws/lib/auth/auth-events/q/platform/js
-  const authListener = (data: any) => {
-    switch (data.payload.event) {
-      case 'signIn':
-      case 'signUp':
-        Auth.currentAuthenticatedUser().then((user: any) =>
-          setAuthState(user ? AuthState.LoggedIn : AuthState.ConfirmSignUp),
-        )
-        break
-      case 'signOut':
-        setAuthState(AuthState.LoggedOut)
-    }
-  }
+            {/* Reflections routes */}
+            <Route
+              exact
+              path={'/reflections'}
+              component={ReflectionsListView}
+            />
+            <Route
+              path={`/reflections/details/:id`}
+              component={ReflectionsDetailView}
+            />
+            <Route
+              path={`/reflections/create`}
+              component={ReflectionsCreateNewView}
+            />
 
-  useEffect(() => {
-    // initial check if authenticated or not
-    Auth.currentAuthenticatedUser()
-      .then((user: any) =>
-        setAuthState(user ? AuthState.LoggedIn : AuthState.ConfirmSignUp),
-      )
-      .catch(() => setAuthState(AuthState.LoggedOut))
+            {/* profile routes */}
+            <Route exact path={'/profile'} component={ProfileDetailView} />
+            <Route
+              path={`/profile/changepassword`}
+              component={ProfileChangePasswordView}
+            />
 
-    // continuously checking for auth events
-    Hub.listen('auth', authListener)
+            {/* progress routes */}
+            <Route exact path={'/progress'} component={ProgressDetailView} />
 
-    return () => {
-      Hub.remove('auth', authListener)
-    }
-  }, [])
-
-  switch (authState) {
-    case AuthState.LoggedOut:
-      return (
-        <RegisterProvider>
-          <LoginPage setAuthState={setAuthState} />
-        </RegisterProvider>
-      )
-    case AuthState.Registering:
-      return (
-        <RegisterProvider>
-          <RegisterPage setAuthState={setAuthState} />
-        </RegisterProvider>
-      )
-    case AuthState.ConfirmSignUp:
-      return (
-        <RegisterProvider>
-          <ConfirmSignUpPage />
-        </RegisterProvider>
-      )
-    case AuthState.LoggedIn:
-      return (
-        <IonApp>
-          <IonReactRouter>
-            <IonTabs>
-              <IonRouterOutlet>
-                {/* Moments routes  */}
-                <Route exact path={'/moments'} component={MomentsListView} />
-                <Route
-                  path={`/moments/details/:id`}
-                  component={MomentsDetailView}
-                />
-                <Route
-                  path={`/moments/create`}
-                  component={MomentsCreateNewView}
-                />
-
-                {/* Reflections routes */}
-                <Route
-                  exact
-                  path={'/reflections'}
-                  component={ReflectionsListView}
-                />
-                <Route
-                  path={`/reflections/details/:id`}
-                  component={ReflectionsDetailView}
-                />
-                <Route
-                  path={`/reflections/create`}
-                  component={ReflectionsCreateNewView}
-                />
-
-                {/* profile routes */}
-                <Route exact path={'/profile'} component={ProfileDetailView} />
-                <Route
-                  path={`/profile/changepassword`}
-                  component={ProfileChangePasswordView}
-                />
-
-                {/* progress routes */}
-                <Route
-                  exact
-                  path={'/progress'}
-                  component={ProgressDetailView}
-                />
-
-                {/* redirect from home */}
-                <Route exact path={'/'}>
-                  <Redirect to="/moments" />
-                </Route>
-              </IonRouterOutlet>
-              <IonTabBar slot="bottom">
-                <IonTabButton tab="moments" href="/moments">
-                  <IonIcon icon={image} />
-                  <IonLabel>Momente</IonLabel>
-                </IonTabButton>
-                <IonTabButton tab="reflections" href="/reflections">
-                  <IonIcon icon={albums} />
-                  <IonLabel>Reflexionen</IonLabel>
-                </IonTabButton>
-                <IonTabButton tab="profile" href="/profile">
-                  <IonIcon icon={person} />
-                  <IonLabel>Profil</IonLabel>
-                </IonTabButton>
-                <IonTabButton tab="progress" href="/progress">
-                  <IonIcon icon={barChart} />
-                  <IonLabel>Fortschritt</IonLabel>
-                </IonTabButton>
-              </IonTabBar>
-            </IonTabs>
-          </IonReactRouter>
-        </IonApp>
-      )
-  }
+            {/* redirect from home */}
+            <Route exact path={'/'}>
+              <Redirect to="/moments" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="moments" href="/moments">
+              <IonIcon icon={image} />
+              <IonLabel>Momente</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="reflections" href="/reflections">
+              <IonIcon icon={albums} />
+              <IonLabel>Reflexionen</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon icon={person} />
+              <IonLabel>Profil</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="progress" href="/progress">
+              <IonIcon icon={barChart} />
+              <IonLabel>Fortschritt</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  )
 }
 
-export default App
+// export default App
 // TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
-// export default withAuthenticator(App)
+export default withAuthenticator(App, false, [
+  <LoginPage />,
+  <RegisterPage />,
+  ConfirmSignIn,
+  ConfirmSignUp,
+  ForgotPassword,
+  RequireNewPassword,
+  VerifyContact,
+])
