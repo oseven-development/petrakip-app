@@ -44,6 +44,8 @@ const LoginPage: React.FC = (props: any) => {
     setLoginLoading(true)
     Amplify.Auth.signIn(mail, password)
       .then((user: any) => {
+        console.log('[LoginPage] then: ', user)
+
         setLoginLoading(false)
       })
       .catch((error: any) => {
@@ -113,6 +115,15 @@ const LoginPage: React.FC = (props: any) => {
                 onClick={() => registerClicked()}
               >
                 Registrieren
+              </IonButton>
+              <IonButton
+                expand="block"
+                fill="clear"
+                size="small"
+                disabled={!mail}
+                onClick={() => props.onStateChange('forgotPassword')}
+              >
+                Passwort vergessen
               </IonButton>
             </div>
           </div>

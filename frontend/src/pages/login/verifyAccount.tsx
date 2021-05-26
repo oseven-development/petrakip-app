@@ -21,6 +21,8 @@ const VerifyAccount: React.FC = (props: any) => {
 
   useEffect(() => {
     if (props.authState === 'verifyContact' && !codeSent) {
+      console.log('Sending verification code')
+
       Auth.verifyCurrentUserAttribute('email')
         .then(_ => setCodeSent(true))
         .catch(error => showError(error?.message))
@@ -44,7 +46,6 @@ const VerifyAccount: React.FC = (props: any) => {
   const verifyContact = () => {
     Auth.verifyCurrentUserAttributeSubmit('email', confirmationCode)
       .then(data => {
-        console.log('[VerifyAccount] data:', data)
         props.onStateChange('signedIn')
       })
       .catch(error => showError(error?.message))

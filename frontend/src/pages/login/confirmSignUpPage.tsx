@@ -21,8 +21,6 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
   const [confirmationCode, setConfirmationCode] = useState('')
   const [presentToast] = useIonToast()
 
-  console.log(props)
-
   if (props.authState !== 'confirmSignUp') {
     return null
   }
