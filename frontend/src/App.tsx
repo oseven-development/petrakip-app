@@ -2,7 +2,6 @@ import {
   ConfirmSignIn,
   ForgotPassword,
   RequireNewPassword,
-  VerifyContact,
   withAuthenticator,
 } from 'aws-amplify-react'
 
@@ -17,7 +16,7 @@ import {
 } from '@ionic/react'
 
 import { IonReactRouter } from '@ionic/react-router'
-import Amplify from 'aws-amplify'
+import Amplify, { Hub } from 'aws-amplify'
 
 import { albums, person, image, barChart } from 'ionicons/icons'
 
@@ -58,10 +57,18 @@ import './theme/variables.css'
 import LoginPage from './pages/login/loginPage'
 import RegisterPage from './pages/login/registerPage'
 import ConfirmSignUpPage from './pages/login/confirmSignUpPage'
+import VerifyAccount from './pages/login/verifyAccount'
 
 Amplify.configure(awsExports)
 
 const App: React.FC = () => {
+  Hub.listen('auth', data => {
+    console.log(
+      'A new auth event has happened: ',
+      data.payload.data.username + ' has ' + data.payload.event,
+    )
+  })
+
   return (
     <IonApp>
       <IonReactRouter>
@@ -138,5 +145,5 @@ export default withAuthenticator(App, false, [
   <ConfirmSignUpPage />,
   <ForgotPassword />,
   <RequireNewPassword />,
-  <VerifyContact />,
+  <VerifyAccount />,
 ])

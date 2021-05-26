@@ -30,8 +30,6 @@ const LoginPage: React.FC = (props: any) => {
     return null
   }
 
-  console.log('[LoginPage] Props: ', props)
-
   const showError = (message?: string) => {
     presentToast(
       `Fehler: ${
@@ -47,15 +45,10 @@ const LoginPage: React.FC = (props: any) => {
     Amplify.Auth.signIn(mail, password)
       .then((user: any) => {
         setLoginLoading(false)
-        if (user) {
-          console.log(user)
-        } else {
-          showError()
-          setLoginLoading(false)
-        }
       })
       .catch((error: any) => {
         showError(error.message)
+        console.error('[LoginPage] catch: ', error)
         setLoginLoading(false)
       })
   }
