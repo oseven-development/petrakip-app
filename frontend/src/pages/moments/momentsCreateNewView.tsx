@@ -75,7 +75,7 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
               controls
             />
           )}
-          {getContentType(media.type) === 'video' && (
+          {getContentType(media.type) === 'image' && (
             <IonImg
               style={{ height: 200 }}
               src={URL.createObjectURL(media.data)}

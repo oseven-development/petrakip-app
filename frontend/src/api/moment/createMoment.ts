@@ -1,10 +1,5 @@
 import { API, graphqlOperation, Storage } from 'aws-amplify'
-import {
-  ContentType,
-  CreateMomentInput,
-  ModelReflexionMomentConnection,
-  S3Object,
-} from '../../API'
+import { ContentType, CreateMomentInput } from '../../API'
 import { extension } from 'mime-types'
 import awsExports from '../../aws-exports'
 import { createMoment } from '../../graphql/mutations'
