@@ -1,14 +1,24 @@
 import { API, graphqlOperation, Storage } from 'aws-amplify'
-import { ContentType, CreateMomentInput } from '../../API'
+import {
+  ContentType,
+  CreateMomentInput,
+  ModelReflexionMomentConnection,
+  S3Object,
+} from '../../API'
 import { extension } from 'mime-types'
 import awsExports from '../../aws-exports'
 import { createMoment } from '../../graphql/mutations'
+import { GraphQLResult } from '@aws-amplify/api-graphql'
 
+// Can't use Moment from API.ts due to __typename
 export interface Media {
   name: string
-   // @TODO Fix any
+  // @TODO Fix any
   data: File | string | any
   type: string
+}
+export interface s3MetaData {
+  key: string
 }
 
 export const createMomentAPI = async ({
@@ -24,7 +34,8 @@ export const createMomentAPI = async ({
     }
     // upload asset media file to s3
     if (media.type !== 'text') {
-      const s3MetaData: any = await Storage.put(
+      // casting as s3Metadata, because .put is return Object, which can not be adjusted with an interface
+      const s3MetaData = (await Storage.put(
         media.name
           ? media.name
           : `${moment.title}-${new Date().toISOString()}.${extension(
@@ -35,7 +46,8 @@ export const createMomentAPI = async ({
           contentType: media.type,
           level: 'private',
         },
-      )
+      )) as s3MetaData
+
       moment.asset = {
         bucket: awsExports.aws_user_files_s3_bucket,
         region: awsExports.aws_user_files_s3_bucket_region,
@@ -47,18 +59,18 @@ export const createMomentAPI = async ({
     moment.contentType = getContentType(media.type)
     moment.createdAt = new Date().toISOString()
 
-    console.log(moment)
-    const res: any = await API.graphql(
+    const res = (await API.graphql(
       graphqlOperation(createMoment, { input: moment }),
-    )
-    return res.data.createMoment
+    )) as GraphQLResult<{ createMoment: CreateMomentInput }>
+
+    return res.data?.createMoment
   } catch (error) {
     console.error(error)
     throw error
   }
 }
 
-const getContentType = (mimeType: any) => {
+const getContentType = (mimeType: string) => {
   if (mimeType.includes('audio')) {
     return ContentType.audio
   } else if (mimeType.includes('video')) {
