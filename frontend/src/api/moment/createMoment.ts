@@ -6,6 +6,7 @@ import { createMoment } from '../../graphql/mutations'
 
 export interface Media {
   name: string
+   // @TODO Fix any
   data: File | string | any
   type: string
 }
