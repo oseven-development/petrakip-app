@@ -16,7 +16,7 @@ import {
   currentSelectedTopic,
   doneStatusText,
   textLable,
-} from './subjectAreaUtils'
+} from './reflectionSubjectAreaUtils'
 
 interface TopicItem {
   id: string

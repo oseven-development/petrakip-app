@@ -1,6 +1,6 @@
 import { checkmarkCircle, checkmarkCircleOutline } from 'ionicons/icons'
 
-import { SubTopicItem } from './subjectArea'
+import { SubTopicItem } from './reflectionSubjectArea'
 
 export function totalDone(subListItems: SubTopicItem[]): number {
   return subListItems.filter(({ done }) => done).length
@@ -11,7 +11,13 @@ export function badgeStatus(
 ): 'medium' | 'primary' | 'success' {
   const done = totalDone(subListItems)
   const total = subListItems.length
-  return done === 0 ? 'medium' : done !== total ? 'primary' : 'success'
+  if (done === 0) {
+    return 'medium'
+  } else if (done !== total) {
+    return 'primary'
+  } else {
+    return 'success'
+  }
 }
 
 export function currentSelectedTopic(

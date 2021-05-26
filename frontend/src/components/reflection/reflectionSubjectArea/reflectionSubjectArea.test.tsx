@@ -1,6 +1,6 @@
 import { render, act, fireEvent } from '@testing-library/react'
 
-import { SubjectArea } from './subjectArea'
+import { SubjectArea } from './reflectionSubjectArea'
 
 const testTopics = [
   {
