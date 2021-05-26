@@ -13,26 +13,24 @@ import {
   IonToolbar,
   useIonToast,
 } from '@ionic/react'
-import React, { useEffect, useState } from 'react'
-import { useRegister } from '../../model/registerContext'
+import React, { useState } from 'react'
 import './login.css'
 
-const ConfirmSignUpPage: React.FC = () => {
+const ConfirmSignUpPage: React.FC = (props: any) => {
   const [mail, setMail] = useState('')
   const [confirmationCode, setConfirmationCode] = useState('')
   const [presentToast] = useIonToast()
 
-  const registerContext = useRegister()
+  console.log(props)
 
-  useEffect(() => {
-    setMail(registerContext.mail)
-  }, [registerContext.mail])
+  if (props.authState !== 'confirmSignUp') {
+    return null
+  }
 
   const confirmSignUp = () => {
     Auth.confirmSignUp(mail, confirmationCode)
       .then(result => {
         console.log('Successfully confirmed: ', result)
-        Auth.signIn(mail, registerContext.password)
       })
       .catch(error => {
         console.error('Error during confirmation: ', error)

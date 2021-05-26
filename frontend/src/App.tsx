@@ -1,6 +1,5 @@
 import {
   ConfirmSignIn,
-  ConfirmSignUp,
   ForgotPassword,
   RequireNewPassword,
   VerifyContact,
@@ -58,9 +57,7 @@ import '@ionic/react/css/display.css'
 import './theme/variables.css'
 import LoginPage from './pages/login/loginPage'
 import RegisterPage from './pages/login/registerPage'
-import { RegisterProvider } from './model/registerContext'
 import ConfirmSignUpPage from './pages/login/confirmSignUpPage'
-import { useState } from 'react'
 
 Amplify.configure(awsExports)
 
@@ -137,9 +134,9 @@ const App: React.FC = () => {
 export default withAuthenticator(App, false, [
   <LoginPage />,
   <RegisterPage />,
-  ConfirmSignIn,
-  ConfirmSignUp,
-  ForgotPassword,
-  RequireNewPassword,
-  VerifyContact,
+  <ConfirmSignIn />,
+  <ConfirmSignUpPage />,
+  <ForgotPassword />,
+  <RequireNewPassword />,
+  <VerifyContact />,
 ])

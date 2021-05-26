@@ -63,8 +63,8 @@ const RegisterPage: React.FC = (props: any) => {
      * userConfirmed: boolean
      * userSub: string
      */
-    console.log('[RegisterPage] result of signUp call: ', result)
     setRegisterLoading(false)
+    props.onStateChange('confirmSignUp')
   }
 
   const signUp = () => {
@@ -262,7 +262,7 @@ const RegisterPage: React.FC = (props: any) => {
               )
             }
             expand="block"
-            onClick={() => signUp}
+            onClick={() => signUp()}
           >
             {registerLoading ? <IonSpinner /> : 'Los gehts'}
           </IonButton>
