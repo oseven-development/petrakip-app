@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
 
-import { AudioVariantCard } from './audioCard'
+import { TextVariantCardBody } from './textVariantCardBody'
 
-describe('AudioVariantCard Component', () => {
+describe('TextVariantCard Component', () => {
   const audioVariantCard = (
-    <AudioVariantCard variant="audio" audioSrc="mySource" />
+    <TextVariantCardBody variant="text" text="mySource" />
   )
 
   test('renders without crashing', () => {

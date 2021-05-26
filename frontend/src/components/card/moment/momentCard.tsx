@@ -1,8 +1,8 @@
-import { AudioVariant, AudioVariantCard } from './audioCard'
+import { AudioVariantProps, AudioVariantCardBody } from './audioVariantCardBody'
 import { PropsCardWrapper, CardWrapper } from './cardWrapper'
-import { ImageVariant, ImageVariantCard } from './imageCard'
-import { TextVariant, TextVariantCard } from './textCard'
-import { VideoVariant, VideoVariantCard } from './videoCard'
+import { ImageVariantProps, ImageVariantCardBody } from './imageVariantCardBody'
+import { TextVariantProps, TextVariantCardBody } from './textVariantCardBody'
+import { VideoVariantProps, VideoVariantCardBody } from './videoVariantCardBody'
 
 export type Variant = 'text' | 'image' | 'audio' | 'video'
 
@@ -10,10 +10,10 @@ export interface DefaultProps extends Omit<PropsCardWrapper, 'children'> {
   variant: Variant
 }
 
-export type TextVariantWithProps = TextVariant & DefaultProps
-export type ImageVariantWithProps = ImageVariant & DefaultProps
-export type AudioVariantWithProps = AudioVariant & DefaultProps
-export type VideoVariantWithProps = VideoVariant & DefaultProps
+export type TextVariantWithProps = TextVariantProps & DefaultProps
+export type ImageVariantWithProps = ImageVariantProps & DefaultProps
+export type AudioVariantWithProps = AudioVariantProps & DefaultProps
+export type VideoVariantWithProps = VideoVariantProps & DefaultProps
 
 type Props =
   | TextVariantWithProps
@@ -26,10 +26,10 @@ function Card(props: Props): JSX.Element {
 
   return (
     <CardWrapper {...{ title, subtitle, momentId }}>
-      {props.variant === 'text' && <TextVariantCard {...props} />}
-      {props.variant === 'image' && <ImageVariantCard {...props} />}
-      {props.variant === 'audio' && <AudioVariantCard {...props} />}
-      {props.variant === 'video' && <VideoVariantCard {...props} />}
+      {props.variant === 'text' && <TextVariantCardBody {...props} />}
+      {props.variant === 'image' && <ImageVariantCardBody {...props} />}
+      {props.variant === 'audio' && <AudioVariantCardBody {...props} />}
+      {props.variant === 'video' && <VideoVariantCardBody {...props} />}
     </CardWrapper>
   )
 }

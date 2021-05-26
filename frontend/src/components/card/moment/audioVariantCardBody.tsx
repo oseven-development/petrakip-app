@@ -4,12 +4,12 @@ import { IonCol, IonButton, IonIcon, IonGrid, IonRow } from '@ionic/react'
 
 import { playCircle, pauseCircle } from 'ionicons/icons'
 
-export interface AudioVariant {
+export interface AudioVariantProps {
   variant: 'audio'
   audioSrc: string
 }
 
-export const AudioVariantCard: React.FC<AudioVariant> = props => {
+export const AudioVariantCardBody: React.FC<AudioVariantProps> = props => {
   const [play, setPlay] = React.useState(true)
   const clickButton = () => {
     setPlay(e => !e)
