@@ -1,5 +1,5 @@
 import { IonContent, IonPage } from '@ionic/react'
-import { Header } from '../../components'
+import { Header, MomentCard } from '../../components'
 import { RouteComponentProps } from 'react-router'
 import { LargeHeader } from '../../components/header'
 

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoVariantCard Component renders without crashing 1`] = `
+<div>
+  <video
+    controls=""
+    width="100%"
+  >
+    <source
+      src="mySource"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+</div>
+`;

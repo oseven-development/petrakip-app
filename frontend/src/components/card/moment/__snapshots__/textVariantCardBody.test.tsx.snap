@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextVariantCard Component renders without crashing 1`] = `
+<div>
+  <ion-text>
+    mySource
+  </ion-text>
+</div>
+`;
