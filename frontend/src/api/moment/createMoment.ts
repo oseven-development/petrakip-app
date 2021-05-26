@@ -22,7 +22,6 @@ export const createMomentAPI = async ({
       throw new Error('No title defined')
     }
     // upload asset media file to s3
-    console.log(media)
     if (media.type !== 'text') {
       const s3MetaData: any = await Storage.put(
         media.name
