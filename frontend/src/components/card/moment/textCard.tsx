@@ -4,8 +4,6 @@ export interface TextVariant {
   variant: 'text'
   text: string
 }
-export const TextVariantCard: React.FC<TextVariant> = props => (
-  <IonText>
-    crazy crazy crazy crazy crazy crazy crazy crazy crazy crazy crazy crazy{' '}
-  </IonText>
+export const TextVariantCard: React.FC<TextVariant> = ({ text }) => (
+  <IonText>{text}</IonText>
 )

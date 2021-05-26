@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MomentCard Component \`when provide audio variant the card should render a audio card\` 1`] = `
+<div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle />
+      <ion-router-link
+        href="/moments/details/123"
+        router-link="/moments/details/123"
+      >
+        <ion-card-title />
+      </ion-router-link>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row
+          class="ion-align-items-center"
+        >
+          <ion-col
+            class="ion-text-center"
+          >
+            <ion-button
+              fill="clear"
+              size="large"
+            >
+              <ion-icon
+                color="primary"
+                icon="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Play Circle</title><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm74.77 217.3l-114.45 69.14a10.78 10.78 0 01-16.32-9.31V186.87a10.78 10.78 0 0116.32-9.31l114.45 69.14a10.89 10.89 0 010 18.6z'/></svg>"
+                slot="icon-only"
+              />
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</div>
+`;
+
+exports[`MomentCard Component \`when provide image variant the card should render a image card\` 1`] = `
+<div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle />
+      <ion-router-link
+        href="/moments/details/123"
+        router-link="/moments/details/123"
+      >
+        <ion-card-title />
+      </ion-router-link>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img
+        src="https://imageSrc.de"
+      />
+    </ion-card-content>
+  </ion-card>
+</div>
+`;
+
+exports[`MomentCard Component \`when provide text variant the card should render a text card\` 1`] = `
+<div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle />
+      <ion-router-link
+        href="/moments/details/123"
+        router-link="/moments/details/123"
+      >
+        <ion-card-title />
+      </ion-router-link>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text>
+        this is my text
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+</div>
+`;
+
+exports[`MomentCard Component \`when provide video variant the card should render a video card\` 1`] = `
+<div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle />
+      <ion-router-link
+        href="/moments/details/123"
+        router-link="/moments/details/123"
+      >
+        <ion-card-title />
+      </ion-router-link>
+    </ion-card-header>
+    <ion-card-content>
+      <video
+        controls=""
+        width="100%"
+      >
+        <source
+          src="https://videoSrc.de"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </ion-card-content>
+  </ion-card>
+</div>
+`;

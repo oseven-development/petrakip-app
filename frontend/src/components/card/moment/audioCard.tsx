@@ -8,6 +8,7 @@ export interface AudioVariant {
   variant: 'audio'
   audioSrc: string
 }
+
 export const AudioVariantCard: React.FC<AudioVariant> = props => {
   const [play, setPlay] = React.useState(true)
   const clickButton = () => {
@@ -16,8 +17,7 @@ export const AudioVariantCard: React.FC<AudioVariant> = props => {
   return (
     <IonGrid>
       <IonRow className="ion-align-items-center">
-        <IonCol></IonCol>
-        <IonCol>
+        <IonCol className="ion-text-center">
           <IonButton size="large" fill="clear" onClick={clickButton}>
             <IonIcon
               slot="icon-only"
@@ -26,7 +26,6 @@ export const AudioVariantCard: React.FC<AudioVariant> = props => {
             />
           </IonButton>
         </IonCol>
-        <IonCol></IonCol>
       </IonRow>
     </IonGrid>
   )
