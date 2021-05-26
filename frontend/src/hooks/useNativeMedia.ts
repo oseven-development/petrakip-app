@@ -13,6 +13,7 @@ export function usePhoto() {
 
   const doPhotoCapture = async () => {
     const options: CaptureImageOptions = { limit: 1 }
+    // @TODO: Fix any
     const capture: any = await MediaCapture.captureImage(options)
 
     setPhotoCapture((capture[0] as MediaFile).fullPath)
@@ -31,6 +32,7 @@ export function useVideo() {
 
   const doVideoCapture = async () => {
     const options: CaptureVideoOptions = { limit: 1, duration: 30 }
+    // @TODO: Fix any
     const capture: any = await MediaCapture.captureVideo(options)
     setVideoCapture((capture[0] as MediaFile).fullPath)
   }
@@ -45,6 +47,7 @@ export function useAudio() {
 
   const doAudioCapture = async () => {
     const options: CaptureAudioOptions = { limit: 1, duration: 30 }
+    // @TODO: Fix any
     const capture: any = await MediaCapture.captureAudio(options)
 
     setAudioCapture((capture[0] as MediaFile).fullPath)

@@ -70,7 +70,7 @@ export const createMomentAPI = async ({
   }
 }
 
-const getContentType = (mimeType: string) => {
+export const getContentType = (mimeType: string) => {
   if (mimeType.includes('audio')) {
     return ContentType.audio
   } else if (mimeType.includes('video')) {
@@ -80,6 +80,6 @@ const getContentType = (mimeType: string) => {
   } else if (mimeType.includes('text')) {
     return ContentType.text
   } else {
-    throw new Error(`MimeType ${mimeType} not assignable`)
+    return undefined
   }
 }

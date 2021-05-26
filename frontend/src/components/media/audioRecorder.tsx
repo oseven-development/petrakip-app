@@ -1,18 +1,21 @@
 import { IonButton } from '@ionic/react'
-import { useEffect } from 'react'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
+
+import { Media } from '../../api/moment/createMoment'
 
 import { usePlatform } from '../../hooks/usePlatform'
 import { useWebMediaRecorder, audioOptions } from '../../hooks/useWebMedia'
-
 interface Props {
-  setMedia: React.Dispatch<React.SetStateAction<any>>
+  setMedia: Dispatch<SetStateAction<Media>>
 }
 
 const AudioRecorder: React.FC<Props> = ({ setMedia }) => {
   const platform = usePlatform()
-  const [audioURL, isRecording, toggleRecording]: any = useWebMediaRecorder(
-    audioOptions,
-  )
+  const [audioURL, isRecording, toggleRecording]: [
+    Media,
+    boolean,
+    any, //TODO: how to handle function
+  ] = useWebMediaRecorder(audioOptions)
 
   useEffect(() => {
     setMedia(audioURL)
@@ -20,6 +23,7 @@ const AudioRecorder: React.FC<Props> = ({ setMedia }) => {
 
   return platform === 'ios' ? (
     <IonButton color="primary" expand="full" disabled onClick={toggleRecording}>
+      {/* Placeholder for later */}
       Audioaufnahme nicht verfügbar
     </IonButton>
   ) : (

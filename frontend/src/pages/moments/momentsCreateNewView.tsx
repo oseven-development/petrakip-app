@@ -19,7 +19,11 @@ import { VideoRecorder } from '../../components/media/videoRecorder'
 import { ImageRecorder } from '../../components/media/imageRecorder'
 import { LargeHeader, Header } from '../../components/header'
 import { TextRecorder } from '../../components/media/TextRecorder'
-import { createMomentAPI, Media } from '../../api/moment/createMoment'
+import {
+  createMomentAPI,
+  getContentType,
+  Media,
+} from '../../api/moment/createMoment'
 
 export interface Moment {
   title: string
@@ -29,15 +33,12 @@ interface Props extends RouteComponentProps<{}> {}
 
 export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
   const [isToastPresent, setIsToastPresent] = useState(false)
-  const [media, setMedia]: [Media, Dispatch<SetStateAction<Media>>] = useState({
+  const [media, setMedia] = useState<Media>({
     type: '',
     data: '',
     name: '',
   })
-  const [moment, setMoment]: [
-    Moment,
-    Dispatch<SetStateAction<Moment>>,
-  ] = useState({
+  const [moment, setMoment] = useState<Moment>({
     title: '',
     tags: [''],
   })
@@ -64,23 +65,27 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
             alignItems: 'center',
           }}
         >
-          {media?.type?.includes('audio') ? (
+          {getContentType(media.type) === 'audio' && (
             <audio src={URL.createObjectURL(media.data)} controls />
-          ) : media?.type?.includes('video') ? (
+          )}
+          {getContentType(media.type) === 'video' && (
             <video
               style={{ height: 200 }}
               src={URL.createObjectURL(media.data)}
               controls
             />
-          ) : media?.type?.includes('image') ? (
+          )}
+          {getContentType(media.type) === 'video' && (
             <IonImg
               style={{ height: 200 }}
               src={URL.createObjectURL(media.data)}
               alt="test"
             />
-          ) : media?.type?.includes('text') ? (
+          )}
+          {getContentType(media.type) === 'text' && (
             <IonTextarea disabled readonly value={media.data}></IonTextarea>
-          ) : (
+          )}
+          {getContentType(media.type) === undefined && (
             <IonImg
               style={{ height: 200 }}
               src={`assets/placeholder.jpeg`}
@@ -110,7 +115,6 @@ export const MomentsCreateNewView: React.FC<Props> = ({ match, history }) => {
               cancelText="Abbrechem"
               okText="Hinzufügen"
               onIonChange={e => {
-                console.log(e.detail.value!)
                 setMoment({ ...moment, tags: e.detail.value! })
               }}
             >
