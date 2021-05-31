@@ -4,38 +4,38 @@ import { SubjectArea } from './reflectionSubjectArea'
 
 const testTopics = [
   {
-    id: 'element-1',
-    lable: '1 Fachinhalte',
-    describe:
+    topicItemId: 'element-1',
+    topicItemLable: '1 Fachinhalte',
+    topicItemDescribe:
       'Die Lehrperson verfügt über fachwissenschaftliches und fachdidaktisches Wissen, versteht die Inhalte, Strukturen und zentralen Forschungsmethoden ihrer Fachbereiche und sie kann Lernsituationen schaffen, die die fachwissenschaftlichen und fachdidaktischen Aspekte für die Lernenden bedeutsam machen.',
     subListItems: [
       {
-        id: 'element-1.1',
-        lable: '1.1 Fachwissen und Didaktik',
-        done: false,
+        subTopicItemId: 'element-1.1',
+        subjectLable: '1.1 Fachwissen und Didaktik',
+        subjectStatusCompleted: false,
       },
       {
-        id: 'element-1.2',
-        lable: '1.2 Fachwissen und Didaktik',
-        done: true,
+        subTopicItemId: 'element-1.2',
+        subjectLable: '1.2 Fachwissen und Didaktik',
+        subjectStatusCompleted: true,
       },
     ],
   },
   {
-    id: 'element-2',
-    lable: '2 Entwicklungsprozesse',
-    describe:
+    topicItemId: 'element-2',
+    topicItemLable: '2 Entwicklungsprozesse',
+    topicItemDescribe:
       'Die Lehrperson versteht, wie Kinder und Erwachsene lernen und sich entwickeln, und sie kann Lerngelegenheiten und Lernwege anbieten, welche die kognitive, soziale und persönliche Entwicklung unterstützen.',
     subListItems: [
       {
-        id: 'element-2.1',
-        lable: '2.1 Entwicklung der Lernenden',
-        done: true,
+        subTopicItemId: 'element-2.1',
+        subjectLable: '2.1 Entwicklung der Lernenden',
+        subjectStatusCompleted: true,
       },
       {
-        id: 'element-2.2',
-        lable: '2.2 Erfahrungen und Vorwissen',
-        done: true,
+        subTopicItemId: 'element-2.2',
+        subjectLable: '2.2 Erfahrungen und Vorwissen',
+        subjectStatusCompleted: true,
       },
     ],
   },

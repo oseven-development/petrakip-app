@@ -19,16 +19,16 @@ import {
 } from './reflectionSubjectAreaUtils'
 
 interface TopicItem {
-  id: string
-  lable: string
-  describe: string
+  topicItemId: string
+  topicItemLable: string
+  topicItemDescribe: string
   subListItems: SubTopicItem[]
 }
 
 export interface SubTopicItem {
-  id: string
-  lable: string
-  done: boolean
+  subTopicItemId: string
+  subjectLable: string
+  subjectStatusCompleted: boolean
 }
 
 export type InputSelectValue = string | 'Später Wählen'
@@ -84,23 +84,28 @@ export const SubjectArea: React.FC<Props> = ({ topicList, selectValue }) => {
   }) => {
     return (
       <IonList>
-        {subListItems.map(({ lable, done, id }, subIndex) => (
-          <IonItem
-            button
-            data-test={id}
-            data-id={lable}
-            onClick={selectTopic}
-            key={`reflection-topic-list-${lable}-${subIndex}`}
-          >
-            <IonLabel data-id={lable}>{lable}</IonLabel>
-            <IonIcon
-              data-id={lable}
-              icon={checkmarkIcon(done).icon}
-              color={checkmarkIcon(done).color}
-              slot="end"
-            />
-          </IonItem>
-        ))}
+        {subListItems.map(
+          (
+            { subjectLable, subjectStatusCompleted, subTopicItemId },
+            subIndex,
+          ) => (
+            <IonItem
+              button
+              data-test={subTopicItemId}
+              data-id={subjectLable}
+              onClick={selectTopic}
+              key={`reflection-topic-list-${subjectLable}-${subIndex}`}
+            >
+              <IonLabel data-id={subjectLable}>{subjectLable}</IonLabel>
+              <IonIcon
+                data-id={subjectLable}
+                icon={checkmarkIcon(subjectStatusCompleted).icon}
+                color={checkmarkIcon(subjectStatusCompleted).color}
+                slot="end"
+              />
+            </IonItem>
+          ),
+        )}
       </IonList>
     )
   }
@@ -108,38 +113,49 @@ export const SubjectArea: React.FC<Props> = ({ topicList, selectValue }) => {
   return (
     <>
       <IonList>
-        {topicList.map(({ lable, id, describe, subListItems }, index) => (
-          <React.Fragment key={`reflection-topic-list-${index}`}>
-            <IonItem
-              button
-              data-test={id}
-              data-id={id}
-              onClick={handlerCurrentSelected}
-              color={currentSelectedTopic(currentSelected, id)}
-            >
-              <IonLabel data-id={id} color={textLable(currentSelected, id)}>
-                {lable}
-              </IonLabel>
-              <IonBadge data-id={id} color={badgeStatus(subListItems)}>
-                {doneStatusText(subListItems)}
-              </IonBadge>
-            </IonItem>
-            {/* render the sublist only when the current selected value are equally the id in the current loop */}
-            {currentSelected === id && (
-              <>
-                <IonItem>
-                  <IonText
-                    color="medium"
-                    className="ion-padding-top ion-padding-bottom"
-                  >
-                    {describe}
-                  </IonText>
-                </IonItem>
-                <SubSubjectAreaList {...{ subListItems }} />
-              </>
-            )}
-          </React.Fragment>
-        ))}
+        {topicList.map(
+          (
+            { topicItemLable, topicItemId, topicItemDescribe, subListItems },
+            index,
+          ) => (
+            <React.Fragment key={`reflection-topic-list-${index}`}>
+              <IonItem
+                button
+                data-test={topicItemId}
+                data-id={topicItemId}
+                onClick={handlerCurrentSelected}
+                color={currentSelectedTopic(currentSelected, topicItemId)}
+              >
+                <IonLabel
+                  data-id={topicItemId}
+                  color={textLable(currentSelected, topicItemId)}
+                >
+                  {topicItemLable}
+                </IonLabel>
+                <IonBadge
+                  data-id={topicItemId}
+                  color={badgeStatus(subListItems)}
+                >
+                  {doneStatusText(subListItems)}
+                </IonBadge>
+              </IonItem>
+              {/* render the sublist only when the current selected value are equally the id in the current loop */}
+              {currentSelected === topicItemId && (
+                <>
+                  <IonItem>
+                    <IonText
+                      color="medium"
+                      className="ion-padding-top ion-padding-bottom"
+                    >
+                      {topicItemDescribe}
+                    </IonText>
+                  </IonItem>
+                  <SubSubjectAreaList {...{ subListItems }} />
+                </>
+              )}
+            </React.Fragment>
+          ),
+        )}
       </IonList>
       <IonButton
         data-id={'Später wählen'}

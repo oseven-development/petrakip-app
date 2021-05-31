@@ -3,7 +3,9 @@ import { checkmarkCircle, checkmarkCircleOutline } from 'ionicons/icons'
 import { SubTopicItem } from './reflectionSubjectArea'
 
 export function totalDone(subListItems: SubTopicItem[]): number {
-  return subListItems.filter(({ done }) => done).length
+  return subListItems.filter(
+    ({ subjectStatusCompleted }) => subjectStatusCompleted,
+  ).length
 }
 
 export function badgeStatus(
