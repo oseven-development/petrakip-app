@@ -2,51 +2,14 @@ import { render, act, fireEvent } from '@testing-library/react'
 
 import { SubjectArea } from './reflectionSubjectArea'
 
-const testTopics = [
-  {
-    topicItemId: 'element-1',
-    topicItemLable: '1 Fachinhalte',
-    topicItemDescribe:
-      'Die Lehrperson verfügt über fachwissenschaftliches und fachdidaktisches Wissen, versteht die Inhalte, Strukturen und zentralen Forschungsmethoden ihrer Fachbereiche und sie kann Lernsituationen schaffen, die die fachwissenschaftlichen und fachdidaktischen Aspekte für die Lernenden bedeutsam machen.',
-    subListItems: [
-      {
-        subTopicItemId: 'element-1.1',
-        subjectLable: '1.1 Fachwissen und Didaktik',
-        subjectStatusCompleted: false,
-      },
-      {
-        subTopicItemId: 'element-1.2',
-        subjectLable: '1.2 Fachwissen und Didaktik',
-        subjectStatusCompleted: true,
-      },
-    ],
-  },
-  {
-    topicItemId: 'element-2',
-    topicItemLable: '2 Entwicklungsprozesse',
-    topicItemDescribe:
-      'Die Lehrperson versteht, wie Kinder und Erwachsene lernen und sich entwickeln, und sie kann Lerngelegenheiten und Lernwege anbieten, welche die kognitive, soziale und persönliche Entwicklung unterstützen.',
-    subListItems: [
-      {
-        subTopicItemId: 'element-2.1',
-        subjectLable: '2.1 Entwicklung der Lernenden',
-        subjectStatusCompleted: true,
-      },
-      {
-        subTopicItemId: 'element-2.2',
-        subjectLable: '2.2 Erfahrungen und Vorwissen',
-        subjectStatusCompleted: true,
-      },
-    ],
-  },
-]
+import testDataSet from '../../../../test/reflectionsetClean'
 
 describe('main suite', () => {
   beforeEach(() => {
     jest.useFakeTimers()
   })
   const selectTopic = (
-    <SubjectArea topicList={testTopics} selectValue={() => {}} />
+    <SubjectArea topicList={testDataSet} selectValue={() => {}} />
   )
 
   test('renders without crashing', () => {
@@ -54,18 +17,18 @@ describe('main suite', () => {
     expect(container).toMatchSnapshot()
   })
 
-  test('render sublist when click on element 1', () => {
+  test('render sublist when click on 1 Fachinhalte', () => {
     const { container } = render(selectTopic)
-    const el = container.querySelector('[data-test="element-1"]')
+    const el = container.querySelector('[data-test="1-fachinhalte"]')
     act(() => {
       if (el) fireEvent.click(el)
     })
     expect(container).toMatchSnapshot()
   })
 
-  test('render sublist when click on element 2', () => {
+  test('render sublist when click on 4 Unterrichtsstrategien', () => {
     const { container } = render(selectTopic)
-    const el = container.querySelector('[data-test="element-2"]')
+    const el = container.querySelector('[data-test="4-unterrichtsstrategien"]')
     act(() => {
       if (el) fireEvent.click(el)
     })
@@ -76,7 +39,7 @@ describe('main suite', () => {
     const mockFn = jest.fn()
 
     const { container } = render(
-      <SubjectArea topicList={testTopics} selectValue={mockFn} />,
+      <SubjectArea topicList={testDataSet} selectValue={mockFn} />,
     )
 
     const el = container.querySelector('[data-test="choseLater"]')
@@ -90,16 +53,16 @@ describe('main suite', () => {
   })
 
   test.each`
-    mainElementId  | subElementId     | result
-    ${'element-2'} | ${'element-2.1'} | ${'2.1 Entwicklung der Lernenden'}
-    ${'element-2'} | ${'element-2.2'} | ${'2.2 Erfahrungen und Vorwissen'}
+    mainElementId                  | subElementId                    | result
+    ${'5-motivieren-und-anleiten'} | ${'5.3-zeitmanagement'}         | ${'5.3 Zeitmanagement'}
+    ${'7-planen-und-evaluieren'}   | ${'7.1-leitideen-und-lehrplan'} | ${'7.1 Leitideen und Lehrplan'}
   `(
     '`when click on $subElementId the function should emit $result`',
     ({ mainElementId, subElementId, result }) => {
       const mockFn = jest.fn()
 
       const { container } = render(
-        <SubjectArea topicList={testTopics} selectValue={mockFn} />,
+        <SubjectArea topicList={testDataSet} selectValue={mockFn} />,
       )
       const el = container.querySelector(`[data-test="${mainElementId}"]`)
       act(() => {
