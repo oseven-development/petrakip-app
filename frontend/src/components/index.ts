@@ -1,2 +1,2 @@
 export { Header } from './header'
-export { MomentCard } from './card/moments/basicCard'
+export { MomentCard } from './card/moment/momentCard'

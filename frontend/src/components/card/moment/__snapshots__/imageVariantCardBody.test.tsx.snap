@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageVariantCard Component renders without crashing 1`] = `
+<div>
+  <ion-img
+    src="mySource"
+  />
+</div>
+`;

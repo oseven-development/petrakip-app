@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardWrapper Component renders without crashing 1`] = `
+<div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle />
+      <ion-router-link
+        href="/moments/details/123"
+        router-link="/moments/details/123"
+      >
+        <ion-card-title>
+          Headline
+        </ion-card-title>
+      </ion-router-link>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>
+        IAM A children
+      </h1>
+    </ion-card-content>
+  </ion-card>
+</div>
+`;

@@ -22,5 +22,14 @@ const Header: React.FC<Props> = ({ children }) => {
     </IonHeader>
   )
 }
+const LargeHeader: React.FC<Props> = ({ children }) => {
+  return (
+    <IonHeader collapse="condense">
+      <IonToolbar>
+        <IonTitle size="large">{children}</IonTitle>
+      </IonToolbar>
+    </IonHeader>
+  )
+}
 
-export { Header }
+export { Header, LargeHeader }

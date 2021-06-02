@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
+import Amplify from 'aws-amplify'
+import awsExports from './aws-exports'
+import { defineCustomElements } from '@ionic/pwa-elements/loader'
+
+Amplify.configure(awsExports)
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,6 +15,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 )
+// Call the element loader after the app has been rendered the first time
+defineCustomElements(window)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
