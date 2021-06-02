@@ -23,6 +23,7 @@ import {
 import { institutions } from '../../data/institutions'
 import './login.css'
 import Auth from '@aws-amplify/auth'
+import { LargeHeader } from '../../components/header'
 
 interface UserProps {
   mail: string
@@ -110,11 +111,7 @@ const RegisterPage: React.FC = (props: any) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Metapholio</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
           <h2>Logindaten:</h2>
           <IonCard className="input-card">
@@ -262,7 +259,7 @@ const RegisterPage: React.FC = (props: any) => {
               )
             }
             expand="block"
-            onClick={() => signUp()}
+            onClick={signUp}
           >
             {registerLoading ? <IonSpinner /> : 'Los gehts'}
           </IonButton>

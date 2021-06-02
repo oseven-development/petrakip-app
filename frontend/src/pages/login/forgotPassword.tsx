@@ -4,23 +4,30 @@ import {
   IonCard,
   IonCardContent,
   IonContent,
-  IonHeader,
   IonInput,
   IonItem,
   IonLabel,
   IonPage,
-  IonTitle,
-  IonToolbar,
   useIonToast,
 } from '@ionic/react'
 import React, { useState } from 'react'
+import { Header, LargeHeader } from '../../components/header'
 import './login.css'
 
+interface PageProps {
+  mail: string
+  codeSent: boolean
+  confirmationCode: string
+  newPassword: string
+}
+
 const ForgotPasswordPage: React.FC = (props: any) => {
-  const [mail, setMail] = useState('')
-  const [codeSent, setCodeSent] = useState(false)
-  const [confirmationCode, setConfirmationCode] = useState('')
-  const [newPassword, setNewPassword] = useState('')
+  const [pageProps, setPageProps] = useState<PageProps>({
+    mail: '',
+    codeSent: false,
+    confirmationCode: '',
+    newPassword: '',
+  })
   const [presentToast] = useIonToast()
 
   if (props.authState !== 'forgotPassword') {
@@ -38,16 +45,19 @@ const ForgotPasswordPage: React.FC = (props: any) => {
   }
 
   const sendCode = () => {
-    Auth.forgotPassword(mail)
-      .then(data => {
-        console.log('data: ', data)
-        setCodeSent(true)
+    Auth.forgotPassword(pageProps.mail)
+      .then(_ => {
+        setPageProps({ ...pageProps, codeSent: true })
       })
       .catch(error => showError(error?.message))
   }
 
   const confirmNewPassword = () => {
-    Auth.forgotPasswordSubmit(mail, confirmationCode, newPassword)
+    Auth.forgotPasswordSubmit(
+      pageProps.mail,
+      pageProps.confirmationCode,
+      pageProps.newPassword,
+    )
       .then(_ => {
         props.onStateChange('signedIn')
       })
@@ -60,32 +70,29 @@ const ForgotPasswordPage: React.FC = (props: any) => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Metapholio</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header>Metapholio</Header>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Metapholio</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
           <h2>Zurücksetzen des Passworts</h2>
-          {codeSent ? (
+          {pageProps.codeSent ? (
             <>
               <p>
                 Zurücksetzen des Passworts für <br />
-                {mail}
+                {pageProps.mail}
               </p>
               <IonItem class="ion-no-padding">
                 <IonLabel position="stacked">Bestätigungs-Code</IonLabel>
                 <IonInput
                   placeholder="Bestätigungscode eingeben"
                   type="number"
-                  value={confirmationCode}
-                  onIonChange={e => setConfirmationCode(e.detail.value ?? '')}
+                  value={pageProps.confirmationCode}
+                  onIonChange={e =>
+                    setPageProps({
+                      ...pageProps,
+                      confirmationCode: e.detail.value ?? '',
+                    })
+                  }
                 ></IonInput>
               </IonItem>
               <IonItem class="ion-no-padding">
@@ -94,15 +101,26 @@ const ForgotPasswordPage: React.FC = (props: any) => {
                   pattern="password"
                   placeholder="Passwort eingeben"
                   type="password"
-                  value={newPassword}
-                  onIonChange={e => setNewPassword(e.detail.value ?? '')}
+                  value={pageProps.newPassword}
+                  onIonChange={e =>
+                    setPageProps({
+                      ...pageProps,
+                      newPassword: e.detail.value ?? '',
+                    })
+                  }
                 ></IonInput>
               </IonItem>
               <IonButton
-                disabled={!(mail && confirmationCode && newPassword)}
+                disabled={
+                  !(
+                    pageProps.mail &&
+                    pageProps.confirmationCode &&
+                    pageProps.newPassword
+                  )
+                }
                 expand="block"
                 fill="solid"
-                onClick={() => confirmNewPassword()}
+                onClick={confirmNewPassword}
               >
                 Bestätigen
               </IonButton>
@@ -110,7 +128,7 @@ const ForgotPasswordPage: React.FC = (props: any) => {
                 expand="block"
                 fill="clear"
                 size="small"
-                onClick={() => sendCode()}
+                onClick={sendCode}
               >
                 Code erneut zusenden
               </IonButton>
@@ -128,16 +146,21 @@ const ForgotPasswordPage: React.FC = (props: any) => {
                       pattern="email"
                       placeholder="Mailadresse eingeben"
                       type="email"
-                      value={mail}
-                      onIonChange={e => setMail(e.detail.value ?? '')}
+                      value={pageProps.mail}
+                      onIonChange={e =>
+                        setPageProps({
+                          ...pageProps,
+                          mail: e.detail.value ?? '',
+                        })
+                      }
                     ></IonInput>
                   </IonItem>
                 </IonCardContent>
               </IonCard>
               <IonButton
-                disabled={!mail}
+                disabled={!pageProps.mail}
                 expand="block"
-                onClick={() => sendCode()}
+                onClick={sendCode}
               >
                 Code senden
               </IonButton>
@@ -145,7 +168,7 @@ const ForgotPasswordPage: React.FC = (props: any) => {
                 expand="block"
                 fill="clear"
                 size="small"
-                onClick={() => backToSignIn()}
+                onClick={backToSignIn}
               >
                 Zurück zur Anmeldung
               </IonButton>

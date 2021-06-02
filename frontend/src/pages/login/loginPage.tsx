@@ -4,20 +4,18 @@ import {
   IonCard,
   IonCardContent,
   IonContent,
-  IonHeader,
   IonInput,
   IonItem,
   IonLabel,
   IonNav,
   IonPage,
   IonSpinner,
-  IonTitle,
-  IonToolbar,
   useIonToast,
 } from '@ionic/react'
 
 import './login.css'
 import Amplify from '@aws-amplify/core'
+import { Header, LargeHeader } from '../../components/header'
 
 const LoginPage: React.FC = (props: any) => {
   const [mail, setMail] = useState('')
@@ -43,9 +41,7 @@ const LoginPage: React.FC = (props: any) => {
   const tryLogin = () => {
     setLoginLoading(true)
     Amplify.Auth.signIn(mail, password)
-      .then((user: any) => {
-        console.log('[LoginPage] then: ', user)
-
+      .then((_: any) => {
         setLoginLoading(false)
       })
       .catch((error: any) => {
@@ -61,18 +57,10 @@ const LoginPage: React.FC = (props: any) => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Metapholio</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header>Metapholio</Header>
       <IonContent>
         <IonNav>
-          <IonHeader collapse="condense">
-            <IonToolbar>
-              <IonTitle size="large">Metapholio</IonTitle>
-            </IonToolbar>
-          </IonHeader>
+          <LargeHeader>Metapholio</LargeHeader>
           <div className="container">
             <p>Willkommen bei Metapholio, bitte melden sie sich an:</p>
             <IonCard className="input-card">
@@ -105,14 +93,14 @@ const LoginPage: React.FC = (props: any) => {
               <IonButton
                 disabled={!(mail && password)}
                 expand="block"
-                onClick={() => tryLogin()}
+                onClick={tryLogin}
               >
                 {loginLoading ? <IonSpinner /> : 'Anmelden'}
               </IonButton>
               <IonButton
                 expand="block"
                 fill="outline"
-                onClick={() => registerClicked()}
+                onClick={registerClicked}
               >
                 Registrieren
               </IonButton>

@@ -4,16 +4,14 @@ import {
   IonCard,
   IonCardContent,
   IonContent,
-  IonHeader,
   IonInput,
   IonItem,
   IonLabel,
   IonPage,
-  IonTitle,
-  IonToolbar,
   useIonToast,
 } from '@ionic/react'
 import React, { useState } from 'react'
+import { Header, LargeHeader } from '../../components/header'
 import './login.css'
 
 const ConfirmSignUpPage: React.FC = (props: any) => {
@@ -53,17 +51,9 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Metapholio</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header>Metapholio</Header>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Metapholio</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
           <h2>Bestätige deine Anmeldung</h2>
           <p>Hierfür wurde dir der Code per Mail zugeschickt:</p>

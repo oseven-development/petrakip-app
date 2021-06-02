@@ -17,7 +17,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
         <IonButton routerLink="/profile/changepassword" color="primary">
           Password ändern
         </IonButton>
-        <IonButton onClick={() => Auth.signOut}>Ausloggen</IonButton>
+        <IonButton onClick={() => Auth.signOut()}>Ausloggen</IonButton>
       </IonContent>
     </IonPage>
   )

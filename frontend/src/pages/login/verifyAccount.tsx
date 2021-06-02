@@ -2,16 +2,14 @@ import Auth from '@aws-amplify/auth'
 import {
   IonButton,
   IonContent,
-  IonHeader,
   IonInput,
   IonItem,
   IonLabel,
   IonPage,
-  IonTitle,
-  IonToolbar,
   useIonToast,
 } from '@ionic/react'
 import React, { useEffect, useState } from 'react'
+import { Header, LargeHeader } from '../../components/header'
 import './login.css'
 
 const VerifyAccount: React.FC = (props: any) => {
@@ -21,8 +19,6 @@ const VerifyAccount: React.FC = (props: any) => {
 
   useEffect(() => {
     if (props.authState === 'verifyContact' && !codeSent) {
-      console.log('Sending verification code')
-
       Auth.verifyCurrentUserAttribute('email')
         .then(_ => setCodeSent(true))
         .catch(error => showError(error?.message))
@@ -45,7 +41,7 @@ const VerifyAccount: React.FC = (props: any) => {
 
   const verifyContact = () => {
     Auth.verifyCurrentUserAttributeSubmit('email', confirmationCode)
-      .then(data => {
+      .then(_ => {
         props.onStateChange('signedIn')
       })
       .catch(error => showError(error?.message))
@@ -53,17 +49,9 @@ const VerifyAccount: React.FC = (props: any) => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Metapholio</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header>Metapholio</Header>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Metapholio</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
           <h2>Verifizieren des Accounts</h2>
           <IonItem class="ion-no-padding">
@@ -79,7 +67,7 @@ const VerifyAccount: React.FC = (props: any) => {
           <IonButton
             disabled={!confirmationCode && codeSent}
             expand="block"
-            onClick={() => verifyContact()}
+            onClick={verifyContact}
           >
             Verifizieren
           </IonButton>
