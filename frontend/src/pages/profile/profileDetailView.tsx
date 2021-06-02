@@ -14,7 +14,6 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
       <Header>Profil</Header>
       <IonContent fullscreen>
         {platform}
-
         <IonButton routerLink="/profile/changepassword" color="primary">
           Password ändern
         </IonButton>
