@@ -1,0 +1,4034 @@
+{
+	"Name": "PHSZ",
+	"Categories": [
+		{
+			"Name": "1 Fachinhalte",
+			"Description": "Die Lehrperson verfügt über fachwissenschaftliches und fachdidaktisches Wissen, versteht die Inhalte, Strukturen und zentralen Forschungsmethoden ihrer Fachbereiche und sie kann Lernsituationen schaffen, die die fachwissenschaftlichen und fachdidaktischen Aspekte für die Lernenden bedeutsam machen.",
+			"Topics": [
+				{
+					"Name": "1.1 Fachwissen und Didaktik",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson verfügt über grundlegendes fachwissenschaftliches und fachdidaktisches Wissen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson hat sich inhaltlich genügend vorbereitet."
+								},
+								{
+									"Name": "Die Lehrperson hat, wenn zum Fach vorhanden, den Lehrerkommentar, das Schulbuch, das Arbeitsheft etc. gründlich studiert."
+								},
+								{
+									"Name": "Die Lehrperson hat die (Lehrer-) Bibliothek, das Medienzentrum konsultiert."
+								},
+								{
+									"Name": "Die sachliche Richtigkeit zeigt sich durch eine sach- und lernlogische Gliederung und Durchführung des Stoffes."
+								},
+								{
+									"Name": "Die Lehrperson vermittelt die Inhalte sachlich richtig und mit den korrekten Begriffen."
+								},
+								{
+									"Name": "Es werden keine fachlichen Unsicherheiten offensichtlich, so dass sich die Lernenden nicht irritiert fühlen."
+								},
+								{
+									"Name": "Die Lehrperson passt die fachlichen Inhalte der Stufe an, ohne dass sich sachliche Fehler ergeben."
+								},
+								{
+									"Name": "Die Lehrperson erkennt das Wesentliche des Stoffes, indem sie das Kernproblem des Themas den Lernenden offenlegen kann oder offenlegen lässt."
+								},
+								{
+									"Name": "Die Lehrperson erkennt das Wesentliche des Stoffes, indem das Schwergewicht (auch zeitlich) des Unterrichts dem Kernproblem gewidmet ist."
+								},
+								{
+									"Name": "Die Lehrperson kann einen Begriff oder ein Konzept sachlogisch korrekt aufbauen und die Lernenden dabei aktiv mitarbeiten lassen."
+								},
+								{
+									"Name": "Die Lehrperson kann die Lerninhalte, wenn es die Situation erfordert, zur mehrfachen Verarbeitung im Sinne der Repräsentationen des Lernens (handelnd, bildlich, symbolisch) anbieten."
+								},
+								{
+									"Name": "Die Lehrperson führt Lernkontrollen durch, die das Wesentliche des Stoffes überprüfen."
+								},
+								{
+									"Name": "Die Lehrperson kennt fachwissenschaftliche und fachdidaktische Konzepte, die in der jeweiligen Lernsituation angewendet werden könnten."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson verfügt über substanzielles, zusammenhängendes fachwissenschaftliches und fachdidaktisches Wissen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann mittels einer didaktischen Analyse die zentralen Aspekte des Grobziels/ Stoffes einsichtig darstellen."
+								},
+								{
+									"Name": "Die Lehrperson kann die exemplarische Bedeutung des Themas aufzeigen, erklären."
+								},
+								{
+									"Name": "Die Lehrperson klammert schwierige Aspekte aus, die auf eine andere Schulstufe gehören."
+								},
+								{
+									"Name": "Die Lehrperson ermöglicht den Lernenden sinnvolle, reale Erfahrungen im Themenbereich und reflektiert sie diese mit ihnen."
+								},
+								{
+									"Name": "Die Lehrperson orientiert sich bei der Unterrichtsdurchführung an einer systematischen Planung und kann bei Unvorhergesehenem trotzdem inhaltlich flexibel reagieren."
+								},
+								{
+									"Name": "Die Lehrperson organisiert das Lernen der Fachinhalte als kumulativen Prozess."
+								},
+								{
+									"Name": "Die Lehrperson kann die Fachinhalte aus dem Lehrplan sinnvoll in ein Unterrichtsprogramm (Wochen-, Semester-, Jahresplan) einfügen."
+								},
+								{
+									"Name": "Die Lehrperson führt Lernkontrollen durch, die das Verstehen der zentralen Zusammenhänge eines Lernstoffes/Themengebietes aufzeigen."
+								},
+								{
+									"Name": "Die Lehrperson wendet fachwissenschaftliche und fachdidaktische Konzepte situationsgerecht an."
+								},
+								{
+									"Name": "Die Lehrperson kann ihr fachwissenschaftliches und fachdidaktisches Handeln reflektieren."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson verfügt über überdurchschnittliches fachwissenschaftliches und fachdidaktisches Wissen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann ein Thema in verschiedenen Fächern unter dem jeweiligen fachlichen spezifischen Aspekt erarbeiten."
+								},
+								{
+									"Name": "Die Lehrperson kann den Unterricht mit speziellen Kenntnissen/Fähigkeiten bereichern."
+								},
+								{
+									"Name": "Die Lehrperson kann Fachinhalte mit Hilfe von fachspezifischen Regeln, Gesetzen und Methoden auf kreative Weise vermitteln."
+								},
+								{
+									"Name": "Die Lehrperson kann bei offenen Lehrformen die Lernenden situationsspezifisch gut beraten und wichtige Zusammenhänge aufzeigen."
+								},
+								{
+									"Name": "Die Lehrperson richtet das Lernen im Fach auf die Bewältigung von Anforderungen und nicht auf den Aufbau von zunächst ungenutztem Wissen."
+								},
+								{
+									"Name": "Die Lehrperson kann die Vor- und Nachteile verschiedener Schulbücher zum Fach aufzeigen."
+								},
+								{
+									"Name": "Die Lehrperson kennt aktuelle Fachlehrmittel, und kann sie diese im Hinblick auf den Lehrplan adäquat bewerten und einsetzen."
+								},
+								{
+									"Name": "Die Lehrperson setzt verschiedene fachwissenschaftliche und fachdidaktische Konzepte gezielt und begründet um."
+								},
+								{
+									"Name": "Die Lehrperson kann ihren Unterricht unter Zuhilfenahme verschiedener fachwissenschaftlicher und fachdidaktischer Konzepte analysieren und beurteilen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "1.2 Forschungsmethoden",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennt grundlegende Forschungsmethoden des Fachbereichs und Kriterien wissenschaftlichen Arbeitens.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann Qualitätskriterien wissenschaftlicher Forschung nennen und erklären (Objektivität, Reliabilität, Validität)."
+								},
+								{
+									"Name": "Die Lehrperson kann sozialwissenschaftliche Erhebungsmethoden aufzählen und in Grundzügen beschreiben (Test, offene und verdeckte Beobachtung, schriftliche und mündliche Befragung, Dokumentenanalyse und nicht reaktive Verfahren)."
+								},
+								{
+									"Name": "Die Lehrperson kann Unterschiede zwischen qualitativen und quantitativen Ansätzen erklären."
+								},
+								{
+									"Name": "Die Lehrperson kann Unterschiede von induktiven und deduktiven Ansätzen erklären."
+								},
+								{
+									"Name": "Die Lehrperson kann eine Hypothese aufstellen und sie von einer Behauptung unterscheiden."
+								},
+								{
+									"Name": "Die Lehrperson kann die Bedeutung einer kontrollierten Stichprobenwahl für Erziehungswissenschaftliche Forschung erklären."
+								},
+								{
+									"Name": "Die Lehrperson kann einen wissenschaftlichen Text von einem unwissenschaftlichen Text unterscheiden (Systematik, Kohärenz, Argumentation, Explizitheit, Zitierregeln)."
+								},
+								{
+									"Name": "Die Lehrperson kann ausgehend von einem Praxisproblem eine wissenschaftliche Frage formulieren."
+								},
+								{
+									"Name": "Die Lehrperson kann Quellen für die Recherche wissenschaftlicher Literatur nennen (Fachzeitschriften, Datenbanken, gängige Fachlexika und -lehrbücher)."
+								},
+								{
+									"Name": "Die Lehrperson kann deskriptive, statistische Auswertungen durchführen (Häufigkeiten, Masse der zentralen Tendenz, einfache Grafiken)."
+								},
+								{
+									"Name": "Die Lehrperson kann Zusammenhänge zwischen Variablen auf einfache Weise darstellen (Kreuztabellen, Plotgrafiken)."
+								},
+								{
+									"Name": "Die Lehrperson kann den Begriff der Signifikanz und den Grundgedanken hinter basalen Kennwerten der bivariaten Inferenzstatistik erklären (Korrelation, Prozentsatzdifferenz, Chi-Quadrat, T-Test, F-Test)."
+								},
+								{
+									"Name": "Die Lehrperson kann ein wissenschaftliches Poster oder einen kurzen wissenschaftlichen Bericht verfassen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson kennt die wichtigsten Forschungsmethoden des Fachbereichs und kann einzelne anwenden.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann einen wissenschaftlichen Text lesen, wiedergeben und begründet kritisieren."
+								},
+								{
+									"Name": "Die Lehrperson kann im Anschluss an eine Hypothese oder eine Frage wissenschaftliche Literatur recherchieren, vergleichen und gesammelt wiedergeben."
+								},
+								{
+									"Name": "Die Lehrperson kann im Anschluss an eine Hypothese oder eine Frage beschreiben, welches Forschungsdesign zur Überprüfung geeignet wäre."
+								},
+								{
+									"Name": "Die Lehrperson kann einzelne sozialwissenschaftliche Erhebungsmethoden vorbereiten und anwenden (zum Beispiel Konzeption eines einfachen Fragebogens, Entwurf eines Interviewleitfadens, Aufstellen eines Beobachtungsrasters, Auswahl eines Tests)."
+								},
+								{
+									"Name": "Die Lehrperson kann verschiedene Skalenniveaus der sozialwissenschaftlichen Messung unterscheiden und die grundlegenden Konsequenzen für die Auswertung aufzählen."
+								},
+								{
+									"Name": "Die Lehrperson kann eine einfache Stichprobenziehung durchführen (einfache Zufallsstichprobe, selektives Sampling, theoretisches Sampling etc.)."
+								},
+								{
+									"Name": "Die Lehrperson kann grundlegende Verfahren der Datenaufbereitung durchführen (Transkription, Erstellung und Bereinigung einer Datenmatrix)."
+								},
+								{
+									"Name": "Die Lehrperson kann grundlegende Operationen der Tabellenkalkulation mit einer entsprechenden Software durchführen (zum Beispiel Excel)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson kennt vielfältige Forschungsmethoden und kann aktiv an wissenschaftlichen Projekten partizipieren.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann zu einer Frage oder Hypothese die wichtigste wissenschaftliche Literatur finden, vergleichen und gesammelt wiedergeben."
+								},
+								{
+									"Name": "Die Lehrperson kann auf der Basis des bestehenden Wissens Lücken und Widersprüche erkennen und entsprechende Forschungsfragen und Hypothesen formulieren."
+								},
+								{
+									"Name": "Die Lehrperson kann konkurrierende Herangehensweisen unterschiedlicher disziplinärer Wissenschaftsschulen skizzieren."
+								},
+								{
+									"Name": "Die Lehrperson kann komplexe Stichprobenpläne erstellen und entsprechende Ziehungen durchführen."
+								},
+								{
+									"Name": "Die Lehrperson kann Softwarepakete zur qualitativen und quantitativen Datenanalyse handhaben."
+								},
+								{
+									"Name": "Die Lehrperson kann mit Hilfe eines Statistikprogrammes bivariate inferenzstatistische Zusammenhangsund Unterschiedsmasse berechnen."
+								},
+								{
+									"Name": "Die Lehrperson kann mit Hilfe eines Statistikprogrammes einzelne multivariate statistische Verfahren durchführen."
+								},
+								{
+									"Name": "Die Lehrperson kann mit Hilfe einer Software zur Analyse qualitativer Daten eine Kategorisierung und Typenbildung durchführen."
+								},
+								{
+									"Name": "Die Lehrperson kann komplexe Erhebungs- und Auswertungsraster entwickeln (reliable Befragungs- und Testskalen, Kategoriensysteme)."
+								},
+								{
+									"Name": "Die Lehrperson kann das Projektmanagement in einem wissenschaftlichen Projekt planen und durchführen."
+								},
+								{
+									"Name": "Die Lehrperson kann einen wissenschaftlichen Vortrag vorbereiten und halten."
+								},
+								{
+									"Name": "Die Lehrperson kann einen umfangreichen wissenschaftlichen Bericht schreiben, in dem theoretische und empirische Aspekte aufeinander bezogen werden."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "1.3 Zusammenhänge erkennen",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson erkennt einfache Zusammenhänge zwischen verschiedenen Fachbereichen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson zeigt einzelne Zusammenhänge über die Fach- grenzen hinaus auf."
+								},
+								{
+									"Name": "Die Lehrperson kann das Thema in verschiedenen Fächern, unter dem jeweiligen spezifischen fachlichen Aspekt bearbeiten."
+								},
+								{
+									"Name": "Die Lehrperson kann Zusammenhänge mittels eines Strukturnetzes sinnvoll darstellen."
+								},
+								{
+									"Name": "Die Elemente sind mit der Inhaltsstruktur logisch verknüpft."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson erkennt komplexe Zusammenhänge zwischen verschiedenen Fachbereichen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann komplexe Zusammenhänge mittels eines Strukturnetzes darstellen."
+								},
+								{
+									"Name": "Die Lehrperson zeigt Zusammenhänge im Unterrichtsstoff fächerübergreifend auf."
+								},
+								{
+									"Name": "Die Lehrperson arrangiert in ausgewählten Fächern den Inhalt so, dass komplexe Zusammenhänge den Lernenden ersichtlich werden."
+								},
+								{
+									"Name": "Die Lehrperson kann Aufgabenstellungen so formulieren, dass die Lernenden selbstständig komplexe Zusammenhänge entdecken können."
+								},
+								{
+									"Name": "Die Lehrperson erkennt Didaktische Zusammenhänge. Sie erkennt, für welche verschiedenen Inhalte sich die gleichen didaktischen Schritte aufdrängen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson stellt selbstständig weiterführende Zusammenhänge zwischen verschiedenen Fachbereichen her.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson ist offen für die Suche nach weiterführenden Zusammenhängen."
+								},
+								{
+									"Name": "Die Lehrperson kann weiterführende Zusammenhänge mittels eines Strukturnetzes aufzeigen."
+								},
+								{
+									"Name": "Die aufgezeigten Zusammenhänge sind kreativ und nicht auf den ersten Blick erkennbar."
+								},
+								{
+									"Name": "Die Lehrperson stellt Lehr- und Lerninhalte so zusammen, dass weiterführende Zusammenhänge entdeckt werden können."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "1.4 Auswahl von Zielen und Inhalten",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennt die Kriterien der sach- und situationsspezifischen Auswahl von Zielen und Inhalten, die einen Unterrichtsgegenstand für die Lernenden bedeutsam machen, wendet diese aber undifferenziert an",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kennt die fünf Dimensionen einer didaktischen Analyse (exemplarische Bedeutung, Gegenwarts- und Zukunftsbedeutung, Struktur und Zugänglichkeit des Inhaltes)."
+								},
+								{
+									"Name": "Die Lehrperson kann eine dem Stoff/Grobziel adäquate Strukturskizze erstellen und davon sinnvolle Lernziele ableiten."
+								},
+								{
+									"Name": "Die Lehrperson erkennt und wählt den Kernstoff eines Themas aus."
+								},
+								{
+									"Name": "Die Lehrperson definiert das Wesentliche des Stoffes vom Ziel her."
+								},
+								{
+									"Name": "Die Lehrperson kann den «roten Faden» durch den Stoff aufzeigen."
+								},
+								{
+									"Name": "Die Lehrperson hält Kernaussagen des Stoffes fest («Nagel einschlagen»)."
+								},
+								{
+									"Name": "Die ausgewählten Inhalte und Ziele sind dem Lernvermögen der Lernenden angepasst."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson kennt die Kriterien für die Auswahl von Zielen und Inhalten und wendet sie in der Regel zutreffend an",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson berücksichtigt dem Grobziel/Stoff angemessen die kognitiven, emotionalen und psycho-motorischen Lernziele."
+								},
+								{
+									"Name": "Die Lehrperson lässt Nebensächlichkeiten weg, obwohl sie gutes Material und attraktive Handlungsmöglichkeiten dazu hat."
+								},
+								{
+									"Name": "Die Lehrperson macht keine unnützen Zusatzschlaufen, obwohl diese zwar interessant, dem Ziel aber nicht dienlich sind."
+								},
+								{
+									"Name": "Es wird eine sinnvolle Ausschöpfung des Grobzieles/Stoffes aus der festgehaltenen Sachstruktur (Begriffsnetz) ersichtlich."
+								},
+								{
+									"Name": "Die Lehrperson setzt bei Zeitknappheit während der Lernsequenz die richtigen Prioritäten."
+								},
+								{
+									"Name": "Die Lehrperson setzt bei Zeitknappheit während einer Unterrichtseinheit die richtigen Prioritäten."
+								},
+								{
+									"Name": "Die Lehrperson hält die Kernaussagen des Stoffes regelmässig und systematisch fest."
+								},
+								{
+									"Name": "Die Lehrperson kann die Aspekte des Inhaltes so aufzeigen, dass die zentralen Frage- und Problemstellungen für die Lernenden ersichtlich werden."
+								},
+								{
+									"Name": "Die Lehrperson kann die Auswahl der Ziele und Inhalte begründen."
+								},
+								{
+									"Name": "Die Lehrperson wählt ein sinnvolles instrumentelles Ziel aus, das zum Grobziel und zu den Inhalten passt."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson begründet systematisch und explizit die Auswahl der Ziele und Inhalte, die einen Unterrichtsgegenstand für die Lernenden bedeutsam machen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann die Auswahl der Ziele und Inhalte in Bezug auf die anthropogenen-psychologischen sowie soziokulturellen Aspekte und Bedingungsfelder der Klasse begründen."
+								},
+								{
+									"Name": "Die Voraussetzungen der Lernenden werden so in die Auswahl der Ziele miteinbezogen, dass eine Niveaudifferenzierung möglich wird."
+								},
+								{
+									"Name": "Die Inhalte und Ziele werden so ausgewählt, dass die Lernenden auch selbstständig ihre Arbeit planen, durchführen und evaluieren können."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "2 Entwicklungsprozesse",
+			"Description": "Die Lehrperson versteht, wie Kinder und Erwachsene lernen und sich entwickeln, und sie kann Lerngelegenheiten und Lernwege anbieten, welche die kognitive, soziale und persönliche Entwicklung unterstützen.",
+			"Topics": [
+				{
+					"Name": "2.1 Entwicklung der Lernenden",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson versteht und berücksichtigt in der Regel die Entwicklungsphasen und -prozesse von Kindern und Jugendlichen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson formuliert Aufgaben und Aufträge, die dem kognitiven Entwicklungsstand der Kinder (im Allgemeinen) entsprechen (Kombination verschiedener Repräsentations- formen bei jüngeren Kindern; handlungsorientierter, enaktiver Zugang bei KU etc.)."
+								},
+								{
+									"Name": "Die Lehrperson vermittelt Inhalte altersgemäss (angepasste Sprache, nicht kindliche Sprache, Veranschaulichung und Konkretisierungsgrad)."
+								},
+								{
+									"Name": "Die Lehrperson kann ihre didaktischen und pädagogischen Massnahmen entwicklungspsychologisch begründen und anhand von entwicklungspsychologischen Theorien erklären (zum Beispiel Massnahmen in der Zone der nächsten Entwicklung)."
+								},
+								{
+									"Name": "Die Lehrperson kennt die altersgemässen Bedürfnisse und Interessen der Kinder und weiss, welches ihre altersgemässen Themen und Probleme sind (KU: Lehrperson; geschlechtsdurchmischte Gruppen; 3./4. Klasse: eher geschlechtshomogene Gruppen; 5/6. Klasse: körperliche Veränderungen, Sexualität, Idole, Peergruppe)."
+								},
+								{
+									"Name": "Die Lehrperson kennt die soziale Orientierung der Kinder (aufgrund der sozialen Entwicklung), und berücksichtigt sie diese bei der Wahl der Sozialform und der entsprechenden Aufträge."
+								},
+								{
+									"Name": "Die Lehrperson kennt die moralische Orientierung der Kinder (aufgrund der moralischen Entwicklung), und berücksichtigt sie diese bei der Ausarbeitung und Begründung von Regeln, Abmachungen mit den Kindern und Massnahmen."
+								},
+								{
+									"Name": "Die Lehrperson kann zwischen Lernstand (spezifische Voraussetzungen) und Entwicklungs- stand (kognitive, psychomotorische, emotionale Entwicklung) unterscheiden."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt sich mit Entwicklungsphasen und -prozessen von Kindern und Jugendlichen differenziert auseinander und berücksichtigt diese.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson formuliert Aufgaben und Aufträge, die dem kognitiven Entwicklungsstand der Lernenden in drei Anspruchsniveaus entsprechen."
+								},
+								{
+									"Name": "Die Lehrperson zeigt Empathiefähigkeit, und kann sie die emotionalen Befindlichkeiten und kognitiven Prozesse eines Grossteils der Klasse einschätzen."
+								},
+								{
+									"Name": "Die Lehrperson kann dem Lern- und Entwicklungsstand angepasste Lernangebote für die ganze Lerngruppe anbieten."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson erfasst und erkennt die Kinder und Jugendlichen in ihrer individuellen Entwicklung und berücksichtigt dies in hohem Mass subjektorientiert.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson zeigt Empathiefähigkeit, und kann sie die emotionalen Befindlichkeiten und kognitiven Prozesse eines Kindes einschätzen."
+								},
+								{
+									"Name": "Die Lehrperson kann dem individuellen Lern- und Entwicklungsstand der Lernenden entsprechend differenzierte Lernangebote unterbreiten."
+								},
+								{
+									"Name": "Die Lehrperson kann den Lernstand und das Potential der Kinder hinsichtlich der Promotion beziehungsweise der Schulfähigkeit adäquat einschätzen (insbesondere im KG und in der 6. Klasse)."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "2.2 Erfahrungen und Vorwissen",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson berücksichtigt in der Regel die Erfahrung und das Wissen der Kinder und Jugendlichen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson hat sich konkrete Überlegungen über vorhandenes Können, Wissen sowie mögliche Haltungen und Ge- fühle der Lernenden zum neuen Lerngegenstand gemacht, und bezieht sie diese mit ein."
+								},
+								{
+									"Name": "Die Lehrperson arrangiert wenn nötig Erfahrungen zu einem Gegenstand/ einem Thema."
+								},
+								{
+									"Name": "Die Lehrperson unterscheidet zwischen Alltagserfahrungen und Erfahrungen aus dem schulischen Leben, und passt sie den Unterricht entsprechend an."
+								},
+								{
+									"Name": "Die Lehrperson stellt didaktische Materialien und Fragen so bereit, dass die Lernenden herausgefordert werden, über ihre Erfahrungen und über das bereits vorhandene Wissen Auskunft zu geben."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson aktiviert die Erfahrung und das Wissen der Kinder und Jugendlichen und nutzt dieses gezielt für den Unterricht.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson stellt Problemstellungen aus dem Alltag, in denen das theoretische Problem enthalten ist."
+								},
+								{
+									"Name": "Die Lehrperson versucht durch Vergleiche Vorwissen der Lernenden aufzudecken."
+								},
+								{
+									"Name": "Die Lehrperson versucht die Lernziele im Hinblick auf die Anwendung im Alltag aufzubereiten."
+								},
+								{
+									"Name": "Die Lehrperson nimmt aktuelle Themen der Lernenden auf, und integriert sie diese in den Unterricht."
+								},
+								{
+									"Name": "Die Lehrperson schafft ein Unterrichtsklima, bei dem die Lernenden ihr Vorverständnis zum Thema auch artikulieren wollen."
+								},
+								{
+									"Name": "Die Lehrperson integriert durch Selbsteinschätzung der Lernenden ihre Lernausgangslage in die möglichen Vorgehensweisen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson erfasst die individuellen Erfahrungen und das Wissen der einzelnen Kinder und Jugendlichen und nutzt dieses zur Unterstützung ihrer individuellen Entwicklung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt systematisch Instrumente zur Bestimmung der Lernausgangslage der Lernenden ein, und formuliert sie entsprechende individuelle Vorgehensweisen oder Förderpläne."
+								},
+								{
+									"Name": "Die Lehrperson setzt regelmässig zielorientierte Selbsteinschätzungen der Lernenden ein, um so die Weiterarbeit auf dem individuellen Niveau der Lernenden zu planen."
+								},
+								{
+									"Name": "Die Lehrperson nutzt bewusst Lehrausgänge, bei denen die Lernenden ihre individuellen Erfahrungen und ihr Vorwissen einbringen können."
+								},
+								{
+									"Name": "Die Lehrperson setzt regelmässig projektartiges Lernen und/oder freie Arbeit ein, um so Vorwissen/Interessen der Lernenden zu erfahren und entsprechend im eigenen Unterricht zu berücksichtigen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "2.3 Entwicklungsförderung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson fördert die Lernenden in einzelnen Entwicklungsbereichen grundsätzlich.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson berücksichtigt die Entwicklungsbereiche der Sach-, Sozial- und Selbstkompetenz für die ganze Lerngruppe."
+								},
+								{
+									"Name": "Die Lehrperson kann sowohl individuell als auch für die ganze Lerngruppe Fördermassnahmen initiieren."
+								},
+								{
+									"Name": "Die Lehrperson kann Lernangebote arrangieren, die die Selbstständigkeit des einzelnen Lernenden fördern."
+								},
+								{
+									"Name": "Die Lehrperson baut ein Klassenklima auf, das dem einzelnen Lernenden erlaubt, Eigenverantwortung zu übernehmen (Ämtli, offene Formen des Unterrichts etc.)."
+								},
+								{
+									"Name": "Die Lehrperson entwickelt Regeln und Rituale, die dem einzelnen Lernenden helfen, sich in die Gemeinschaft der Lerngruppe zu integrieren."
+								},
+								{
+									"Name": "Die Lehrperson bietet den Kindern reale Erfahrungen an (originale Begegnung)."
+								},
+								{
+									"Name": "Die Lehrperson setzt Rollen- und Regelspiele ein."
+								},
+								{
+									"Name": "Die Lehrperson gibt den Lernenden Rückmeldungen zu den einzelnen Entwicklungsbereichen (Kompetenzen)."
+								},
+								{
+									"Name": "Die Lehrperson schafft bewusst Unterrichtssituationen, in denen alle Lernenden Erfolg haben können."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson fördert regelmässig einzelne Lernende oder Lerngruppen in ihrer Entwicklung intensiv und ressourcenorientiert.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann in allen drei Kompetenzbereichen (Sach-, Sozial-, Selbstkompetenz) Fördermassnahmen initiieren, sowohl individuell als auch für die ganze Lerngruppe."
+								},
+								{
+									"Name": "Die Lehrperson setzt regelmässig Rollen- und Regelspiele ein, um die Abstraktionsfähigkeit und den Symbolgebrauch zu fördern."
+								},
+								{
+									"Name": "Die Lehrperson setzt regelmässig Lernaufgaben ein, die eine niveaudifferenzierte Auswahl von verschiedenen Möglichkeiten der Bearbeitung desselben Gegenstandes/Themas erlauben."
+								},
+								{
+									"Name": "Die Lehrperson initiiert regelmässige Arbeitsrückschauen und Selbstreflexionen mit den Lernenden in allen Kompetenzbereichen."
+								},
+								{
+									"Name": "Die Lehrperson setzt regelmässig Diagnoseinstrumente ein, um so den Kindern und den Eltern gezielte Rückmeldungen in den drei Kompetenzbereichen geben zu können."
+								},
+								{
+									"Name": "Die Lehrperson bietet den Lernenden die Möglichkeit der Entwicklung individueller Interessen (projektartiges Lernen, freie Arbeit, Angebotstische etc.)."
+								},
+								{
+									"Name": "Die Lehrperson lässt die Lernenden regelmässig und aktiv an der Weiterentwicklung der Schulhauskultur teilhaben (Regeln, Projekte, Vorhaben etc.)."
+								},
+								{
+									"Name": "Die Lehrperson schafft bewusst Unterrichtssituationen, in denen alle Lernenden auf ihrem möglichen Anspruchsniveau Erfolg haben können."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson fördert alle Lernenden systematisch subjekt- und ressourcenorientiert.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson fördert systematisch in allen drei Kompetenzbereichen (Sach-, Sozial-, Selbstkompetenz), abgestimmt auf die Bedürfnisse des Einzelnen und der Lerngruppe."
+								},
+								{
+									"Name": "Die Lehrperson bietet systematisch vielfältige, reale Erfahrungen an."
+								},
+								{
+									"Name": "Die Lehrperson bietet Arbeitsbereiche an, die die Möglichkeit einer Auseinandersetzung durch steigenden Komplexitätsgrad auf höheren Niveaustufen und mit zunehmender Selbstständigkeit bieten."
+								},
+								{
+									"Name": "Die Lehrperson hält das jeweilige Entwicklungsniveau der Lernenden, nach Massgabe der momentanen Wahrnehmungs-, Denk- und Handlungskompetenzen fest, um so für die ganze Gruppe an einem gemeinsamen Gegenstand in der Zone der nächsten Entwicklung/Erreichbarkeit didaktische Arrangements anzubieten."
+								},
+								{
+									"Name": "Die Lehrperson schafft für die Lernenden ein Klima des Selbstvertrauens in ihre eigene Leistungsfähigkeit, der Leistungsfreude und des Leistungswillens."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "2.4 Vielfalt und Verschiedenheit",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson berücksichtigt in der Regel bei der Förderung von sozialer und persönlicher Entwicklung die Vielfalt und Verschiedenheit der Lernenden.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson organisiert ihren Unterricht so, dass sie den Lernenden individuelle Unterstützung und Zuwendung geben kann."
+								},
+								{
+									"Name": "Die Lehrperson plant ihren Unterricht aufgrund einer Lernstands- und Lernbedarfsanalyse."
+								},
+								{
+									"Name": "Die Lehrperson bietet individuelle, niveaudifferenzierte Aufgaben an."
+								},
+								{
+									"Name": "Die Lehrperson setzt kooperative Lernformen ein."
+								},
+								{
+									"Name": "Die Lehrperson erzeugt eine Atmosphäre, in der die Lernenden sich getrauen, ihre Bedürfnisse und Empfindungen zu artikulieren."
+								},
+								{
+									"Name": "Die Lehrperson praktiziert Rituale und didaktische Arrangements, die es erlauben, demokratische Beziehungsformen zu üben (zum Beispiel Klassenrat, Diskussionen, selbstgewählte Projekte, Vorhaben, Freiarbeit etc.)."
+								},
+								{
+									"Name": "Die Lehrperson fördert die kommunikative Kompetenz in den Bereichen: zuhören und Fragen stellen können."
+								},
+								{
+									"Name": "Die Lehrperson fördert die kommunikative Kompetenz dadurch, dass die Ausdrucks- und Wahrnehmungsfähigkeit der Lernenden in Bezug auf Gestik und Körpersprache erweitert wird (zum Beispiel Rollenspiele, Emotionsbilder etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt Vielfalt und Verschiedenheit zur Förderung der sozialen und persönlichen Entwicklung von Lernenden ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson inszeniert kooperatives Lernen innerhalb flexibler und gut durchdachter Lernendengruppen zur Förderung der kognitiven und sozial-emotionalen Entwicklung der Lernenden."
+								},
+								{
+									"Name": "Die Lehrperson setzt gezielt kooperatives Problemlösen mit verhaltensauffälligen und/oder mit Lernenden unterschiedlichen Lernstandes ein, die klare Verhaltens- und Vorgehensweisen als Grundlage haben."
+								},
+								{
+									"Name": "Die Lehrperson setzt vermehrt heterogene (statt homogene) Lerngruppen ein."
+								},
+								{
+									"Name": "Die Lehrperson ist ein Vorbild für Flexibilität und Empathie, indem sie neuen, unvorhergesehenen Situationen unvoreingenommen begegnet und sich in die Situation des/der Lernenden hineinversetzen kann."
+								},
+								{
+									"Name": "Die Lehrperson zeigt, wie Konfliktbewältigung durch sozial erwünschtes Verhalten ablaufen kann (Strategien, Vorgehensweisen)."
+								},
+								{
+									"Name": "Die Lehrperson entwickelt mit den Lernen- den Lösungsstrategien zum Abbau eigener Vorurteile und der Bekämpfung von Diskriminierungen."
+								},
+								{
+									"Name": "Die Lehrperson nutzt bewusst die Besonderheiten von Kindern aus anderen Kulturen für die Entwicklung der Schulkultur (Sprache, Normen/ Werte, Kultur etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson nutzt systematisch das Potenzial von Vielfalt und Verschiedenheit der Lernenden zur Förderung sozialer und persönlicher Entwicklung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson erreicht durch konkrete, systematisch angelegte Themenbearbeitung und Projekte ein Klima der gegenseitigen Wertschätzung unabhängig des jeweiligen kulturellen Hintergrunds der Lernenden."
+								},
+								{
+									"Name": "Die Lehrperson schafft durch gezielte Auswahl und Bearbeitung von Themen ein Verständnis für die eigene soziale und kulturelle Identität sowie für die Wahrnehmung und Wertschätzung der eigenen Person als Individuum und als Mitglied unterschiedlicher Gruppen."
+								},
+								{
+									"Name": "Die Lehrperson schafft es durch regelmässige Selbstreflexion der Lernenden, ihr eigenes Verhalten durch Normen und Werte bewusst zu machen, ohne die eigene Identität aufzugeben."
+								},
+								{
+									"Name": "Die Lehrperson bietet regelmässig Gelegenheit zur Begegnung und reflektierten Auseinandersetzung mit multikulturellen Situationen."
+								},
+								{
+									"Name": "Die Lehrperson integriert Kinder aus anderen Kulturen, Lern- und/oder Körperbehinderte durch gezielte Differenzierung der Lernziele, Inhalte, Methoden, Sozialformen, Arbeitsmaterialien und durch das Ausmass an Hilfestellung."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "2.5 Selbstgesteuertes Lernen",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennt Instrumente zur Förderung selbstgesteuerten, verstehensorientierten Lernens und setzt sie gelegentlich ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson denkt laut mit den Kindern über die Problemlöseprozesse nach."
+								},
+								{
+									"Name": "Die Lehrperson erarbeitet mit den Kindern verschiedene Arbeitstechniken."
+								},
+								{
+									"Name": "Es wird über die angewandte Arbeitstechnik gemeinsam reflektiert."
+								},
+								{
+									"Name": "Die Lehrperson kennt die Instrumente: Ausführungsmodell («lautes Denken»), Lernpartnerschaft, Lerntagebuch, Arbeitsrückschau, Klassenkonferenz und setzt sie gelegentlich ein."
+								},
+								{
+									"Name": "Vorgehensweisen, Arbeitstechniken auf Plakaten, Lernblättern etc. werden festgehalten."
+								},
+								{
+									"Name": "Die Lehrperson kennt die Methoden: Artikulation, Modeling, Reflection, Scaffolding, Coaching und setzt diese gelegentlich ein."
+								},
+								{
+									"Name": "Dem Thema entsprechend wird ein sinnvolles, instrumentelles Ziel formuliert."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt Instrumente für selbstgesteuertes, verstehensorientiertes Lernen systematisch ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson hat gezielt prozessorientierte Phasen in der Bearbeitung eines Themas geplant und durchgeführt."
+								},
+								{
+									"Name": "Es wird regelmässig an instrumentellen Zielen gearbeitet."
+								},
+								{
+									"Name": "Die Arbeit an instrumentellen Zielen wird nicht nur punktuell bei einem Thema eingesetzt, sondern kontinuierlich an den Zielen gearbeitet."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson gestaltet anspruchsvollen, selbstgesteuerten Unterricht und leitet zur Reflexion über das eigene Lernen an.",
+							"Indicators": [
+								{
+									"Name": "Es werden regelmässig Gefässe, Themen bereitgestellt, bei denen selbstgesteuertes Lernen angewandt und geübt werden kann."
+								},
+								{
+									"Name": "Die Kinder haben, ihrer Stufe entsprechend, sinnvolle Arbeitstechniken, Vorgehensweisen gelernt, dass sie diese mit hoher Selbstständigkeit anwenden können."
+								},
+								{
+									"Name": "Die Lehrperson kann sich bei der Bearbeitung von ausgewählten Themen in Bezug auf Arbeitstechniken und Vorgehensweisen auf das Coaching beschränken."
+								},
+								{
+									"Name": "Die Lehrperson ist in der Lage, individuelle Ansprüche der Kinder in der Weiterentwicklung des selbstgesteuerten Lernens zu unterstützen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "3 Heterogenität beim Lernen",
+			"Description": "Die Lehrperson versteht, wie verschieden die Wege zum Lernen sind, und schafft Unterrichtssituationen, die auf die Lernenden individuell angepasst sind.",
+			"Topics": [
+				{
+					"Name": "3.1 Berücksichtigung der Lernfähigkeiten",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson passt den Unterricht phasenweise den Lernfähigkeiten der Lernenden an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann den Begriff «Lernfähigkeit», der aus den Aspekten Lernstand, Lernstil und Lerntempo besteht, erklären. (Lernstand: Wissen, Können und Haltung hinsichtlich des Themas; Lernstil: Klassenspezifischer Lernstil, zum Beispiel Vorliebe für das Arbeiten mit Nachschlagewerken, Karteien oder Werkstätten; Lerntempo: Spannbreite des Zeitbedarfs von den langsamen zu den schnellen Lernenden)."
+								},
+								{
+									"Name": "Die Lehrperson beachtet bei der Planung und Durchführung des Unterrichts phasenweise den Lernstand der Klasse."
+								},
+								{
+									"Name": "Die Lehrperson beachtet bei der Planung und Durchführung des Unterrichts phasenweise den Lernstil der Klasse."
+								},
+								{
+									"Name": "Die Lehrperson beachtet bei der Planung und Durchführung des Unterrichts phasenweise das Lerntempo der Klasse."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson richtet den Unterricht regelmässig auf die unterschiedlichen Lernvoraussetzungen aus.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson beachtet den Lernstand, den Lernstil und das Lerntempo in der Planung und Durchführung des Unterrichts durch konkrete methodische Massnahmen (zum Beispiel Niveaudifferenzierung, Wochen- und Arbeitspläne etc.)."
+								},
+								{
+									"Name": "Die Lernvoraussetzungen werden aufgrund einer pädagogischen Diagnostik analysiert."
+								},
+								{
+									"Name": "Die Lernangebote werden so angelegt, dass die Lernenden ihre bisher gewonnenen Handlungs- und Erkenntnismittel in die neue Lern- und Erfahrungssituation einbringen können."
+								},
+								{
+									"Name": "Die Lehrperson stellt Aufgaben, bei denen die Lernenden die Möglichkeit haben, ihre gewonnenen Handlungs- und Erkenntnismittel für das Konstruieren von neuem Wissen einzusetzen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson passt Unterstützung und Leistungserwartung subjektorientiert den Lernvoraussetzungen an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson berücksichtigt bei der Planung der Unterstützung den Lernstand, Lernstil und das Lerntempo der einzelnen Lernenden."
+								},
+								{
+									"Name": "Die Ergebnisse der pädagogischen Diagnostik (siehe dazu auch PS 8) fliessen in die Erstellung von subjektorientierten Förderplänen ein."
+								},
+								{
+									"Name": "Die Lehrperson ist in der Lage, Unterstützungsangebote (Förderpläne, Materialien etc.) und Leistungserwartungen (Ziele aus anderen Klassenstufen) Hochbegabten anzupassen."
+								},
+								{
+									"Name": "Die Lehrperson kann Kinder mit Behinderungen (zum Beispiel Seh-, Gehbehinderungen etc.) in der Klasse so unterstützen und integrieren, dass diese die Klassenziele erreichen können."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "3.2 Zielkriterien",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson formuliert grundsätzlich über- prüfbare Kriterien für die Zielerreichung der Lernenden.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson formuliert konkrete, überprüfbare Kriterien, die es den Lernenden erlauben, selbstständig zu beurteilen, ob ein Ziel erreicht wurde."
+								},
+								{
+									"Name": "Die Lehrperson vermittelt diese Kriterien in der Regel mittels des Auftrages."
+								},
+								{
+									"Name": "Die Lehrperson formuliert diese Kriterien in der Regel bei allen zentralen Aufträgen."
+								},
+								{
+									"Name": "Die Lehrperson hat diese Kriterien schon bei der Vorbereitung mitbedacht."
+								},
+								{
+									"Name": "Die Lehrperson formuliert Kriterien der Situation und dem Thema entsprechend für eine Sequenz, einen Halbtag oder für eine Woche."
+								},
+								{
+									"Name": "Die Kriterien sind der Situation und der Stufe angepasst."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson formuliert überprüfbare Kriterien für die Zielerreichung unterschiedlicher Leistungsgruppen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson formuliert systematisch niveaudifferenzierte Kriterien für die Zielerreichung."
+								},
+								{
+									"Name": "Die niveaudifferenzierte Erreichung der Ziele der Lernenden wird systematisch festgehalten (zum Beispiel Lernendendossier, Wochenplan, Portfolio, Lerntagebuch etc.)."
+								},
+								{
+									"Name": "Die Lehrperson formuliert im gleichen Themen- oder Grobzielbereich für verschiedene Leistungsgruppen niveaudifferenzierte Kriterien für die Zielerreichung."
+								},
+								{
+									"Name": "Die Lehrperson teilt die Klasse je nach Fach oder Aufgabenstellung in sinnvolle Leistungsgruppen auf."
+								},
+								{
+									"Name": "Die Lehrperson leitet die Leistungsgruppen an, selber Kriterien für die Zielerreichung zu formulieren (zum Beispiel in Gruppenverträgen, Lernverträgen etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson entwickelt überprüfbare, subjektorientierte Kriterien für die Zielerreichung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson formuliert individuelle, auf den Entwicklungs- und Leistungsstand der Lernenden angepasste Kriterien für die Zielerreichung."
+								},
+								{
+									"Name": "Die Erreichung der individuellen Kriterien wird zur Zielerreichung als Ausgangspunkt für die weitere Förderplanung verwendet."
+								},
+								{
+									"Name": "Die Lehrperson leitet die Lernenden an, selber Kriterien für die Zielerreichung zu formulieren (zum Beispiel bei Lernverträgen, individuellen Förderplänen etc.)."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "3.3 Leistungserwartungen",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson passt Unterstützung und Leistungserwartung grundsätzlich den Voraussetzungen der Lernenden an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson verwendet stufen- und adressatengerechte Unterrichtsformen."
+								},
+								{
+									"Name": "Die Lehrperson setzt stufen- und adressatengerechte Sozialformen und Rhythmisierungen des Unterrichts ein."
+								},
+								{
+									"Name": "Die Lehrperson überprüft regelmässig den Lernstand der Klasse und plant den Unterricht aufgrund der daraus resultierenden Leistungserwartungen."
+								},
+								{
+									"Name": "Die Lehrperson diagnostiziert die Leistungen der Klasse aufgrund verschiedener entwicklungspsychologischer Aspekte (zum Beispiel Sprache, kognitive Entwicklungsstadien, Problemlöse- und Sozialverhalten, metakognitive Fähigkeiten etc.), und unterstützt sie die Lernenden entsprechend."
+								},
+								{
+									"Name": "Die Lehrperson hat ein Repertoire von einfachen Individualisierungsmassnahmen (Niveaudifferenzierung, «Lernaufgaben», «Lernkiosk», strukturierte Lernumgebung etc.), und setzt sie diese der Situation/der Diagnose entsprechend ein."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson passt Unterstützung und Leistungsanforderungen regelmässig den individuellen Leistungserwartungen der Lernenden an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson diagnostiziert regelmässig den Lernstand der Lernenden, und erteilt sie entsprechende leistungs- und anforderungsunterschiedliche Aufgaben."
+								},
+								{
+									"Name": "Die Lehrperson diagnostiziert aufgrund offiziell anerkannter Standards (Lernzielformulierungen des Lehrplans, Bildungsstandards) die Leistungserwartungen und formuliert diese entsprechend."
+								},
+								{
+									"Name": "Die Lehrperson hat ein differenziertes Organisationsinstrument, das ihr den individuellen Leistungsstand der Lernenden aufzeigt und es ihr ermöglicht, entsprechende Unterstützungsmassnahmen gezielt und kontinuierlich einzusetzen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson erfasst systematisch die individuellen Lernerwartungen und unterstützt die Lernenden angemessen und subjektorientiert.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson erstellt aufgrund regelmässiger Diagnosen individuelle Förderpläne."
+								},
+								{
+									"Name": "Die Lehrperson kennt verschiedene Modelle der konsequenten Subjektorientierung (Daltonplan, Jenaplan, Freinet, Enrichmentmodelle etc.), und versucht sie solche umzusetzen."
+								},
+								{
+									"Name": "Die Lehrperson verfügt über ein angemessenes Instrument für ein systematisches Festhalten der individuellen Leistungen und der entsprechenden Fördermassnahmen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "3.4 Eigenständiges Lernen",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson passt Hilfen in einfachen Situationen den Lernenden an, so dass sie sich teilweise selber helfen können.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson hat ein Bewusstsein für das Können der Lernenden."
+								},
+								{
+									"Name": "Die Lehrperson hilft den Lernenden bei der Organisation von alltäglichen Dingen (anziehen, Ordnung etc.) so, dass sie es selber leisten können."
+								},
+								{
+									"Name": "Die Lehrperson erkennt Möglichkeiten der Anregung des eigenständigen Lernens in alltäglichen und komplexen Situationen."
+								},
+								{
+									"Name": "Die Lehrperson gibt den Lernenden Zeit zum Selberlösen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson hält sich mit der Hilfe weitgehend zurück, so dass sich die Lernenden meistens selber helfen können.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson stellt den Lernenden bei der Organisation von alltäglichen Dingen (anziehen, Ordnung etc.) Möglichkeiten bereit, dass sie es selber leisten können."
+								},
+								{
+									"Name": "Die Lehrperson setzt Möglichkeiten der Anregung des eigenständigen Lernens in alltäglichen und komplexen Situationen ein."
+								},
+								{
+									"Name": "Die Lehrperson lehrt ansatzweise Strategien zum eigenständigen Lernen."
+								},
+								{
+									"Name": "Die Lehrperson lehnt unnötige Hilfeforderungen zur Erledigung von Aufgaben ab."
+								},
+								{
+									"Name": "Die Lehrperson regt die gegenseitige Unterstützung der Lernenden an."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson hält sich mit der Hilfe in allen Situationen so zurück, so dass sich die Lernenden durchwegs selber helfen können.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt Hilfen gezielt zurückhaltend und den Situationen angepasst ein."
+								},
+								{
+									"Name": "Die Lehrperson bespricht mit den Lernenden Strategien zum eigenständigen Lernen und regt deren Erwerb an."
+								},
+								{
+									"Name": "Die Lehrperson organisiert das Hilfeholen der Lernenden so, dass auch gegenseitige Hilfe unterstützt wird."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "4 Unterrichtsstrategien",
+			"Description": "Die Lehrperson versteht und verwendet eine Vielfalt von Unterrichtsstrategien, um bei den Lernenden stufengerechte, instrumentelle Fähigkeiten zu entwickeln und zu fördern.",
+			"Topics": [
+				{
+					"Name": "4.1 Aufträge planen und formulieren",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson plant und formuliert Aufträge grundsätzlich angemessen und verständlich.",
+							"Indicators": [
+								{
+									"Name": "Die zentralen Aufträge einer Sequenz liegen in schriftlicher Form vor."
+								},
+								{
+									"Name": "Die nötigen Arbeitsmaterialien für die Aufträge liegen bereit."
+								},
+								{
+									"Name": "Die Anweisungen sind inhaltlich richtig."
+								},
+								{
+									"Name": "Der Auftrag wird «en bloc» erteilt und nicht ständig ergänzt, während die Lernenden bereits am Arbeiten sind."
+								},
+								{
+									"Name": "Qualitätskriterien zum Produkt den Lernenden werden transparent gemacht."
+								},
+								{
+									"Name": "Die Aufträge werden wie folgt strukturiert?\n− Absolute Aufmerksamkeit jedes Kindes (entsprechend warten)\n− Anweisung mit Zeitwort (Ihr legt nachher...)\n− Angabe, wie viel Zeit für die Aufgabe zur Verfügung steht\n− Anweisung, was nach der Erledigung des Auftrages zu tun\nist\n− Verständniskontrolle, evtl. Auftrag wiederholen lassen\n− Startzeichen"
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson kennt verschiedene Formen von Arbeitsaufträgen und setzt diese der Lernsituation und den Lernzielen angepasst ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kennt die folgenden fünf Arten von Arbeitsaufträgen und setzt sie adäquat ein?\n− mündliche Anweisung\n− mündliche Anweisung anhand der Arbeitsmaterialien\n− mündlich und handelnd im Sinne von Vormachen/Nachmachen\n− schriftlich an Wandtafel oder auf Auftragsblatt, wenn nötig mit mündlichen Ergänzungen/ Präzisierungen\n− Aufgrund der präsentierten Materialien oder Problemstellung formulieren die Kinder den Auftrag selber"
+								},
+								{
+									"Name": "Die Aufträge werden kontrolliert und korrigiert."
+								},
+								{
+									"Name": "Regeln zur Ausführung von Arbeitsaufträgen werden formuliert und wenn nötig eingefordert."
+								},
+								{
+									"Name": "Qualitätskriterien zur Erfüllung der Arbeitsaufträge werden transparent gemacht (Produkt, Prozess, Sozialverhalten)."
+								},
+								{
+									"Name": "Stimmlich wird eine klare Zäsur zwischen Auftragserteilung und normalem Unterrichtston erkennbar."
+								},
+								{
+									"Name": "Es wird systematisch Selbst- und Fremdkontrolle eingesetzt."
+								},
+								{
+									"Name": "Die Arbeit der Lehrperson kann sich während der Ausführung der Arbeitsaufträge auf das Coaching beschränken."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson erteilt Arbeitsaufträge auf qualitativ hohem Niveau und unterstützt die Lernenden in der Formulierung eigener Arbeitsaufträge.",
+							"Indicators": [
+								{
+									"Name": "Das System von Lernaufgaben wird mit unterschiedlichen Anforderungsniveaus sinnvoll eingesetzt."
+								},
+								{
+									"Name": "Aufträge werden mit Aufforderungscharakter in Bezug auf die Möglichkeit, eigene differenzierte Aufträge zu formulieren, erteilt."
+								},
+								{
+									"Name": "Die Kinder werden zur Formulierung von Qualitätskriterien zur Erfüllung ihrer Arbeitsaufträge angehalten."
+								},
+								{
+									"Name": "Selbstformulierte Aufträge der Kinder werden vor/nach der Ausführung auf ihre Qualität hin gemeinsam überprüft."
+								},
+								{
+									"Name": "Selbstständiges Arbeiten wird durch «Langzeitaufträge» oder «Mehrfachaufträge» ermöglicht."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "4.2 Methodenvielfalt",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennt grundlegende Methoden des Unterrichtens und setzt diese in der Regel sach-, ziel- und adressatengerecht ein.",
+							"Indicators": [
+								{
+									"Name": "Die eingesetzte Methode dient dem Ziel."
+								},
+								{
+									"Name": "Die Lehrperson setzt verschiedene Inszenierungstechniken ein (zum Beispiel einen Impuls geben, etwas zeigen, etwas vormachen, etwas verlangsamen, etwas dramatisieren etc.)."
+								},
+								{
+									"Name": "Die Lehrperson setzt gezielt die verschiedenen Dimensionen methodischen Handelns ein (Sozialformen, Handlungsmuster, Verlaufsformen).\n− Sozialformen: Wechselt sie sinnvoll zwischen den einzelnen Sozialformen: Frontalunterricht, Einzelarbeit, Partnerarbeit und Gruppenarbeit ab?\n− Handlungsmuster: Die Lehrperson kennt und setzt mindestens die folgenden Handlungsmuster, der Situation angepasst ein: Erzählen/Darbieten, Vorzeigen/ Nachmachen, Problemlösen."
+								},
+								{
+									"Name": "Beim Handlungsmuster Erzählen/Darbieten sind mindestens die folgenden Aspekte in angemessener Form vorhanden? \n- Sprechrhythmus und sprachliche Darbietung sind abwechslungsreich und lebendig.\n- Die Aussprache ist deutlich.\n- Die Sätze sind einfach, kurz und die Wortwahl angepasst.\n- Der Inhalt ist korrekt und klar gegliedert.\n- Es erfolgt eine zielgerichtete Verarbeitung/Lernaufgabe, die den Kern des Erzählten, des Dargebotenen erfasst."
+								},
+								{
+									"Name": "Beim Handlungsmuster Vorzeigen/Nachmachen sind mindestens die folgenden Aspekte in angemessener Form vorhanden:\n- Die Organisation ist so, dass die nötigen Materialien bereitliegen und die Arbeitsabläufe durchdacht sind.\n- Die Aufmerksamkeit der Lernenden wird aktiv eingefordert.\n- Die Ziele und die Arbeitsregeln sind transparent gemacht worden.\n- Die Teilschritte sind sinnvoll, klar ersichtlich und der Schwierigkeit angepasst?\n- Die Lehrperson gibt prägnante, kurze Ausführungskommentare."
+								},
+								{
+									"Name": "Die Lehrperson hat den Überblick über den Stand der Arbeiten der einzelnen Lernenden?\n− Sie gibt klare, sinnvolle Kriterien zur Selbstkontrolle der einzelnen Arbeitsschritte.\n− Sie leitet den nächsten Arbeitsschritt erst dann ein, wenn die Lernenden bereit dazu sind.\n− Es findet ein selbstständiger Nachvollzug der einzelnen Teilschritte durch die Lernenden statt."
+								},
+								{
+									"Name": "Beim Handlungsmuster Problemlösen sind mindestens die folgenden Phasen des Problemlösens in angemessener Form vorhanden:\n- Problem: Das Problem baut auf Vorwissen auf und ist für die Lernenden interessant.\n- Arbeitsabläufe sind vorbereitet und durchdacht.\n- Einstieg: Der Zielbezug zur Problempräsentation ist in angemessener Form vorhanden.\n- Begleitung: Die Lehrperson hält sich zurück und gibt teilzielbezogen und auf das Vorwissen bezogene Erklärungen ab.\n- Sie unterstützt das Finden von Lösungsstrategien.\n− Einordnung/Verknüpfung: Die Lehrperson gibt sinnvolle Kriterien zur Selbstkontrolle für das Problemlösen.\n− Das neue Wissen wird in das vorhandene Wissen integriert.\n− Das Ergebnis wird ins Vorwissen integriert und die Lernenden zur Reflexion herausgefordert."
+								},
+								{
+									"Name": "Verlaufsformen: In der Lernsequenz werden klar die drei Schritte: Einstieg, Erarbeitung und Ergebnissicherung deutlich."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt vielfältige Methoden des Unterrichtens klassenzentriert, sach-, ziel- und adressatengerecht ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt die medialen Stufen des Lernens (enaktiv, ikonisch, symbolisch) sinnvoll ein."
+								},
+								{
+									"Name": "Die Lehrperson erkennt die flexiblen Handhabungsmöglichkeiten im Vorwärts- und Rückwärtsschreiten bei der Anwendung dieser medialen Repräsentationen, und setzt sie diese Möglichkeiten nach Bedarf auch ein."
+								},
+								{
+									"Name": "Die Lehrperson hat eine angemessene Methodenvielfalt."
+								},
+								{
+									"Name": "Die Lehrperson kann die Methoden variieren und die Methodenwahl fundiert begründen."
+								},
+								{
+									"Name": "Die Lehrperson kann während des Unterrichts die vorgesehene Methode, wenn nötig, der Situation angepasst verändern."
+								},
+								{
+									"Name": "Die Lehrperson berücksichtigt unterschiedliche Zugangsweisen (haptisch,auditiv, kommunikativ, visuell, kognitiv) bei der Einführung und Verarbeitung von neuen Inhalten."
+								},
+								{
+									"Name": "Der Unterricht ist so gegliedert, dass den Lernenden ein sinnvolles, vielfältiges Handeln ermöglicht wird."
+								},
+								{
+									"Name": "Die Lehrperson formuliert Lernaufgaben, die die Lernenden aktivieren und die Möglichkeit geben, selbstständig auf die Struktur des Inhaltes oder der Problemlösung zu kommen (zum Beispiel durch das Prinzip des entdeckenden Lernens)."
+								},
+								{
+									"Name": "Die Lehrperson ermöglicht den Lernenden reale Erfahrungen, reflektiert sie diese und koppelt sie mit dem vermittelten Wissen."
+								},
+								{
+									"Name": "Die Lehrperson unterscheidet klar zwischen didaktischen und erzieherischen Methoden, und setzt sie diese auch gezielt ein."
+								},
+								{
+									"Name": "Die Lehrperson kennt «offene Unterrichtsformen», und setzt sie solche auch gezielt in ihrem Unterricht ein (schülerzentrierte Formen, Grossformen wie Planarbeit, Werkstattunterricht, freie Arbeit, projektartiges Lernen, Lernaufgaben etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson verfügt über Unterrichtsstrategien und setzt diese mittels eines breit gefächerten Repertoires an Methoden im Wissen um ihre Möglichkeiten und Grenzen ein.",
+							"Indicators": [
+								{
+									"Name": "Systematisch werden verschiedene Formen des individuellen und selbstständigen Lernens inszeniert."
+								},
+								{
+									"Name": "Die Lehrperson nutzt die Möglichkeiten der erweiterten Lehr- und Lernformen (ELF und offene Unterrichtsformen), führt sie diese entsprechend durch und evaluiert sie anschliessend sinnvoll."
+								},
+								{
+									"Name": "Durch einen systematischen Einsatz von Unterrichtsmethoden wird ein klarer Aufbau der Hinführung zu selbstständigem Lernen ersichtlich."
+								},
+								{
+									"Name": "Die Lehrperson kann diesen Aufbau fundiert begründen."
+								},
+								{
+									"Name": "Der Einsatz verschiedener Methoden ist systematisch an die Bearbeitung von instrumentellen Zielen gekoppelt."
+								},
+								{
+									"Name": "Die Lehrperson setzt in ihrer Jahres-, Semester- oder Quartalsplanung bewusst methodische Schwerpunkte im Hinblick auf didaktische, erzieherische und instrumentelle Aspekte des Lernens."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "4.3 Einsatz von Lernmaterialien",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson setzt Lernmaterialien und Ressourcen gelegentlich zur Unterstützung des Lernens ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson konsultiert den «Lehrerkommentar», und kann sie ihre Entscheidung für alternative Lernmaterialien sinnvoll begründen."
+								},
+								{
+									"Name": "Die Lehrperson setzt in der Regel die vom «Lehrerkommentar» vorgeschlagenen Materialien ein."
+								},
+								{
+									"Name": "Die Lehrperson kann selber Übungsmaterialien.in Adaption zu denen im Lehrerkommentar vorgeschlagenen Materialien herstellen, wenn es die Situation erfordert?"
+								},
+								{
+									"Name": "Die zusätzlich eingesetzten Materialien sind für das Erreichen der Lernziele sinnvoll."
+								},
+								{
+									"Name": "Die Lehrperson sucht zu Themen, die in keinem offiziellen Lehrmittel behandelt werden, sinnvolle Arbeitsmaterialien in Bibliotheken etc."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt Lernmaterialien und Ressourcen regelmässig dazu ein, Lernen anzuregen und in Gang zu halten.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson stellt vielfältige, motivationsfördernde und der Stufe angepasste Lernmaterialien her (Arbeitsblätter, Lernspiele etc.), die das Lernen unterstützen und Motive für das Lernen generieren."
+								},
+								{
+									"Name": "Die eingesetzten Materialien sind stufengerecht und helfen den Lernenden, in die Zone der nächsten Entwicklung\n(Erreichbarkeit) zu gelangen."
+								},
+								{
+									"Name": "Die Lehrperson bietet konsequent vielfältige Übungsmaterialien an, die es erlauben, Lösungswege, Aufgabenstellungen und Darstellungsformen zu variieren."
+								},
+								{
+									"Name": "Der Einsatz der Lernmaterialien ist so organisiert, dass eine Individualisierung möglich ist."
+								},
+								{
+									"Name": "Der Einsatz der Lernmaterialien ist so organisiert, dass eine Selbstkontrolle durch die Lernenden und eine Erfolgskontrolle durch die Lehrperson gewährleistet ist."
+								},
+								{
+									"Name": "Die Lehrperson bietet regelmässig Materialien an, die zur Selbsttätigkeit anregen."
+								},
+								{
+									"Name": "Die Lehrperson erkennt die Phasen der Bereitschaft der Lernenden, sich selbsttätig mit den angebotenen Materialien auseinanderzusetzen und bietet sie, wenn nötig, zurückhaltend Hilfestellungen an (zum Beispiel beim freien geleiteten Spiel; bei freien Lernangeboten)."
+								},
+								{
+									"Name": "Die Lehrperson bietet den Lernenden Möglichkeiten zur mehrfachen Verarbeitung (sensomotorisch, bildlich, symbolisch) von neuen Lerninhalten mittels verschiedener Materialien an."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson verwendet Lernmaterialien und Ressourcen, die den Lernenden eine hohe Erfahrungsintensität ermöglichen.",
+							"Indicators": [
+								{
+									"Name": "Die Lernmaterialien und Ressourcen sind in eine interaktive Lehr-/Lernumgebung integriert, die der Selbststeuerung von Lernprozessen und der Selbstverantwortung für die Lernergebnisse Rechnung tragen."
+								},
+								{
+									"Name": "Durch die angebotenen Lernmaterialien werden die individuellen Ressourcen und das Vorwissen der Lernenden aktiviert."
+								},
+								{
+									"Name": "Die Lernmaterialien und Ressourcen sind bei den angebotenen Lernaufgaben so mitberücksichtigt, dass sie viele Möglichkeiten zur Selbsttätigkeit innerhalb und ausserhalb des Schulzimmers zulassen."
+								},
+								{
+									"Name": "Der Einsatz von Lernmaterialien und Ressourcen ist so geplant, dass handelndes, problemlösendes und aktiv entdeckendes Lernen möglich ist."
+								},
+								{
+									"Name": "Der Einsatz der Lernmaterialien ist und Ressourcen so angelegt, dass die Erhaltung und Förderung von Motivation gewährleistet ist."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "4.4 Instrumentelle Fähigkeiten",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson vermittelt gelegentlich instrumentelle Fähigkeiten.",
+							"Indicators": [
+								{
+									"Name": "Der Lehrperson ist bewusst, dass der Aufbau von Arbeits- und Denkweisen bei den Lernenden zu ihrer Aufgabe gehört."
+								},
+								{
+									"Name": "Der Lehrperson macht konkrete Arbeits- und Denkweisen vor (Vorleben/Vormachen)."
+								},
+								{
+									"Name": "Der Lehrperson macht die technische Seite einer Arbeitsmethode konkret vor."
+								},
+								{
+									"Name": "Die Lehrperson ist ein Vorbild für sorgfältiges Reflektieren von gemachten Erfahrungen."
+								},
+								{
+									"Name": "Die Lehrperson zeigt sich vorbildlich in der Unterscheidung von Vermutungen und Tatsachen."
+								},
+								{
+									"Name": "Die Lehrperson ist ein gutes Modell für soziales Verhalten."
+								},
+								{
+									"Name": "Die Lehrperson denkt laut über Lernprozesse nach."
+								},
+								{
+									"Name": "Der Lehrperson führt Gespräche mit den Lernenden über ihre Lernprozesse (Vorgehensweisen, Strategien, Arbeitstechniken)."
+								},
+								{
+									"Name": "Der Lehrperson reflektiert regelmässig mit den Lernenden deren Verhaltens- und Vorgehensweisen."
+								},
+								{
+									"Name": "Verhaltens- und Vorgehensweisen werden gelegentlich schriftlich festgehalten (zum Beispiel  Plakat, Merkblatt etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson vermittelt gezielt instrumentelle Fähigkeiten und fördert eigenständiges Lernen.",
+							"Indicators": [
+								{
+									"Name": "Der Lehrperson initiiert gezielt die Aneignung von Arbeits- und Denkweisen."
+								},
+								{
+									"Name": "Die Lehrperson erarbeitet konkret mit den Lernenden eine mögliche Arbeitsmethodik, und reflektiert sie diese mit ihnen."
+								},
+								{
+									"Name": "Die Lehrperson bietet den Lernenden die Gelegenheit, sich über ihre individuellen Erfahrungen mit anderen auszutauschen."
+								},
+								{
+									"Name": "Die Lehrperson setzt gezielt und systematisch Instrumente (zum Beispiel Lernjournal, Lernpartnerschaft, Arbeitsrückblick, Klassengespräch, kognitive Modellierung) für das Festhalten von Lernprozessen ein."
+								},
+								{
+									"Name": "Die Vermittlung von Arbeits- und Denkweisen ist dem Entwicklungsstand der Lernenden angepasst."
+								},
+								{
+									"Name": "Die Lehrperson setzt die folgenden Techniken für die Lernprozessbegleitung sinnvoll ein.\n− Coaching: Sie unterstützt die Lernenden beim Problemlösen, wenn nötig.\n− Modeling: Sie denkt laut über ihren Problemlöseprozess nach.\n− Scaffolding: Sie bietet den Lernenden ein Lerngerüst (roter Faden) an, damit sie selbstständig arbeiten können.\n− Performing: Sie bietet Aufgaben an, an denen die Lernenden das gelernte Sachwissen und die Arbeitstechniken anwenden können.\n− Fading: Die Hilfestellungen durch die Lehrperson wird sukzessive zurückgenommen."
+								},
+								{
+									"Name": "Die Lehrperson zeigt, wie die Lernenden ihr Lernen überwachen\nund kontrollieren können."
+								},
+								{
+									"Name": "Arbeits- und Denkweisen werden grundsätzlich im Zusammenhang mit der Vermittlung inhaltlichen, konkreten Wissens erarbeitet (keine allgemeinen Regeln)."
+								},
+								{
+									"Name": "Die Lehrperson bietet viele Möglichkeiten an, die gelernten Strategien in ähnlichen Situationen beziehungsweise an thematischen Inhalten zu üben, anzuwenden (geführtes Anwenden)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson vermittelt systematisch instrumentelle Fähigkeiten und fördert die Entwicklung individueller Lernstrategien.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson bietet den Lernenden während des Lernprozesses auf konkrete Ziele hin Feedback an (keine diffusen Rückmeldungen)."
+								},
+								{
+									"Name": "Die Lehrperson fördert die Nützlichkeitsüberzeugung von Lernstrategien, indem die Lernenden die Möglichkeiten/Lernaufgaben mit einer positiven Attribution verbinden können."
+								},
+								{
+									"Name": "Die Lehrperson verwendet zur Vermittlung von Kompetenzgefühl und der Nützlichkeit von Strategien die folgenden Techniken:\n− Falsche Schritte werden nicht unmittelbar, sondern erst im zweiten Schritt korrigiert.\n− Die Lehrperson betont bei allen notwendigen Korrekturen die positiven Aspekte des Lösungsversuchs.\n− Sie nimmt jede Lernendenäusserung auf und versucht, diese in Verbindung zu den Lernzielen zu bringen.\n− Sie ermuntert jene Lernenden, die sich nicht selbstständig melden, durch das Herausstreichen ihrer guten Leistungen am Unterricht teilzunehmen."
+								},
+								{
+									"Name": "Die Lehrperson stellt die instrumentellen Fähigkeiten im Sinne von Bedeutungshaltigkeit der Lerninhalte auch in anderen schulischen und ausserschulischen Anwendungsbereichen dar."
+								},
+								{
+									"Name": "Die Lehrperson plant die instrumentellen Fähigkeiten grundsätzlich im Zusammenhang mit der Vermittlung von sachbezogenen Inhalten über das ganze Schuljahr hinweg."
+								},
+								{
+									"Name": "Ein systematischer Aufbau von instrumentellen Fähigkeiten wird aus der Jahres-, Semester- oder Quartalsplanung ersichtlich."
+								},
+								{
+									"Name": "Die Lehrperson bietet systematisch eine Lernumgebung an, die ein selbstgesteuertes Lernen möglich macht (beispielsweise durch offene Unterrichtsformen)."
+								},
+								{
+									"Name": "Die Lernenden können ohne Hinweise und Hilfen der Lehrperson in entsprechenden Situationen die gelernten instrumentellen Fähigkeiten spontan anwenden."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "5 Motivieren und Anleiten",
+			"Description": "Die Lehrperson setzt ihr Verständnis über Motivationsprozesse und Klassenmanagement gezielt ein, um Lernsituationen zu schaffen, die die positive soziale Zusammenarbeit der Kinder und Jugendlichen fördert und selbstgesteuertes Lernen zulassen.",
+			"Topics": [
+				{
+					"Name": "5.1 Motivationsförderung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson fördert die Motivation der Lernenden mittels geeigneter Massnahmen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson wählt Inhalte, Methoden und Materialien passend für die Stufe und das Fach aus."
+								},
+								{
+									"Name": "Die Lehrperson äussert den eigenen Glauben an die Fähigkeiten der Lernenden."
+								},
+								{
+									"Name": "Die Lehrperson lobt im richtigen Moment."
+								},
+								{
+									"Name": "Die Lehrperson hält sich mit Urteilen zurück."
+								},
+								{
+									"Name": "Die Lehrperson kontrolliert sachbezogen."
+								},
+								{
+									"Name": "Die Lehrperson gibt sachbezogene Kritik."
+								},
+								{
+									"Name": "Die Lehrperson zeigt Freude über ein gelungenes Produkt, eine gelungene Sequenz."
+								},
+								{
+									"Name": "Die Lehrperson wählt die Methoden passend zur Stufe und zum Fach aus."
+								},
+								{
+									"Name": "Arbeitsergebnisse werden präsentiert und angemessen honoriert."
+								},
+								{
+									"Name": "Die Lehrperson trennt sachbezogene und persönliche Rückmeldungen."
+								},
+								{
+									"Name": "Die Lehrperson kann für alle Lernenden motivierende Aufgaben stellen."
+								},
+								{
+									"Name": "Die Lehrperson kann sich selbst für die Lerngegenstände begeistern."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson kennt Bedingungen und Instrumente zur Förderung intrinsischer und extrinsischer Motivation und setzt diese gezielt in verschiedenen Lernsituationen ein.",
+							"Indicators": [
+								{
+									"Name": "Der Lehrperson initiiert Aufgaben durch den Aufbau einer Fragehaltung, eines Problembewusstseins und persönlicher Betroffenheit, sodass die Kinder an diesem Thema arbeiten wollen."
+								},
+								{
+									"Name": "Die Lehrperson achtet zu Beginn des Unterrichts darauf, dass eine breite Aktivierung stattfindet."
+								},
+								{
+									"Name": "Die Lehrperson nimmt Vorschläge von Themen- und Problemstellungen der Kinder auf."
+								},
+								{
+									"Name": "Die Lehrperson setzt gezielt folgende Massnahmen im Sinne der Zuschreibungstheorie (Attributionstheorie) ein:\n− Sie fragt die Kinder, wen sie für den Erfolg/ Misserfolg verantwortlich machen (selbst/innen versus jemand anderen/aussen), und unterstützt sie je nachdem innere oder äussere Faktoren.\n− Sie fragt die Kinder, ob sie stabile (Begabung) oder instabile (Glück, Pech, Leistung) Faktoren für Erfolg/ Misserfolg verantwortlich machen, und unterstützt sie je nachdem stabile oder instabile Faktoren."
+								},
+								{
+									"Name": "Die Lehrperson fragt die Kinder, ob sie stabile (Begabung) oder instabile (Glück, Pech, Leistung) Faktoren für Erfolg/Misserfolg verantwortlich machen, und unterstützt sie je nachdem stabile oder instabile Faktoren."
+								},
+								{
+									"Name": "Die Lehrperson pflegt individuelle Bezugsnormen, indem sie Kinder differenziert lobt, vor der ganzen Klasse oder einzeln."
+								},
+								{
+									"Name": "Die Lehrperson bietet Hilfestellungen im Sinne eines Coachings an."
+								},
+								{
+									"Name": "Die Lehrperson spendet Lob, wenn die Situation es erfordert."
+								},
+								{
+									"Name": "Die Lehrperson gibt Belohnungen, wenn die Situation es erfordert."
+								},
+								{
+									"Name": "Die Lehrperson hat bei Bedarf ein Belohnungssystem."
+								},
+								{
+									"Name": "Die Lehrperson kann auf plötzlich aufkommende, der Motivation abträgliche Stimmungen oder Äusserungen von Kindern adäquat reagieren."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson nimmt Motivation als Dauerauftrag der Lernbegleitung wahr, bietet Lernanreize, die zu langfristigem Motivations- und Interessensaufbau führen.",
+							"Indicators": [
+								{
+									"Name": "Durch den Unterricht sind alle Lernenden motiviert."
+								},
+								{
+									"Name": "Die Selbstwirksamkeit der Kinder wird durch folgende Massnahmen gezielt gefördert:\n- Die Lehrperson lässt die Kinder ausreden.\n- Sie lässt die Kinder selber denken und handeln.\n- Sie nimmt Fehler als Lerngelegenheit wahr und nicht als Vorwand für Disziplinierung."
+								},
+								{
+									"Name": "Aufgaben werden mit angemessener Schwierigkeit ausgewählt (Zone der nächsten Entwicklung)."
+								},
+								{
+									"Name": "Die Lehrperson unterstützt das Lernen im Sinne eines Coachings."
+								},
+								{
+									"Name": "Die soziale Eingebundenheit der Kinder wird durch folgende Massnahmen gezielt gefördert:\n- Es werden sinnvolle Partner und Gruppenarbeiten inszeniert.\n- Es wird Wert auf die Erarbeitung eines guten Klassenklimas gelegt."
+								},
+								{
+									"Name": "Die Selbstständigkeit (Autonomie) der Kinder wird durch folgende Massnahmen gezielt gefördert?\n- Die Lehrperson hat ein Kontrollsystem, bei dem nur die zentralen Anliegen kontrolliert werden.\n- Das Kontrollsystem beinhaltet regelmässige Selbstkontrollen.\n- Es wird gezielt mit offenen Unterrichtsformen gearbeitet.\n- Arbeiten und Arbeitsweisen werden auch nach den Interessen der Kinder differenziert."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "5.2 Unterrichtsfluss",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson gliedert den Unterricht adressaten- und sachgerecht.",
+							"Indicators": [
+								{
+									"Name": "Einstieg, Hauptteil und Schlussteil werden ersichtlich."
+								},
+								{
+									"Name": "Verschiedene Sozialformen werden eingesetzt und abgewechselt (FU, EA, PA, GA, KA)."
+								},
+								{
+									"Name": "Folgender Wechsel wird beachtet: Lernort, laut – leise, Bewegung– stillsitzen, mündlich –schriftlich, schwierig – einfach, lehrpersonenzentriert – lernendenzentriert."
+								},
+								{
+									"Name": "Vom Stoff und von den Lernenden her wird logisch rhythmisiert."
+								},
+								{
+									"Name": "Beim Einstieg werden folgende Aspekte berücksichtigt:\n- Es wird klar zwischen Schule und Nicht-Schule unterschieden.\n- Die Lernenden werden über den Lernsequenzverlauf informiert.\n- Der zentrale Aspekt, das Problem, das Ziel wird klar dargelegt.\n- An das Vorverständnis und das Vorwissen der Lernenden wird angeknüpft.\n-  Der Einstieg führt zum Kern des Themas.\n- Die Lernenden wissen am Schluss des Einstiegs, worum es jetzt geht."
+								},
+								{
+									"Name": "Im Hauptteil werden folgende Aspekte berücksichtigt:\n- Der Hauptteil ist in sich gegliedert.\n- Übergänge zwischen zwei Teilschritten werden durch eine klare Pointierung erkennbar.\n- Langsameren und schwächeren Lernenden wird so geholfen, dass der rote Faden der Lernsequenz nicht verloren geht.\n- Die Klasse/Gruppe wird dem Thema und der gewählten Unterrichtsform gemäss sinnvoll aufgeteilt."
+								},
+								{
+									"Name": "Im Schlussteil werden folgende Aspekte berücksichtigt:\n- Das Ergebnis wird auf sinnvolle Art festgehalten.\n- Es wird zusammengefasst, repetiert, kontrolliert.\n- Die Arbeitsergebnisse werden in Bezug auf das (gemeinsam) gesteckte Ziel beurteilt.\n- Übungsaufgaben werden bearbeitet.\n- Das Thema wird abgerundet.\n- Die Lehrperson gibt eine Rückmeldung zur Sequenz (soziales, arbeitstechnisches Verhalten der Lernenden).\n- Es wird ein klarer Schlusspunkt gesetzt.\n- Die Lernenden werden bewusst entlassen. (Lehrperson gibt das Zeichen für die Pause, nicht die Kinder.)"
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson rhythmisiert Unterricht adressaten-, sach- und situationsgerecht.",
+							"Indicators": [
+								{
+									"Name": "Es werden klar strukturierte und relevante Informationen über den Unterrichtsverlauf gegeben."
+								},
+								{
+									"Name": "Der Unterricht wird abwechslungsreich gestaltet."
+								},
+								{
+									"Name": "In einer dem Thema angemessenen Zeitspanne wird mit einer Sozialform gearbeitet."
+								},
+								{
+									"Name": "Die Lehrperson hat so rhythmisiert, dass sie sich einzelnen Lernenden widmen kann."
+								},
+								{
+									"Name": "Es wird zwischen verschiedenen Lehrformen gewechselt und gezielt eingesetzt (von stark geleiteten bis zu sehr offenen Formen)."
+								},
+								{
+									"Name": "Die Übergänge werden bewusst gestaltet."
+								},
+								{
+									"Name": "Durch die Rhythmisierung wird eine lernfördernde Atmosphäre und der Unterrichtsfluss beibehalten."
+								},
+								{
+									"Name": "Bei einer Störung wird schnell und angemessen reagiert, so dass der Unterrichtsfluss einer Lektion aufrecht erhalten bleibt."
+								},
+								{
+									"Name": "Die Lehrperson kann situationsgerecht den geplanten Unterricht verändern."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson gestaltet Unterricht flexibel, dynamisch.",
+							"Indicators": [
+								{
+									"Name": "Im Unterricht wird individualisiert."
+								},
+								{
+									"Name": "Sozialformen werden angemessen eingesetzt."
+								},
+								{
+									"Name": "Die Übergänge dienen der verschiedenen Lehr- beziehungsweise Lernformen dem Unterrichtsfluss."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "5.3 Zeitmanagement",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson nutzt Lernzeit zielgerichtet.",
+							"Indicators": [
+								{
+									"Name": "Die ausgewählten Inhalte, Methoden und Materialien dienen der Zielerreichung."
+								},
+								{
+									"Name": "Der angebotene Inhalt kann in der zur Verfügung stehenden Zeit bearbeitet werden."
+								},
+								{
+									"Name": "Die beanspruchte Zeit und das ausgewählte Material stehen in einem vernünftigen Verhältnis zum Lernziel."
+								},
+								{
+									"Name": "Eine Überprüfung der Lernzielerreichung wird durchgeführt."
+								},
+								{
+									"Name": "Der Klassenraum ist vorbereitet und das Material bereit."
+								},
+								{
+									"Name": "Organisatorische Aufgaben werden konzentriert in dafür definierten Gefässen bearbeitet."
+								},
+								{
+									"Name": "Unnötige Wiederholungen werden bei Erklärungen von Aufgaben und Inhalten vermieden."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson nutzt die Unterrichtszeit lern- zielgerecht und berücksichtigt dabei die Individualisierung.",
+							"Indicators": [
+								{
+									"Name": "Inhalte und Probleme werden effektiv behandelt und bearbeitet."
+								},
+								{
+									"Name": "Stärkere und schwächere Lernende werden bei den Aufträgen in Bezug auf den Inhalt, die Zeit und das Material berücksichtigt."
+								},
+								{
+									"Name": "Es gibt obligatorische und freiwillige Angebote."
+								},
+								{
+									"Name": "Der Klassenraum ist vorbereitet und der Zugang zum Material ist ohne Stau und Störungen möglich."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson setzt Unterrichtsziele klar, lernzielgerecht, in hohem Mass individualisierend ein und nutzt Lernzeit angemessen für Lernbegleitung.",
+							"Indicators": [
+								{
+									"Name": "Nei den Aufträgen werden in Bezug auf die Zeit und das Material verschiedene Anspruchsniveaus berücksichtigt."
+								},
+								{
+									"Name": "Die Lehrperson hat die Aufträge so formuliert und organisiert, dass sie sich mit niveaudifferenzierten Gruppen oder mit Einzelnen beschäftigen kann."
+								},
+								{
+									"Name": "Die medialen Stufen des Lernens werden gezielt für die Individualisierung eingesetzt und bei der zur Verfügung stehenden Zeit mit einberechnet."
+								},
+								{
+									"Name": "Die Lernenden werden laufend in ihren individuellen Lernprozessen begleitet, gefördert und kontrolliert."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "5.4 Verhalten und Klassenklima",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennzeichnet Verhaltenserwartungen, setzt erwünschtes Verhalten mit geeigneten Massnahmen um und fördert das Klassenklima.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson zeigt im Umgang mit den Kindern, wie sie sich den gegenseitigen Umgang vorstellt."
+								},
+								{
+									"Name": "Die Lehrperson zeigt im Umgang mit den Kindern, dass sie respektiert werden, auch mit ihren Unzulänglichkeiten."
+								},
+								{
+									"Name": "Die Lehrperson kommuniziert klare Verhaltensregeln zum Schuljahresbeginn oder bei der Übernahme der Klasse, und fordert sie diese konsequent ein."
+								},
+								{
+									"Name": "Die Lehrperson gibt der Klasse regelmässig Rückmeldungen über ihr Verhalten."
+								},
+								{
+									"Name": "Die Lehrperson lobt erwünschtes und tadelt sie unerwünschtes Verhalten konsequent."
+								},
+								{
+									"Name": "Die Lehrperson realisiert, was in der Klasse vor sich geht."
+								},
+								{
+									"Name": "Die Lehrperson initiiert Aktivitäten, die dem Ziel dienen, die Klassengemeinschaft zu fördern."
+								},
+								{
+									"Name": "Der Lehrperson gelingt es, eine Beziehung zu den Schülerinnen und Schülern aufzubauen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson kennt Instrumente zur Förderung und Verstärkung von sozial erwünschtem Verhalten und bezieht die Lernenden in die Auswahl und Bestimmung von Verhaltenserwartungen mit ein. Die Lehrperson erkennt Störungen rasch und reagiert adäquat.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson stellt durch den Umgang mit den Kindern mittels gezielter Unterrichtmethoden, Sozialformen, Regeln, Ritualen etc. ein Klima des gegenseitigen Vertrauens in der Klasse her."
+								},
+								{
+									"Name": "Die Kinder werden in die Erarbeitung von Verhaltensregeln innerhalb der Klasse mit einbezogen."
+								},
+								{
+									"Name": "Die Lehrperson organisiert ein Gefäss für den regelmässigen Austausch der Erfahrungen mit der Einhaltung der gemeinsamen Verhaltensregeln (zum Beispiel Morgenkreis, Klassenrat, Klagemauer, Briefkasten etc.)."
+								},
+								{
+									"Name": "Die Lehrperson verfügt über ein Repertoire von Massnahmen oder Sanktionen bei Störungen im Unterricht."
+								},
+								{
+									"Name": "Die Lehrperson kennt Theorien, und kann sie diese zur Förderung sozialen Verhaltens umsetzen."
+								},
+								{
+									"Name": "Die Lehrperson merkt, was beim Rest der Klasse vor sich geht, wenn sie mit anderen Kindern beschäftigt ist."
+								},
+								{
+									"Name": "Aktivitäten zum sozialen Lernen und zur Förderung des Klassenklimas sind fester Bestandteil der Planung."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson schafft Gelegenheiten für die Selbstorganisation des erwünschten Verhaltens in sozialen Situationen innerhalb und ausserhalb der Klasse, bei denen die Lernenden Verantwortung für sich selbst und andere übernehmen. Sie besitzt ein grosses Repertoire, um vielfältig und flexibel bei Unterrichtsstörungen zu intervenieren.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson stellt der Klasse regelmässig Zeitgefässe zur Verfügung, in der sie selbstorganisiert sozial erwünschtes Verhalten üben können, das sie befähigt, für sich und die Gemeinschaft Verantwortung zu übernehmen."
+								},
+								{
+									"Name": "Die Lehrperson hat mit der Klasse Vorgehensweisen, Regeln, Checklisten etc. zum Schuljahresbeginn oder bei der Übernahme der Klasse erarbeitet, die der Klasse helfen, in selbstorganisierten sozialen Situationen zu agieren."
+								},
+								{
+									"Name": "Die Lehrperson stellt der Klasse Aufgaben, bei denen sie selbstorganisiert soziale Situationen üben kann."
+								},
+								{
+									"Name": "Die Lehrperson lobt erfolgreiche Aktionen in diesen selbstorganisierten Situationen."
+								},
+								{
+									"Name": "Die Lehrperson hält sich zurück."
+								},
+								{
+									"Name": "Die Lehrperson verfügt über Strategien für potenzielle Problemsituationen und Störungen."
+								},
+								{
+									"Name": "Die Lehrperson ist allgegenwärtig und bemerkt beispielsweise, wenn sie mit Lernenden beschäftigt ist, was im anderen Teil des Klassenraumes vor sich geht und kann darauf angemessen reagieren."
+								},
+								{
+									"Name": "Die Lehrperson stellt den Lernenden Zeit zur Planung und Durchführung von Aktivitäten zur Förderung der Klassengemeinschaft zur Verfügung."
+								},
+								{
+									"Name": "Die Lehrperson bemüht sich mit dem Team um ein lernförderliches und auf gegenseitigem Vertrauen basierendes Schulhausklima im ganzen Schulhaus."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "5.5 Soziale Zusammenarbeit",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennt Grundlagen und Instrumente zur Förderung sozialer Zusammenarbeit und setzt sie gelegentlich ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson zeigt im Umgang mit den Kindern, wie sie sich den gegenseitigen Umgang vorstellt."
+								},
+								{
+									"Name": "Die Lehrperson setzt verschiedene Sozialformen im Unterricht ein."
+								},
+								{
+									"Name": "Minimale Regeln für die soziale Zusammenarbeit werden aufgestellt und von der Lehrperson, wenn nötig, eingefordert."
+								},
+								{
+									"Name": "Die Lehrperson kennt die Grundwerte der Sozialkompetenzen und mögliche Instrumente, diese zu fördern. (Solidarität: kooperative Methoden, Helfersystem etc.; Freiheit: ELF, Klassenrat etc.; Gerechtigkeit: Klassenregeln, Sanktionen etc.)"
+								},
+								{
+									"Name": "Die Lehrperson bringt den Lernenden sichtbares Wohlwollen entgegen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt Grundlagen und Instrumente zur Förderung sozialer Zusammenarbeit systematisch aufbauend ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson vermittelt den Kindern das Gefühl eines Lernpartners, dem es echt wichtig ist, dass jedes Kind einzeln etwas lernt und Fortschritte macht."
+								},
+								{
+									"Name": "Die Lehrperson kann sich in die Lernenden hineinversetzen (Empathie), um so auf ihr Verhalten adäquat zu reagieren."
+								},
+								{
+									"Name": "Der Lehrperson macht soziale Ziele (zum Beispiel Sequenz-, Halbtages-, Tages-, Wochenziele) regelmässig transparent und reflektiert sie mit den Kindern."
+								},
+								{
+									"Name": "Die verschiedenen Sozialformen werden regelmässig eingesetzt und die Verhaltensformen sowie Arbeitstechniken in den einzel- nen Sozialformen thematisiert und reflektiert."
+								},
+								{
+									"Name": "Soziale Aspekte und Themen aus dem Lehrplan werden gezielt bearbeitet."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson regt an, die erarbeiteten Kompetenzen der sozialen Zusammenarbeit in nähere und weitere Lebenszusammenhänge zu übertragen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson stellt regelmässig Zeitgefässe zur Verfügung, wo die Kinder soziale Zusammenarbeit üben können."
+								},
+								{
+									"Name": "Regelmässig werden Frei- und/ oder Projektarbeiten durchgeführt und reflektiert."
+								},
+								{
+									"Name": "Die Lehrperson regt die Klasse zu Vorhaben an, in denen ausserhalb der Schule die erarbeiteten Kompetenzen eingesetzt werden können."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "6 Kommunikation und Moderation",
+			"Description": "Die Lehrperson verwendet ihr Wissen von effektiven verbalen und nicht verbalen Kommunikations und Medienformen, um aktives Lernen, Mitarbeit und den gegenseitigen Austausch im Klassenzimmer zu fördern.",
+			"Topics": [
+				{
+					"Name": "6.1 Kommunikationsformen",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson passt verbale und nicht verbale Kommunikationsformen grundsätzlich den Lernenden, der Sache und der Situation an.",
+							"Indicators": [
+								{
+									"Name": "Die Artikulation der Lehrperson ist deutlich und klar."
+								},
+								{
+									"Name": "Die Lehrperson verwendet ein gutes, adressatengerechtes Sprachniveau."
+								},
+								{
+									"Name": "Der Lehrperson macht korrekte Sätze."
+								},
+								{
+									"Name": "Die Lehrperson kann zuhören."
+								},
+								{
+									"Name": "Die Lehrperson sucht bei der Kommunikation den Augenkontakt."
+								},
+								{
+									"Name": "Der Unterrichtston ist den Adressaten und der Situation angepasst."
+								},
+								{
+									"Name": "Die Lehrperson setzt Mimik und Gestik in verschiedenen Situationen gezielt ein."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson passt verbale und nicht verbale Kommunikationsformen konsequent den Lernenden, der Sache und der Situation an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt die Stimme gezielt als Führungsinstrument ein (laut, leise, bestimmt, erklärend etc.)."
+								},
+								{
+									"Name": "Die eingesetzten verbalen und nonverbalen Kommunikationsformen wirken natürlich und der Lehrperson angepasst."
+								},
+								{
+									"Name": "Die Lehrperson übermittelt gezielt durch Mimik/Gestik/Körperhaltungen klare Botschaften."
+								},
+								{
+									"Name": "Die Lehrperson geht auf Äusserungen von Lernenden adäquat ein."
+								},
+								{
+									"Name": "Die Lehrperson kann auf Äusserungen von Lernenden eingehen, ohne den «roten Faden» des Unterrichts zu verlieren."
+								},
+								{
+									"Name": "Die Kommunikation mit den Lernenden ist geprägt durch ein wertschätzendes Verhalten der Lehrperson."
+								},
+								{
+									"Name": "Die Lehrperson schafft durch ihr positives Kommunikationsverhalten ein angenehmes Lernklima."
+								},
+								{
+									"Name": "Die Lehrperson erkennt die von Lernenden geäusserten verbalen und nonverbalen Botschaften, und reagiert sie adäquat."
+								},
+								{
+									"Name": "Die Lehrperson erkennt Gefühlsregungen der Lernenden, und geht sie wenn nötig während des Unterrichts oder je nach Situation nach dem Unterricht adäquat darauf ein."
+								},
+								{
+									"Name": "Die Lehrperson zeigt durch ihr Kommunikationsverhalten, dass sie Gefühlsregungen der Lernenden ernst nimmt."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson passt verbale und nicht verbale Kommunikationsformen reflektiert, gezielt und differenziert den Lernenden, der Sache und der Situation an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann durch die Reflexion in der Kommunikationssituation flexibel die Kommunikationsform wechseln und der Situation anpassen."
+								},
+								{
+									"Name": "Die Lehrperson strahlt durch ein positiv wirkendes Kommunikationsverhalten eine positive Lebensgrundhaltung aus."
+								},
+								{
+									"Name": "Die Lehrperson kann ihre Kommunikationsformen aufgrund von Rückmeldungen wenn nötig gezielt verändern."
+								},
+								{
+									"Name": "Die Lehrperson regt durch ihr vorbildhaftes Kommunikationsverhalten die Lernenden an, ihr eigenes Kommunikationsverhalten zu reflektieren und nötige Verhaltensänderungen anzustreben."
+								},
+								{
+									"Name": "Die Lehrperson kann Gefühlsregungen der Lernenden in der Regel richtig deuten und adäquat darauf reagieren."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "6.2 Moderation",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson stellt offene, geschlossene und anregende Fragen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson stellt kurze, prägnante und gut verständliche Fragen."
+								},
+								{
+									"Name": "Die gestellten Fragen sind in ihrem Umfang sinnvoll eingegrenzt."
+								},
+								{
+									"Name": "Die Fragen sind den Voraussetzungen der Lerngruppe angepasst."
+								},
+								{
+									"Name": "Die Lehrperson wiederholt die Antworten der Lernenden nicht ständig."
+								},
+								{
+									"Name": "Die Lehrperson stellt in der Regel keine Ja/ Nein-Fragen."
+								},
+								{
+									"Name": "Bei Entscheidungsfragen (Ja/Nein) wird eine Begründung verlangt."
+								},
+								{
+									"Name": "Die Lehrperson stellt solche Fragen, die nicht nur mit einem einzigen Wort beantwortet werden können."
+								},
+								{
+									"Name": "Die gestellten Fragen regen zum Nachdenken an."
+								},
+								{
+									"Name": "Die Lehrperson verdeutlicht ihre Fragen wenn nötig mit Bildern, Beispielen etc."
+								},
+								{
+									"Name": "Die Lehrperson kann Fragen so auswählen, dass eine schrittweise Entwicklung von Zusammenhängen möglich wird."
+								},
+								{
+									"Name": "Die Lehrperson gibt den Lernenden Zeit zum Überlegen, bevor sie diese aufruft."
+								},
+								{
+									"Name": "Die Lehrperson hat die zentralen Fragen der Sequenz in ihrer Vorbereitung schriftlich formuliert."
+								},
+								{
+									"Name": "Die Lehrperson stellt grundsätzlich W-Fragen (Fragewort am Anfang der Frage: Wie, Wieso, Warum, Weshalb etc.)."
+								},
+								{
+									"Name": "Die Lehrperson aktiviert durch ihre Fragen das Vorwissen der Lernenden, das zur Lösung des gestellten Problems beiträgt."
+								},
+								{
+									"Name": "Die Lehrperson bestätigt richtige Antworten mit verschiedenen Mitteln (zum Beispiel ja, ok, gut, Kopfnicken etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson stellt Fragen und setzt Impulse, die vielfältig, differenziert und der Situation sowie dem Inhalt angepasst sind, und erhöht so den Sprech- und Arbeitsanteil der Lernenden im Unterricht.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt gezielt offene und geschlossene Fragen ein (offene Fragen ermöglichen mehrere Antworten; geschlossene Fragen zwingen der «Denkspur» der Lehrperson zu folgen)."
+								},
+								{
+									"Name": "Die Lehrperson kann durch die Fragestellung einen grossen Teil der Lerngruppe zu einer Antwort animieren."
+								},
+								{
+									"Name": "Die Lehrperson nimmt Fragen der Lernenden in der weiteren Bearbeitung der Sache mit auf."
+								},
+								{
+									"Name": "Die Lehrperson stellt gezielt Fragen auf unterschiedlichem Anspruchsniveau (Wissens-, Verstehens-, Analyse-, Synthese- und Bewer- tungsfragen)."
+								},
+								{
+									"Name": "Die gestellten Fragen helfen, neues Wissen zu konstruieren."
+								},
+								{
+									"Name": "Die Lehrperson kann durch Präzisierung der Fragestellung den Lernenden zielgerichtetes Nachdenken für die Problemlösung ermöglichen."
+								},
+								{
+									"Name": "Die Lehrperson stellt Kontrollfragen, die das Verständnis des Lerngegenstandes der Lernenden überprüft."
+								},
+								{
+									"Name": "Die Lehrperson kennt die folgenden Impulsmöglichkeiten, und setzt sie diese so ein, dass sie ein Gedankenfeld öffnen können, sodass die Lernenden längere Aussagen formulieren müssen:\n− zum Beobachten: «Beobachtet, beachtet, betrachtet speziell...»\n− zum Ergänzen: «Ergänzt die Aussage..., sucht eine Fort- setzung...»\n− zum Begründen: «Gebt den Grund, die Ursache, den Zweck, die Mittel an...»\n− zum Probieren: «Versucht, sucht alleine einen Lösungs- weg für...»\n− zum Vergleichen: «Vergleicht mit, denkt dabei an...»\n− zum Umschreiben: «Sucht andere Begriffe für..., beschreibt mit anderen Worten...»\n− zum Urteilen: «Beurteilt...unter folgenden Gesichtspunkten...»\n− zum Vermuten: «Vermutet, wie entstanden, wie weiter, welchen Verlauf...»"
+								},
+								{
+									"Name": "Die Lehrperson kennt und setzt gezielt stumme Impulse ein (zum Beispiel Bild, Wort/Begriff an Wandtafel, Pantomime, Zeichnung, Experiment, Gegenstand etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson stellt Fragen und setzt Impulse, die vielfältig, differenziert und der Situation sowie dem Inhalt angepasst sind, und fördert bei den Lernenden die Fähigkeit, eigene Fragen zu entwickeln.",
+							"Indicators": [
+								{
+									"Name": "Die Fragen bei den Lernenden lösen substantielle Denk- prozesse aus, die im Sinne von Scaffolding dem Lernenden beim Entwickeln von eigenen Fragestellungen weiterhelfen."
+								},
+								{
+									"Name": "Die Lehrperson stellt Fragen, die bei den Lernenden das Interesse, weitere eigene Fragen zu formulieren, wecken."
+								},
+								{
+									"Name": "Die Lehrperson stellt Fragen, die den kognitiven Prozess der Lernenden im Fokus haben."
+								},
+								{
+									"Name": "Die Lehrperson formuliert Leitfragen zu einem bestimmten Thema, welche die selbstständige Auseinandersetzung durch die Lernenden ermöglichen und die Entwicklung eigener Fragestellungen fördern."
+								},
+								{
+									"Name": "Die Lehrperson setzt verschiedene Impulsmöglichkeiten so ein, dass eine selbsttätige Bearbeitung durch die Lernenden möglich wird."
+								},
+								{
+									"Name": "Die Lehrperson bietet die Möglichkeit an, den von den Lernenden entwickelten Fragen nachzugehen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "6.3 Diskussionskultur",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson schafft Situationen zur Entwicklung und Förderung einer Diskussionskultur.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson erarbeitet oder setzt verschiedene Gesprächsregeln ein (zum Beispiel jeder hat das Recht, angehört zu werden, es spricht nur einer, es wird niemand ausgelacht, herabgesetzt, Behauptungen werden begründet, es wird aufeinander gehört, man muss die verschiedenen Argumente verstehen wollen etc.)."
+								},
+								{
+									"Name": "Die Lehrperson setzt je nach Diskussionsthema und -länge die idealste Sitzordnung fest."
+								},
+								{
+									"Name": "Die Lehrperson kann klare Schwerpunkte für die Klassen- diskussion transparent machen."
+								},
+								{
+									"Name": "Die Lehrperson bestimmt klar den Verlauf und die Grenzen der Diskussion."
+								},
+								{
+									"Name": "Der Lehrperson gelingt es, die Klasse von der Lehrer-Schüler-Interaktion allmählich zur Schüler-Schüler-Interaktion zu leiten."
+								},
+								{
+									"Name": "Die Lehrperson beherrscht die Diskussionsführung, indem sie die folgenden Techniken/Aspekte der Diskussionsführung der Situation angepasst einsetzt:\n− Sie achtet darauf, dass ihre Interventionen in angemessener Anzahl geschehen, damit Zweck und Ziel für die Klasse immer präsent sind.\n− Sie kann bei zu weitem Entfernen von Diskussionsbeiträgen vom Thema oder Ziel die Diskussion wieder auf die Thematik zurückführen.\n− Sie kann bei zu langen Pausen zwischen Beiträgen der Lernenden die Gelegenheit aufnehmen, um ein neues Statement oder eine neue Betrachtungsweise aufzuwerfen, damit die Diskussion wieder in Schwung kommt.\n− Sie erkennt Falschaussagen, und korrigiert sie diese sofort.\n− Sie macht die Lernenden bei unsorgfältiger Argumentationsweise oder bei Widersprüchen darauf aufmerksam.\n− Sie kann möglichst alle Meinungen und Ideen der Klasse in die Diskussion miteinschliessen, indem sie auch eher zurückhaltende Lernende miteinbeziehen kann.\n− Sie überblickt den zu diskutierenden Stoff, das Thema."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson regt konstruktive Diskussionen an und kann sich aus derselben zurücknehmen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson regt eine Diskussion eher durch Statements als durch Fragen an."
+								},
+								{
+									"Name": "Die Lehrperson kennt Varianten der Diskussionsanregung, und setzt solche auch ein. Beispielsweise:\n− Erklärende Statements: Die Lehrperson gibt den Lernenden Informationen, die sie verarbeiten müssen, um so den Fortgang der Diskussion anzureichern.\n− Zusammenfassende Statements: Sie zeigt durch die Zusammenfassung, dass sie die Diskussionsbeiträge verstanden hat, und stimuliert durch das Festhalten des Standes der Diskussion den weiteren Verlauf.\n− Indirekte Fragen: Sie regt mit indirekten Fragen weiteres Denken an, ohne dass dabei bei den Lernenden Hemmungen und Ängste entstehen (zum Beispiel «Mich interessiert, welche Überlegungen dich zu dieser Auffassung führen.»).\n− Aufforderungen: Die Lehrperson ermuntert die Lernenden, weitere Argumente zu formulieren («Erzähl uns mehr darüber. Hast du Beispiele dazu?» etc.).\n− Persönliche Erfahrung: Aufgrund persönlicher Erlebnisse und/oder Erfahrungen eines Fachmanns wird eine Diskussion veranlasst.\n− Provokation: Die Lehrperson formuliert eine provozierende Aussage, gibt einen provozierenden Text, ein provozierendes Bild ab, damit die Lernenden auf Widersprüchlichkeiten eines Sachverhaltes reagieren können.\n− Fragen der Lernenden: Die Lehrperson ermuntert die Lernenden, dass sie Fragen an ihre Klassenkameraden stellen."
+								},
+								{
+									"Name": "Die Lehrperson setzt positive, kurze verbale, nonverbale Impulse (ja, ok etc.), die die Lernenden in ihrem Vorgehen/ Argumentieren unterstützen."
+								},
+								{
+									"Name": "Die Lehrperson setzt «reziprokes Lesen» gezielt ein (zum Beispiel Fragen – Zusammenfassen – Klären – Vermuten)."
+								},
+								{
+									"Name": "Die Lehrperson formuliert auch solche Gruppenaufträge, welche die Gruppe zwingen, miteinander zu diskutieren."
+								},
+								{
+									"Name": "Die Lehrperson kennt ein Repertoire an verschiedenen Diskussionsvarianten, und setzt diese auch gezielt ein. Beispielsweise:\n− Pro- und Kontra-Diskussion: Argumentationen finden und als Experte für die eine Sicht auftreten.\n− Parlamentsdebatte: Entscheidungsalternativen einbringen und begründen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson übergibt den Lernenden weitgehend die Verantwortung für die erfolgreiche Gestaltung von Diskussionen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kennt und setzt ein Repertoire an verschiedenen Varianten von Gesprächsmöglichkeiten ein, in denen die Lernenden ohne Führung der Lehrperson miteinander diskutieren müssen. Beispielsweise:\n− Expertenbefragung: Als «Journalist» befragen die Lernenden in einem bestimmten Themengebiet einen «Experten».\n− Gesprächszirkel: Aus verschiedenen Diskussionsthemen wählen die Lernenden eines aus und tauschen sich unter «Gleichgesinnten» aus.\n− Stationengespräch: Die Lernenden durchlaufen in Gruppen mehrere Stationen im Klassenraum mit unterschiedlichen Gesprächsimpulsen.\n− Gruppenpuzzle: In arbeitsteiligen Spezialistengruppen werden Aufgaben besprochen, um dann in der Stammgruppe als Sachverständiger aufzutreten."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "6.4 Medieneinsatz",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson setzt Medien lernziel-, inhalts- und adressatengerecht ein.",
+							"Indicators": [
+								{
+									"Name": "Die eingesetzten Medien tragen zu einer sinnvollen Veranschaulichung des Lerngegenstandes bei."
+								},
+								{
+									"Name": "Das eingesetzte Medium wird im Hinblick auf das Lernziel und den Inhalt ausgewählt."
+								},
+								{
+									"Name": "Das eingesetzte Medium ist auf die Lernvoraussetzungen der Lernenden abgestimmt."
+								},
+								{
+									"Name": "Die Lehrperson zeigt eine sinnvolle Vielfalt beim Einsatz verschiedener Medien (Wandtafel, Arbeitsblatt, Hellraumprojektor, Lernmaterialien, Bilder, Computer, Video/DVD etc.)."
+								},
+								{
+									"Name": "Die Lehrperson kann die eingesetzten technischen Medien (Geräte) korrekt bedienen."
+								},
+								{
+									"Name": "Beim Einsatz der Medien wird darauf geachtet, dass in der Regel Aktivitäten bei den Lernenden ausgelöst werden."
+								},
+								{
+									"Name": "Die Medien werden sachlich richtig eingesetzt."
+								},
+								{
+									"Name": "Der Aufwand (Vorbereitung, Herstellung) ist für den Einsatz der Medien ökonomisch sinnvoll."
+								},
+								{
+									"Name": "Die Lehrperson kennt grundlegende Qualitätskriterien für die Produktion und den Einsatz der gängigen Unterrichtsmedien, und handelt sie auch nach diesen."
+								},
+								{
+									"Name": "Die Lehrperson kann qualitativ sinnvolle Unterrichtsmedien herstellen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson befähigt die Lernenden zu eigenständigem, reflektiertem Mediengebrauch.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson thematisiert den Einfluss der Print- und elektronischen Medien auf die Lernenden."
+								},
+								{
+									"Name": "Mit den Lernenden wird ein Bewusstsein erarbeitet, dass die Wirklichkeit anderen Prinzipien folgen kann als die virtuelle Realität."
+								},
+								{
+									"Name": "Techniken und Beispiele von Manipulation der öffentlichen Meinung durch Medien werden mit den Lernenden bearbeitet."
+								},
+								{
+									"Name": "Unterhaltungsmedien und ihre sozialen und affektiven Auswirkungen werden mit den Lernenden thematisiert."
+								},
+								{
+									"Name": "Die Lehrperson hilft den Lernenden, die Informationsflut in Fakten-, Prozess- und Orientierungswissen aufzugliedern."
+								},
+								{
+									"Name": "Die Lehrperson befähigt die Lernenden, Medienbotschaften wahrzunehmen, zu lesen, zu verstehen und zu bewerten."
+								},
+								{
+									"Name": "Die Lehrperson setzt für die systematische Reflexion des Mediengebrauchs ein Medienportfolio ein."
+								},
+								{
+									"Name": "Die Nutzung von Medien wird in Bezug auf soziale und ethische Auswirkungen untersucht."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson befähigt die Lernenden zur Nutzung und Gestaltung von Medien.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson zeigt, wie die Lernenden sich durch die Gestaltung von Medien ausdrücken und kommunizieren können."
+								},
+								{
+									"Name": "Die Lehrperson ermöglicht eine regelmässige Partizipation an der medial gestalteten Informations- und Kommunikationswelt."
+								},
+								{
+									"Name": "Mit den Lernenden werden minimale technische Fähigkeiten zu Inbetriebnahme und Bedienung von Geräten erarbeitet."
+								},
+								{
+									"Name": "Die Lehrperson bietet regelmässig Gefässe an, in denen sich die Lernenden einen selbstbestimmten, kreativen und sozialverantwortlichen Umgang mit Medien aneignen können."
+								},
+								{
+									"Name": "Es werden systematisch instrumentelle Ziele bearbeitet, im Hinblick auf die schriftliche, grafische, bildliche oder handelnde Verarbeitung und Gestaltung von Gelerntem oder Informationen."
+								},
+								{
+									"Name": "Die Lernenden werden zur aktiven Kommunikation mittels (audiovisuellen) Medien befähigt, indem sie sich regelmässig mittels Sprache, Bilder, Töne und Symbolen ausdrücken und so mit anderen in Beziehung treten müssen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "7 Planen und Evaluieren",
+			"Description": "Die Lehrperson plant, realisiert und evaluiert ihren Unterricht auf Grund ihres Verständnisses vom Fachbereich, von Lehrplan und Leitideen der Schule, und auf der Basis des berufswissenschaftlichen Hintergrundes.",
+			"Topics": [
+				{
+					"Name": "7.1 Leitideen und Lehrplan",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson plant und realisiert den Unterricht auf der Grundlage der Leitideen und des Lehrplans.",
+							"Indicators": [
+								{
+									"Name": "Der Unterrichtsinhalt kann im Lehrplan klar verortet werden."
+								},
+								{
+									"Name": "Der Unterrichtsinhalt kann in den Leitideen der Volksschule verortet werden."
+								},
+								{
+									"Name": "Die Ableitung vom Grobziel zum Lernziel wird aus der Planung ersichtlich."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson plant, realisiert und evaluiert Unterricht auf der Grundlage der Leitideen und des Lehrplans.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann den Unterrichtsinhalt korrekt den Leitideen und des Lehrplans zuordnen und damit auch begründen."
+								},
+								{
+									"Name": "Der Lehrperson reflektiert ihren Unterricht im Hinblick auf den Zusammen- hang von Unterrichtsinhalt und Leitideen sowie Lehrplan."
+								},
+								{
+									"Name": "In der Planung von Unterrichtseinheiten wird der Bezug zu den Leitideen und der Lehrpläne ersichtlich."
+								},
+								{
+									"Name": "Die drei Kompetenzbereiche (Sach-, Sozial- und Selbstkompetenz) werden berücksichtigt."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson plant, realisiert und evaluiert Unterricht auf der Grundlage der Leitideen und der Vernetzung verschiedener Lehrpläne.",
+							"Indicators": [
+								{
+									"Name": "In der Langzeitplanung wird eine systematische Umsetzung der Lehrpläne ersichtlich."
+								},
+								{
+									"Name": "In der Langzeitplanung wird eine systematische Umsetzung der Leitideen erkennbar."
+								},
+								{
+									"Name": "Die Lehrperson kennt verschiedene Möglichkeiten, Semester- und/oder Jahrespläne zu erstellen."
+								},
+								{
+									"Name": "Die Lehrperson setzt bewusst Schwerpunkte in der Bearbeitung von Leitideen und Lehrplänen aufgrund einer Situationsanalyse der Klasse."
+								},
+								{
+									"Name": "In der Langzeitplanung wird eine sinnvolle Verknüpfung von Inhalten aus verschiedenen Lehrplänen vorgenommen."
+								},
+								{
+									"Name": "Der Stoff ist sinnvoll verteilt (Beachtung der Menge, Anlässe, Jahreszeiten etc.)."
+								},
+								{
+									"Name": "Die Lehrperson formuliert aus eigenem Antrieb Konsequenzen aus der Evaluation."
+								},
+								{
+									"Name": "Solche Konsequenzen werden auch in der weiteren Planung und praktischen Ausführung sichtbar und umgesetzt."
+								},
+								{
+									"Name": "Die Lehrperson zeigt im Evaluationsgespräch Interesse, ihr Wissen über die Zusammenhänge von Lehrplänen und Leitideen zu erweitern und für den Unterricht fruchtbar zu machen."
+								},
+								{
+									"Name": "Ein systematischer Aufbau der drei Kompetenzbereiche (Sach-, Sozial- und Selbstkompetenzen) wird geplant, durchgeführt und reflektiert."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "7.2 Systematische Planung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson plant den Unterricht adressaten-, situations- und lernzielorientiert.",
+							"Indicators": [
+								{
+									"Name": "Für die Unterrichtssequenzen sind operationalisierte Ziele festgelegt worden (konkretes, beobachtbares, überprüfbares Endverhalten)."
+								},
+								{
+									"Name": "Erreichbare Ziele sind formuliert."
+								},
+								{
+									"Name": "Der Inhalt ist mit Blick auf die Ziele situationsgerecht ausgewählt."
+								},
+								{
+									"Name": "Die Entscheidungsfelder werden den Bedingungsfeldern angepasst. (Entscheidungsfelder: Ziele, Inhalte, Medien, Sozialformen, Zeit, Lernkontrolle; Bedingungsfelder: anthropogene-psychologische Faktoren und soziokulturelle Faktoren)"
+								},
+								{
+									"Name": "Die zentralen Zusammenhänge werden im Unterrichtsinhalt aufgezeigt."
+								},
+								{
+									"Name": "Der Lernstoff wurde so vorstrukturiert, dass die Lernenden das Neue in ihr Vorwissen einbauen können."
+								},
+								{
+									"Name": "Die Inhalte sind so vorstrukturiert, damit innerhalb des neuen Sinnrahmens das Neue schrittweise erarbeitet werden kann."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson plant den Unterricht adressaten-, situations- und lernzielorientiert, setzt Kriterien für die Zielerreichung und sichert die Ergebnisse.",
+							"Indicators": [
+								{
+									"Name": "Es besteht eine angemessene didaktische Analyse für die Unterrichtseinheiten."
+								},
+								{
+									"Name": "Die exemplarische Bedeutung des Themas oder eines Beispiels wird verdeutlicht."
+								},
+								{
+									"Name": "Die Lehrperson kann angemessene Tages- und Wochenpläne erstellen, die die oben erwähnten Aspekte sinnvoll berücksichtigen."
+								},
+								{
+									"Name": "In der Wochenplanung wird bewusst ein Spannungsbogen gestaltet."
+								},
+								{
+									"Name": "Instrumentelle Zielsetzungen werden in die Planung des Themas miteinbezogen."
+								},
+								{
+									"Name": "Zur Zielerreichung werden angepasste Materialien, Lehr-, Lern- und Sozialformen eingesetzt."
+								},
+								{
+									"Name": "Zeitreserven werden eingeplant, damit situationsbezogen der geplante Unterrichtsverlauf sinnvoll geändert werden kann."
+								},
+								{
+									"Name": "Die Beurteilung wird in die Planung miteinbezogen."
+								},
+								{
+									"Name": "Kontrollkriterien werden für die Zielerreichung definiert, wie zum Beispiel:\n− die Lernenden sind informiert, wie viele Punkte/Fehler sie haben müssen/können, damit die Aufgabe erfüllt ist.\n− die Lernenden wissen, in welcher Zeit sie eine Aufgabe gelöst haben müssen.\n− die Lehrperson gibt klare Vorgaben, wie das Produkt beschaffen sein muss.\n− mit den Lernenden werden regelmässig zusammen die Bedingungen zur Erfüllung der vorliegenden Arbeit erarbeitet."
+								},
+								{
+									"Name": "Unterrichtssequenzen werden in der Regel mit einer Lernkontrolle abgeschlossen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson plant den Unterricht adressaten-, situations- und lernzielorientiert, setzt Kriterien für die Zielerreichung, sichert die Ergebnisse und passt die folgende Planung der Ergebnisdiagnose an.",
+							"Indicators": [
+								{
+									"Name": "Aus der Unterrichtsplanung wird ersichtlich:\n− welche differenzierenden Unterrichtsformen eingesetzt werden.\n− welche unterschiedlichen Niveaus die Aufgabenstellungen aufweisen.\n− welche zur Individualisierung einzusetzenden Materialien bereitgelegt werden.\n− welche möglichen unterschiedlichen Vorgehensweisen während des Unterrichts sinnvoll sind."
+								},
+								{
+									"Name": "Es werden regelmässig die Lernzielkontrollen ausgewertet und für die Planung der Weiterarbeit eingesetzt."
+								},
+								{
+									"Name": "Die Lehrperson hat und/oder haben die Lernenden ein Instrument zum Festhalten der Ergebnisdiagnose (Lernjournal, Übersichtsmatrix etc.)."
+								},
+								{
+									"Name": "Zwischen Lehrperson und Lernenden erfolgen regelmässig Lerngespräche über die Ergebnisse der Diagnose."
+								},
+								{
+									"Name": "Die Ergebnisdiagnose ist Ausgangspunkt für die Planung der weiteren Arbeiten."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "7.3 Situative Anpassung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson passt den Unterricht gelegentlich situativ an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson nimmt Situationen (soziale und stoffliche Aspekte) wahr."
+								},
+								{
+									"Name": "Die Lehrperson kann solche Situationen einordnen."
+								},
+								{
+									"Name": "Die Lehrperson kann gelegentlich auf solche Situationen angepasst reagieren."
+								},
+								{
+									"Name": "Die Lehrperson hat den Mut, je nach Situation etwas vom geplanten Unterrichtsverlauf wegzulassen."
+								},
+								{
+									"Name": "Die Lehrperson reagiert auf Unterrichtsstörungen."
+								},
+								{
+									"Name": "Die Lehrperson teilt Gefühle mit, die bei ihr während des Unterrichts entstehen und einen Einfluss auf den Unterrichtsverlauf haben."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson passt den Unterricht situativ und konsequent an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann Unterrichtssituationen schnell und richtig analysieren und der Situation entsprechende Entscheide treffen."
+								},
+								{
+									"Name": "Die Lehrperson reagiert in angemessener Weise auf das Kind/die Gruppe."
+								},
+								{
+									"Name": "Die Lehrperson kann klar unterscheiden, wann eine Unterbrechung des Unterrichtsverlaufes nötig ist und wann nicht."
+								},
+								{
+									"Name": "Die Lehrperson bleibt bei kniffligen Situationen ruhig und gelassen."
+								},
+								{
+									"Name": "Die Lehrperson lässt sich nicht durch ungewöhnliche Vorfälle in der Gruppe/Klasse aus dem Konzept bringen."
+								},
+								{
+									"Name": "Die Lehrperson entscheidet angemessen, welche speziellen Situationen welche Massnahmen erfordern."
+								},
+								{
+									"Name": "Die Lehrperson kann nicht geplante Elemente einbauen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson passt den Unterricht situativ, konsequent und zielorientiert an.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson reagiert auf Kind/Gruppe/Klasse/Situation und behält trotzdem die Zielorientierung bei."
+								},
+								{
+									"Name": "Die Lehrperson kann eine Darbietung, wenn es die Situation erfordert, anders als geplant umsetzen."
+								},
+								{
+									"Name": "Die Lehrperson hat so vorausgeplant, dass sie wenn nötig flexibel zusätzliches Material mit einbeziehen kann."
+								},
+								{
+									"Name": "Die Lehrperson hat den Mut, etwas, das Zeit braucht, ruhen zu lassen."
+								},
+								{
+									"Name": "Die Lehrperson kann mit den Kindern zusammen aus unvorhergesehenen Situationen heraus etwas Neues entwickeln, ohne das Ziel aus den Augen zu lassen."
+								},
+								{
+									"Name": "Die Lehrperson ist in der Lage, Interessen, Fragen etc. der Kinder aufzunehmen und zu Themen zu formulieren, diese zu planen und durchzuführen, ohne die Ziele des Wochen-, Semester- oder Jahresplans zu vernachlässigen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "7.4 Evaluation",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson beurteilt eine Lernsequenz nach zufälligen Kriterien.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann ihre Planung und Durchführung realistisch wahrnehmen und beurteilen."
+								},
+								{
+									"Name": "Die Lehrperson kann Unterrichtssequenzen selbstkritisch beurteilen."
+								},
+								{
+									"Name": "Die Lehrperson erkennt den zentralen Aspekt der Unterrichtssequenz, des Unterrichts, der verbessert werden könnte."
+								},
+								{
+									"Name": "Die Lehrperson kann einen Zusammenhang zwischen zentralen, zur Diskussion stehenden Situationen der Unterrichtssequenz und den in der Aus- oder Weiterbildung bearbeiteten Themen herstellen und reflektieren."
+								},
+								{
+									"Name": "Die Lehrperson nimmt Fehler als Chancen wahr."
+								},
+								{
+									"Name": "Die Lehrperson bemüht sich, besprochene Verbesserungen umzusetzen."
+								},
+								{
+									"Name": "Die Lehrperson hat bei jeder Selbstreflexion auch einen positiven Punkt formuliert."
+								},
+								{
+									"Name": "Die Lehrperson kann ihre Stärken und Schwächen inhaltlicher, didaktischer und erzieherischer Art formulieren."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson beurteilt eine Lernsequenz nach vorgegebenen und geeigneten Kriterien, zieht Schlussfolgerungen daraus.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann den erlebten Unterricht artikulieren und mittels geeigneter Kriterien beurteilen."
+								},
+								{
+									"Name": "Die Lehrperson kann aufgrund der vorgegebenen Kriterien ihren Unterricht kritisch-konstruktiv beurteilen."
+								},
+								{
+									"Name": "Die Lehrperson kann aufgrund der festgelegten Ziele und Beobachtungskriterien ihre Unterrichtsplanung und -durchführung kritisch-konstruktiv beurteilen."
+								},
+								{
+									"Name": "Die Lehrperson kann aufgrund ihrer Beurteilung sinnvolle Schlussfolgerungen und Verbesserungsvorschläge formulieren."
+								},
+								{
+									"Name": "Die Lehrperson kann aufgrund ihrer Unterrichtsplanung geeignete Kriterien für die Beobachtung bestimmen."
+								},
+								{
+									"Name": "Die Lehrperson wählt angemessene Kriterien zur Selbstbeurteilung aus."
+								},
+								{
+									"Name": "Die Lehrperson wählt auch jene Kriterien aus, bei denen ein Förderbedarf offensichtlich ist."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson beurteilt eine Lernsequenz systematisch nach geeigneten, aus Reflexion hervorgehenden Kriterien und zieht Schlussfolgerungen für die weitere Unterrichtsentwicklung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson beurteilt ihren Unterricht konsequent nach den aus den Reflexionen hervorgegangenen Kriterien."
+								},
+								{
+									"Name": "Ihre Kriterien beruhen auf einem systematischen, kontinuierlichen Prozess der Reflexion."
+								},
+								{
+									"Name": "Die Lehrperson hat diesen Prozess systematisch festgehalten."
+								},
+								{
+									"Name": "Die Lehrperson erkennt die für sie und ihre Entwicklung zentralen Kriterien."
+								},
+								{
+									"Name": "Die Lehrperson wählt aufgrund dieser Kriterien auch Weiterbildungsangebote aus."
+								},
+								{
+									"Name": "Ein sichtliches Bemühen der Weiterentwicklung der eigenen Berufskompetenz ist aufgrund der Reflexion der Beurteilungskriterien ersichtlich."
+								},
+								{
+									"Name": "Eine kontinuierliche Weiterentwicklung wird aufgrund der Schlussfolgerungen der eigenen Berufskompetenz erkennbar."
+								},
+								{
+									"Name": "Die Lehrperson stellt wesentliche Fragen beim Auswertungsgespräch, oder holt sie Unterstützung bei der Umsetzung ihrer Schlussfolgerungen, so dass eine Weiterentwicklung möglich ist."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "8 Beobachtung und Förderung",
+			"Description": "Die Lehrperson versteht und verwendet gezielt unterschiedliche Beurteilungssysteme, um die kognitive, soziale und persönliche Entwicklung der Kinder und Jugendlichen fortlaufend einzuschätzen, zu sichern und zu fördern.",
+			"Topics": [
+				{
+					"Name": "8.1 Differenzierte Beurteilung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson setzt Instrumente der Selbst- und Fremdbeurteilung ein und bewertet Kompetenzen und Leistungen kriterienbezogen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kennt die sechs grundlegenden Formen von Bewertung, und kann sie diese erklären (Notenzeugnis, Einschätzbogen, freie oder vorgegebene Formulierungen, Portfolio, Selbstbewertung durch Lernende, Elterngespräch)."
+								},
+								{
+									"Name": "Die eingesetzten Beurteilungsinstrumente (Fremd- und Selbstbeurteilung) basieren auf transparenten, nachvollziehbaren Kriterien."
+								},
+								{
+									"Name": "Beurteilungen mittels Noten basieren auf einer vor der Prüfung angefertigten «Punkte-Notenskala»."
+								},
+								{
+									"Name": "Die «Punkte-Notenskala» wird für jede Prüfung neu angelegt und die Note «befriedigend» durch die festgelegte oder bestimmte Basiskenntnis vorgenommen."
+								},
+								{
+									"Name": "Die Prüfungsaufgaben werden mit den jeweils maximal erreichbaren Punktezahlen versehen."
+								},
+								{
+									"Name": "Die Lehrperson hat zu den Prüfungen eine Musterlösung angefertigt."
+								},
+								{
+									"Name": "Die Lehrperson hat die Kriterien für das Erreichen der maximalen Punktezahl der einzelnen Aufgaben (vorgängig) festgelegt, und macht sie diese bei der Prüfungsnachbesprechung transparent."
+								},
+								{
+									"Name": "Die Prüfung ist klar nach den im vorangegangen Unterricht angestrebten Lernzielen und den bearbeiteten Inhalten ausgerichtet."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson verfügt über ein breites Repertoire an differenzierten Beurteilungs- und Bewertungsinstrumenten und setzt diese Instrumente ziel- und sachgerecht ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt die grundlegenden sechs Formen von Bewertung systematisch ein (Notenzeugnis, Einschätzbogen, freie oder vorgegebene Formulierungen, Portfolio, Selbstbewertung durch Lernende, Elterngespräch)."
+								},
+								{
+									"Name": "Eine Gesamtbeurteilung der Lernenden erfolgt aufgrund der verschiedenen, sich ergänzenden Bewertungsinstrumente."
+								},
+								{
+									"Name": "Die Prüfungen/Leistungskontrollen sind in der Regel durch die folgenden Qualitätskriterien gekennzeichnet:\n− Die Prüfungsaufgaben sind an den Lernzielen orientiert.\n− Die Lernenden kennen die genauen Anforderungen (Inhalt, Ziel, Termin, Dauer, Aufgabenform, erlaubtes Hilfsmittel).\n− Das Wesentliche eines Stoffes wird geprüft.\n− Die Aufgaben sind einfach formuliert (Vokabular, Satzkonstruktion, keine Fangfragen etc.).\n− Auch unabhängige Leistungsaspekte werden geprüft (Fehler in der Anfangsphase sollte Fortgang der Lösung nicht belasten).\n− Das Verständnis wird geprüft (nicht nur auswendig Gelerntes, sondern auch freie Reproduktionen mit eigenen Worten).\n−  Verschiedene Anforderungsniveaus werden beachtet (voneinander unabhängige Aufgaben mit unterschiedlichem Schwierigkeitsgrad).\n− Der Beurteilungsmassstab ist klar und transparent formuliert.\n− Aufgaben werden mit höherer Komplexität mehr gewichtet (Steigerung der Anforderungen nach der Taxonomie: Wissen, Verstehen, Anwenden, Analyse, Synthese, Bewertung)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson entwickelt theoriegestützt sachgerechte, situationsadäquate Bewertungs- und Beurteilungsinstrumente und bezieht die Lernenden in selbstbewertende Aktivitäten ein.",
+							"Indicators": [
+								{
+									"Name": "Die verschiedenen Beurteilungsinstrumente werden für die zu überprüfenden Ziele und Inhalte sinnvoll eingesetzt."
+								},
+								{
+									"Name": "Auf der Basis der sechs Formen der Beurteilung werden für die zu überprüfenden Ziele und Inhalte sinnvolle Kombinationen von Bewertungsformen erarbeitet."
+								},
+								{
+									"Name": "Die Lernenden werden in die Festlegung der Beurteilungsformen bei individuellen Arbeiten (zum Beispiel Freiarbeit, Gruppenarbeit, Lernverträge etc.) miteinbezogen."
+								},
+								{
+									"Name": "Die individuelle Förderplanung geht mit darauf abgestimmten Beurteilungsinstrumenten einher (Kombination von Notenzeugnis, Einschätzbogen, freie oder vorgegebene Formulierungen, Portfolio, Selbstbewertung durch Lernende)."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "8.2 Fördernde Beurteilung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson nimmt Bewertung und Beurteilung als Ausgangspunkt für die Förderung der einzelnen Kompetenzbereiche der Lernenden.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann den gesellschaftlichen vom pädagogischen Leistungsbegriff unterscheiden (produkt-, konkurrenz-, aus- leseorientiert versus Diagnose, Ermutigung, Förderung)."
+								},
+								{
+									"Name": "Der pädagogische Leistungsbegriff wird in den Unterrichtsvorbereitungen und/oder im Unterricht erkennbar (Lernklima: Wohlwollen, Vertrauen, Zutrauen in die Leistung der Lernenden kommunizieren, individuelle Tipps, Hinweise für das Lernen geben etc.)."
+								},
+								{
+									"Name": "Die Lehrperson kommuniziert den Lernenden, dass Fehler als Ausgangspunkt für Förderung angesehen werden."
+								},
+								{
+									"Name": "Prüfungen werden durch die Lehrperson analysiert und als Planungsgrundlage für den weiteren Unterricht verwendet."
+								},
+								{
+									"Name": "Die Lehrperson verwendet das Instrument der Verhaltensbeurteilung."
+								},
+								{
+									"Name": "Die Lehrperson initiiert aufgrund aktueller Schulsituationen die Förderungen der Selbst- und Sozialkompetenzen."
+								},
+								{
+									"Name": "Die Lehrperson kann die fünf Zugänge pädagogischer Diagnostik erklären\n(1. Beobachtung von Lernenden, 2. Durchführung von Tests/Lern-kontrollen und deren Analyse, 3. Metakommunikation über Lernprozesse und schulisches Handeln, 4. Gespräch über Emotionen und Motivationen,\n5. Portfolio als Sammlung von Entwicklungsdokumentationen)."
+								},
+								{
+									"Name": "Die Lehrperson kann die vier Ausrichtungen (Fokus) der pädagogischen Diagnostik unterscheiden und erklären (Lernvoraussetzungen, Lernprozesse, Lernergebnisse, Lernumwelt)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt förderdiagnostische Instrumente im Zusammenhang mit Beurteilung und Bewertung zur Förderung der verschiedenen Kompetenzbereiche ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson berücksichtigt bei der Unterrichtsplanung gelegentlich die fünf Zugänge, kombiniert mit den vier Ausrichtungen."
+								},
+								{
+									"Name": "Die Lehrperson benützt die pädagogische Diagnostik als Ausgangspunkt für die Förderung aller drei Kompetenzbereiche (Sach-, Selbst-, Sozialkompetenz)."
+								},
+								{
+									"Name": "Die Lehrperson setzt die Lernergebnisse in Beziehung zu den Lernvoraussetzungen der Kinder, und setzt sie ihre Fördermassnahmen in allen Kompetenzbereichen aufgrund dieser Analyse an."
+								},
+								{
+									"Name": "Prüfungsergebnisse werden für die individuelle Förderplanung der Lernenden miteinbezogen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson verfügt über ein breites Repertoire an förderdiagnostischen Instrumenten und setzt diese systematisch im Unterricht ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt für die Lernstandserhebung regelmässig standardisierte, förderdiagnostische Instrumente ein (zum Beispiel Orientierungsarbeiten, Standardprüfungen, PISA-Tests, Marburger Rechtschreibetraining etc.)."
+								},
+								{
+									"Name": "Die Lehrperson hat den Einsatz der förderdiagnostischen Instrumente systematisch im Jahresplan verteilt."
+								},
+								{
+									"Name": "Aufgrund der Lernstanderhebungen werden systematische Förderpläne für die ganze Klasse, einzelne Gruppen oder einzelne Lernende erstellt."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "8.3 Beurteilungskriterien",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson gibt die Kriterien und Leistungs- normen der Beurteilung bekannt und setzt sie im Unterricht um.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson gibt den Lernenden zu Produkten (zum Beispiel Hefteintrag, Merkblatt, Plakat, Zeichnung, Gegenstand, Rollenspiel etc.) Qualitätskriterien an, die zum Erfüllen des Auftrages führen."
+								},
+								{
+									"Name": "Die Lehrperson beurteilt die Produkte aufgrund der vorgegebenen Qualitätskriterien, und gibt sie den Lernenden Rückmeldung."
+								},
+								{
+									"Name": "Die Qualitätskriterien sind dem Produkt angemessen."
+								},
+								{
+									"Name": "Die Lehrperson gibt den Lernenden zu sozialen Verhaltenserwartungen Qualitätskriterien an, die zum Erfüllen der Erwartung führen."
+								},
+								{
+									"Name": "Die Lehrperson beurteilt das Verhalten aufgrund der vorgegebenen Qualitätskriterien, und gibt sie den Lernenden Rückmeldung."
+								},
+								{
+									"Name": "Die Qualitätskriterien sind der Stufe angepasst."
+								},
+								{
+									"Name": "Die Qualitätskriterien sind für die Stufe erreichbar."
+								},
+								{
+									"Name": "Die Lehrperson ist sich bewusst, dass die Lernenden die Kriterien für eine geforderte Leistung kennen müssen, um die eigene Leistung steigern zu können."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson verfügt über differenzierte Kriterienraster, macht diese transparent und baut den Unterricht und die Beurteilung konsequent darauf auf.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson hat eine feste Sammlung von verschiedenen Kriterienraster zu verschiedenen Sach- und Sozialkompetenzen."
+								},
+								{
+									"Name": "Die Sammlung weisst eine innere Logik aus."
+								},
+								{
+									"Name": "Die Lehrperson erklärt die verschiedenen Kriterienraster den Lernenden."
+								},
+								{
+									"Name": "Die Lernenden verfügen über ein Speichermedium für die verschiedenen Kriterienraster (Merkheft, Lernen-Lernheft, Plakate etc.)."
+								},
+								{
+									"Name": "Die Lehrperson setzt den Kriterienraster regelmässig ein."
+								},
+								{
+									"Name": "Das Kriterienraster wird in der Regel mit dem Auftrag den Lernenden transparent gemacht."
+								},
+								{
+									"Name": "Die Lehrperson verwendet zur erweiterten Verhaltensbeurteilung Unterlagen gemäss Vorgaben des Kantons (beziehungsweise die vom Kanton vorgeschriebenen offiziellen Unterlagen)."
+								},
+								{
+									"Name": "Die Beurteilungskriterien werden zur Verhaltensbeurteilung auch den Erziehungsberechtigten transparent gemacht."
+								},
+								{
+									"Name": "Die Lehrperson plant den weiteren Verlauf des Unterrichts aufgrund der Auswertungen mittels des Kriterienrasters."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson verfügt für jeden Kompetenzbereich über spezifische Kriterienraster und kann diese unter Einbezug der Lernenden situationsgerecht adaptieren.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson hat zu den Kompetenzdimensionen Sach-, Selbst- und Sozialkompetenz verschiedene feste Kriterienraster zur Beurteilung, und macht sie diese den Lernenden immer transparent."
+								},
+								{
+									"Name": "Die Lehrperson hat zu diesen Kompetenzdimensionen verschiedene, gestufte Leistungsniveaus, die erreicht werden können."
+								},
+								{
+									"Name": "Die Lehrperson setzt die Kriterienraster der verschiedenen Kompetenzdimensionen ausgewogen ein."
+								},
+								{
+									"Name": "Die Lehrperson erweitert und/oder differenziert die Kriterienraster unter Einbezug der Lernenden und den situativen Gegebenheiten."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "8.4 Dokumentation und Kommunikation",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson sammelt die beurteilungsrelevanten Dokumente und gibt den Lernenden und deren Erziehungsberechtigten Rückmeldung über die Lern- und Leistungsverhalten.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson sammelt wichtige Arbeitsergebnisse (Prüfungen, Arbeiten, Selbstbeurteilungen etc.) eines jeden Kindes."
+								},
+								{
+									"Name": "Die Lehrperson sammelt Beobachtungen und Arbeitsergebnisse im Zusammenhang mit dem Lern- und Leistungsverhalten."
+								},
+								{
+									"Name": "Die gesammelten Dokumente sind die Basis für Rückmeldungen an die Kinder und die Erziehungsberechtigten."
+								},
+								{
+									"Name": "Die Lehrperson sammelt zu den drei Kompetenzbereichen (Sach-, Selbst-, Sozialkompetenzen) Dokumente für Rückmeldungen an die Kinder und die Erziehungsberechtigten."
+								},
+								{
+									"Name": "Die Lehrperson sammelt bei lern- und verhaltensauffälligen Kinder auch themenzentrierte Dokumente (zum Beispiel Legasthenie: Schriftproben; Dyskalkulie: Lernkontrollen; Hochbegabte: spezielle Arbeiten etc.)."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson sammelt und dokumentiert systematisch Daten über die Entwicklung der Lernenden und führt mit den Lernenden und Er- ziehungsberechtigten regelmässig Lernberatungs- und Beurteilungsgespräche.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson sammelt prozessorientierte Dokumente (zum Beispiel Schriftprobe anfangs, Mitte und Ende Semester), die eine Entwicklung in einem Fach, einer Kompetenz dokumentieren."
+								},
+								{
+									"Name": "Solche Sammlungen beinhalten verschiedene Dokumentationen (Prüfungen, Selbsteinschätzungen, Beobachtungen, Arbeiten, Orientierungsarbeiten etc.)."
+								},
+								{
+									"Name": "Mit den Kindern und/oder den Erziehungsberechtigten wird abgesprochen, auf welche speziellen Aspekte (Kompetenzen, Fächer, Themenbereiche etc.) in der folgenden Beobachtungsperiode geachtet respektive Dokumente gesammelt werden."
+								},
+								{
+									"Name": "Die Lehrperson plant in ihrem Jahres-/Semesterplan regelmässige Gespräche mit den Erziehungsberechtigten und den Kindern."
+								},
+								{
+									"Name": "Die Lehrperson führt regelmässige Gespräche mit den Erziehungsberechtigten und den Kindern durch."
+								},
+								{
+									"Name": "Die Lehrperson verwendet auch Portfolios der Kinder für die Gespräche."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson trifft klare, individuelle Lernvereinbarungen mit den Beteiligten und überprüft sowie bespricht diese regelmässig mit den Lernenden und den Erziehungsberechtigten.",
+							"Indicators": [
+								{
+									"Name": "Aufgrund von Portfolios der Kinder und den Sammlungen der Lehrperson werden individuelle Lernvereinbarungen für die einzelnen Kinder getroffen (zum Beispiel Lernverträge, Förderpläne etc.)."
+								},
+								{
+									"Name": "Solche Lernvereinbarungen werden mit den Kindern und den Erziehungsberechtigten besprochen."
+								},
+								{
+									"Name": "Die Lehrperson, die Kinder und die Erziehungsberechtigten überprüfen die Erreichung der Fördermassnahmen anhand vorher abgesprochener Ziele und entsprechenden Beurteilungskriterien."
+								},
+								{
+									"Name": "Die Lehrperson erarbeitet eine systematische, sinnvolle Folge von individuellen Lernvereinbarungen, Lern- und Beratungsgesprächen, Phasen der Umsetzung und der Beurteilung."
+								},
+								{
+									"Name": "Die Lehrperson hat die zu erreichenden Ziele und Leistungsanforderungen der promotionsrelevanten Fächer zu Beginn des Schuljahres transparent gemacht."
+								},
+								{
+									"Name": "Die Lehrperson hat diese Ziele und Leistungsanforderungen in Niveaustufen eingeteilt (Basiskompetenz, Zusatzkompetenz, (Hoch-) Begabtenkompetenz)."
+								},
+								{
+									"Name": "Die Lehrperson hat die Jahresziele und Leistungsanforderungen auch für die Selbst- und Sozialkompetenzen formuliert und die Bearbeitung im Unterricht eingeplant."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "9 Reflexion",
+			"Description": "Die Lehrperson reflektiert fortlaufend die Wirkung ihrer Entscheide und Tätigkeiten auf andere (Lernende, Eltern und auf andere Lehrende) und sie geht ihre professionelle Weiterentwicklung aktiv und verantwortungsbewusst an.",
+			"Topics": [
+				{
+					"Name": "9.1 Unterrichtsreflexion",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kann den eigenen Unterricht wahrnehmen und reflektieren, nimmt Feedback an und ist offen für Anregungen zur Unterrichts- entwicklung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann ihre eigenen Haltungen und Einstellungen zum Thema und der Situation angemessen reflektieren."
+								},
+								{
+									"Name": "Die Lehrperson erkennt die Schwierigkeiten der abgelaufenen Sequenz, und kann sie konstruktive Schlüsse daraus ziehen."
+								},
+								{
+									"Name": "Die Lehrperson kann die positiv abgelaufenen Szenen einer Unterrichtssequenz benennen und den Grund für das Gelingen erklären."
+								},
+								{
+									"Name": "Die Lehrperson kann ihr methodisches Vorgehen aufgrund psychologischer Erkenntnisse begründen und reflektieren."
+								},
+								{
+									"Name": "Die Lehrperson kann ihr pädagogisches Vorgehen aufgrund pädagogisch-psychologischer Erkenntnisse begründen und reflektieren."
+								},
+								{
+									"Name": "Die Lehrperson kann ihr Vorgehen gegenüber anderen möglichen Varianten im Hinblick auf die Klassensituation, die Stufe, die Vor- und Nachteile etc. fundiert begründen und reflektieren."
+								},
+								{
+									"Name": "Die Lehrperson kann Rückmeldungen annehmen, ohne sofort in eine Verteidigungsposition zu gelangen."
+								},
+								{
+									"Name": "Die Lehrperson kann bei Meinungsverschiedenheiten mit der Praxislehrperson angemessen und konstruktiv kommunizieren respektive diskutieren."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson stellt sicher, dass das Erreichen der Unterrichtsziele systematisch überprüft wird und kann gezielte Massnahmen zur Unterrichtsentwicklung einleiten und umsetzen.",
+							"Indicators": [
+								{
+									"Name": "Es werden gezielt Lernkontrollen eingeplant und durchgeführt."
+								},
+								{
+									"Name": "Es werden Kontrollkriterien zur Zielerreichung formuliert und diese auch überprüft."
+								},
+								{
+									"Name": "Fremd- und Selbstkontrollmöglichkeiten sind eingeplant und werden auch durchgeführt."
+								},
+								{
+									"Name": "Merksätze werden nicht nur formuliert, sondern auch in der Praxis umgesetzt."
+								},
+								{
+									"Name": "Die Lehrperson formuliert Halbtages-, Tages- oder Wochenziele, und reflektiert sie deren Erreichung mit den Kindern und/ oder im Vorbereitungsteam."
+								},
+								{
+									"Name": "Die Lehrperson formuliert auch Ziele für die eigene Unterrichtsentwicklung."
+								},
+								{
+									"Name": "Die Lehrperson bemüht sich, diese Ziele mit geeigneten Massnahmen zu erreichen."
+								},
+								{
+									"Name": "Die Lehrperson erkennt aufgrund der Lernkontrollen den Handlungsbedarf."
+								},
+								{
+									"Name": "Die Lehrperson diskutiert  die Ergebnisse, und/oder holt sie zum möglichen Handlungsbedarf Rat ein im Vorbereitungsteam."
+								},
+								{
+									"Name": "Die Lehrperson reflektiert regelmässig ihre eingesetzten Massnahmen zur Lernkontrolle."
+								},
+								{
+									"Name": "Der Lehrperson reflektiert regelmässig ihre eingesetzten Massnahmen zur Unterrichtsentwicklung."
+								},
+								{
+									"Name": "Die Lehrperson verändert ihre eingesetzten Massnahmen, wenn dies aufgrund der Reflexion nötig ist."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson setzt im eigenen Unterricht regelmässig verschiedene Formen der Selbst- und Fremdevaluation ein und nutzt die Resultate von Feedback und Reflexion zur zielgerichteten Entwicklung des Unterrichts.",
+							"Indicators": [
+								{
+									"Name": "Fremd- und Selbstkontrollmöglichkeiten sind systematisch eingeplant, und werden sie auch durchgeführt."
+								},
+								{
+									"Name": "Die Lehrperson formuliert systematisch Halbtages-, Tages- oder Wochenziele, und reflektiert sie deren Erreichung mit den Kindern und/oder im Vorbereitungsteam."
+								},
+								{
+									"Name": "Die Lehrperson setzt eine breite Palette von Feedback- und Reflexionsinstrumenten (zum Beispiel transparente Zielformulierungen, Lernjournal, Kinderbefragungen, Klassenrat, Briefkasten, Orientierungsarbeiten etc.) systematisch ein."
+								},
+								{
+									"Name": "Die Lehrperson setzt die Methode des «forschenden Lernens» ein, um Aspekte des eigenen Unterrichts weiterzuentwickeln. Folgende Merkmale des forschenden Lernens können dabei im Vordergrund stehen:\n- selbstständige Wahl der «Strategie» bei der Auswahl möglicher Methoden, Versuchsanordnungen, Recherchen etc\n- beim Vorgehen dem Anspruch der Wissenschaft genügen\n- selbstständige Wahl des Themas durch die Lehrperson, Forschungsansatz mit Ausdauer und logischer Konsequenz bis zu einem Ergebnis durchhalten\n- vorhandene Kenntnisse und Instrumente zur Lösung des Problems in zureichendem Masse prüfen\n- das erreichte Resultat so darstellen, dass seine Bedeutung klar und der Weg zu ihm nachprüfbar ist"
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "9.2 Fremdeinschätzung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennt Feedback-Instrumente und setzt diese in der Regel situationsgerecht ein.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann zwischen Selbst- und Fremdevaluation unterscheiden und mögliche Vorgehensweisen beschreiben."
+								},
+								{
+									"Name": "Die Lehrperson setzt Selbst- und Fremdevaluationsinstrumente ein."
+								},
+								{
+									"Name": "Die Lehrperson erkennt Situationen im Unterricht oder im schulischen Umfeld, die das Einholen eines Feedbacks verlangen."
+								},
+								{
+									"Name": "Die Lehrperson holt je nach Bedarf Feedback bei Kolleginnen/Kollegen, Schulleitung, Eltern, Fachpersonen etc. ein."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson kennt spezifische Feedback- Instrumente, setzt diese systematisch ein und leitet daraus Konsequenzen für das eigene Handeln ab.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kennt Feedback-Instrumente für:\n− SchülerInnen-Feedback\n− Eltern-Feedback\n− kollegiale Hospitation\n− Kooperation im Team."
+								},
+								{
+									"Name": "Die Lehrperson setzt diese Instrumente systematisch ein."
+								},
+								{
+									"Name": "Die Bereitschaft für sinnvolle Veränderungen/Entwicklungen ist aufgrund der Feedbacks vorhanden."
+								},
+								{
+									"Name": "Zu einzelnen Aspekten der Feedbacks werden gezielt Entwicklungsschritte geplant, durchgeführt und evaluiert."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson ist in der Lage, das eigene Handeln als ständiges Wechselspiel mit andern zu verstehen und nutzt diese Erkenntnisse gezielt für die persönliche und berufliche Entwicklung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson zeigt hohe Bereitschaft, Feedback-Instrumente einzusetzen, und setzt sie diese auch wirklich ein."
+								},
+								{
+									"Name": "Die Lehrperson nimmt die Feedbacks ernst und leitet mögliche Entwicklungsschritte ein."
+								},
+								{
+									"Name": "Die Lehrperson ist in einem Qualitätsteam integriert."
+								},
+								{
+									"Name": "Die Lehrperson engagiert sich in der Qualitätsgruppe des Schulhausteams."
+								},
+								{
+									"Name": "Die Lehrperson nimmt an freiwilliger Intervision teil, um so aus den gewonnenen Erkenntnissen den eigenen Unterricht weiterzuentwickeln."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "9.3 Unterrichtsteam",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson nimmt an der Teamarbeit teil und pflegt den kollegialen Austausch.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson nimmt regelmässig an den Teamsitzungen teil."
+								},
+								{
+									"Name": "Die Lehrperson zeichnet sich an den Teamsitzungen durch folgendes Verhalten aus:\n− Hört aktiv zu.\n− Zeigt aktives Interesse an den Traktanden, den Problemen des Teams.\n− Meldet sich regelmässig zu Wort.\n− Bringt konstruktive Lösungsvorschläge."
+								},
+								{
+									"Name": "Die Lehrperson pflegt während den Pausen regelmässigen Kontakt im Lehrerzimmer."
+								},
+								{
+									"Name": "Die Lehrperson sucht den Kontakt zu den Kolleginnen oder den Kollegen."
+								},
+								{
+									"Name": "Die Lehrperson ist offen für den kollegialen Austausch."
+								},
+								{
+									"Name": "Die Lehrperson verfügt über eine für das Team konstruktive Gesprächskultur."
+								},
+								{
+									"Name": "Die Lehrperson trägt Abmachungen, Haus- und Ordnungsregeln etc. gewissenhaft mit."
+								},
+								{
+									"Name": "Die Lehrperson ist im Team integriert."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson pflegt systematisch die Zusammenarbeit mit Kolleginnen und Kollegen und nutzt diese zur partnerschaftlichen Reflexion.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson ist in regelmässigem Kontakt/Austausch mit Stufenkolleginnen/Stufenkollegen."
+								},
+								{
+									"Name": "Die Lehrperson arbeitet in einem Vorbereitungsteam aktiv mit."
+								},
+								{
+									"Name": "Durch die Lehrperson erfährt man ein positives Miteinander in den Teamarbeiten."
+								},
+								{
+									"Name": "Die Lehrperson nimmt an kollegialen Aktivitäten ausserhalb der Schule teil."
+								},
+								{
+									"Name": "Die Lehrperson übernimmt gewisse Aufgaben im Team und führt diese gewissenhaft und termingerecht durch."
+								},
+								{
+									"Name": "Die Lehrperson ist zu regelmässigen kollegialen Hospitationen bereit."
+								},
+								{
+									"Name": "Die Lehrperson ist bereit, schulische Erfahrungen auszutauschen."
+								},
+								{
+									"Name": "Die Lehrperson ist bereit, Arbeitsmaterialien, Vorbereitungen, Ideen auszutauschen."
+								},
+								{
+									"Name": "Die Lehrperson pflegt gemeinsame Projekte mit Kolleginnen oder Kollegen."
+								},
+								{
+									"Name": "Die Lehrperson kann auch in schwierigen Situationen konstruktive Feedbacks geben."
+								},
+								{
+									"Name": "Der Lehrperson führt mit Stufenkolleginnen oder Stufenkollegen Vergleichsprüfungen durch."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson initiiert übergreifende, berufliche Zusammenarbeit und verfügt über Kompetenzen zur Mitgestaltung und Mitverantwortung in der Teamentwicklung.",
+							"Indicators": [
+								{
+									"Name": "Der Lehrperson initiiert Vorhaben, Projekte für das Team."
+								},
+								{
+									"Name": "Die Lehrperson setzt erworbene Fähigkeiten aus der Weiterbildung auch für das Team ein."
+								},
+								{
+									"Name": "Die Lehrperson ist sensibilisiert für schulische Belange, die das Team angehen."
+								},
+								{
+									"Name": "Die Lehrperson ist ressourcenbewusst."
+								},
+								{
+									"Name": "Die Lehrperson zeigt ein aktives Interesse am Wohle und am guten Funktionieren des Teams."
+								},
+								{
+									"Name": "Die Lehrperson stellt sich regelmässig für Arbeiten in Vorbereitungsgruppen (Spur-, Qualitäts-, Organisations- gruppen etc.) zur Verfügung."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "9.4 Weiterbildung",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson ist in der Lage, den Bedarf an beruflicher Weiterbildung festzustellen und ist offen für Massnahmen zur beruflichen Weiterentwicklung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson ist über aktuelle Weiterbildungsmöglichkeiten informiert."
+								},
+								{
+									"Name": "Die Lehrperson nimmt regelmässig an Weiterbildungsveranstaltungen teil."
+								},
+								{
+									"Name": "Die Lehrperson ist offen für Weiterbildungsmassnahmen, die die Schulleitung vorschlägt."
+								},
+								{
+									"Name": "Die Lehrperson sieht die Notwendigkeit permanenter beruflicher Weiterbildung."
+								},
+								{
+									"Name": "Die Lehrperson erkennt aufgrund kollegialer Hospitation den eigenen Weiterbildungsbedarf."
+								},
+								{
+									"Name": "Die Lehrperson stellt den Bedarf an Weiterbildung mittels Selbst- und Fremdevaluation fest."
+								},
+								{
+									"Name": "Die Lehrperson hat eine konstruktive Einstellung gegenüber Weiterbildungsmassnahmen im Team."
+								},
+								{
+									"Name": "Die Lehrperson ist bereit, unterrichtsfreie Zeit für die Weiterbildung einzusetzen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson geht die berufliche Weiterentwicklung eigenverantwortlich\nan, setzt sich mit Fachliteratur auseinander und orientiert sich an beruflichen Qualitätsmassstäben.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson wählt Weiterbildungen aufgrund praktischer Bedürfnisse im Unterricht aus."
+								},
+								{
+									"Name": "Die Lehrperson besucht regelmässig freiwillige Weiterbildungsangebote, die den Unterricht bereichern."
+								},
+								{
+									"Name": "Die Lehrperson liest regelmässig Fachliteratur, und versucht sie die Erkenntnisse in den Unterricht und/oder ins Team einfliessen zu lassen."
+								},
+								{
+									"Name": "Die Lehrperson versucht festgestellte Probleme durch forschendes Lernen zu klären."
+								},
+								{
+									"Name": "Die Lehrperson orientiert sich bei der Auswahl von Weiterbildung an Qualitätsstandards (zum Beispiel Professionsstandards und ihre Niveaudifferenzierung der Pädagogischen Hochschule Schwyz)."
+								},
+								{
+									"Name": "Die Weiterbildung beschränkt sich nicht nur auf bereits in guter Qualität vorhandene Kompetenzen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson erwirbt sich Zusatzqualifikationen, die gezielt in der Berufsarbeit umgesetzt werden und die für die Entwicklung der Schule und des Unterrichts relevant sind.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson besucht Nachdiplomkurse und/oder Nachdiplomstudien, die für die Arbeit an der Schule relevant sind."
+								},
+								{
+									"Name": "Die Lehrperson stellt ihre erworbenen Kompetenzen der Schule zur Verfügung."
+								},
+								{
+									"Name": "Die Lehrperson initiiert aufgrund der erworbenen Kompetenzen und Erkenntnisse Weiterbildungsangebote für das Team."
+								},
+								{
+									"Name": "Die Lehrperson besucht Weiterbildungsangebote, die zum Profil der Schule passen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Name": "10 Kooperation Umfeld",
+			"Description": "Die Lehrperson verhält sich professionell im Umgang mit dem schulischen und gesellschaftlichen Umfeld, pﬂegt konstruktive Beziehungen mit Kolleginnen und Kollegen, Fachstellen, Eltern und Behörden, um ein förderliches Lernklima zu schaﬀen.",
+			"Topics": [
+				{
+					"Name": "10.1 Professionelles Verhalten",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson ist sich des Zusammenwirkens von Schule und Gesellschaft bewusst und nimmt den Dialog zum gesellschaftlichen Umfeld auf.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann die relevanten soziologischen Aspekte des Zusammenwirkens von Schule und Gesellschaft anhand aktueller Diskussionen erklären."
+								},
+								{
+									"Name": "Die Lehrperson ist offen für den Dialog mit dem gesellschaftlichen Umfeld."
+								},
+								{
+									"Name": "Die Lehrperson kennt die aktuellen bildungspolitischen Diskussionen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson nimmt den eigenen Lehrauftrag als gesellschaftlichen Auftrag wahr und setzt sich im Dialog mit den Partnern mit gesellschaftlichen Fragen aktiv auseinander.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kennt die aktuellen bildungspolitischen Diskussionen, und kann sie darüber kompetent Auskunft geben."
+								},
+								{
+									"Name": "Die Lehrperson sucht das Gespräch mit den Teammitgliedern über aktuelle gesellschaftspolitische Diskussionen, die Auswirkungen auf die Schule haben können."
+								},
+								{
+									"Name": "Die Lehrperson sucht das Gespräch mit den Erziehungsberechtigten über aktuelle gesellschaftspolitische Diskussionen, die Auswirkungen auf die Schule haben können."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson übernimmt gesellschaftliche Aufgaben, die mit dem schulischen Umfeld verbunden sind, und nimmt aktiv am Aushandlungsprozess zwischen Schule und Gesellschaft teil.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson übernimmt Aufgaben, oder initiiert sie Aktivitäten im gesellschaftlichen Umfeld der Schule (zum Beispiel Winter-, Sommer(sport)lager, Beiträge der Schule an Gemeindeanlässen etc.)."
+								},
+								{
+									"Name": "Die Lehrperson nimmt aktiv an Lehrpersonenorganisationen (zum Beispiel LCH, LVS, nationale, kantonale Arbeitsgruppen etc.) teil."
+								},
+								{
+									"Name": "Die Lehrperson versucht im Dialog mit dem schulischen Umfeld, Ansprüche der Gesellschaft und reale Möglichkeiten der Schule zusammenzubringen."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "10.2 Kontakt mit Eltern",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson weiss um die Bedeutung des erzieherischen und sozialen Umfeldes für die Entwicklung der Lernenden und nimmt bei Bedarf Kontakt zu den Erziehungsberechtigten auf.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson sucht das Gespräch mit den Teammitgliedern."
+								},
+								{
+									"Name": "Die Lehrperson sucht das Gespräch mit den Erziehungsberechtigten."
+								},
+								{
+									"Name": "Die Lehrperson erkennt in der Regel jene Situationen, die einen Kontakt mit den Erziehungsberechtigten nötig machen."
+								},
+								{
+									"Name": "Die Lehrperson kennt verschiedene Möglichkeiten des Kontaktes mit den Erziehungsberechtigten (zum Beispiel Elterngespräche, Elternabende, Telefon, Besuche bei Erziehungsberechtigten, Infobriefe, Sprechstunden, offenes Schulzimmer, Kontaktbüchlein, Wochenpläne, Wochenziele, Klassenhomepage, Blogs etc.)."
+								},
+								{
+									"Name": "Die Lehrperson berät sich mit Teammitgliedern oder der Schulleitung bei Informationen aus dem erzieherischen und sozialen Umfeld, die eine komplexere Vorgehensweise bei der Entwicklungsunterstützung der Kinder/des Kindes nötig machen."
+								},
+								{
+									"Name": "Die Lehrperson berücksichtigt Informationen aus dem erzieherischen und sozialen Umfeld im Umgang mit dem einzelnen Kind und/oder der Klasse."
+								},
+								{
+									"Name": "Die Lehrperson nimmt Kontakt mit den Erziehungsberechtigten auf, wenn sie für die Entwicklung des Kindes relevante Informationen aus dem erzieherischen und sozialen Umfeld erhält."
+								},
+								{
+									"Name": "Die Lehrperson verwendet die vorgeschriebenen Unterlagen für die «förderorientierte Verhaltensbeurteilung»."
+								},
+								{
+									"Name": "Die Lehrperson kennt verschiedene Instrumente, um die Erziehungsberechtigten über den Entwicklungsstand des Kindes fundiert zu informieren (Notenspiegel, Unterrichtsbeobachtungen, Fremd- und Selbsteinschätzungen, Prüfungen, Orientierungsarbeiten, Portfolio, Lernvereinbarungen etc.)."
+								},
+								{
+									"Name": "Die Lehrperson bereitet sich mittels dieser Instrumente auf ein Gespräch vor."
+								},
+								{
+									"Name": "Zielvereinbarungen werden schriftlich festgehalten (Eltern-, Kindergespräche)."
+								},
+								{
+									"Name": "Die Lehrperson hat einen «Leitfaden» für Elterngespräche."
+								},
+								{
+									"Name": "Die Lehrperson kann auf Aspekte der interkulturellen Pädagogik, die einen Einfluss auf die Klasse oder die Lernenden ausüben, in geeigneter Weise eingehen."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson kennt und versteht Einflussmechanismen der sozialen Situation und der Peers der Lernenden und pflegt regelmässigen Kontakt mit den Erziehungsberechtigten.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson hat fundierte Kenntnisse über das soziale und erzieherische Umfeld."
+								},
+								{
+									"Name": "Die Lehrperson hält wichtige Kenntnisse über das soziale und erzieherische Umfeld in geeigneter Form fest."
+								},
+								{
+									"Name": "Die Lehrperson verwendet systematisch Instrumente für das Festhalten des Entwicklungsstandes der Kinder."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson verfügt über Kompetenzen im Umgang mit speziellen sozialen Situationen, nimmt systematisch Kontakt mit dem erzieherischen Umfeld auf und pflegt den Aufbau gemeinsamer Zielsetzungen und Strategien.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann auf spezielle soziale Situationen eingehen und diese allenfalls im Unterricht thematisieren."
+								},
+								{
+									"Name": "Die Lehrperson initiiert und formuliert angemessene, gemeinsam zu verfolgende Ziele mit dem sozialen Umfeld."
+								},
+								{
+									"Name": "Die Lehrperson gibt der Situation angepasste Tipps und Hinweise, wie die sozialen Situationen und das erzieherische Umfeld optimiert werden können."
+								},
+								{
+									"Name": "Die Erziehungsberechtigten werden wöchentlich über den zu bearbeitenden Stoff und über den Lernstand der Kinder informiert (zum Beispiel Wochenpläne, Lernkontrollen, Fremd- und Selbsteinschätzungen, Reflexionen der Kinder etc.)."
+								},
+								{
+									"Name": "Die Lehrperson verfügt über eine Jahresplanung mit detaillierten Angaben über die Kontakte mit dem erzieherischen Umfeld, gekoppelt mit der Planung des Einsatzes von Instrumenten für das Festhalten des Entwicklungsstandes und der Förderplanung."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "10.3 Fachstellen und Behörden",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson kennt die Fachstellen, Spezialdienste und zuständigen Schulbehörden und arbeitet bei Bedarf mit ihnen zusammen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kennt die wichtigsten Fachstellen und Spezialdienste im Kanton, und kann sie deren Funktion beschreiben (zum Beispiel Schulpsychologischer Beratungsdienst, Logopädischer Dienst, Beratung im Schulfeld, Amt für Volksschule)."
+								},
+								{
+									"Name": "Die Lehrperson kennt die für sie zuständige Schulbehörde und deren Funktion."
+								},
+								{
+									"Name": "Die Lehrperson kann das Vorgehen bei der Kontaktaufnahme zu den verschiedenen Stellen erläutern."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson arbeitet auf eigene Initiative mit Spezialisten, Fachstellen und Behörden zusammen und stellt so die optimale Förderung der Lernenden und der Schule sicher.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann aufgrund ihrer diagnostischen Vermutungen die entsprechenden Dienste angehen."
+								},
+								{
+									"Name": "Die Lehrperson setzt die unterstützenden Hinweise der entsprechenden Dienste um."
+								},
+								{
+									"Name": "Die Lehrperson bemüht sich um eine kontinuierliche Zusammenarbeit mit den entsprechenden Diensten."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson verfügt über Fachkenntnisse von speziellen Diensten, pflegt den direkten Kontakt zu den Fachstellen und Behörden und kann Lernende und Erziehungsberechtigte professionell beraten.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson verfügt über eine vertiefte Ausbildung im Sonderpädagogischen Bereich (NDK, NDS, Master etc.)."
+								},
+								{
+									"Name": "Die Lehrperson hat die erworbenen Kenntnisse und/oder Kompetenzen über zwei bis drei Jahre im Schulfeld umsetzen können."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				},
+				{
+					"Name": "10.4 Beteiligung in der Schule",
+					"Description": "",
+					"Niveaus": [
+						{
+							"Name": "Niveau 1",
+							"Description": "Die Lehrperson weiss um schul- und bildungspolitische Anliegen und ist offen für Projekte der Schulentwicklung.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson kann über aktuelle schul- und bildungspolitische Anliegen Auskunft geben."
+								},
+								{
+									"Name": "Die Lehrperson arbeitet im Sinne der schulischen Rahmenvorgaben (Schulkonzept, Leitbild, Schulprogramm)."
+								},
+								{
+									"Name": "Die Lehrperson setzt sich kritisch-konstruktiv mit den Schulentwicklungsprojekten der eigenen Schule auseinander."
+								},
+								{
+									"Name": "Die Lehrperson engagiert sich bei der Durchführung von Schulentwicklungsprojekten."
+								},
+								{
+									"Name": "Die Lehrperson bringt eigene Kompetenzen und Ressourcen in den Projektprozess ein."
+								},
+								{
+									"Name": "Die Lehrperson trägt zu einer positiven und produktiven Kommunikations- und Zusammenarbeitskultur bei."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 2",
+							"Description": "Die Lehrperson setzt sich mit Fragen der Schulentwicklung auseinander und verfügt über Kompetenzen, um sich an Projekten der Schulentwicklung aktiv zu beteiligen.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson setzt sich intensiv mit den aktuellen Fragen der Schulentwicklung der eigenen Schule auseinander, indem sie zusätzliche Informationen zum Projektthema beschafft (Literaturrecherche, Befragung anderer Schulen, Besuch spezieller Weiterbildungsangebote etc.)."
+								},
+								{
+									"Name": "Die Lehrperson bringt die neuen Erkenntnisse, Kompetenzen und Informationen in das Projekt ein."
+								},
+								{
+									"Name": "Die Lehrperson unterstützt und motiviert Kolleginnen und Kollegen bei der Durchführung der Schulentwicklungsprojekte."
+								},
+								{
+									"Name": "Die Lehrperson kann das Anliegen des Projektes in positiver Form interessierten Kreisen ausserhalb der eigenen Schule aufzeigen (Eltern, Behörden, Presse, Lehrpersonen aus anderen Schulen etc.)."
+								},
+								{
+									"Name": "Die Lehrperson trägt durch ihre lösungsorientierte Auseinandersetzung in den Projekten zu einer positiven und produktiven Kommunikations- und Kooperationskultur der Schule bei."
+								}
+							]
+						},
+						{
+							"Name": "Niveau 3",
+							"Description": "Die Lehrperson initiiert und trägt Mitverantwortung für die schulische Entwicklung im bildungspolitischen Kontext und verfügt über professionelle Kompetenzen im Projektmanagement.",
+							"Indicators": [
+								{
+									"Name": "Die Lehrperson nimmt aktuelle bildungspolitische und/oder schulinterne Anliegen auf, und initiiert sie in Absprache mit der Schulleitung Schulentwicklungsprojekte."
+								},
+								{
+									"Name": "Die Lehrperson übernimmt (Teil-)Verantwortung und Aufgaben in Projekten."
+								},
+								{
+									"Name": "Die Lehrperson verfügt über eine adäquate Aus- oder Weiterbildung für die Übernahme des Projektmanagements."
+								},
+								{
+									"Name": "Die Lehrperson verfügt über ein hohes Mass an Einfühlungsvermögen für die vorgebrachten Anliegen des Teams, und kann sie diese im Projektprozess in der Regel mitberücksichtigen."
+								},
+								{
+									"Name": "Die Lehrperson trägt durch ihr Auftreten nach innen und aussen zu einer positiv wahrgenommenen Kommunikation und Kooperation mit dem schulischen Umfeld bei."
+								}
+							]
+						}
+					],
+					"Questions": [
+						{
+							"Question": "Wie hast du das umgesetzt?"
+						},
+						{
+							"Question": "Was hat gut funktioniert?"
+						},
+						{
+							"Question": "Was kannst du noch verbessern?"
+						},
+						{
+							"Question": "Welche Theorien können dir dabei helfen?"
+						}
+					]
+				}
+			]
+		}
+	]
+}
