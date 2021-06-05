@@ -1,7 +1,6 @@
 import {
   IonContent,
   IonPage,
-  IonImg,
   IonItem,
   IonInput,
   IonLabel,
@@ -9,19 +8,17 @@ import {
   IonSelect,
   IonSelectOption,
   IonButton,
-  IonTextarea,
   IonToast,
   useIonViewWillEnter,
 } from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { AudioRecorder } from '../../components/media/audioRecorder'
 import { VideoRecorder } from '../../components/media/videoRecorder'
 import { ImageRecorder } from '../../components/media/imageRecorder'
 import { LargeHeader, Header } from '../../components/header'
 import { TextRecorder } from '../../components/media/TextRecorder'
 import { saveMomentAPI, Media } from '../../api/moment/saveMoment'
-import { getContentTypeFromMimeType } from '../../utils/getContentTypeUtils'
 import { getMomentAPI } from '../../api/moment/getMoment'
 import { getMomentAsset } from '../../api/moment/getMomentAsset'
 import { DisplayMedia } from '../../components/media/displayMedia'

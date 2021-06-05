@@ -1,11 +1,5 @@
 import { API, graphqlOperation, Storage } from 'aws-amplify'
-import {
-  ContentType,
-  CreateMomentInput,
-  Moment,
-  UpdateMomentInput,
-} from '../../API'
-import { extension } from 'mime-types'
+import { CreateMomentInput, Moment, UpdateMomentInput } from '../../API'
 import awsExports from '../../aws-exports'
 import { createMoment, updateMoment } from '../../graphql/mutations'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
@@ -51,6 +45,7 @@ export const saveMomentAPI = async ({
       moment.contentType = getContentTypeFromMimeType(media.type)
     }
 
+    // update or create new moment
     if (updateState === 'create') {
       moment.createdAt = new Date().toISOString()
       const res = (await API.graphql(
