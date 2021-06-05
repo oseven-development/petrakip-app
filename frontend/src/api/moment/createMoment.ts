@@ -4,6 +4,7 @@ import { extension } from 'mime-types'
 import awsExports from '../../aws-exports'
 import { createMoment } from '../../graphql/mutations'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
+import { getContentTypeFromMimeType } from '../../utils/getContentTypeUtils'
 
 // Can't use Moment from API.ts due to __typename
 export interface Media {
@@ -51,7 +52,7 @@ export const createMomentAPI = async ({
     } else {
       moment.content = media.data as string
     }
-    moment.contentType = getContentType(media.type)
+    moment.contentType = getContentTypeFromMimeType(media.type)
     moment.createdAt = new Date().toISOString()
 
     const res = (await API.graphql(
@@ -65,16 +66,3 @@ export const createMomentAPI = async ({
   }
 }
 
-export const getContentType = (mimeType: string) => {
-  if (mimeType.includes('audio')) {
-    return ContentType.audio
-  } else if (mimeType.includes('video')) {
-    return ContentType.video
-  } else if (mimeType.includes('image')) {
-    return ContentType.image
-  } else if (mimeType.includes('text')) {
-    return ContentType.text
-  } else {
-    return undefined
-  }
-}

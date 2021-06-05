@@ -1,7 +1,6 @@
 /* Moments */
 export { MomentsListView } from './moments/momentsListView'
 export { MomentsDetailView } from './moments/momentsDetailView'
-export { MomentsCreateNewView } from './moments/momentsCreateNewView'
 
 /* Profile */
 export { ProfileDetailView } from './profile/profileDetailView'

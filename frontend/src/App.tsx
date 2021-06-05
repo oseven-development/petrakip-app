@@ -18,7 +18,6 @@ import { Redirect, Route } from 'react-router-dom'
 
 import {
   MomentsListView,
-  MomentsCreateNewView,
   MomentsDetailView,
   ProgressDetailView,
   ReflectionsCreateNewView,
@@ -59,7 +58,7 @@ const App: React.FC = () => (
           {/* Moments routes  */}
           <Route exact path={'/moments'} component={MomentsListView} />
           <Route path={`/moments/details/:id`} component={MomentsDetailView} />
-          <Route path={`/moments/create`} component={MomentsCreateNewView} />
+          <Route path={`/moments/create`} component={MomentsDetailView} />
 
           {/* Reflections routes */}
           <Route exact path={'/reflections'} component={ReflectionsListView} />
