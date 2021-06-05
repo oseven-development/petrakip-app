@@ -43,7 +43,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
   })
   const [moment, setMoment] = useState<any>({ title: '', tags: [''] })
 
-  useEffect(function effectFunction() {
+  useEffect(() => {
     if (match?.params?.id) {
       getMomentAPI({ id: match?.params?.id }).then(async res => {
         const loadedMediaAsset = await getMomentAsset(
