@@ -1,29 +1,15 @@
 import React from 'react'
 import {
-  IonContent,
-  IonPage,
-  IonImg,
   IonItem,
-  IonInput,
   IonLabel,
   IonList,
-  IonSelect,
-  IonSelectOption,
-  IonButton,
-  IonTextarea,
-  IonToast,
-  useIonViewWillEnter,
   IonItemGroup,
   IonItemDivider,
   IonThumbnail,
   IonIcon,
   IonText,
 } from '@ionic/react'
-import { Media } from '../../api/moment/saveMoment'
-import {
-  getContentTypeFromMimeType,
-  getIconFromContentType,
-} from '../../utils/getContentTypeUtils'
+import { getIconFromContentType } from '../../utils/getContentTypeUtils'
 import { Moment } from '../../API'
 import { getLocaleDateString } from '../../utils/dateUtils'
 
@@ -32,8 +18,6 @@ interface Props {
   onClickHandler: Function
 }
 export const MomentList: React.FC<Props> = ({ moments, onClickHandler }) => {
-  console.log(onClickHandler)
-  console.log(moments)
   return (
     <IonList>
       {Object.entries(moments).map(([day, moments]: any) => (
