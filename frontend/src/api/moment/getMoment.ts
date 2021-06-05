@@ -12,7 +12,6 @@ export const getMomentAPI = async ({ id }: getMomentAPIInput) => {
       return result.data.getMoment
     } else {
       const result: any = await API.graphql(graphqlOperation(listMoments))
-      console.log(result.data.listMoments)
       return result.data.listMoments
     }
   } catch (error) {
