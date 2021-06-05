@@ -13,6 +13,8 @@ import {
   IonAvatar,
   IonThumbnail,
   IonIcon,
+  IonItemGroup,
+  IonItemDivider,
 } from '@ionic/react'
 
 import { Header } from '../../components'
@@ -22,24 +24,21 @@ import { useEffect, useState } from 'react'
 import { Moment } from '../../API'
 import { getMomentAPI } from '../../api/moment/getMoment'
 import { getIconFromContentType } from '../../utils/getContentTypeUtils'
-import { getLocaleDateString } from '../../utils/dateUtils'
+import { getLocaleDateString, groupArrayByDate } from '../../utils/dateUtils'
 
 interface Props extends RouteComponentProps<{}> {}
 
 export const MomentsListView: React.FC<Props> = ({ history }) => {
   const [moments, setMoments] = useState<any>([])
 
-  const getAllMomentsToState = async () => {
-    const result = await getMomentAPI({})
-    setMoments(result.items)
+  useEffect(() => {
+    getMomentAPI({}).then(res => {
+      setMoments(groupArrayByDate(res.items))
+    })
 
-    // setNextMomentToken(result.nextToken ? result.nextToken : undefined)
-  }
-
-  // gets called on mount
-  useIonViewWillEnter(async () => {
-    getAllMomentsToState()
-  })
+    // can't add as dependency will cause error in ionic
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <IonPage>
@@ -50,43 +49,48 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
           Erstellen
         </IonButton>
         <IonList>
-          {moments.map((moment: any, i: number) => {
-            return (
-              <IonItem
-                key={`${i}`}
-                button
-                onClick={e => {
-                  console.log(moment)
-                  e.preventDefault()
-                  history.push({
-                    pathname: `/moments/details/${moment.id}`,
-                    state: { moment: moment },
-                  })
-                }}
-                detail
-              >
-                <IonThumbnail
-                  slot="start"
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+          {Object.entries(moments).map(([day, moments]: any) => (
+            <IonItemGroup key={`${day}`}>
+              <IonItemDivider>
+                <IonLabel>{day}</IonLabel>
+              </IonItemDivider>
+              {moments.map((moment: any, i: number) => (
+                <IonItem
+                  key={`${i}`}
+                  button
+                  onClick={e => {
+                    console.log(moment)
+                    e.preventDefault()
+                    history.push({
+                      pathname: `/moments/details/${moment.id}`,
+                      state: { moment: moment },
+                    })
                   }}
+                  detail
                 >
-                  <IonIcon
-                    size="large"
-                    icon={getIconFromContentType(moment.contentType)}
-                  />
-                </IonThumbnail>
-                <IonLabel className="ion-text-wrap">
-                  <IonText>
-                    <h2>{moment.title}</h2>
-                  </IonText>
-                  <p>{getLocaleDateString(moment.createdAt)}</p>
-                </IonLabel>
-              </IonItem>
-            )
-          })}
+                  <IonThumbnail
+                    slot="start"
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <IonIcon
+                      size="large"
+                      icon={getIconFromContentType(moment.contentType)}
+                    />
+                  </IonThumbnail>
+                  <IonLabel className="ion-text-wrap">
+                    <IonText>
+                      <h2>{moment.title}</h2>
+                    </IonText>
+                    <p>{getLocaleDateString(moment.createdAt)}</p>
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonItemGroup>
+          ))}
         </IonList>
       </IonContent>
     </IonPage>
