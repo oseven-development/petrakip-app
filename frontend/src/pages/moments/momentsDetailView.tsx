@@ -20,11 +20,11 @@ import { VideoRecorder } from '../../components/media/videoRecorder'
 import { ImageRecorder } from '../../components/media/imageRecorder'
 import { LargeHeader, Header } from '../../components/header'
 import { TextRecorder } from '../../components/media/TextRecorder'
-import { createMomentAPI, Media } from '../../api/moment/createMoment'
+import { saveMomentAPI, Media } from '../../api/moment/saveMoment'
 import { getContentTypeFromMimeType } from '../../utils/getContentTypeUtils'
 import { getMomentAPI } from '../../api/moment/getMoment'
 import { getMomentAsset } from '../../api/moment/getMomentAsset'
-
+import { DisplayMedia } from '../../components/media/displayMedia'
 export interface Moment {
   title: string
   tags: string[]
@@ -34,8 +34,12 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 export const MomentsDetailView: React.FC<Props> = props => {
-  const { match }: any = props
-  const [isToastPresent, setIsToastPresent] = useState(false)
+  const { match, history }: any = props
+  const [isToast, setIsToast] = useState({
+    present: false,
+    color: 'danger',
+    message: 'Du hast keinen Titel für den Moment definiert',
+  })
   const [media, setMedia] = useState<Media>({
     type: '',
     data: '',
@@ -43,7 +47,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
   })
   const [moment, setMoment] = useState<any>({ title: '', tags: [''] })
 
-  useEffect(() => {
+  useIonViewWillEnter(() => {
     if (match?.params?.id) {
       getMomentAPI({ id: match?.params?.id }).then(async res => {
         const loadedMediaAsset = await getMomentAsset(
@@ -55,66 +59,42 @@ export const MomentsDetailView: React.FC<Props> = props => {
         setMoment(res)
       })
     }
-    // can't add as dependency will cause error in ionic
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  })
 
-  const createNewMoment = () => {
-    if (moment.title.length === 0) {
-      setIsToastPresent(true)
+  const saveMoment = async () => {
+    if (moment.title.length === 0 || media.type === '') {
+      setIsToast({
+        ...isToast,
+        present: true,
+        message: `Moment konnte nicht erstellt werden. Jeder Titel nicht definiert oder Medientyp`,
+      })
     } else {
-      createMomentAPI({ moment, media })
+      await saveMomentAPI({ moment, media })
+      setIsToast({
+        present: true,
+        color: 'success',
+        message: `Moment erfolgreich ${
+          match?.params?.id ? 'geändert' : 'erstellt'
+        }`,
+      })
     }
   }
 
   return (
     <IonPage>
-      <Header>Moment Erstellen</Header>
+      <Header>Moment {match?.params?.id ? 'ändern' : 'erstellen'}</Header>
       <IonContent fullscreen>
-        <LargeHeader>Moment Erstellen</LargeHeader>
-        <div
-          className="ion-margin"
-          style={{
-            height: 200,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          {getContentTypeFromMimeType(media.type) === 'audio' && (
-            <audio src={URL.createObjectURL(media.data)} controls />
-          )}
-          {getContentTypeFromMimeType(media.type) === 'video' && (
-            <video
-              style={{ height: 200 }}
-              src={URL.createObjectURL(media.data)}
-              controls
-            />
-          )}
-          {getContentTypeFromMimeType(media.type) === 'image' && (
-            <IonImg
-              style={{ height: 200 }}
-              src={URL.createObjectURL(media.data)}
-              alt="test"
-            />
-          )}
-          {getContentTypeFromMimeType(media.type) === 'text' && (
-            <IonTextarea disabled readonly value={media.data}></IonTextarea>
-          )}
-          {getContentTypeFromMimeType(media.type) === undefined && (
-            <IonImg
-              style={{ height: 200 }}
-              src={`assets/placeholder.jpeg`}
-              alt="test"
-            />
-          )}
-        </div>
+        <LargeHeader>
+          Moment {match?.params?.id ? 'ändern' : 'erstellen'}
+        </LargeHeader>
+        <DisplayMedia>{media}</DisplayMedia>
 
         <IonList>
           <IonItem>
             <IonInput
               value={moment.title}
               placeholder="Title"
+              debounce={600}
               onIonChange={e =>
                 setMoment((prevMoment: any) => ({
                   ...prevMoment,
@@ -163,15 +143,17 @@ export const MomentsDetailView: React.FC<Props> = props => {
 
         <TextRecorder setMedia={setMedia} />
       </IonContent>
-      <IonButton expand="full" onClick={createNewMoment}>
-        Moment erstellen
+      <IonButton expand="full" onClick={saveMoment}>
+        Moment {match?.params?.id ? 'ändern' : 'erstellen'}
       </IonButton>
       <IonToast
-        isOpen={isToastPresent}
-        onDidDismiss={() => setIsToastPresent(!isToastPresent)}
-        message="Du hast keinen Titel für den Moment definiert"
+        isOpen={isToast.present}
+        onDidDismiss={() =>
+          setIsToast(prevState => ({ ...isToast, present: !isToast.present }))
+        }
+        message={isToast.message}
         duration={2000}
-        color={'danger'}
+        color={isToast.color}
       />
     </IonPage>
   )

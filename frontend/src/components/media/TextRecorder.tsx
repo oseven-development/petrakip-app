@@ -7,7 +7,7 @@ import {
   IonToolbar,
 } from '@ionic/react'
 import React, { Dispatch, SetStateAction, useState } from 'react'
-import { Media } from '../../api/moment/createMoment'
+import { Media } from '../../api/moment/saveMoment'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
@@ -30,7 +30,7 @@ const TextRecorder: React.FC<Props> = ({ setMedia }) => {
           placeholder="Text hier eingeben"
           onIonChange={e =>
             setMedia({
-              name: `note-${new Date().toISOString()}`,
+              name: `note`,
               data: e.detail.value!,
               type: 'text',
             })
