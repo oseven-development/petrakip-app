@@ -1,4 +1,8 @@
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import {
+  ConfirmSignIn,
+  RequireNewPassword,
+  withAuthenticator,
+} from 'aws-amplify-react'
 
 import {
   IonApp,
@@ -47,6 +51,11 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.css'
+import LoginPage from './pages/login/loginPage'
+import RegisterPage from './pages/login/registerPage'
+import ConfirmSignUpPage from './pages/login/confirmSignUpPage'
+import VerifyAccount from './pages/login/verifyAccount'
+import ForgotPasswordPage from './pages/login/forgotPassword'
 
 const App: React.FC = () => (
   <IonApp>
@@ -107,4 +116,12 @@ const App: React.FC = () => (
 
 // export default App
 // TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
-export default withAuthenticator(App)
+export default withAuthenticator(App, false, [
+  <LoginPage />,
+  <RegisterPage />,
+  <ConfirmSignIn />,
+  <ConfirmSignUpPage />,
+  <ForgotPasswordPage />,
+  <RequireNewPassword />,
+  <VerifyAccount />,
+])
