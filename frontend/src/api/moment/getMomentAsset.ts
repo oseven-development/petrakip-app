@@ -1,6 +1,6 @@
 import { Storage } from 'aws-amplify'
 import { ContentType } from '../../API'
-import { Media } from './createMoment'
+import { Media } from './saveMoment'
 
 export const getMomentAsset = async (
   key: string,

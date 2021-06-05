@@ -1,6 +1,6 @@
 import { extension } from 'mime-types'
 import { useState, useEffect } from 'react'
-import { Media } from '../api/moment/createMoment'
+import { Media } from '../api/moment/saveMoment'
 
 interface MediaOptions {
   audio: boolean
