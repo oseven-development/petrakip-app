@@ -1,7 +1,7 @@
 import { IonButton } from '@ionic/react'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 
-import { Media } from '../../api/moment/createMoment'
+import { Media } from '../../api/moment/saveMoment'
 
 import { usePlatform } from '../../hooks/usePlatform'
 import { useWebMediaRecorder, audioOptions } from '../../hooks/useWebMedia'
