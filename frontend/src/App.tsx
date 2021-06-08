@@ -29,6 +29,10 @@ import {
   ReflectionsListView,
   ProfileDetailView,
   ProfileChangePasswordView,
+  ReflectionSelectMomentsView,
+  ReflectionSelectTopicAreaView,
+  ReflectionWriteReportView,
+  ReflectionsRouting,
 } from './pages'
 
 /* Core CSS required for Ionic components to work properly */
@@ -75,10 +79,28 @@ const App: React.FC = () => (
             path={`/reflections/details/:id`}
             component={ReflectionsDetailView}
           />
+
           <Route
-            path={`/reflections/create`}
+            exact
+            path={ReflectionsRouting.module}
             component={ReflectionsCreateNewView}
           />
+          <Route
+            exact
+            path={ReflectionsRouting.selectTopic}
+            component={ReflectionSelectTopicAreaView}
+          />
+          <Route
+            exact
+            path={ReflectionsRouting.selectMoments}
+            component={ReflectionSelectMomentsView}
+          />
+          <Route
+            exact
+            path={ReflectionsRouting.writeReport}
+            component={ReflectionWriteReportView}
+          />
+          {/* reflections routes */}
 
           {/* profile routes */}
           <Route exact path={'/profile'} component={ProfileDetailView} />
