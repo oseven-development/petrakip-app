@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   IonContent,
   IonPage,
@@ -8,13 +9,19 @@ import {
   IonList,
 } from '@ionic/react'
 import { Header } from '../../components'
+import { listReflexionCall } from '../../api/reflection/createReflection'
+import { ReflectionsRouting } from '..'
 
 export const ReflectionsListView: React.FC = () => {
+  const [state, setState] = React.useState<any[]>([])
+  React.useEffect(() => {
+    listReflexionCall().then(setState).catch(console.error)
+  }, [])
   return (
     <IonPage>
       <Header>Reflexionen</Header>
       <IonContent fullscreen>
-        <IonButton routerLink="/reflections/create" color="primary">
+        <IonButton routerLink={ReflectionsRouting.module} color="primary">
           Erstellen
         </IonButton>
 
@@ -23,12 +30,14 @@ export const ReflectionsListView: React.FC = () => {
         </IonListHeader>
 
         <IonList>
-          <IonItem routerLink="/reflections/details/1">
-            <IonLabel>Reflexion 1</IonLabel>
-          </IonItem>
-          <IonItem routerLink="/reflections/details/2">
-            <IonLabel>Reflexion 2</IonLabel>
-          </IonItem>
+          {state.map(item => (
+            <IonItem key={item.id}>
+              <h1 style={{ fontSize: '0.7em' }}>
+                {item.createdAt} <br /> {item.title} <br /> Moments{' '}
+                {item?.moments?.items?.length}
+              </h1>
+            </IonItem>
+          ))}
         </IonList>
       </IonContent>
     </IonPage>
