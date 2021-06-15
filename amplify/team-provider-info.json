@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "petrakipauth": {}
+      },
+      "function": {
+        "checkUserAndShareAsset": {
+          "deploymentBucketName": "amplify-petrakipapp-test-155609-deployment",
+          "s3Key": "amplify-builds/checkUserAndShareAsset-646b6e41686246457953-build.zip"
+        }
       }
     }
   }
