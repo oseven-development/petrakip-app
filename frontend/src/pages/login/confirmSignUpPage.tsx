@@ -85,7 +85,7 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
           <IonButton
             disabled={!(mail && confirmationCode)}
             expand="block"
-            onClick={() => confirmSignUp}
+            onClick={confirmSignUp}
           >
             Bestätigen
           </IonButton>
@@ -93,7 +93,7 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
             expand="block"
             fill="clear"
             size="small"
-            onClick={() => resendSignUp}
+            onClick={resendSignUp}
           >
             Code erneut zusenden
           </IonButton>
