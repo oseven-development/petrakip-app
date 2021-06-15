@@ -27,6 +27,7 @@ import {
   SharedUserInformation,
   shareMomentAPI,
 } from '../../api/moment/shareMoment'
+import { ShareOverview } from '../../components/share/shareOverview'
 export interface Moment {
   title: string
   tags: string[]
@@ -106,7 +107,21 @@ export const MomentsDetailView: React.FC<Props> = props => {
 
   return (
     <IonPage>
-      <Header shareSlot={shareMoment} deleteSlot={deleteMoment}>
+      <Header
+        shareSlot={
+          <ShareOverview
+            sharedUsers={['Max', 'Stefan', 'Philipp']}
+            assetType={'Moment'}
+            shareAsset={(user: any) => {
+              console.log(`Für ${user} freigeben`)
+            }}
+            removeAsset={(user: any) => {
+              console.log(`Freigabe beendet für ${user}`)
+            }}
+          />
+        }
+        deleteSlot={deleteMoment}
+      >
         Moment {match?.params?.id ? 'ändern' : 'erstellen'}
       </Header>
       <IonContent fullscreen>
