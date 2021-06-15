@@ -7,7 +7,7 @@ export interface SharedUserInformation {
   email: string
 }
 
-export const shareMoment = async ({
+export const shareMomentAPI = async ({
   moment,
   sharedUserInformation,
 }: {
@@ -31,10 +31,11 @@ export const shareMoment = async ({
     moment.sharedUsers?.push(sharedUserInformation.email)
 
     // update moment
-    const res: any = (await API.graphql(
-      graphqlOperation(updateMoment, { input: moment }),
-    )) as GraphQLResult<{ updateMoment: UpdateMomentInput }>
-    return res.data?.updateMoment
+    // TODO: add s3 share first
+    // const res: any = (await API.graphql(
+    //   graphqlOperation(updateMoment, { input: moment }),
+    // )) as GraphQLResult<{ updateMoment: UpdateMomentInput }>
+    // return res.data?.updateMoment
   } catch (error) {
     console.error(error)
     throw error

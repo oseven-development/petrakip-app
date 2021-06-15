@@ -23,6 +23,10 @@ import { getMomentAPI } from '../../api/moment/getMoment'
 import { getMomentAsset } from '../../api/moment/getMomentAsset'
 import { DisplayMedia } from '../../components/media/displayMedia'
 import { removeMomentAPI } from '../../api/moment/deleteMoment'
+import {
+  SharedUserInformation,
+  shareMomentAPI,
+} from '../../api/moment/shareMoment'
 export interface Moment {
   title: string
   tags: string[]
@@ -78,8 +82,10 @@ export const MomentsDetailView: React.FC<Props> = props => {
     }
   }
   const shareMoment = async () => {
-    // await saveMomentAPI({ moment, media })
-    console.log(moment)
+    const sharedUserInformation: SharedUserInformation = {
+      email: 'test@mail.de',
+    }
+    await shareMomentAPI({ moment, sharedUserInformation })
     setIsToast({
       present: true,
       color: 'success',
