@@ -1,17 +1,9 @@
 import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { Moment } from '../../API'
 import { deleteMoment } from '../../graphql/mutations'
+import { Media } from './saveMoment'
 
 // Can't use Moment from API.ts due to __typename
-export interface Media {
-  name: string
-  // @TODO Fix any
-  data: File | string | any
-  type: string
-}
-export interface s3MetaData {
-  key: string
-}
 
 export const removeMomentAPI = async ({
   moment,
