@@ -22,6 +22,7 @@ import { saveMomentAPI, Media } from '../../api/moment/saveMoment'
 import { getMomentAPI } from '../../api/moment/getMoment'
 import { getMomentAsset } from '../../api/moment/getMomentAsset'
 import { DisplayMedia } from '../../components/media/displayMedia'
+import { removeMomentAPI } from '../../api/moment/deleteMoment'
 export interface Moment {
   title: string
   tags: string[]
@@ -76,10 +77,32 @@ export const MomentsDetailView: React.FC<Props> = props => {
       })
     }
   }
+  const shareMoment = async () => {
+    // await saveMomentAPI({ moment, media })
+    console.log(moment)
+    setIsToast({
+      present: true,
+      color: 'success',
+      message: `Moment erfolgreich mit ID ${match?.params?.id} geteilt`,
+    })
+  }
+  const deleteMoment = async (e: any) => {
+    await removeMomentAPI({ moment, media })
+    console.log(moment)
+    e.preventDefault()
+    history.push('/moments')
+    setIsToast({
+      present: true,
+      color: 'success',
+      message: `Moment erfolgreich gelöscht`,
+    })
+  }
 
   return (
     <IonPage>
-      <Header>Moment {match?.params?.id ? 'ändern' : 'erstellen'}</Header>
+      <Header shareSlot={shareMoment} deleteSlot={deleteMoment}>
+        Moment {match?.params?.id ? 'ändern' : 'erstellen'}
+      </Header>
       <IonContent fullscreen>
         <LargeHeader>
           Moment {match?.params?.id ? 'ändern' : 'erstellen'}
