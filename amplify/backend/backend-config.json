@@ -29,5 +29,21 @@
         }
       }
     }
+  },
+  "function": {
+    "checkUserAndShareAsset": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "petrakipauth",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
+    }
   }
 }

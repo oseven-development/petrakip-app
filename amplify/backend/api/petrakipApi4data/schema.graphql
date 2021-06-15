@@ -100,3 +100,7 @@ type ReflexionMoment
   reflexion: Reflexion! @connection(fields: ["reflexionID"])
   moment: Moment! @connection(fields: ["momentID"])
 }
+
+type Query {
+  checkUserAndShareAsset(msg: String): String @function(name: "checkUserAndShareAsset-${env}")
+}
