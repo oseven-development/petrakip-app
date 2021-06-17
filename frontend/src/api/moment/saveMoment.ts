@@ -4,6 +4,7 @@ import awsExports from '../../aws-exports'
 import { createMoment, updateMoment } from '../../graphql/mutations'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { getContentTypeFromMimeType } from '../../utils/getContentTypeUtils'
+import { Credentials } from '@aws-amplify/core'
 
 // Can't use Moment from API.ts due to __typename
 export interface Media {
@@ -25,7 +26,6 @@ export const saveMomentAPI = async ({
 }) => {
   try {
     const updateState = moment.id ? 'update' : 'create'
-
     // upload asset media file to s3 when new moment is created or media is updated
     if (media.type !== 'text' || moment?.asset?.key !== media.name) {
       // casting as s3Metadata, because .put is return Object, which can not be adjusted with an interface
@@ -38,6 +38,7 @@ export const saveMomentAPI = async ({
         bucket: awsExports.aws_user_files_s3_bucket,
         region: awsExports.aws_user_files_s3_bucket_region,
         key: s3MetaData.key,
+        identityId: (await Credentials.get()).identityId,
       }
       moment.contentType = getContentTypeFromMimeType(media.type)
     } else if (media.type === 'text') {

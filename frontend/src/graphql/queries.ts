@@ -2,6 +2,11 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const checkUserAndShareAsset = /* GraphQL */ `
+  query CheckUserAndShareAsset($msg: String) {
+    checkUserAndShareAsset(msg: $msg)
+  }
+`
 export const getProfileSettings = /* GraphQL */ `
   query GetProfileSettings($id: ID!) {
     getProfileSettings(id: $id) {
@@ -10,6 +15,7 @@ export const getProfileSettings = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       age
       createdAt
@@ -52,6 +58,7 @@ export const getReflexion = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       topic
       subTopic
@@ -114,6 +121,7 @@ export const getMoment = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       tags
       deleted

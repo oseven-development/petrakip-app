@@ -12,6 +12,7 @@ export type S3ObjectInput = {
   bucket: string
   key: string
   region: string
+  identityId: string
 }
 
 export type ModelProfileSettingsConditionInput = {
@@ -61,6 +62,7 @@ export type S3Object = {
   bucket?: string
   key?: string
   region?: string
+  identityId?: string
 }
 
 export type UpdateProfileSettingsInput = {
@@ -416,6 +418,7 @@ export type CreateProfileSettingsMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     age?: number | null
     createdAt: string
@@ -438,6 +441,7 @@ export type UpdateProfileSettingsMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     age?: number | null
     createdAt: string
@@ -460,6 +464,7 @@ export type DeleteProfileSettingsMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     age?: number | null
     createdAt: string
@@ -486,6 +491,7 @@ export type CreateReflexionMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     topic?: string | null
     subTopic?: string | null
@@ -530,6 +536,7 @@ export type UpdateReflexionMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     topic?: string | null
     subTopic?: string | null
@@ -574,6 +581,7 @@ export type DeleteReflexionMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     topic?: string | null
     subTopic?: string | null
@@ -618,6 +626,7 @@ export type CreateMomentMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     tags?: Array<string | null> | null
     deleted?: boolean | null
@@ -654,6 +663,7 @@ export type UpdateMomentMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     tags?: Array<string | null> | null
     deleted?: boolean | null
@@ -690,6 +700,7 @@ export type DeleteMomentMutation = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     tags?: Array<string | null> | null
     deleted?: boolean | null
@@ -849,6 +860,14 @@ export type DeleteReflexionMomentMutation = {
   } | null
 }
 
+export type CheckUserAndShareAssetQueryVariables = {
+  msg?: string | null
+}
+
+export type CheckUserAndShareAssetQuery = {
+  checkUserAndShareAsset?: string | null
+}
+
 export type GetProfileSettingsQueryVariables = {
   id?: string
 }
@@ -862,6 +881,7 @@ export type GetProfileSettingsQuery = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     age?: number | null
     createdAt: string
@@ -908,6 +928,7 @@ export type GetReflexionQuery = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     topic?: string | null
     subTopic?: string | null
@@ -981,6 +1002,7 @@ export type GetMomentQuery = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     tags?: Array<string | null> | null
     deleted?: boolean | null
@@ -1038,6 +1060,7 @@ export type OnCreateProfileSettingsSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     age?: number | null
     createdAt: string
@@ -1059,6 +1082,7 @@ export type OnUpdateProfileSettingsSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     age?: number | null
     createdAt: string
@@ -1080,6 +1104,7 @@ export type OnDeleteProfileSettingsSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     age?: number | null
     createdAt: string
@@ -1106,6 +1131,7 @@ export type OnCreateReflexionSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     topic?: string | null
     subTopic?: string | null
@@ -1150,6 +1176,7 @@ export type OnUpdateReflexionSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     topic?: string | null
     subTopic?: string | null
@@ -1194,6 +1221,7 @@ export type OnDeleteReflexionSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     topic?: string | null
     subTopic?: string | null
@@ -1238,6 +1266,7 @@ export type OnCreateMomentSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     tags?: Array<string | null> | null
     deleted?: boolean | null
@@ -1274,6 +1303,7 @@ export type OnUpdateMomentSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     tags?: Array<string | null> | null
     deleted?: boolean | null
@@ -1310,6 +1340,7 @@ export type OnDeleteMomentSubscription = {
       bucket: string
       key: string
       region: string
+      identityId: string
     } | null
     tags?: Array<string | null> | null
     deleted?: boolean | null
