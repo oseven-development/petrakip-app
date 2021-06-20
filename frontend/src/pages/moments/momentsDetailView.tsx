@@ -55,7 +55,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
         // Graphql returns a success query with null
         if (res) {
           const loadedMediaAsset = await getMomentAsset({
-            key: res.asset?.key,
+            asset: res.asset,
             contentType: res.contentType,
             content: res.content,
             owner: res.owner,

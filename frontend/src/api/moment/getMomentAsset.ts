@@ -2,19 +2,25 @@ import { Auth, Storage } from 'aws-amplify'
 import { ContentType } from '../../API'
 import { Media } from './saveMoment'
 
+export interface S3Object {
+  bucket: string
+  key: string
+  region: string
+  identityId: string
+}
+
 export const getMomentAsset = async ({
-  key,
+  asset,
   contentType,
   content,
   owner,
 }: {
-  key: string
+  asset: S3Object
   contentType: ContentType
   content: string | undefined
   owner: string
 }): Promise<Media> => {
   if (contentType === ContentType.text) {
-    console.log(content)
     return {
       name: 'note',
       data: content,
@@ -25,17 +31,26 @@ export const getMomentAsset = async ({
 
     const result: any =
       owner === currentUser
-        ? await Storage.get(key, {
+        ? await Storage.get(asset.key, {
             download: true,
             level: 'private',
           })
-        : //TODO: add here Lambda call with s3 signed URL
-          { Body: 'add here Lambda call with s3 signed URL', type: 'text' }
+        : getSharedAsset(asset)
     return {
       // TODO: remove after signer url
-      name: owner === currentUser ? key : 'note',
+      name: owner === currentUser ? asset.key : 'note',
       data: result.Body,
-      type: result.Body.type,
+      type: owner === currentUser ? result.Body.type : 'text',
     }
   }
+}
+
+export const getSharedAsset = async (asset: S3Object) => {
+  const completeKey = `private/${asset.identityId}/${asset.key}`
+
+  // TODO: Add lambda call for signed URL -> {bucket: asset.bucket, key:completeKey}
+  // docs https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html
+
+  //
+  return { Body: 'Not implemented yet' }
 }
