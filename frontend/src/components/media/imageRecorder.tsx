@@ -6,9 +6,10 @@ import { usePlatform } from '../../hooks/usePlatform'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
+  disabled: boolean
 }
 
-const ImageRecorder: React.FC<Props> = ({ setMedia }) => {
+const ImageRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
   const platform = usePlatform()
   const fileInput = useRef(null)
 
@@ -33,8 +34,10 @@ const ImageRecorder: React.FC<Props> = ({ setMedia }) => {
         accept="image/*"
         capture="camcorder"
         onChange={onSelectFile}
+        disabled={disabled}
       />
       <IonButton
+        disabled={disabled}
         color="primary"
         expand="full"
         onClick={() => {

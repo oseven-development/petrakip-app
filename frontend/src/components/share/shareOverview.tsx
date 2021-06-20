@@ -26,15 +26,14 @@ interface Props {
 const ShareOverview: React.FC<Props> = ({
   shareAsset,
   removeAsset,
-  sharedUsers,
   assetType,
+  sharedUsers,
 }) => {
   const [showModal, setShowModal] = useState(false)
-  const [shareUser, setShareUser] = useState<string>()
+  const [newShareUser, setNewShareUser] = useState<string>()
 
   return (
     <>
-      {/* @ts-ignore */}
       <IonModal isOpen={showModal} cssClass="test">
         <IonHeader>
           <IonToolbar>
@@ -45,17 +44,19 @@ const ShareOverview: React.FC<Props> = ({
         </IonHeader>
         <IonContent fullscreen>
           <IonListHeader>
-            <IonLabel>bereits freigegeben für</IonLabel>
+            <IonLabel>Freigegebenen User</IonLabel>
           </IonListHeader>
           <IonList>
             {sharedUsers.map((user: any) => (
-              <IonItem>
+              <IonItem key={user}>
                 <IonLabel>{user}</IonLabel>
                 <IonIcon
                   color="danger"
                   slot="end"
                   icon={trash}
-                  onClick={() => removeAsset(user)}
+                  onClick={async () => {
+                    removeAsset(user)
+                  }}
                 />
               </IonItem>
             ))}
@@ -66,14 +67,17 @@ const ShareOverview: React.FC<Props> = ({
           <IonList>
             <IonItem>
               <IonInput
-                value={shareUser}
+                value={newShareUser}
                 placeholder="Email eingeben"
-                onIonChange={e => setShareUser(e.detail.value!)}
+                onIonChange={e => setNewShareUser(e.detail.value!)}
               ></IonInput>
               <IonButton
                 color="success"
                 expand="full"
-                onClick={() => shareAsset(shareUser)}
+                onClick={() => {
+                  shareAsset(newShareUser, 'remove')
+                  setNewShareUser('')
+                }}
               >
                 freigeben
               </IonButton>
