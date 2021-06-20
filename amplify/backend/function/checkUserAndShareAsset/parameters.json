@@ -1,1 +1,3 @@
-{}
+{
+  "event": { "arguments": { "username": "123" } }
+}
