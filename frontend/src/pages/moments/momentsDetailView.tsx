@@ -97,7 +97,6 @@ export const MomentsDetailView: React.FC<Props> = props => {
       sharedUserInformation: { email },
       shareType: shareType,
     })
-    console.log(res)
     setIsToast({
       present: true,
       color: 'success',
@@ -122,7 +121,6 @@ export const MomentsDetailView: React.FC<Props> = props => {
 
   const deleteMoment = async (e: any) => {
     await removeMomentAPI({ moment, media })
-    console.log(moment)
     e.preventDefault()
     history.replace('/moments')
     setIsToast({

@@ -10,7 +10,6 @@ interface Props {
 export const DisplayMedia: React.FC<Props> = ({ children }) => {
   const hasParameter =
     useLocation().pathname.split('/')[-1] === 'details' ? false : true
-  console.log(hasParameter)
   return (
     <div
       className="ion-margin"

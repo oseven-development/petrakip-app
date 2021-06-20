@@ -44,7 +44,6 @@ export const saveMomentAPI = async ({
     } else if (media.type === 'text') {
       moment.content = media.data as string
       moment.contentType = getContentTypeFromMimeType(media.type)
-      console.log(moment.content)
     }
 
     // update or create new moment
