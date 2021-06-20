@@ -7,6 +7,11 @@ export const checkUserAndShareAsset = /* GraphQL */ `
     checkUserAndShareAsset(msg: $msg)
   }
 `
+export const createSignedUrlForAssets = /* GraphQL */ `
+  query CreateSignedUrlForAssets($bucket: String, $key: String) {
+    createSignedUrlForAssets(bucket: $bucket, key: $key)
+  }
+`
 export const getProfileSettings = /* GraphQL */ `
   query GetProfileSettings($id: ID!) {
     getProfileSettings(id: $id) {

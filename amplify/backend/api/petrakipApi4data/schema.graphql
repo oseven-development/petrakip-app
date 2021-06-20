@@ -104,4 +104,5 @@ type ReflexionMoment
 
 type Query {
   checkUserAndShareAsset(msg: String): String @function(name: "checkUserAndShareAsset-${env}")
+  createSignedUrlForAssets(bucket: String, key: String): String @function(name: "createSignedUrlForAssets-${env}")
 }
