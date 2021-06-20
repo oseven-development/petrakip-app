@@ -13,6 +13,7 @@ export const createProfileSettings = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       age
       createdAt
@@ -32,6 +33,7 @@ export const updateProfileSettings = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       age
       createdAt
@@ -51,6 +53,7 @@ export const deleteProfileSettings = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       age
       createdAt
@@ -74,6 +77,7 @@ export const createReflexion = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       topic
       subTopic
@@ -112,6 +116,7 @@ export const updateReflexion = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       topic
       subTopic
@@ -150,6 +155,7 @@ export const deleteReflexion = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       topic
       subTopic
@@ -188,6 +194,7 @@ export const createMoment = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       tags
       deleted
@@ -219,6 +226,7 @@ export const updateMoment = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       tags
       deleted
@@ -250,6 +258,7 @@ export const deleteMoment = /* GraphQL */ `
         bucket
         key
         region
+        identityId
       }
       tags
       deleted
