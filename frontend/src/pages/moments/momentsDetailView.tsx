@@ -60,7 +60,6 @@ export const MomentsDetailView: React.FC<Props> = props => {
             content: res.content,
             owner: res.owner,
           })
-
           setMedia(loadedMediaAsset)
           setMoment(res)
           setIsSharedMoment(

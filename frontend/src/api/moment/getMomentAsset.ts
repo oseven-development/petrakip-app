@@ -39,7 +39,7 @@ export const getMomentAsset = async ({
     return {
       // TODO: remove after signer url
       name: owner === currentUser ? asset.key : 'note',
-      data: result.Body,
+      data: owner === currentUser ? asset.key : 'Not implemented yet',
       type: owner === currentUser ? result.Body.type : 'text',
     }
   }
@@ -52,5 +52,5 @@ export const getSharedAsset = async (asset: S3Object) => {
   // docs https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html
 
   //
-  return { Body: 'Not implemented yet' }
+  return {}
 }
