@@ -45,6 +45,9 @@ const LoginPage: React.FC = (props: any) => {
         setLoginLoading(false)
       })
       .catch((error: any) => {
+        if (error.code === 'UserNotConfirmedException') {
+          props.onStateChange('confirmSignUp', props.authData)
+        }
         showError(error.message)
         console.error('[LoginPage] catch: ', error)
         setLoginLoading(false)
