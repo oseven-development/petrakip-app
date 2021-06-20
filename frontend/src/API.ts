@@ -868,6 +868,15 @@ export type CheckUserAndShareAssetQuery = {
   checkUserAndShareAsset?: string | null
 }
 
+export type CreateSignedUrlForAssetsQueryVariables = {
+  bucket?: string | null
+  key?: string | null
+}
+
+export type CreateSignedUrlForAssetsQuery = {
+  createSignedUrlForAssets?: string | null
+}
+
 export type GetProfileSettingsQueryVariables = {
   id?: string
 }
