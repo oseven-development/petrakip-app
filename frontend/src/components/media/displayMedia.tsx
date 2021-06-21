@@ -8,8 +8,7 @@ interface Props {
   children: Media
 }
 export const DisplayMedia: React.FC<Props> = ({ children }) => {
-  const hasParameter =
-    useLocation().pathname.split('/')[-1] === 'details' ? false : true
+  const hasParameter = useLocation().pathname.includes('details')
   return (
     <div
       className="ion-margin"

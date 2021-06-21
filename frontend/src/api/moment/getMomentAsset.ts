@@ -1,5 +1,6 @@
-import { Auth, Storage } from 'aws-amplify'
+import { API, Auth, graphqlOperation, Storage } from 'aws-amplify'
 import { ContentType } from '../../API'
+import { createSignedUrlForAssets } from '../../graphql/queries'
 import { Media } from './saveMoment'
 
 export interface S3Object {
@@ -35,7 +36,7 @@ export const getMomentAsset = async ({
             download: true,
             level: 'private',
           })
-        : getSharedAsset(asset)
+        : await getSharedAsset(asset)
     return {
       // TODO: remove after signer url
       name: owner === currentUser ? asset.key : 'note',
@@ -48,9 +49,19 @@ export const getMomentAsset = async ({
 export const getSharedAsset = async (asset: S3Object) => {
   const completeKey = `private/${asset.identityId}/${asset.key}`
 
-  // TODO: Add lambda call for signed URL -> {bucket: asset.bucket, key:completeKey}
-  // docs https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html
+  const res: any = await API.graphql(
+    graphqlOperation(createSignedUrlForAssets, {
+      bucket: asset.bucket,
+      key: completeKey,
+    }),
+  )
 
-  //
-  return {}
+  if (res.data.createSignedUrlForAssets) {
+    // TODO: add fetch request for file
+
+    return res.data.createSignedUrlForAssets
+  } else {
+    console.error(res.data.errors[0].message)
+    throw new Error(res.data.errors[0].message)
+  }
 }

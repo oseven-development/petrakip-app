@@ -15,6 +15,7 @@ import { groupArrayByDate } from '../../utils/dateUtils'
 import { MomentList } from '../../components/moment/momentList'
 import { Moment } from '../../API'
 import { add } from 'ionicons/icons'
+import { getSharedAsset } from '../../api/moment/getMomentAsset'
 
 interface Props extends RouteComponentProps<{}> {}
 

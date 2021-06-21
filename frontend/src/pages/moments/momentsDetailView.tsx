@@ -105,19 +105,6 @@ export const MomentsDetailView: React.FC<Props> = props => {
       }`,
     })
   }
-  // const updateSharedUser = (user: string, shareType: ShareType) => {
-  //   if (shareType === 'share') {
-  //     setMoment([...stateShareUsers, user])
-
-  //   } else if (shareType === 'remove') {
-  //     const _newSharedUsers = [...stateShareUsers] // make a separate copy of the array
-  //     const index = _newSharedUsers.indexOf(user)
-  //     if (index !== -1) {
-  //       _newSharedUsers.splice(index, 1)
-  //       setShareUser(_newSharedUsers)
-  //     }
-  //   }
-  // }
 
   const deleteMoment = async (e: any) => {
     await removeMomentAPI({ moment, media })
