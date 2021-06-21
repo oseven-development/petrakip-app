@@ -37,7 +37,6 @@ export const getMomentAsset = async ({
             level: 'private',
           })
         : await getSharedAsset(asset)
-    console.log(result)
     return {
       name: asset.key,
       data: result.Body,
