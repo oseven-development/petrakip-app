@@ -102,7 +102,14 @@ type ReflexionMoment
   moment: Moment! @connection(fields: ["momentID"])
 }
 
+type CheckShare {
+  username: String
+  alreadyExist: Boolean
+}
+
 type Query {
-  checkUserAndShareAsset(msg: String): String @function(name: "checkUserAndShareAsset-${env}")
-  createSignedUrlForAssets(bucket: String, key: String): String @function(name: "createSignedUrlForAssets-${env}")
+  checkUserAndShareAsset(username: String): CheckShare
+    @function(name: "checkUserAndShareAsset-${env}")
+  createSignedUrlForAssets(bucket: String, key: String): String
+    @function(name: "createSignedUrlForAssets-${env}")
 }
