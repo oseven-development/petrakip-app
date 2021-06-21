@@ -57,9 +57,16 @@ def createUser(email_address):
             ],
             MessageAction="SUPPRESS",
         )
-        return response
+
     except Exception as error:
         logger.error(error)
+        raise Exception(f"unable to create User with email {email_address}")
+
+    try:
+        return {"username": response["User"]["Username"], "alreadyExist": False}
+    except Exception as error:
+        logger.error(error)
+        raise error
 
 
 def gather_user(email_address):
@@ -90,7 +97,8 @@ def gather_user(email_address):
         #     },
         # }
         response = client.admin_get_user(UserPoolId=UserPoolId, Username=email_address)
-        return response
+        return {"username": response["Username"], "alreadyExist": True}
+
     except client.exceptions.UserNotFoundException as error:
         logger.info(f"create new user with email: {email_address}")
         return createUser(email_address)
@@ -115,7 +123,7 @@ def handler(event, context):
         username = event["arguments"]["username"]
     except Exception as error:
         logger.error(error)
-        return error_event(400, {"message": "unable to extract username"})
+        raise Exception(f"unable to extract username")
 
     # https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression
     # Check if is it a regular mail!
@@ -123,16 +131,8 @@ def handler(event, context):
         pass
     except Exception as error:
         logger.error(error)
-        return error_event(400, {"message": f"username {username} is not a regular email"})
+        raise Exception(f"username {username} is not a regular email")
 
     response = gather_user(username)
 
-    return {
-        "statusCode": 200,
-        "headers": {
-            "Access-Control-Allow-Headers": "*",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
-        "body": json.dumps(response),
-    }
+    return response
