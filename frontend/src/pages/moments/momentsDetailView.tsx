@@ -51,24 +51,26 @@ export const MomentsDetailView: React.FC<Props> = props => {
 
   useIonViewWillEnter(() => {
     if (match?.params?.id) {
-      getMomentAPI({ id: match?.params?.id }).then(async res => {
-        // Graphql returns a success query with null
-        if (res) {
-          const loadedMediaAsset = await getMomentAsset({
-            asset: res.asset,
-            contentType: res.contentType,
-            content: res.content,
-            owner: res.owner,
-          })
-          setMedia(loadedMediaAsset)
-          setMoment(res)
-          setIsSharedMoment(
-            res.owner !== (await Auth.currentUserInfo()).username,
-          )
-        } else {
-          history.replace('/moments')
-        }
-      })
+      getMomentAPI({ id: match?.params?.id })
+        .then(async res => {
+          // Graphql returns a success query with null
+          if (res) {
+            const loadedMediaAsset = await getMomentAsset({
+              asset: res.asset,
+              contentType: res.contentType,
+              content: res.content,
+              owner: res.owner,
+            })
+            setMedia(loadedMediaAsset)
+            setMoment(res)
+            setIsSharedMoment(
+              res.owner !== (await Auth.currentUserInfo()).username,
+            )
+          } else {
+            history.replace('/moments')
+          }
+        })
+        .catch(err => history.replace('/moments'))
     }
   })
 
@@ -92,7 +94,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
     }
   }
   const shareMoment = async (email: string, shareType: ShareType) => {
-    const res = await shareMomentAPI({
+    await shareMomentAPI({
       moment,
       sharedUserInformation: { email },
       shareType: shareType,

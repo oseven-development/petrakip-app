@@ -3,7 +3,6 @@ import {
   IonPage,
   IonButton,
   useIonViewWillEnter,
-  IonIcon,
 } from '@ionic/react'
 
 import { Header } from '../../components'
@@ -14,8 +13,6 @@ import { getMomentAPI } from '../../api/moment/getMoment'
 import { groupArrayByDate } from '../../utils/dateUtils'
 import { MomentList } from '../../components/moment/momentList'
 import { Moment } from '../../API'
-import { add } from 'ionicons/icons'
-import { getSharedAsset } from '../../api/moment/getMomentAsset'
 
 interface Props extends RouteComponentProps<{}> {}
 

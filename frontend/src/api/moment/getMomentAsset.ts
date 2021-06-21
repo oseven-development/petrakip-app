@@ -37,11 +37,11 @@ export const getMomentAsset = async ({
             level: 'private',
           })
         : await getSharedAsset(asset)
+    console.log(result)
     return {
-      // TODO: remove after signer url
-      name: owner === currentUser ? asset.key : 'note',
-      data: owner === currentUser ? result.Body : 'Not implemented yet',
-      type: owner === currentUser ? result.Body.type : 'text',
+      name: asset.key,
+      data: result.Body,
+      type: result.Body.type,
     }
   }
 }
@@ -57,9 +57,12 @@ export const getSharedAsset = async (asset: S3Object) => {
   )
 
   if (res.data.createSignedUrlForAssets) {
-    // TODO: add fetch request for file
-
-    return res.data.createSignedUrlForAssets
+    try {
+      const blob = await (await fetch(res.data.createSignedUrlForAssets)).blob()
+      return { Body: blob }
+    } catch (error) {
+      throw error
+    }
   } else {
     console.error(res.data.errors[0].message)
     throw new Error(res.data.errors[0].message)

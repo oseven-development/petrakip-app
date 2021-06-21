@@ -2,7 +2,6 @@ import {
   IonButton,
   IonHeader,
   IonModal,
-  IonTextarea,
   IonTitle,
   IonToolbar,
   IonIcon,
@@ -13,7 +12,7 @@ import {
   IonInput,
   IonContent,
 } from '@ionic/react'
-import { share, trash } from 'ionicons/icons'
+import { share } from 'ionicons/icons'
 import React, { useState } from 'react'
 
 interface Props {
@@ -50,14 +49,15 @@ const ShareOverview: React.FC<Props> = ({
             {sharedUsers.map((user: any) => (
               <IonItem key={user}>
                 <IonLabel>{user}</IonLabel>
-                <IonIcon
+                <IonButton
                   color="danger"
-                  slot="end"
-                  icon={trash}
-                  onClick={async () => {
+                  expand="full"
+                  onClick={() => {
                     removeAsset(user)
                   }}
-                />
+                >
+                  löschen
+                </IonButton>
               </IonItem>
             ))}
           </IonList>
@@ -94,7 +94,7 @@ const ShareOverview: React.FC<Props> = ({
         </IonButton>
       </IonModal>
       <IonButton onClick={() => setShowModal(true)}>
-        <IonIcon color="secondary" slot="icon-only" icon={share} />
+        <IonIcon color="primary" slot="icon-only" icon={share} />
       </IonButton>
     </>
   )
