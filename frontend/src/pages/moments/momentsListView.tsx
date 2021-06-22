@@ -28,12 +28,18 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
 
   return (
     <IonPage>
-      <Header>Momente List View</Header>
+      <Header
+        shareSlot={
+          <IonButton routerLink="/moments/create" color="primary">
+            Erstellen
+          </IonButton>
+        }
+      >
+        Momente List View
+      </Header>
       <IonContent fullscreen>
         <LargeHeader>Momente List View</LargeHeader>
-        <IonButton routerLink="/moments/create" color="primary">
-          Erstellen
-        </IonButton>
+
         <MomentList moments={moments} onClickHandler={history.push} />
       </IonContent>
     </IonPage>

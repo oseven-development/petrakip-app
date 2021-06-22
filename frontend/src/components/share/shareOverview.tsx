@@ -2,7 +2,6 @@ import {
   IonButton,
   IonHeader,
   IonModal,
-  IonTextarea,
   IonTitle,
   IonToolbar,
   IonIcon,
@@ -13,7 +12,7 @@ import {
   IonInput,
   IonContent,
 } from '@ionic/react'
-import { share, trash } from 'ionicons/icons'
+import { share } from 'ionicons/icons'
 import React, { useState } from 'react'
 
 interface Props {
@@ -26,15 +25,14 @@ interface Props {
 const ShareOverview: React.FC<Props> = ({
   shareAsset,
   removeAsset,
-  sharedUsers,
   assetType,
+  sharedUsers,
 }) => {
   const [showModal, setShowModal] = useState(false)
-  const [shareUser, setShareUser] = useState<string>()
+  const [newShareUser, setNewShareUser] = useState<string>()
 
   return (
     <>
-      {/* @ts-ignore */}
       <IonModal isOpen={showModal} cssClass="test">
         <IonHeader>
           <IonToolbar>
@@ -45,18 +43,21 @@ const ShareOverview: React.FC<Props> = ({
         </IonHeader>
         <IonContent fullscreen>
           <IonListHeader>
-            <IonLabel>bereits freigegeben für</IonLabel>
+            <IonLabel>Freigegebenen User</IonLabel>
           </IonListHeader>
           <IonList>
             {sharedUsers.map((user: any) => (
-              <IonItem>
+              <IonItem key={user}>
                 <IonLabel>{user}</IonLabel>
-                <IonIcon
+                <IonButton
                   color="danger"
-                  slot="end"
-                  icon={trash}
-                  onClick={() => removeAsset(user)}
-                />
+                  expand="full"
+                  onClick={() => {
+                    removeAsset(user)
+                  }}
+                >
+                  löschen
+                </IonButton>
               </IonItem>
             ))}
           </IonList>
@@ -66,14 +67,17 @@ const ShareOverview: React.FC<Props> = ({
           <IonList>
             <IonItem>
               <IonInput
-                value={shareUser}
+                value={newShareUser}
                 placeholder="Email eingeben"
-                onIonChange={e => setShareUser(e.detail.value!)}
+                onIonChange={e => setNewShareUser(e.detail.value!)}
               ></IonInput>
               <IonButton
                 color="success"
                 expand="full"
-                onClick={() => shareAsset(shareUser)}
+                onClick={() => {
+                  shareAsset(newShareUser, 'remove')
+                  setNewShareUser('')
+                }}
               >
                 freigeben
               </IonButton>
@@ -90,7 +94,7 @@ const ShareOverview: React.FC<Props> = ({
         </IonButton>
       </IonModal>
       <IonButton onClick={() => setShowModal(true)}>
-        <IonIcon color="secondary" slot="icon-only" icon={share} />
+        <IonIcon color="primary" slot="icon-only" icon={share} />
       </IonButton>
     </>
   )

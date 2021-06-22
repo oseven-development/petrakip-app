@@ -28,7 +28,7 @@ const Header: React.FC<Props> = ({ children, shareSlot, deleteSlot }) => {
             {shareSlot}
             {deleteSlot && (
               <IonButton onClick={deleteSlot}>
-                <IonIcon color="secondary" slot="icon-only" icon={trash} />
+                <IonIcon color="danger" slot="icon-only" icon={trash} />
               </IonButton>
             )}
           </IonButtons>

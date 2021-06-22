@@ -11,9 +11,10 @@ import { Media } from '../../api/moment/saveMoment'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
+  disabled: boolean
 }
 
-const TextRecorder: React.FC<Props> = ({ setMedia }) => {
+const TextRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
@@ -48,6 +49,7 @@ const TextRecorder: React.FC<Props> = ({ setMedia }) => {
       <IonButton
         color="primary"
         expand="full"
+        disabled={disabled}
         onClick={() => setShowModal(true)}
       >
         Text eingeben
