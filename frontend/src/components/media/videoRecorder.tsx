@@ -6,9 +6,10 @@ import { usePlatform } from '../../hooks/usePlatform'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
+  disabled: boolean
 }
 
-const VideoRecorder: React.FC<Props> = ({ setMedia }) => {
+const VideoRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
   const platform = usePlatform()
   const fileInput = useRef(null)
 
@@ -33,10 +34,12 @@ const VideoRecorder: React.FC<Props> = ({ setMedia }) => {
         accept="video/*"
         capture="camcorder"
         onChange={onSelectFile}
+        disabled={disabled}
       />
       <IonButton
         color="primary"
         expand="full"
+        disabled={disabled}
         onClick={() => {
           // @ts-ignore
           fileInput?.current?.click()

@@ -1,4 +1,6 @@
 {
-  "bucket": "petrakip-assets-moments-and-reflections155609-test",
-  "key": "private/eu-central-1:0155e955-5a61-4f90-b6c6-47ba31f4a40c/Bildschirmfoto 2021-05-21 um 13.37.46.png"
+  "arguments": {
+    "bucket": "petrakip-assets-moments-and-reflections155609-test",
+    "key": "private/eu-central-1:0155e955-5a61-4f90-b6c6-47ba31f4a40c/Bildschirmfoto 2021-05-21 um 13.37.46.png"
+  }
 }

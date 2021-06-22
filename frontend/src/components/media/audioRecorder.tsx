@@ -7,9 +7,10 @@ import { usePlatform } from '../../hooks/usePlatform'
 import { useWebMediaRecorder, audioOptions } from '../../hooks/useWebMedia'
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
+  disabled: boolean
 }
 
-const AudioRecorder: React.FC<Props> = ({ setMedia }) => {
+const AudioRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
   const platform = usePlatform()
   const [audioURL, isRecording, toggleRecording]: [
     Media,
@@ -27,7 +28,12 @@ const AudioRecorder: React.FC<Props> = ({ setMedia }) => {
       Audioaufnahme nicht verfügbar
     </IonButton>
   ) : (
-    <IonButton color="primary" expand="full" onClick={toggleRecording}>
+    <IonButton
+      color="primary"
+      expand="full"
+      disabled={disabled}
+      onClick={toggleRecording}
+    >
       Audioaufnahme {isRecording ? 'stoppen' : 'starten'}
     </IonButton>
   )

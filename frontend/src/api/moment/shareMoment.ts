@@ -6,21 +6,23 @@ import { GraphQLResult } from '@aws-amplify/api-graphql'
 export interface SharedUserInformation {
   email: string
 }
+export type ShareType = 'share' | 'remove'
 
 export const shareMomentAPI = async ({
   moment,
   sharedUserInformation,
+  shareType,
 }: {
   moment: Moment
   sharedUserInformation: SharedUserInformation
+  shareType: ShareType
 }) => {
   try {
-    // checks if asset is s3 object and if has a key
-    if (moment.contentType !== 'text' || moment?.asset?.key) {
-      // remove object from s3
-      // TODO: share image somehow
+    // TODO: add lambda call to check if user is already registered
+    // @maxhaensel
+    if (shareType === 'share') {
+      // add lambda call here
     }
-    // update moment and add user as shared users
 
     // removes keys from input which cannot be overritten
     delete (moment as Moment).reflexion
@@ -28,14 +30,30 @@ export const shareMomentAPI = async ({
     delete (moment as Moment).owner
 
     // add user email (hopefully this works if not we need to gather the id here)
-    moment.sharedUsers?.push(sharedUserInformation.email)
-
+    if (shareType === 'share') {
+      if (!moment.sharedUsers) {
+        moment.sharedUsers = []
+      }
+      if (moment.sharedUsers.includes(sharedUserInformation.email)) {
+        console.error(`User ${sharedUserInformation.email} bereits freigebeben`)
+        return
+      }
+      moment.sharedUsers.push(sharedUserInformation.email)
+      // remove user email
+    } else if (shareType === 'remove') {
+      moment.sharedUsers = moment.sharedUsers?.filter(item => {
+        return item !== sharedUserInformation.email
+      })
+    } else {
+      throw new Error(
+        `shareType: ${shareType} not supported. Either provide "share" or "remove"`,
+      )
+    }
     // update moment
-    // TODO: add s3 share first
-    // const res: any = (await API.graphql(
-    //   graphqlOperation(updateMoment, { input: moment }),
-    // )) as GraphQLResult<{ updateMoment: UpdateMomentInput }>
-    // return res.data?.updateMoment
+    const res: any = (await API.graphql(
+      graphqlOperation(updateMoment, { input: moment }),
+    )) as GraphQLResult<{ updateMoment: UpdateMomentInput }>
+    return res.data?.updateMoment
   } catch (error) {
     console.error(error)
     throw error

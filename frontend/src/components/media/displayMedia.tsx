@@ -1,12 +1,14 @@
 import React from 'react'
 import { Media } from '../../api/moment/saveMoment'
 import { getContentTypeFromMimeType } from '../../utils/getContentTypeUtils'
-import { IonImg, IonTextarea } from '@ionic/react'
+import { IonImg, IonSpinner, IonTextarea } from '@ionic/react'
+import { useLocation } from 'react-router'
 
 interface Props {
   children: Media
 }
 export const DisplayMedia: React.FC<Props> = ({ children }) => {
+  const hasParameter = useLocation().pathname.includes('details')
   return (
     <div
       className="ion-margin"
@@ -37,13 +39,16 @@ export const DisplayMedia: React.FC<Props> = ({ children }) => {
       {getContentTypeFromMimeType(children.type) === 'text' && (
         <IonTextarea disabled readonly value={children.data}></IonTextarea>
       )}
-      {getContentTypeFromMimeType(children.type) === undefined && (
-        <IonImg
-          style={{ height: 200 }}
-          src={`assets/placeholder.jpeg`}
-          alt="test"
-        />
-      )}
+      {getContentTypeFromMimeType(children.type) === undefined &&
+        !hasParameter && (
+          <IonImg
+            style={{ height: 200 }}
+            src={`assets/placeholder.jpeg`}
+            alt="test"
+          />
+        )}
+      {getContentTypeFromMimeType(children.type) === undefined &&
+        hasParameter && <IonSpinner name="crescent" />}
     </div>
   )
 }

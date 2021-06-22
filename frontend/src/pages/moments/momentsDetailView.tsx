@@ -23,11 +23,9 @@ import { getMomentAPI } from '../../api/moment/getMoment'
 import { getMomentAsset } from '../../api/moment/getMomentAsset'
 import { DisplayMedia } from '../../components/media/displayMedia'
 import { removeMomentAPI } from '../../api/moment/deleteMoment'
-import {
-  SharedUserInformation,
-  shareMomentAPI,
-} from '../../api/moment/shareMoment'
+import { shareMomentAPI, ShareType } from '../../api/moment/shareMoment'
 import { ShareOverview } from '../../components/share/shareOverview'
+import { Auth } from 'aws-amplify'
 export interface Moment {
   title: string
   tags: string[]
@@ -49,18 +47,30 @@ export const MomentsDetailView: React.FC<Props> = props => {
     name: '',
   })
   const [moment, setMoment] = useState<any>({ title: '', tags: [''] })
+  const [isSharedMoment, setIsSharedMoment] = useState<boolean>(false)
 
   useIonViewWillEnter(() => {
     if (match?.params?.id) {
-      getMomentAPI({ id: match?.params?.id }).then(async res => {
-        const loadedMediaAsset = await getMomentAsset(
-          res.asset?.key,
-          res.contentType,
-          res.content,
-        )
-        setMedia(loadedMediaAsset)
-        setMoment(res)
-      })
+      getMomentAPI({ id: match?.params?.id })
+        .then(async res => {
+          // Graphql returns a success query with null
+          if (res) {
+            const loadedMediaAsset = await getMomentAsset({
+              asset: res.asset,
+              contentType: res.contentType,
+              content: res.content,
+              owner: res.owner,
+            })
+            setMedia(loadedMediaAsset)
+            setMoment(res)
+            setIsSharedMoment(
+              res.owner !== (await Auth.currentUserInfo()).username,
+            )
+          } else {
+            history.replace('/moments')
+          }
+        })
+        .catch(err => history.replace('/moments'))
     }
   })
 
@@ -80,24 +90,28 @@ export const MomentsDetailView: React.FC<Props> = props => {
           match?.params?.id ? 'geändert' : 'erstellt'
         }`,
       })
+      history.replace('/moments')
     }
   }
-  const shareMoment = async () => {
-    const sharedUserInformation: SharedUserInformation = {
-      email: 'test@mail.de',
-    }
-    await shareMomentAPI({ moment, sharedUserInformation })
+  const shareMoment = async (email: string, shareType: ShareType) => {
+    await shareMomentAPI({
+      moment,
+      sharedUserInformation: { email },
+      shareType: shareType,
+    })
     setIsToast({
       present: true,
       color: 'success',
-      message: `Moment erfolgreich mit ID ${match?.params?.id} geteilt`,
+      message: `Moment erfolgreich mit ID ${match?.params?.id} ${
+        shareType === 'share' ? ' geteilt' : 'nicht mehr geteilt'
+      }`,
     })
   }
+
   const deleteMoment = async (e: any) => {
     await removeMomentAPI({ moment, media })
-    console.log(moment)
     e.preventDefault()
-    history.push('/moments')
+    history.replace('/moments')
     setIsToast({
       present: true,
       color: 'success',
@@ -110,13 +124,13 @@ export const MomentsDetailView: React.FC<Props> = props => {
       <Header
         shareSlot={
           <ShareOverview
-            sharedUsers={['Max', 'Stefan', 'Philipp']}
+            sharedUsers={moment.sharedUsers || []}
             assetType={'Moment'}
             shareAsset={(user: any) => {
-              console.log(`Für ${user} freigeben`)
+              shareMoment(user, 'share')
             }}
             removeAsset={(user: any) => {
-              console.log(`Freigabe beendet für ${user}`)
+              shareMoment(user, 'remove')
             }}
           />
         }
@@ -136,6 +150,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
               value={moment.title}
               placeholder="Title"
               debounce={600}
+              disabled={isSharedMoment}
               onIonChange={e =>
                 setMoment((prevMoment: any) => ({
                   ...prevMoment,
@@ -152,8 +167,9 @@ export const MomentsDetailView: React.FC<Props> = props => {
             <IonSelect
               value={moment.tags}
               multiple={true}
-              cancelText="Abbrechem"
+              cancelText="Abbrechen"
               okText="Hinzufügen"
+              disabled={isSharedMoment}
               onIonChange={e =>
                 setMoment((prevMoment: any) => ({
                   ...prevMoment,
@@ -176,15 +192,15 @@ export const MomentsDetailView: React.FC<Props> = props => {
           </IonItem>
         </IonList>
 
-        <AudioRecorder setMedia={setMedia} />
+        <AudioRecorder setMedia={setMedia} disabled={isSharedMoment} />
 
-        <VideoRecorder setMedia={setMedia} />
+        <VideoRecorder setMedia={setMedia} disabled={isSharedMoment} />
 
-        <ImageRecorder setMedia={setMedia} />
+        <ImageRecorder setMedia={setMedia} disabled={isSharedMoment} />
 
-        <TextRecorder setMedia={setMedia} />
+        <TextRecorder setMedia={setMedia} disabled={isSharedMoment} />
       </IonContent>
-      <IonButton expand="full" onClick={saveMoment}>
+      <IonButton expand="full" onClick={saveMoment} disabled={isSharedMoment}>
         Moment {match?.params?.id ? 'ändern' : 'erstellen'}
       </IonButton>
       <IonToast

@@ -22,7 +22,7 @@
         },
         "createSignedUrlForAssets": {
           "deploymentBucketName": "amplify-petrakipapp-dev-214234-deployment",
-          "s3Key": "amplify-builds/createSignedUrlForAssets-5543355563782f5a6a36-build.zip"
+          "s3Key": "amplify-builds/createSignedUrlForAssets-3359582b4b37636e3066-build.zip"
         }
       }
     }
