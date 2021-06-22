@@ -233,7 +233,7 @@ Resources:
                   Bitte gehe auf https://petrakip.de und vergebe ein neues Passwwort.
                 </p>
               EmailSubject: Du wurdest zu PetraKIP eingeladen
-              SMSMessage: YYour username is {username} and temporary password is {####}.
+              SMSMessage: Your username is {username} and temporary password is {####}.
           UnusedAccountValidityDays: 90
   # Updating lambda role with permissions to Cognito
 
