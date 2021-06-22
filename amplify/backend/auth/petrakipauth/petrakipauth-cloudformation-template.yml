@@ -224,17 +224,17 @@ Resources:
         ExternalId: petraka1faf98c_role_external_id
       # InviteMessageTemplate
       # TODO correct Template here!
-      InviteMessageTemplate:
-        EmailMessage: >
-          <h1>Du wurdest zu PetraKIP eingeladen</h1>
-          <p>
-            Dein Benutzername ist {username} und dein temporäres passwort ist {####}. 
-            Bitte gehe auf https://petrakip.de und vergebe ein neues Passwwort.
-          </p>
-
-        EmailSubject: Du wurdest zu PetraKIP eingeladen
-        SMSMessage: Your username is {username} and temporary password is {####}.
-
+      AdminCreateUserConfig:
+          InviteMessageTemplate:
+              EmailMessage: >
+                <h1>Du wurdest zu PetraKIP eingeladen</h1>
+                <p>
+                  Dein Benutzername ist {username} und dein temporäres passwort ist {####}. 
+                  Bitte gehe auf https://petrakip.de und vergebe ein neues Passwwort.
+                </p>
+              EmailSubject: Du wurdest zu PetraKIP eingeladen
+              SMSMessage: YYour username is {username} and temporary password is {####}.
+          UnusedAccountValidityDays: 90
   # Updating lambda role with permissions to Cognito
 
   UserPoolClientWeb:

@@ -18,11 +18,11 @@
       "function": {
         "checkUserAndShareAsset": {
           "deploymentBucketName": "amplify-petrakipapp-dev-214234-deployment",
-          "s3Key": "amplify-builds/checkUserAndShareAsset-4a685a65543368397446-build.zip"
+          "s3Key": "amplify-builds/checkUserAndShareAsset-576e3671684d50346e76-build.zip"
         },
         "createSignedUrlForAssets": {
           "deploymentBucketName": "amplify-petrakipapp-dev-214234-deployment",
-          "s3Key": "amplify-builds/createSignedUrlForAssets-3359582b4b37636e3066-build.zip"
+          "s3Key": "amplify-builds/createSignedUrlForAssets-53557a46756261647551-build.zip"
         }
       }
     }
