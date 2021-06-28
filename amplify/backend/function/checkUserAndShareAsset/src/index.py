@@ -1,7 +1,7 @@
-import json
 import boto3
 import os
 import logging
+import re
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -63,7 +63,12 @@ def createUser(email_address):
         raise Exception(f"unable to create User with email {email_address}")
 
     try:
-        return {"username": response["User"]["Username"], "alreadyExist": False}
+        for attributes in response["User"]["Attributes"]:
+            if attributes["Name"] == "sub":
+                uuid = attributes["Value"]
+            if attributes["Name"] == "email":
+                email = attributes["Value"]
+        return {"uuid": uuid, "email": email, "alreadyExist": False}
     except Exception as error:
         logger.error(error)
         raise error
@@ -96,29 +101,26 @@ def gather_user(email_address):
         #         "RetryAttempts": 0,
         #     },
         # }
+
         response = client.admin_get_user(UserPoolId=UserPoolId, Username=email_address)
-        return {"username": response["Username"], "alreadyExist": True}
+        logger.info(response)
+        for attributes in response["UserAttributes"]:
+            if attributes["Name"] == "sub":
+                uuid = attributes["Value"]
+            if attributes["Name"] == "email":
+                email = attributes["Value"]
+        return {"uuid": uuid, "email": email, "alreadyExist": True}
 
     except client.exceptions.UserNotFoundException as error:
         logger.info(f"create new user with email: {email_address}")
         return createUser(email_address)
     except Exception as error:
         logger.error(error)
-
-
-def error_event(code, body):
-    return {
-        "statusCode": code,
-        "headers": {
-            "Access-Control-Allow-Headers": "*",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
-        "body": json.dumps(body),
-    }
+        raise error
 
 
 def handler(event, context):
+    logger.info(event)
     try:
         username = event["arguments"]["username"]
     except Exception as error:
@@ -128,11 +130,14 @@ def handler(event, context):
     # https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression
     # Check if is it a regular mail!
     try:
-        pass
+        result = re.match("[^@]+@[^@]+\.[^@]+", username)
+        if not result:
+            raise Exception(f"username {username} is not a regular email-adress")
     except Exception as error:
         logger.error(error)
-        raise Exception(f"username {username} is not a regular email")
+        raise Exception(f"username {username} is not a regular email-adress")
 
+    logger.info(username)
     response = gather_user(username)
 
     return response

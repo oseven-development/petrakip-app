@@ -26,5 +26,33 @@
         }
       }
     }
+  },
+  "max": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-petrakipapp-max-210036-authRole",
+      "UnauthRoleArn": "arn:aws:iam::403039540759:role/amplify-petrakipapp-max-210036-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::403039540759:role/amplify-petrakipapp-max-210036-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-petrakipapp-max-210036-deployment",
+      "UnauthRoleName": "amplify-petrakipapp-max-210036-unauthRole",
+      "StackName": "amplify-petrakipapp-max-210036",
+      "StackId": "arn:aws:cloudformation:eu-central-1:403039540759:stack/amplify-petrakipapp-max-210036/a1cc1400-d5e7-11eb-87fd-025641644774",
+      "AmplifyAppId": "d2we7y6bf1oy4z"
+    },
+    "categories": {
+      "auth": {
+        "petrakipauth": {}
+      },
+      "function": {
+        "checkUserAndShareAsset": {
+          "deploymentBucketName": "amplify-petrakipapp-max-210036-deployment",
+          "s3Key": "amplify-builds/checkUserAndShareAsset-387a37396848316e4b7a-build.zip"
+        },
+        "createSignedUrlForAssets": {
+          "deploymentBucketName": "amplify-petrakipapp-max-210036-deployment",
+          "s3Key": "amplify-builds/createSignedUrlForAssets-782f5a57484c524d3656-build.zip"
+        }
+      }
+    }
   }
 }
