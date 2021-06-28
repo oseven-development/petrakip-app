@@ -29,6 +29,11 @@ import {
   ReflectionsListView,
   ProfileDetailView,
   ProfileChangePasswordView,
+  LoginView,
+  RegisterView,
+  ConfirmSignUpView,
+  VerifyAccountView,
+  ForgotPasswordView,
 } from './pages'
 
 /* Core CSS required for Ionic components to work properly */
@@ -50,11 +55,6 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.css'
-import LoginPage from './pages/login/loginPage'
-import RegisterPage from './pages/login/registerPage'
-import ConfirmSignUpPage from './pages/login/confirmSignUpPage'
-import VerifyAccount from './pages/login/verifyAccount'
-import ForgotPasswordPage from './pages/login/forgotPassword'
 
 const App: React.FC = () => (
   <IonApp>
@@ -116,11 +116,11 @@ const App: React.FC = () => (
 // export default App
 // TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
 export default withAuthenticator(App, false, [
-  <LoginPage />,
-  <RegisterPage />,
+  <LoginView />,
+  <RegisterView />,
   <ConfirmSignIn />,
-  <ConfirmSignUpPage />,
-  <ForgotPasswordPage />,
+  <ConfirmSignUpView />,
+  <ForgotPasswordView />,
   <RequireNewPassword />,
-  <VerifyAccount />,
+  <VerifyAccountView />,
 ])

@@ -34,7 +34,7 @@ interface UserProps {
   agreedToTerms: boolean
 }
 
-const RegisterPage: React.FC = (props: any) => {
+const RegisterView: React.FC = (props: any) => {
   const [userProps, setUserProps] = useState<UserProps>({
     mail: '',
     password: '',
@@ -269,4 +269,4 @@ const RegisterPage: React.FC = (props: any) => {
   )
 }
 
-export default RegisterPage
+export { RegisterView }

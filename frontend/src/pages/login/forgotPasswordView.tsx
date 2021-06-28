@@ -21,7 +21,7 @@ interface PageProps {
   newPassword: string
 }
 
-const ForgotPasswordPage: React.FC = (props: any) => {
+const ForgotPasswordView: React.FC = (props: any) => {
   const [pageProps, setPageProps] = useState<PageProps>({
     mail: '',
     codeSent: false,
@@ -180,4 +180,4 @@ const ForgotPasswordPage: React.FC = (props: any) => {
   )
 }
 
-export default ForgotPasswordPage
+export { ForgotPasswordView }

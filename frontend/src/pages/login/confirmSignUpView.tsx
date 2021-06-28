@@ -14,7 +14,7 @@ import React, { useState } from 'react'
 import { Header, LargeHeader } from '../../components/header'
 import './login.css'
 
-const ConfirmSignUpPage: React.FC = (props: any) => {
+const ConfirmSignUpView: React.FC = (props: any) => {
   const [mail, setMail] = useState('')
   const [confirmationCode, setConfirmationCode] = useState('')
   const [presentToast] = useIonToast()
@@ -110,4 +110,4 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
   )
 }
 
-export default ConfirmSignUpPage
+export { ConfirmSignUpView }

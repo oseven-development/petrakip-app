@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react'
 import { Header, LargeHeader } from '../../components/header'
 import './login.css'
 
-const VerifyAccount: React.FC = (props: any) => {
+const VerifyAccountView: React.FC = (props: any) => {
   const [codeSent, setCodeSent] = useState(false)
   const [confirmationCode, setConfirmationCode] = useState('')
   const [presentToast] = useIonToast()
@@ -77,4 +77,4 @@ const VerifyAccount: React.FC = (props: any) => {
   )
 }
 
-export default VerifyAccount
+export { VerifyAccountView }
