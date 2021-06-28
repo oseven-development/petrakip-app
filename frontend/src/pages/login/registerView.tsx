@@ -34,7 +34,7 @@ interface UserProps {
   agreedToTerms: boolean
 }
 
-const RegisterView: React.FC = (props: any) => {
+const RegisterView: React.FC = ({ authState, onStateChange }: any) => {
   const [userProps, setUserProps] = useState<UserProps>({
     mail: '',
     password: '',
@@ -47,10 +47,6 @@ const RegisterView: React.FC = (props: any) => {
   const [registerLoading, setRegisterLoading] = useState(false)
 
   const [presentToast] = useIonToast()
-
-  if (props.authState !== 'signUp') {
-    return null
-  }
 
   const customPopoverOptions = {
     header: 'Institution auswählen:',
@@ -65,7 +61,7 @@ const RegisterView: React.FC = (props: any) => {
      * userSub: string
      */
     setRegisterLoading(false)
-    props.onStateChange('confirmSignUp')
+    onStateChange('confirmSignUp')
   }
 
   const signUp = () => {
@@ -81,7 +77,7 @@ const RegisterView: React.FC = (props: any) => {
         preferred_username: userProps.institution,
       },
     })
-      .then(result => confirmSignUp(result))
+      .then(confirmSignUp)
       .catch(error => {
         presentToast(
           `Fehler: ${
@@ -94,178 +90,191 @@ const RegisterView: React.FC = (props: any) => {
   }
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonButton
-              color="primary"
-              onClick={() => {
-                props.onStateChange('signIn')
-              }}
-            >
-              Zurück
-            </IonButton>
-          </IonButtons>
-          <IonTitle slot="primary">Metapholio</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <LargeHeader>Metapholio</LargeHeader>
-        <div className="container">
-          <h2>Logindaten:</h2>
-          <IonCard className="input-card">
-            <IonCardContent>
-              <IonItem class="ion-no-padding">
-                <IonLabel position="stacked">Mailadresse</IonLabel>
-                <IonInput
-                  autocomplete="email"
-                  inputmode="email"
-                  pattern="email"
-                  placeholder="Mailadresse eingeben"
-                  type="email"
-                  value={userProps.mail}
-                  onIonChange={e =>
-                    setUserProps({ ...userProps, mail: e.detail.value ?? '' })
-                  }
-                ></IonInput>
-              </IonItem>
-              <IonItem class="ion-no-padding">
-                <IonLabel position="stacked">Passwort</IonLabel>
-                <IonInput
-                  pattern="password"
-                  placeholder="Passwort eingeben"
-                  type="password"
-                  value={userProps.password}
+    <>
+      {authState !== 'signUp' ? null : (
+        <IonPage>
+          <IonHeader>
+            <IonToolbar>
+              <IonButtons slot="start">
+                <IonButton
+                  color="primary"
+                  onClick={() => {
+                    onStateChange('signIn')
+                  }}
+                >
+                  Zurück
+                </IonButton>
+              </IonButtons>
+              <IonTitle slot="primary">Metapholio</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent>
+            <LargeHeader>Metapholio</LargeHeader>
+            <div className="container">
+              <h2>Logindaten:</h2>
+              <IonCard className="input-card">
+                <IonCardContent>
+                  <IonItem class="ion-no-padding">
+                    <IonLabel position="stacked">Mailadresse</IonLabel>
+                    <IonInput
+                      autocomplete="email"
+                      inputmode="email"
+                      pattern="email"
+                      placeholder="Mailadresse eingeben"
+                      type="email"
+                      value={userProps.mail}
+                      onIonChange={e =>
+                        setUserProps({
+                          ...userProps,
+                          mail: e.detail.value ?? '',
+                        })
+                      }
+                    ></IonInput>
+                  </IonItem>
+                  <IonItem class="ion-no-padding">
+                    <IonLabel position="stacked">Passwort</IonLabel>
+                    <IonInput
+                      pattern="password"
+                      placeholder="Passwort eingeben"
+                      type="password"
+                      value={userProps.password}
+                      onIonChange={e =>
+                        setUserProps({
+                          ...userProps,
+                          password: e.detail.value ?? '',
+                        })
+                      }
+                    ></IonInput>
+                  </IonItem>
+                </IonCardContent>
+              </IonCard>
+              <h2>Name:</h2>
+              <IonCard class="name-card">
+                <IonCardContent>
+                  <IonItemGroup>
+                    <IonItem class="ion-no-padding">
+                      <IonLabel position="stacked">Vorname</IonLabel>
+                      <IonInput
+                        autocomplete="name"
+                        inputmode="text"
+                        pattern="text"
+                        placeholder="Vorname eingeben"
+                        type="text"
+                        value={userProps.forename}
+                        onIonChange={e =>
+                          setUserProps({
+                            ...userProps,
+                            forename: e.detail.value ?? '',
+                          })
+                        }
+                      ></IonInput>
+                    </IonItem>
+                    <IonItem class="ion-no-padding">
+                      <IonLabel position="stacked">Nachname</IonLabel>
+                      <IonInput
+                        autocomplete="family-name"
+                        inputmode="text"
+                        pattern="text"
+                        placeholder="Nachname eingeben"
+                        type="text"
+                        value={userProps.surname}
+                        onIonChange={e =>
+                          setUserProps({
+                            ...userProps,
+                            surname: e.detail.value ?? '',
+                          })
+                        }
+                      ></IonInput>
+                    </IonItem>
+                  </IonItemGroup>
+                </IonCardContent>
+              </IonCard>
+
+              <h2>Institution:</h2>
+              <IonCard className="name-card">
+                <IonCardContent>
+                  <IonItem class="ion-no-padding">
+                    <IonSelect
+                      interfaceOptions={customPopoverOptions}
+                      className="institution-select"
+                      value={userProps.institution}
+                      onIonChange={e =>
+                        setUserProps({
+                          ...userProps,
+                          institution: e.detail.value,
+                        })
+                      }
+                      interface="action-sheet"
+                      placeholder="Institution auswählen"
+                      cancelText="Abbrechen"
+                      okText="Auswählen"
+                    >
+                      {institutions.map((institution, index) => (
+                        <IonSelectOption
+                          className="institution-select"
+                          key={`institution-selection-${index}`}
+                          value={institution}
+                        >
+                          {institution}
+                        </IonSelectOption>
+                      ))}
+                    </IonSelect>
+                  </IonItem>
+                </IonCardContent>
+              </IonCard>
+
+              <div className="terms">
+                <IonCheckbox
+                  checked={userProps.agreedToTerms}
                   onIonChange={e =>
                     setUserProps({
                       ...userProps,
-                      password: e.detail.value ?? '',
+                      agreedToTerms: e.detail.checked,
                     })
                   }
-                ></IonInput>
-              </IonItem>
-            </IonCardContent>
-          </IonCard>
-          <h2>Name:</h2>
-          <IonCard class="name-card">
-            <IonCardContent>
-              <IonItemGroup>
-                <IonItem class="ion-no-padding">
-                  <IonLabel position="stacked">Vorname</IonLabel>
-                  <IonInput
-                    autocomplete="name"
-                    inputmode="text"
-                    pattern="text"
-                    placeholder="Vorname eingeben"
-                    type="text"
-                    value={userProps.forename}
-                    onIonChange={e =>
-                      setUserProps({
-                        ...userProps,
-                        forename: e.detail.value ?? '',
-                      })
-                    }
-                  ></IonInput>
-                </IonItem>
-                <IonItem class="ion-no-padding">
-                  <IonLabel position="stacked">Nachname</IonLabel>
-                  <IonInput
-                    autocomplete="family-name"
-                    inputmode="text"
-                    pattern="text"
-                    placeholder="Nachname eingeben"
-                    type="text"
-                    value={userProps.surname}
-                    onIonChange={e =>
-                      setUserProps({
-                        ...userProps,
-                        surname: e.detail.value ?? '',
-                      })
-                    }
-                  ></IonInput>
-                </IonItem>
-              </IonItemGroup>
-            </IonCardContent>
-          </IonCard>
+                />
+                <IonLabel>
+                  Hiermit bestätige ich, dass ich die{' '}
+                  <span
+                    className="terms-link"
+                    onClick={() => {
+                      setShowTermsModal(true)
+                    }}
+                  >
+                    Terms and Conditions
+                  </span>{' '}
+                  gelesen und akzeptiert habe.
+                </IonLabel>
+              </div>
 
-          <h2>Institution:</h2>
-          <IonCard className="name-card">
-            <IonCardContent>
-              <IonItem class="ion-no-padding">
-                <IonSelect
-                  interfaceOptions={customPopoverOptions}
-                  className="institution-select"
-                  value={userProps.institution}
-                  onIonChange={e =>
-                    setUserProps({ ...userProps, institution: e.detail.value })
-                  }
-                  interface="action-sheet"
-                  placeholder="Institution auswählen"
-                  cancelText="Abbrechen"
-                  okText="Auswählen"
-                >
-                  {institutions.map((institution, index) => (
-                    <IonSelectOption
-                      className="institution-select"
-                      key={`institution-selection-${index}`}
-                      value={institution}
-                    >
-                      {institution}
-                    </IonSelectOption>
-                  ))}
-                </IonSelect>
-              </IonItem>
-            </IonCardContent>
-          </IonCard>
+              <IonModal isOpen={showTermsModal}>
+                <h1>Terms and Conditions</h1>
+                <IonButton onClick={() => setShowTermsModal(false)}>
+                  Gelesen
+                </IonButton>
+              </IonModal>
 
-          <div className="terms">
-            <IonCheckbox
-              checked={userProps.agreedToTerms}
-              onIonChange={e =>
-                setUserProps({ ...userProps, agreedToTerms: e.detail.checked })
-              }
-            />
-            <IonLabel>
-              Hiermit bestätige ich, dass ich die{' '}
-              <span
-                className="terms-link"
-                onClick={() => {
-                  setShowTermsModal(true)
-                }}
+              <IonButton
+                disabled={
+                  !(
+                    userProps.mail &&
+                    userProps.password &&
+                    userProps.forename &&
+                    userProps.surname &&
+                    userProps.institution &&
+                    userProps.agreedToTerms
+                  )
+                }
+                expand="block"
+                onClick={signUp}
               >
-                Terms and Conditions
-              </span>{' '}
-              gelesen und akzeptiert habe.
-            </IonLabel>
-          </div>
-
-          <IonModal isOpen={showTermsModal}>
-            <h1>Terms and Conditions</h1>
-            <IonButton onClick={() => setShowTermsModal(false)}>
-              Gelesen
-            </IonButton>
-          </IonModal>
-
-          <IonButton
-            disabled={
-              !(
-                userProps.mail &&
-                userProps.password &&
-                userProps.forename &&
-                userProps.surname &&
-                userProps.institution &&
-                userProps.agreedToTerms
-              )
-            }
-            expand="block"
-            onClick={signUp}
-          >
-            {registerLoading ? <IonSpinner /> : 'Los gehts'}
-          </IonButton>
-        </div>
-      </IonContent>
-    </IonPage>
+                {registerLoading ? <IonSpinner /> : 'Los gehts'}
+              </IonButton>
+            </div>
+          </IonContent>
+        </IonPage>
+      )}
+    </>
   )
 }
 

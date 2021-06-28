@@ -118,7 +118,6 @@ const App: React.FC = () => (
 export default withAuthenticator(App, false, [
   <LoginView />,
   <RegisterView />,
-  <ConfirmSignIn />,
   <ConfirmSignUpView />,
   <ForgotPasswordView />,
   <RequireNewPassword />,

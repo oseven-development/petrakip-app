@@ -25,8 +25,8 @@ const ConfirmSignUpView: React.FC = (props: any) => {
 
   const confirmSignUp = () => {
     Auth.confirmSignUp(mail, confirmationCode)
-      .then(result => {
-        console.log('Successfully confirmed: ', result)
+      .then(() => {
+        props.onStateChange('signIn')
       })
       .catch(error => {
         console.error('Error during confirmation: ', error)
@@ -55,6 +55,7 @@ const ConfirmSignUpView: React.FC = (props: any) => {
       <IonContent>
         <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
+          {props.authState}
           <h2>Bestätige deine Anmeldung</h2>
           <p>Hierfür wurde dir der Code per Mail zugeschickt:</p>
           <IonCard className="input-card">
@@ -96,13 +97,6 @@ const ConfirmSignUpView: React.FC = (props: any) => {
             onClick={resendSignUp}
           >
             Code erneut zusenden
-          </IonButton>
-          <IonButton
-            expand="block"
-            fill="outline"
-            onClick={() => Auth.signOut()}
-          >
-            Ausloggen
           </IonButton>
         </div>
       </IonContent>
