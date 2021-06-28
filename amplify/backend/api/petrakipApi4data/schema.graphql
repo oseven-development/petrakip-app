@@ -103,7 +103,8 @@ type ReflexionMoment
 }
 
 type CheckShare {
-  username: String
+  uuid: String
+  email: String
   alreadyExist: Boolean
 }
 
