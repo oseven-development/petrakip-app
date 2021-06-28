@@ -3,8 +3,12 @@
 // this is an auto generated file. This will be overwritten
 
 export const checkUserAndShareAsset = /* GraphQL */ `
-  query CheckUserAndShareAsset($msg: String) {
-    checkUserAndShareAsset(msg: $msg)
+  query CheckUserAndShareAsset($username: String) {
+    checkUserAndShareAsset(username: $username) {
+      uuid
+      email
+      alreadyExist
+    }
   }
 `
 export const createSignedUrlForAssets = /* GraphQL */ `
