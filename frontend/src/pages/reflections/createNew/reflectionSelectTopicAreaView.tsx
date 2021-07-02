@@ -6,7 +6,7 @@ import { RouteComponentProps } from 'react-router'
 import {
   SubjectArea,
   InputSelectValue,
-} from '../../../components/reflection/reflectionSubjectArea/reflectionSubjectArea'
+} from '../../../components/reflection/reflectionTopicArea/reflectionTopicArea'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'

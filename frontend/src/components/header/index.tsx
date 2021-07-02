@@ -8,14 +8,17 @@ import {
 
 interface Props {
   children: string | string[]
+  displayBackButton?: boolean
 }
 
-const Header: React.FC<Props> = ({ children }) => {
+const Header: React.FC<Props> = ({ children, displayBackButton }) => {
   return (
     <IonHeader>
       <IonToolbar>
         <IonButtons slot="start">
-          <IonBackButton />
+          {(displayBackButton === undefined || displayBackButton === true) && (
+            <IonBackButton />
+          )}
         </IonButtons>
         <IonTitle>{children}</IonTitle>
       </IonToolbar>

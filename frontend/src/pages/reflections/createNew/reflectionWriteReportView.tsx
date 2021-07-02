@@ -6,6 +6,7 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonContent,
+  IonGrid,
   IonItem,
   IonPage,
   IonText,
@@ -24,36 +25,28 @@ export const ReflectionWriteReportView: React.FC<Props> = ({ history }) => {
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
   return (
     <IonPage>
-      <Header>Reflexionsbericht</Header>
+      <Header displayBackButton={false}>Reflexionsbericht</Header>
       <IonContent fullscreen>
         <IonCard>
           <IonCardHeader color="tertiary">
-            <IonCardTitle>Orientierungsfragen</IonCardTitle>
+            <IonText>Orientierungsfragen</IonText>
           </IonCardHeader>
 
           <IonCardContent>
-            <IonText>
-              <ol>
-                <li> Wie hast du das umgesetzt?</li>
-                <li>Was hat gut funktioniert?</li>
-                <li>Was kannst du noch verbessern?</li>
-                <li>Welche Theorien können dir dabei helfen?</li>
-              </ol>
-            </IonText>
+            <ol>
+              <li>Wie hast du das umgesetzt?</li>
+              <li>Was hat gut funktioniert?</li>
+              <li>Was kannst du noch verbessern?</li>
+              <li>Welche Theorien können dir dabei helfen?</li>
+            </ol>
           </IonCardContent>
         </IonCard>
-        <IonButton
-          routerLink={`${ReflectionsRouting.module}${currentUrl}`}
-          color="primary"
-        >
-          Speichern
-        </IonButton>
-        <IonItem>
+
+        <IonGrid>
           <IonText color="primary">
             <h1>Reflexionsbericht</h1>
           </IonText>
-        </IonItem>
-        <IonItem>
+
           <IonTextarea
             autoGrow
             rows={10}
@@ -63,7 +56,14 @@ export const ReflectionWriteReportView: React.FC<Props> = ({ history }) => {
             }
             placeholder="Enter more information here..."
           ></IonTextarea>
-        </IonItem>
+
+          <IonButton
+            routerLink={`${ReflectionsRouting.module}${currentUrl}`}
+            color="primary"
+          >
+            Speichern
+          </IonButton>
+        </IonGrid>
       </IonContent>
     </IonPage>
   )

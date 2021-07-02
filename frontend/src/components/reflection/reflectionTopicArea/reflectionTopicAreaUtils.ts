@@ -1,6 +1,6 @@
 import { checkmarkCircle, checkmarkCircleOutline } from 'ionicons/icons'
 
-import { SubTopicItem } from './reflectionSubjectArea'
+import { SubTopicItem } from './reflectionTopicArea'
 
 export function totalDone(subListItems: SubTopicItem[]): number {
   return subListItems.filter(
