@@ -13,3 +13,10 @@ export { ProgressDetailView } from './progress/progressDetailView'
 export { ReflectionsListView } from './reflections/reflectionsListView'
 export { ReflectionsDetailView } from './reflections/reflectionsDetailView'
 export { ReflectionsCreateNewView } from './reflections/reflectionsCreateNewView'
+
+/* Login */
+export { LoginView } from './login/loginView'
+export { RegisterView } from './login/registerView'
+export { ConfirmSignUpView } from './login/confirmSignUpView'
+export { VerifyAccountView } from './login/verifyAccountView'
+export { ForgotPasswordView } from './login/forgotPasswordView'

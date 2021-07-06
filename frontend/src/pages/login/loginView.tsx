@@ -17,7 +17,7 @@ import './login.css'
 import Amplify from '@aws-amplify/core'
 import { Header, LargeHeader } from '../../components/header'
 
-const LoginPage: React.FC = (props: any) => {
+const LoginView: React.FC = (props: any) => {
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
   const [presentToast] = useIonToast()
@@ -124,4 +124,4 @@ const LoginPage: React.FC = (props: any) => {
   )
 }
 
-export default LoginPage
+export { LoginView }

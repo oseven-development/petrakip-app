@@ -14,7 +14,7 @@ import React, { useState } from 'react'
 import { Header, LargeHeader } from '../../components/header'
 import './login.css'
 
-const ConfirmSignUpPage: React.FC = (props: any) => {
+const ConfirmSignUpView: React.FC = (props: any) => {
   const [mail, setMail] = useState('')
   const [confirmationCode, setConfirmationCode] = useState('')
   const [presentToast] = useIonToast()
@@ -25,8 +25,8 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
 
   const confirmSignUp = () => {
     Auth.confirmSignUp(mail, confirmationCode)
-      .then(result => {
-        console.log('Successfully confirmed: ', result)
+      .then(() => {
+        props.onStateChange('signIn')
       })
       .catch(error => {
         console.error('Error during confirmation: ', error)
@@ -55,6 +55,7 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
       <IonContent>
         <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
+          {props.authState}
           <h2>Bestätige deine Anmeldung</h2>
           <p>Hierfür wurde dir der Code per Mail zugeschickt:</p>
           <IonCard className="input-card">
@@ -97,17 +98,10 @@ const ConfirmSignUpPage: React.FC = (props: any) => {
           >
             Code erneut zusenden
           </IonButton>
-          <IonButton
-            expand="block"
-            fill="outline"
-            onClick={() => Auth.signOut()}
-          >
-            Ausloggen
-          </IonButton>
         </div>
       </IonContent>
     </IonPage>
   )
 }
 
-export default ConfirmSignUpPage
+export { ConfirmSignUpView }
