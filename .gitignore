@@ -156,3 +156,4 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 dev.egg-info
+src.egg-info
