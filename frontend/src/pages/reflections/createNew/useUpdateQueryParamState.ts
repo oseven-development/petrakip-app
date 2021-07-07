@@ -3,9 +3,11 @@ import { useLocation } from 'react-router-dom'
 
 interface UpdateQueryParamState {
   currentUrl: string
-  UpdateURL: (key: string, value: string) => void
-  UpdateURLAndRoute: (key: string, value: string, route: string) => void
+  UpdateURL: (urlParams: UrlParams) => void
+  UpdateURLAndRoute: (urlParams: UrlParams, route: string) => void
 }
+
+type UrlParams = { key: string; value: string }[]
 
 export const useUpdateQueryParamState = (
   history: any,
@@ -17,23 +19,27 @@ export const useUpdateQueryParamState = (
     setCurrentUrl(location.search)
   }, [location, setCurrentUrl])
 
-  const createNewQuery = (key: string, value: string) => {
+  const createNewQuery = (urlParams: UrlParams) => {
     const params = new URLSearchParams(location.search)
-    if (value !== '') {
-      params.set(key, value)
-    } else {
-      params.delete(key)
-    }
+    urlParams.forEach(({ key, value }) => {
+      if (value !== '') {
+        params.set(key, value)
+      } else {
+        params.delete(key)
+      }
+    })
+
     return params.toString()
   }
 
-  const UpdateURLAndRoute = (key: string, value: string, route: string) => {
-    const query = createNewQuery(key, value)
+  const UpdateURLAndRoute = (urlParams: UrlParams, route: string) => {
+    const query = createNewQuery(urlParams)
+
     history.push(`${route}?${query}`)
   }
 
-  const UpdateURL = (key: string, value: string) => {
-    const query = createNewQuery(key, value)
+  const UpdateURL = (urlParams: UrlParams) => {
+    const query = createNewQuery(urlParams)
 
     if (!(location.search.replace('?', '') === `${query}`)) {
       history.replace(`${history.location.pathname}?${query}`)

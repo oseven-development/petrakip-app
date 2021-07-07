@@ -57,7 +57,9 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
       .map(([key]) => key)
       .toString()
 
-    UpdateURL(ReflectionQueryParamKeys.moment, selectedMoments)
+    UpdateURL([
+      { key: ReflectionQueryParamKeys.moment, value: selectedMoments },
+    ])
   }, [UpdateURL, state])
 
   return (
