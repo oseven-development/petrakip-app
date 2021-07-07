@@ -13,14 +13,22 @@ interface Props {
   children: string | string[]
   shareSlot?: any
   deleteSlot?: any
+  displayBackButton?: boolean
 }
 
-const Header: React.FC<Props> = ({ children, shareSlot, deleteSlot }) => {
+const Header: React.FC<Props> = ({
+  children,
+  shareSlot,
+  deleteSlot,
+  displayBackButton,
+}) => {
   return (
     <IonHeader>
       <IonToolbar>
         <IonButtons slot="start">
-          <IonBackButton />
+          {(displayBackButton === undefined || displayBackButton === true) && (
+            <IonBackButton />
+          )}
         </IonButtons>
         <IonTitle>{children}</IonTitle>
         {(shareSlot || deleteSlot) && (
