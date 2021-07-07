@@ -33,6 +33,7 @@ import {
   ReflectionSelectTopicAreaView,
   ReflectionWriteReportView,
   ReflectionsRouting,
+  ReflectionsFollowUpQuestionView,
 } from './pages'
 
 /* Core CSS required for Ionic components to work properly */
@@ -99,6 +100,12 @@ const App: React.FC = () => (
             exact
             path={ReflectionsRouting.writeReport}
             component={ReflectionWriteReportView}
+          />
+
+          <Route
+            exact
+            path={ReflectionsRouting.followUpQuestion}
+            component={ReflectionsFollowUpQuestionView}
           />
           {/* reflections routes */}
 

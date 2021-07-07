@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 
 import {
+  IonAlert,
   IonButton,
   IonContent,
   IonIcon,
@@ -17,6 +18,7 @@ import {
   IonPage,
   IonText,
   IonToast,
+  useIonAlert,
   useIonLoading,
 } from '@ionic/react'
 
@@ -74,24 +76,24 @@ const CheckmarkStateIcon: React.FC<{ state: string | null | undefined }> = ({
   />
 )
 
-const createStateObject = (queryUrl: string) => {
-  const params = new URLSearchParams(queryUrl)
-  const id = params.get(ReflectionQueryParamKeys.id)
+const createStateObject = (reactState: State) => {
+  const id = reactState.id
 
   const state: State = {
     id,
-    createdAt: new Date().toISOString(),
-    title: params.get(ReflectionQueryParamKeys.title) || '',
-    content: params.get(ReflectionQueryParamKeys.report) || '',
-    topic: params.get(ReflectionQueryParamKeys.topic) || '',
-    subTopic: params.get(ReflectionQueryParamKeys.subTopic) || '',
-    momentIDs: params.get(ReflectionQueryParamKeys.moment)?.split(',') || [],
+    createdAt: reactState.createdAt || new Date().toISOString(),
+    title: reactState.title || '',
+    content: reactState.content || '',
+    topic: reactState.topic || '',
+    subTopic: reactState.subTopic || '',
+    momentIDs: reactState.momentIDs,
   }
   if (!id) {
     delete state.id
   }
-  if (id) {
-    delete state.createdAt
+
+  if (reactState.state === ReflexionState.started) {
+    state.state = ReflexionState.awaitingFollowUpQuestions
   }
 
   return state
@@ -103,24 +105,41 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
 }) => {
   const [message, setMessage] = React.useState({ message: '', display: false })
   const [loader, setLoader] = React.useState(false)
+
+  const [showFollowUpQuestions, setShowFollowUpQuestions] = React.useState(
+    false,
+  )
+
   const [state, setState] = React.useState<State>(defaultState)
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
   const location = useLocation()
 
+  const params = new URLSearchParams(location.search)
+  const entryReflexionState = params.get(
+    ReflectionQueryParamKeys.reflexionState,
+  )
+
+  React.useEffect(() => {
+    if (entryReflexionState === ReflexionState.awaitingFollowUpQuestions) {
+      setShowFollowUpQuestions(true)
+    }
+  }, [entryReflexionState, setShowFollowUpQuestions])
+
   React.useEffect(() => {
     const params = new URLSearchParams(location.search)
 
-    const id = params.get(ReflectionQueryParamKeys.id)
-    const createdAt = params.get(ReflectionQueryParamKeys.createdAt)
-
     const newState: State = {
-      id,
-      createdAt,
+      id: params.get(ReflectionQueryParamKeys.id) || null,
+      createdAt: params.get(ReflectionQueryParamKeys.createdAt) || null,
       title: params.get(ReflectionQueryParamKeys.title) || '',
       content: params.get(ReflectionQueryParamKeys.report) || '',
       topic: params.get(ReflectionQueryParamKeys.topic) || '',
       subTopic: params.get(ReflectionQueryParamKeys.subTopic) || '',
       momentIDs: params.get(ReflectionQueryParamKeys.moment)?.split(',') || [],
+      state:
+        (params.get(
+          ReflectionQueryParamKeys.reflexionState,
+        ) as ReflexionState) || ReflexionState.started,
     }
 
     if (location.pathname === ReflectionsRouting.module) {
@@ -131,7 +150,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   const graphQLcall = () => {
     const start = new Date().getTime()
     setLoader(true)
-    createReflextionAPI(createStateObject(location.search))
+    createReflextionAPI(createStateObject(state))
       .then(result => {
         const end = new Date().getTime()
         const time = end - start
@@ -141,10 +160,27 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             message: 'Reflexion erfolgreich gespeichert!',
             display: true,
           })
-          console.log(result.id)
-          if (result.id) UpdateURL(ReflectionQueryParamKeys.id, result.id)
-          // if (result.createdAt)
-          //   UpdateURL(ReflectionQueryParamKeys.createdAt, result.createdAt)
+
+          const params = []
+          if (result.id)
+            params.push({ key: ReflectionQueryParamKeys.id, value: result.id })
+          if (result.createdAt)
+            params.push({
+              key: ReflectionQueryParamKeys.createdAt,
+              value: result.createdAt,
+            })
+          if (result.state) {
+            params.push({
+              key: ReflectionQueryParamKeys.reflexionState,
+              value: result.state,
+            })
+          }
+
+          if (result.state === ReflexionState.awaitingFollowUpQuestions) {
+            setShowFollowUpQuestions(true)
+          }
+
+          UpdateURL(params)
         }, 1000 - time)
       })
       .catch(() => {
@@ -152,11 +188,24 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
       })
   }
 
+  const convertDate = (createdAt: string | null | undefined): string => {
+    if (createdAt) {
+      return new Intl.DateTimeFormat('de', {
+        dateStyle: 'full',
+        timeStyle: 'short',
+      }).format(new Date(createdAt))
+    }
+    return 'Noch nicht erstellt'
+  }
+
   return (
     <IonPage>
       <Header>Neue Reflexion erstellen</Header>
       <IonContent fullscreen>
+        {/* ############################ Loading ############################ */}
         <IonLoading isOpen={loader} message={'Reflexion wird gespeichert...'} />
+
+        {/* ############################ Toast ############################ */}
         <IonToast
           isOpen={message.display}
           onDidDismiss={() => setMessage({ message: '', display: false })}
@@ -167,15 +216,37 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           color="primary"
         />
 
+        {/* ############################ Alert ############################ */}
+        <IonAlert
+          isOpen={showFollowUpQuestions}
+          onDidDismiss={() => setShowFollowUpQuestions(false)}
+          header={'Follow-Up-Questions'}
+          message={
+            'Für diese Reflexion gibt es showFollowUpQuestions, jetzt beantworten?'
+          }
+          buttons={[
+            'später',
+            {
+              text: 'Ja!',
+              handler: () =>
+                history.push(
+                  `${ReflectionsRouting.followUpQuestion}${currentUrl}`,
+                ),
+            },
+          ]}
+        />
+
         <IonList>
+          {/* ############################ created at ############################ */}
           <IonItemDivider>
             <IonText color="medium">Erstellt am:</IonText>
           </IonItemDivider>
           <IonItem>
             <IonText color="secondary">
-              <h6>{state.createdAt}</h6>
+              <h6>{convertDate(state.createdAt || '')}</h6>
             </IonText>
           </IonItem>
+          {/* ############################ topic ############################ */}
           <IonItemDivider>
             <IonText color="medium">Thema</IonText>
           </IonItemDivider>
@@ -187,12 +258,11 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
               <IonText color="medium">
                 <h6> {state.topic} </h6>
               </IonText>
-              {state.subTopic === 'Später wählen'
-                ? 'Thema wählen'
-                : state.subTopic}
+              {state.subTopic === '' ? 'Thema wählen' : state.subTopic}
             </IonLabel>
-            <CheckmarkStateIcon state={state.subTopic} />
+            <CheckmarkStateIcon state={state.topic} />
           </IonItem>
+          {/* ############################  Title ############################ */}
           <IonItemDivider>
             <IonText color="medium">Title</IonText>
           </IonItemDivider>
@@ -201,7 +271,12 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
               value={state.title}
               placeholder="Title (optional)"
               onIonChange={e =>
-                UpdateURL(ReflectionQueryParamKeys.title, e.detail.value!)
+                UpdateURL([
+                  {
+                    key: ReflectionQueryParamKeys.title,
+                    value: e.detail.value!,
+                  },
+                ])
               }
             ></IonInput>
             <CheckmarkStateIcon state={state.title} />
@@ -219,6 +294,8 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             </IonLabel>
             <CheckmarkStateIcon state={state.content} />
           </IonItem>
+
+          {/* ############################  Momentes ############################ */}
           <IonItemDivider>
             <IonText color="medium">Momente</IonText>
           </IonItemDivider>
@@ -256,6 +333,15 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           ))}
         </IonList>
 
+        {/* ############################ Route FollowUpQuestion ############################ */}
+        <IonButton
+          disabled={state.state === ReflexionState.started ? true : false}
+          routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
+        >
+          FollowUpQuestion
+        </IonButton>
+
+        {/* ############################ Save the Reflection ############################ */}
         <IonButton
           onClick={graphQLcall}
           disabled={
@@ -265,6 +351,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           {state.id ? 'Speichern' : 'Erstellen'}
         </IonButton>
 
+        {/* ############################ DEBBUG! ############################ */}
         {location.search.split('&').map(item => (
           <p key={item}>{item}</p>
         ))}

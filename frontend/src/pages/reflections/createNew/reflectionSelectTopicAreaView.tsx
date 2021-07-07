@@ -4,7 +4,7 @@ import { Header } from '../../../components'
 import { RouteComponentProps } from 'react-router'
 
 import {
-  SubjectArea,
+  TopicArea,
   InputSelectValue,
 } from '../../../components/reflection/reflectionTopicArea/reflectionTopicArea'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
@@ -19,18 +19,41 @@ export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
   const { UpdateURLAndRoute } = useUpdateQueryParamState(history)
 
   const setMyState = (value: InputSelectValue) => {
-    UpdateURLAndRoute(
-      ReflectionQueryParamKeys.subTopic,
-      value,
-      ReflectionsRouting.module,
-    )
+    if (value === 'Später wählen') {
+      UpdateURLAndRoute(
+        [
+          {
+            key: ReflectionQueryParamKeys.topic,
+            value: '',
+          },
+          {
+            key: ReflectionQueryParamKeys.subTopic,
+            value: '',
+          },
+        ],
+        ReflectionsRouting.module,
+      )
+    } else {
+      const params = [
+        {
+          key: ReflectionQueryParamKeys.topic,
+          value: value.topic,
+        },
+        {
+          key: ReflectionQueryParamKeys.subTopic,
+          value: value.subTopic,
+        },
+      ]
+
+      UpdateURLAndRoute(params, ReflectionsRouting.module)
+    }
   }
   return (
     <IonPage>
       <Header>Wähle ein Thema</Header>
       <IonContent fullscreen>
         {/* topicList must later be load via API, the import is only for testing purpose */}
-        <SubjectArea topicList={listItems} selectValue={setMyState} />
+        <TopicArea topicList={listItems} selectValue={setMyState} />
       </IonContent>
     </IonPage>
   )

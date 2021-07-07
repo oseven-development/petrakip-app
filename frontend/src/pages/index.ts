@@ -17,3 +17,4 @@ export { ReflectionsCreateNewView } from './reflections/createNew/reflectionsCre
 export { ReflectionSelectMomentsView } from './reflections/createNew/reflectionSelectMomentsView'
 export { ReflectionSelectTopicAreaView } from './reflections/createNew/reflectionSelectTopicAreaView'
 export { ReflectionWriteReportView } from './reflections/createNew/reflectionWriteReportView'
+export { ReflectionsFollowUpQuestionView } from './reflections/createNew/reflectionsFollowUpQuestionView'

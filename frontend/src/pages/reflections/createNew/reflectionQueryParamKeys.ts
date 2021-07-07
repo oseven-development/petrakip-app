@@ -6,4 +6,5 @@ export enum ReflectionQueryParamKeys {
   'moment' = 'moment-ids',
   'report' = 'report',
   'createdAt' = 'createdAt',
+  'reflexionState' = 'reflexionState',
 }

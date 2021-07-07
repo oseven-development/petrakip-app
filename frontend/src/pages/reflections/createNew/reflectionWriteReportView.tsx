@@ -21,8 +21,19 @@ import { ReflectionsRouting } from './reflectionCreateNewRouting'
 
 interface Props extends RouteComponentProps<{}> {}
 
-export const ReflectionWriteReportView: React.FC<Props> = ({ history }) => {
+export const ReflectionWriteReportView: React.FC<Props> = ({
+  history,
+  location,
+}) => {
+  const [state, setState] = React.useState('')
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const content = params.get(ReflectionQueryParamKeys.report)
+    setState(content || '')
+  }, [])
+
   return (
     <IonPage>
       <Header displayBackButton={false}>Reflexionsbericht</Header>
@@ -50,10 +61,21 @@ export const ReflectionWriteReportView: React.FC<Props> = ({ history }) => {
           <IonTextarea
             autoGrow
             rows={10}
-            debounce={1000}
-            onIonChange={e =>
-              UpdateURL(ReflectionQueryParamKeys.report, e.detail.value!)
-            }
+            debounce={500}
+            value={state}
+            onIonBlur={() => {
+              console.log('test')
+            }}
+            onIonChange={e => {
+              setState(e.detail.value!)
+              UpdateURL([
+                {
+                  key: ReflectionQueryParamKeys.report,
+                  value: e.detail.value!,
+                },
+              ])
+            }}
+            defaultValue={'test'}
             placeholder="Enter more information here..."
           ></IonTextarea>
 
