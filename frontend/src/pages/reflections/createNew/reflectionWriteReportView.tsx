@@ -28,11 +28,11 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
   const [state, setState] = React.useState('')
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
 
-  React.useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const content = params.get(ReflectionQueryParamKeys.report)
-    setState(content || '')
-  }, [])
+  // React.useEffect(() => {
+  //   const params = new URLSearchParams(location.search)
+  //   const content = params.get(ReflectionQueryParamKeys.report)
+  //   setState(content || '')
+  // }, [])
 
   return (
     <IonPage>
@@ -62,12 +62,12 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
             autoGrow
             rows={10}
             debounce={500}
-            value={state}
+            // value={state}
             onIonBlur={() => {
               console.log('test')
             }}
             onIonChange={e => {
-              setState(e.detail.value!)
+              // setState(e.detail.value!)
               UpdateURL([
                 {
                   key: ReflectionQueryParamKeys.report,

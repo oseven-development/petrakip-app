@@ -1,33 +1,24 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 
-import {
-  listMoments,
-  getReflexion,
-  listReflexions,
-} from '../../graphql/queries'
+import { listMoments } from '../../graphql/queries'
 
 import {
   createReflexion,
   createReflexionMoment,
-  updateReflexion,
   deleteReflexionMoment,
 } from '../../graphql/mutations'
+
 import {
   CreateReflexionInput,
-  UpdateReflexionInput,
   CreateReflexionMomentInput,
   DeleteReflexionMomentInput,
-  ReflexionState,
-  ListMomentsQuery,
   Moment,
-  GetReflexionQuery,
-  GetMomentQueryVariables,
   Reflexion,
   ReflexionMoment,
 } from '../../API'
 
-export const updateReflexion2 = /* GraphQL */ `
+export const updateReflexionMutation = /* GraphQL */ `
   mutation UpdateReflexion(
     $input: UpdateReflexionInput!
     $condition: ModelReflexionConditionInput
@@ -87,7 +78,7 @@ export const createReflextionAPI = async (reflection: State) => {
 
     if (reflection.id) {
       const res = (await API.graphql(
-        graphqlOperation(updateReflexion2, { input }),
+        graphqlOperation(updateReflexionMutation, { input }),
       )) as GraphQLResult<{ updateReflexion: Reflexion }>
       if (res.errors) throw res.errors
       if (res.data) result = res.data.updateReflexion
@@ -129,6 +120,8 @@ export const createReflextionAPI = async (reflection: State) => {
         })
       }
 
+      // FIXME  TYPE and tsignore
+      // @ts-ignore
       await Promise.all(connectionArray).catch(console.error)
       resolve(result)
     }
@@ -172,123 +165,10 @@ export const removeConnection = async (
   })
 }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// SONSTIGER SHIT !
-export const loadallmoments = async (): Promise<Moment[]> => {
+// FIXME REMOVE LATER
+export const loadAllMomentsAPI = async (): Promise<Moment[]> => {
   const res = (await API.graphql(
     graphqlOperation(listMoments),
   )) as GraphQLResult<{ listMoments: { items: Moment[] } }>
   return res.data?.listMoments.items || []
-  //   const id = res.data?.createReflexion.id as string
-}
-
-export const getReflexionCall = async () => {
-  const input: GetMomentQueryVariables = {
-    id: 'edd8525c-5707-4a7e-a6dd-0a88f4ea0d5e',
-  }
-  const res = (await API.graphql(
-    graphqlOperation(
-      `
-      query GetReflexion($id: ID!) {
-        getReflexion(id: $id) {
-          id
-          createdAt
-          title
-          contentType
-          content
-          asset {
-            bucket
-            key
-            region
-          }
-          topic
-          subTopic
-          niveau
-          indicators
-          state
-          deleted
-          sharedUsers
-          comments {
-            createdAt
-            content
-          }
-          orientationQuestions {
-            question
-          }
-          moments {
-            items {
-              moment{
-                id
-              }
-            }
-            nextToken
-          }
-  
-          updatedAt
-          owner
-    }
-  }
-`,
-      {
-        id: 'edd8525c-5707-4a7e-a6dd-0a88f4ea0d5e',
-      },
-    ),
-  )) as GraphQLResult<{ getReflexion: GetReflexionQuery }>
-  console.log(res.data)
-  //   const id = res.data?.createReflexion.id as string
-}
-
-// ID Reflexion
-// edd8525c-5707-4a7e-a6dd-0a88f4ea0d5e
-
-// ID moments
-// "3643e7b2-4fd0-496c-9403-e4a8e89d0f58"
-// "751f8d10-0962-49cb-8ffb-d207d62ea95f"
-
-export const listReflexionCall = async () => {
-  try {
-    const res = (await API.graphql(
-      graphqlOperation(`
-  query ListReflexions(
-    $filter: ModelReflexionFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listReflexions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        createdAt
-        title
-        contentType
-        content
-        topic
-        subTopic
-        niveau
-        indicators
-        state
-        deleted
-        sharedUsers
-        updatedAt
-        owner
-      }
-      nextToken
-    }
-  }
-`),
-    )) as GraphQLResult<any>
-    if (res.errors) console.log(res.errors)
-    if (res.data) return res.data.listReflexions.items
-  } catch (error) {
-    console.log(error)
-  }
-
-  //   const id = res.data?.createReflexion.id as string
 }

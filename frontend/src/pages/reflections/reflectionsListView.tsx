@@ -9,13 +9,13 @@ import {
   IonList,
 } from '@ionic/react'
 import { Header } from '../../components'
-import { listReflexionCall } from '../../api/reflection/createReflection'
+import { listAllReflectionsAPI } from '../../api/'
 import { ReflectionsRouting } from '..'
 
 export const ReflectionsListView: React.FC = () => {
   const [state, setState] = React.useState<any[]>([])
   React.useEffect(() => {
-    listReflexionCall().then(setState).catch(console.error)
+    listAllReflectionsAPI().then(setState).catch(console.error)
   }, [])
   return (
     <IonPage>

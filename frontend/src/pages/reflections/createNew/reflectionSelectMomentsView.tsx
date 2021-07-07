@@ -6,7 +6,7 @@ import { RouteComponentProps, useLocation } from 'react-router'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 
-import { loadallmoments } from '../../../api/reflection/createReflection'
+import { loadAllMomentsAPI } from '../../../api/'
 import { Moment } from '../../../API'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 
@@ -30,7 +30,7 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
     const params = new URLSearchParams(location.search)
     const array = params.get(ReflectionQueryParamKeys.moment)?.split(',')
 
-    loadallmoments().then(moments => {
+    loadAllMomentsAPI().then(moments => {
       moments.forEach(moment => {
         if (moment.id) {
           const preSelected = array?.includes(moment.id)

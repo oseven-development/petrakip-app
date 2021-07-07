@@ -32,15 +32,13 @@ import {
   trashOutline,
 } from 'ionicons/icons'
 
-import {
-  listReflexionCall,
-  createReflextionAPI,
-} from '../../../api/reflection/createReflection'
+import { listAllReflectionsAPI, createReflextionAPI } from '../../../api/'
 
 import { CreateReflexionInput, ReflexionState } from '../../../API'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
+import { getLongDateString } from '../../../utils/dateUtils'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -188,16 +186,6 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
       })
   }
 
-  const convertDate = (createdAt: string | null | undefined): string => {
-    if (createdAt) {
-      return new Intl.DateTimeFormat('de', {
-        dateStyle: 'full',
-        timeStyle: 'short',
-      }).format(new Date(createdAt))
-    }
-    return 'Noch nicht erstellt'
-  }
-
   return (
     <IonPage>
       <Header>Neue Reflexion erstellen</Header>
@@ -243,7 +231,12 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           </IonItemDivider>
           <IonItem>
             <IonText color="secondary">
-              <h6>{convertDate(state.createdAt || '')}</h6>
+              <h6>
+                {getLongDateString(
+                  state.createdAt || '',
+                  'Noch nicht erstellt',
+                )}
+              </h6>
             </IonText>
           </IonItem>
           {/* ############################ topic ############################ */}
