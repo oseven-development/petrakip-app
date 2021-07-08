@@ -10,9 +10,13 @@ export { ProfileChangePasswordView } from './profile/profileChangePasswordView'
 export { ProgressDetailView } from './progress/progressDetailView'
 
 /* Reflections */
+export { ReflectionsRouting } from './reflections/createNew/reflectionCreateNewRouting'
 export { ReflectionsListView } from './reflections/reflectionsListView'
 export { ReflectionsDetailView } from './reflections/reflectionsDetailView'
-export { ReflectionsCreateNewView } from './reflections/reflectionsCreateNewView'
+export { ReflectionsCreateNewView } from './reflections/createNew/reflectionsCreateNewView'
+export { ReflectionSelectMomentsView } from './reflections/createNew/reflectionSelectMomentsView'
+export { ReflectionSelectTopicAreaView } from './reflections/createNew/reflectionSelectTopicAreaView'
+export { ReflectionWriteReportView } from './reflections/createNew/reflectionWriteReportView'
 
 /* Login */
 export { LoginView } from './login/loginView'
@@ -20,3 +24,4 @@ export { RegisterView } from './login/registerView'
 export { ConfirmSignUpView } from './login/confirmSignUpView'
 export { VerifyAccountView } from './login/verifyAccountView'
 export { ForgotPasswordView } from './login/forgotPasswordView'
+export { ReflectionsFollowUpQuestionView } from './reflections/createNew/reflectionsFollowUpQuestionView'

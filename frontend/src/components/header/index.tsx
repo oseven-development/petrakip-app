@@ -7,20 +7,32 @@ import {
   IonButton,
   IonIcon,
 } from '@ionic/react'
-import { share, trash } from 'ionicons/icons'
+import { arrowBackOutline, trash } from 'ionicons/icons'
 
 interface Props {
   children: string | string[]
   shareSlot?: any
   deleteSlot?: any
+  customBackRoute?: string
 }
 
-const Header: React.FC<Props> = ({ children, shareSlot, deleteSlot }) => {
+const Header: React.FC<Props> = ({
+  children,
+  shareSlot,
+  deleteSlot,
+  customBackRoute,
+}) => {
   return (
     <IonHeader>
       <IonToolbar>
         <IonButtons slot="start">
-          <IonBackButton />
+          {customBackRoute === undefined ? (
+            <IonBackButton />
+          ) : (
+            <IonButton routerLink={customBackRoute} color="primary">
+              <IonIcon color="dark" slot="icon-only" icon={arrowBackOutline} />
+            </IonButton>
+          )}
         </IonButtons>
         <IonTitle>{children}</IonTitle>
         {(shareSlot || deleteSlot) && (

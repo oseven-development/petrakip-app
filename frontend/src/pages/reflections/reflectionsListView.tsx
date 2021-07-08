@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   IonContent,
   IonPage,
@@ -8,27 +9,38 @@ import {
   IonList,
 } from '@ionic/react'
 import { Header } from '../../components'
+import { listAllReflectionsAPI } from '../../api/'
+import { ReflectionsRouting } from '..'
+import { LargeHeader } from '../../components/header'
 
 export const ReflectionsListView: React.FC = () => {
+  const [state, setState] = React.useState<any[]>([])
+  React.useEffect(() => {
+    listAllReflectionsAPI().then(setState).catch(console.error)
+  }, [])
   return (
     <IonPage>
-      <Header>Reflexionen</Header>
+      <Header
+        shareSlot={
+          <IonButton routerLink={ReflectionsRouting.module} color="primary">
+            Erstellen
+          </IonButton>
+        }
+      >
+        Reflexionen
+      </Header>
       <IonContent fullscreen>
-        <IonButton routerLink="/reflections/create" color="primary">
-          Erstellen
-        </IonButton>
-
-        <IonListHeader lines="inset">
-          <IonLabel>Reflexion liste</IonLabel>
-        </IonListHeader>
+        <LargeHeader>Reflexionen</LargeHeader>
 
         <IonList>
-          <IonItem routerLink="/reflections/details/1">
-            <IonLabel>Reflexion 1</IonLabel>
-          </IonItem>
-          <IonItem routerLink="/reflections/details/2">
-            <IonLabel>Reflexion 2</IonLabel>
-          </IonItem>
+          {state.map(item => (
+            <IonItem key={item.id}>
+              <h1 style={{ fontSize: '0.7em' }}>
+                {item.createdAt} <br /> {item.title} <br /> Moments{' '}
+                {item?.moments?.items?.length}
+              </h1>
+            </IonItem>
+          ))}
         </IonList>
       </IonContent>
     </IonPage>

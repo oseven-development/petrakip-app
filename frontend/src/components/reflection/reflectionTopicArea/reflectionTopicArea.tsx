@@ -16,7 +16,7 @@ import {
   currentSelectedTopic,
   doneStatusText,
   textLable,
-} from './reflectionSubjectAreaUtils'
+} from './reflectionTopicAreaUtils'
 
 interface TopicItem {
   topicItemId: string
@@ -31,7 +31,9 @@ export interface SubTopicItem {
   subjectStatusCompleted: boolean
 }
 
-export type InputSelectValue = string | 'Später Wählen'
+export type InputSelectValue =
+  | { topic: string; subTopic: string }
+  | 'Später wählen'
 
 interface Props {
   selectValue: (input: InputSelectValue) => void
@@ -43,7 +45,7 @@ interface Props {
     You must Provide a Callback-Function where the value is emitted to and store
     the state outside of this Component
  */
-export const SubjectArea: React.FC<Props> = ({ topicList, selectValue }) => {
+export const TopicArea: React.FC<Props> = ({ topicList, selectValue }) => {
   // this state stores the current selected row
   // it is the id or undefined if nothing is selected
   const [currentSelected, setCurrentSelected] = React.useState<
@@ -60,10 +62,14 @@ export const SubjectArea: React.FC<Props> = ({ topicList, selectValue }) => {
       const selectedTopic: string = event.target.getAttribute('data-id')
 
       setTimeout(() => {
-        selectValue(selectedTopic)
+        if (selectedTopic === 'Später wählen') {
+          selectValue(selectedTopic)
+        } else {
+          selectValue({ topic: currentSelected ?? '', subTopic: selectedTopic })
+        }
       }, 300)
     },
-    [selectValue],
+    [selectValue, currentSelected],
   )
 
   // Set the currentSelected value to the clicked id

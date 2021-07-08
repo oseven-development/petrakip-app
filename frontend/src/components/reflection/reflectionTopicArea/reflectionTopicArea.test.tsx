@@ -1,6 +1,6 @@
 import { render, act, fireEvent } from '@testing-library/react'
 
-import { SubjectArea } from './reflectionSubjectArea'
+import { TopicArea } from './reflectionTopicArea'
 
 import testDataSet from '../../../../test/reflectionsetClean'
 
@@ -9,7 +9,7 @@ describe('main suite', () => {
     jest.useFakeTimers()
   })
   const selectTopic = (
-    <SubjectArea topicList={testDataSet} selectValue={() => {}} />
+    <TopicArea topicList={testDataSet} selectValue={() => {}} />
   )
 
   test('renders without crashing', () => {
@@ -39,7 +39,7 @@ describe('main suite', () => {
     const mockFn = jest.fn()
 
     const { container } = render(
-      <SubjectArea topicList={testDataSet} selectValue={mockFn} />,
+      <TopicArea topicList={testDataSet} selectValue={mockFn} />,
     )
 
     const el = container.querySelector('[data-test="choseLater"]')
@@ -54,15 +54,15 @@ describe('main suite', () => {
 
   test.each`
     mainElementId                  | subElementId                    | result
-    ${'5-motivieren-und-anleiten'} | ${'5.3-zeitmanagement'}         | ${'5.3 Zeitmanagement'}
-    ${'7-planen-und-evaluieren'}   | ${'7.1-leitideen-und-lehrplan'} | ${'7.1 Leitideen und Lehrplan'}
+    ${'5-motivieren-und-anleiten'} | ${'5.3-zeitmanagement'}         | ${{ topic: '5-motivieren-und-anleiten', subTopic: '5.3-zeitmanagement' }}
+    ${'7-planen-und-evaluieren'}   | ${'7.1-leitideen-und-lehrplan'} | ${{ topic: '7-planen-und-evaluieren', subTopic: '7.1-leitideen-und-lehrplan' }}
   `(
     '`when click on $subElementId the function should emit $result`',
     ({ mainElementId, subElementId, result }) => {
       const mockFn = jest.fn()
 
       const { container } = render(
-        <SubjectArea topicList={testDataSet} selectValue={mockFn} />,
+        <TopicArea topicList={testDataSet} selectValue={mockFn} />,
       )
       const el = container.querySelector(`[data-test="${mainElementId}"]`)
       act(() => {
