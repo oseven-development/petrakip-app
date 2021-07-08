@@ -75,7 +75,14 @@ const ShareOverview: React.FC<Props> = ({
                 color="success"
                 expand="full"
                 onClick={() => {
-                  shareAsset(newShareUser, 'remove')
+                  // TODO check user exist and return mail + uuid
+                  /* const checkSharedUser = (email) => {
+                    call lambda with mail 
+                    return mail + uuid + state if exist or invite
+                  }
+                  shareAsset({mail, uuid})
+                  */
+                  shareAsset(newShareUser)
                   setNewShareUser('')
                 }}
               >
