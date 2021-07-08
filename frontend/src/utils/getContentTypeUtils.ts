@@ -1,7 +1,9 @@
 import { ContentType } from '../API'
 import { image, videocam, mic, text, helpCircle } from 'ionicons/icons'
 
-export const getIconFromContentType = (contentType: ContentType) => {
+export const getIconFromContentType = (
+  contentType: ContentType | null | undefined,
+) => {
   switch (contentType) {
     case ContentType.audio:
       return mic
