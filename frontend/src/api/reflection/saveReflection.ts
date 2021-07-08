@@ -68,7 +68,10 @@ interface State extends CreateReflexionInput {
   momentIDs?: string[]
 }
 
-export const createReflextionAPI = async (reflection: State) => {
+export const saveReflectionAPI = async (reflection: State) => {
+  // TODO USE Updatestate
+  //const updateState = moment.id ? 'update' : 'create'
+
   return new Promise<Reflexion>(async (resolve, reject) => {
     const input = { ...reflection }
 
@@ -103,7 +106,7 @@ export const createReflextionAPI = async (reflection: State) => {
 
         filterdResult.forEach(({ id, moment }) => {
           if (id && moment?.id && !reflection.momentIDs?.includes(moment.id)) {
-            const runnter = removeConnection(id)
+            const runnter = removeConnectionMomentToReflectionAPI(id)
             connectionArray.push(runnter)
           }
         })
@@ -114,7 +117,7 @@ export const createReflextionAPI = async (reflection: State) => {
             .filter(item => item !== undefined) as string[]
 
           if (result?.id && !cuid.includes(id)) {
-            const runnter = makeConnection(result.id, id)
+            const runnter = addConnectionMomentToReflectionAPI(result.id, id)
             connectionArray.push(runnter)
           }
         })
@@ -129,7 +132,7 @@ export const createReflextionAPI = async (reflection: State) => {
   })
 }
 
-export const makeConnection = async (
+const addConnectionMomentToReflectionAPI = async (
   reflexionID: string,
   momentID: string,
 ): Promise<ReflexionMoment> => {
@@ -149,7 +152,7 @@ export const makeConnection = async (
   })
 }
 
-export const removeConnection = async (
+const removeConnectionMomentToReflectionAPI = async (
   id: string,
 ): Promise<ReflexionMoment> => {
   const input: DeleteReflexionMomentInput = {
