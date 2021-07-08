@@ -4,26 +4,26 @@ import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { listMoments } from '../../graphql/queries'
 
 import {
-  createReflexion,
-  createReflexionMoment,
-  deleteReflexionMoment,
+  createReflection,
+  createReflectionMoment,
+  deleteReflectionMoment,
 } from '../../graphql/mutations'
 
 import {
-  CreateReflexionInput,
-  CreateReflexionMomentInput,
-  DeleteReflexionMomentInput,
+  CreateReflectionInput,
+  CreateReflectionMomentInput,
+  DeleteReflectionMomentInput,
   Moment,
-  Reflexion,
-  ReflexionMoment,
+  Reflection,
+  ReflectionMoment,
 } from '../../API'
 
-export const updateReflexionMutation = /* GraphQL */ `
-  mutation UpdateReflexion(
-    $input: UpdateReflexionInput!
-    $condition: ModelReflexionConditionInput
+export const updateReflectionMutation = /* GraphQL */ `
+  mutation UpdateReflection(
+    $input: UpdateReflectionInput!
+    $condition: ModelReflectionConditionInput
   ) {
-    updateReflexion(input: $input, condition: $condition) {
+    updateReflection(input: $input, condition: $condition) {
       id
       createdAt
       title
@@ -64,7 +64,7 @@ export const updateReflexionMutation = /* GraphQL */ `
   }
 `
 
-interface State extends CreateReflexionInput {
+interface State extends CreateReflectionInput {
   momentIDs?: string[]
 }
 
@@ -72,37 +72,37 @@ export const saveReflectionAPI = async (reflection: State) => {
   // TODO USE Updatestate
   //const updateState = moment.id ? 'update' : 'create'
 
-  return new Promise<Reflexion>(async (resolve, reject) => {
+  return new Promise<Reflection>(async (resolve, reject) => {
     const input = { ...reflection }
 
     delete input.momentIDs
 
-    let result: Reflexion | undefined
+    let result: Reflection | undefined
 
     if (reflection.id) {
       const res = (await API.graphql(
-        graphqlOperation(updateReflexionMutation, { input }),
-      )) as GraphQLResult<{ updateReflexion: Reflexion }>
+        graphqlOperation(updateReflectionMutation, { input }),
+      )) as GraphQLResult<{ updateReflection: Reflection }>
       if (res.errors) throw res.errors
-      if (res.data) result = res.data.updateReflexion
+      if (res.data) result = res.data.updateReflection
     } else {
       const res = (await API.graphql(
-        graphqlOperation(createReflexion, { input }),
-      )) as GraphQLResult<{ createReflexion: Reflexion }>
+        graphqlOperation(createReflection, { input }),
+      )) as GraphQLResult<{ createReflection: Reflection }>
       if (res.errors) throw res.errors
-      if (res.data) result = res.data.createReflexion
+      if (res.data) result = res.data.createReflection
     }
 
     if (result) {
       const connectionArray: Array<
-        | Promise<DeleteReflexionMomentInput | undefined>
-        | Promise<CreateReflexionMomentInput | undefined>
+        | Promise<DeleteReflectionMomentInput | undefined>
+        | Promise<CreateReflectionMomentInput | undefined>
       > = []
 
       if (result.moments?.items) {
         const filterdResult = result.moments?.items.filter(
           item => item != null,
-        ) as ReflexionMoment[]
+        ) as ReflectionMoment[]
 
         filterdResult.forEach(({ id, moment }) => {
           if (id && moment?.id && !reflection.momentIDs?.includes(moment.id)) {
@@ -133,38 +133,38 @@ export const saveReflectionAPI = async (reflection: State) => {
 }
 
 const addConnectionMomentToReflectionAPI = async (
-  reflexionID: string,
+  reflectionID: string,
   momentID: string,
-): Promise<ReflexionMoment> => {
-  const input: CreateReflexionMomentInput = {
-    reflexionID,
+): Promise<ReflectionMoment> => {
+  const input: CreateReflectionMomentInput = {
+    reflectionID,
     momentID,
   }
   const res = (await API.graphql(
-    graphqlOperation(createReflexionMoment, { input }),
-  )) as GraphQLResult<{ createReflexionMoment: ReflexionMoment }>
+    graphqlOperation(createReflectionMoment, { input }),
+  )) as GraphQLResult<{ createReflectionMoment: ReflectionMoment }>
 
   return new Promise((resolve, reject) => {
     if (res.errors) throw res.errors
     if (res.data) {
-      resolve(res.data.createReflexionMoment)
+      resolve(res.data.createReflectionMoment)
     }
   })
 }
 
 const removeConnectionMomentToReflectionAPI = async (
   id: string,
-): Promise<ReflexionMoment> => {
-  const input: DeleteReflexionMomentInput = {
+): Promise<ReflectionMoment> => {
+  const input: DeleteReflectionMomentInput = {
     id,
   }
   const res = (await API.graphql(
-    graphqlOperation(deleteReflexionMoment, { input }),
-  )) as GraphQLResult<{ deleteReflexionMoment: ReflexionMoment }>
+    graphqlOperation(deleteReflectionMoment, { input }),
+  )) as GraphQLResult<{ deleteReflectionMoment: ReflectionMoment }>
 
   return new Promise((resolve, reject) => {
     if (res.errors) throw res.errors
-    if (res.data) resolve(res.data.deleteReflexionMoment)
+    if (res.data) resolve(res.data.deleteReflectionMoment)
   })
 }
 

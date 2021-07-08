@@ -56,7 +56,7 @@ export const saveMomentAPI = async ({
       return res.data?.createMoment
     } else if (updateState === 'update') {
       // deletes field from object which are not used in update
-      delete (moment as Moment).reflexion
+      delete (moment as Moment).reflection
       // TODO: Fix TypeError
       //@ts-ignore
       delete (moment as Moment).updatedAt

@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  IonContent,
-  IonPage,
-  IonItem,
-  IonLabel,
-  IonButton,
-  IonListHeader,
-  IonList,
-} from '@ionic/react'
+import { IonContent, IonPage, IonItem, IonButton, IonList } from '@ionic/react'
 import { Header } from '../../components'
 import { listAllReflectionsAPI } from '../../api/'
 import { ReflectionsRouting } from '..'

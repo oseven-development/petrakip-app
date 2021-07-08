@@ -62,12 +62,12 @@ export const deleteProfileSettings = /* GraphQL */ `
     }
   }
 `;
-export const createReflexion = /* GraphQL */ `
-  mutation CreateReflexion(
-    $input: CreateReflexionInput!
-    $condition: ModelReflexionConditionInput
+export const createReflection = /* GraphQL */ `
+  mutation CreateReflection(
+    $input: CreateReflectionInput!
+    $condition: ModelReflectionConditionInput
   ) {
-    createReflexion(input: $input, condition: $condition) {
+    createReflection(input: $input, condition: $condition) {
       id
       createdAt
       title
@@ -85,6 +85,10 @@ export const createReflexion = /* GraphQL */ `
       indicators
       state
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
@@ -92,6 +96,7 @@ export const createReflexion = /* GraphQL */ `
       }
       orientationQuestions {
         question
+        answer
       }
       moments {
         nextToken
@@ -101,12 +106,12 @@ export const createReflexion = /* GraphQL */ `
     }
   }
 `;
-export const updateReflexion = /* GraphQL */ `
-  mutation UpdateReflexion(
-    $input: UpdateReflexionInput!
-    $condition: ModelReflexionConditionInput
+export const updateReflection = /* GraphQL */ `
+  mutation UpdateReflection(
+    $input: UpdateReflectionInput!
+    $condition: ModelReflectionConditionInput
   ) {
-    updateReflexion(input: $input, condition: $condition) {
+    updateReflection(input: $input, condition: $condition) {
       id
       createdAt
       title
@@ -124,6 +129,10 @@ export const updateReflexion = /* GraphQL */ `
       indicators
       state
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
@@ -131,6 +140,7 @@ export const updateReflexion = /* GraphQL */ `
       }
       orientationQuestions {
         question
+        answer
       }
       moments {
         nextToken
@@ -140,12 +150,12 @@ export const updateReflexion = /* GraphQL */ `
     }
   }
 `;
-export const deleteReflexion = /* GraphQL */ `
-  mutation DeleteReflexion(
-    $input: DeleteReflexionInput!
-    $condition: ModelReflexionConditionInput
+export const deleteReflection = /* GraphQL */ `
+  mutation DeleteReflection(
+    $input: DeleteReflectionInput!
+    $condition: ModelReflectionConditionInput
   ) {
-    deleteReflexion(input: $input, condition: $condition) {
+    deleteReflection(input: $input, condition: $condition) {
       id
       createdAt
       title
@@ -163,6 +173,10 @@ export const deleteReflexion = /* GraphQL */ `
       indicators
       state
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
@@ -170,6 +184,7 @@ export const deleteReflexion = /* GraphQL */ `
       }
       orientationQuestions {
         question
+        answer
       }
       moments {
         nextToken
@@ -198,12 +213,16 @@ export const createMoment = /* GraphQL */ `
       }
       tags
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
         content
       }
-      reflexion {
+      reflection {
         nextToken
       }
       updatedAt
@@ -230,12 +249,16 @@ export const updateMoment = /* GraphQL */ `
       }
       tags
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
         content
       }
-      reflexion {
+      reflection {
         nextToken
       }
       updatedAt
@@ -262,12 +285,16 @@ export const deleteMoment = /* GraphQL */ `
       }
       tags
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
         content
       }
-      reflexion {
+      reflection {
         nextToken
       }
       updatedAt
@@ -275,16 +302,16 @@ export const deleteMoment = /* GraphQL */ `
     }
   }
 `;
-export const createReflexionMoment = /* GraphQL */ `
-  mutation CreateReflexionMoment(
-    $input: CreateReflexionMomentInput!
-    $condition: ModelReflexionMomentConditionInput
+export const createReflectionMoment = /* GraphQL */ `
+  mutation CreateReflectionMoment(
+    $input: CreateReflectionMomentInput!
+    $condition: ModelReflectionMomentConditionInput
   ) {
-    createReflexionMoment(input: $input, condition: $condition) {
+    createReflectionMoment(input: $input, condition: $condition) {
       id
-      reflexionID
+      reflectionID
       momentID
-      reflexion {
+      reflection {
         id
         createdAt
         title
@@ -318,16 +345,16 @@ export const createReflexionMoment = /* GraphQL */ `
     }
   }
 `;
-export const updateReflexionMoment = /* GraphQL */ `
-  mutation UpdateReflexionMoment(
-    $input: UpdateReflexionMomentInput!
-    $condition: ModelReflexionMomentConditionInput
+export const updateReflectionMoment = /* GraphQL */ `
+  mutation UpdateReflectionMoment(
+    $input: UpdateReflectionMomentInput!
+    $condition: ModelReflectionMomentConditionInput
   ) {
-    updateReflexionMoment(input: $input, condition: $condition) {
+    updateReflectionMoment(input: $input, condition: $condition) {
       id
-      reflexionID
+      reflectionID
       momentID
-      reflexion {
+      reflection {
         id
         createdAt
         title
@@ -361,16 +388,16 @@ export const updateReflexionMoment = /* GraphQL */ `
     }
   }
 `;
-export const deleteReflexionMoment = /* GraphQL */ `
-  mutation DeleteReflexionMoment(
-    $input: DeleteReflexionMomentInput!
-    $condition: ModelReflexionMomentConditionInput
+export const deleteReflectionMoment = /* GraphQL */ `
+  mutation DeleteReflectionMoment(
+    $input: DeleteReflectionMomentInput!
+    $condition: ModelReflectionMomentConditionInput
   ) {
-    deleteReflexionMoment(input: $input, condition: $condition) {
+    deleteReflectionMoment(input: $input, condition: $condition) {
       id
-      reflexionID
+      reflectionID
       momentID
-      reflexion {
+      reflection {
         id
         createdAt
         title

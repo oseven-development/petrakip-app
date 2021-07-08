@@ -53,9 +53,9 @@ export const onDeleteProfileSettings = /* GraphQL */ `
     }
   }
 `;
-export const onCreateReflexion = /* GraphQL */ `
-  subscription OnCreateReflexion($owner: String!, $sharedUsers: String!) {
-    onCreateReflexion(owner: $owner, sharedUsers: $sharedUsers) {
+export const onCreateReflection = /* GraphQL */ `
+  subscription OnCreateReflection($owner: String!, $sharedUsers: String!) {
+    onCreateReflection(owner: $owner, sharedUsers: $sharedUsers) {
       id
       createdAt
       title
@@ -73,6 +73,10 @@ export const onCreateReflexion = /* GraphQL */ `
       indicators
       state
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
@@ -80,6 +84,7 @@ export const onCreateReflexion = /* GraphQL */ `
       }
       orientationQuestions {
         question
+        answer
       }
       moments {
         nextToken
@@ -89,9 +94,9 @@ export const onCreateReflexion = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateReflexion = /* GraphQL */ `
-  subscription OnUpdateReflexion($owner: String!, $sharedUsers: String!) {
-    onUpdateReflexion(owner: $owner, sharedUsers: $sharedUsers) {
+export const onUpdateReflection = /* GraphQL */ `
+  subscription OnUpdateReflection($owner: String!, $sharedUsers: String!) {
+    onUpdateReflection(owner: $owner, sharedUsers: $sharedUsers) {
       id
       createdAt
       title
@@ -109,6 +114,10 @@ export const onUpdateReflexion = /* GraphQL */ `
       indicators
       state
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
@@ -116,6 +125,7 @@ export const onUpdateReflexion = /* GraphQL */ `
       }
       orientationQuestions {
         question
+        answer
       }
       moments {
         nextToken
@@ -125,9 +135,9 @@ export const onUpdateReflexion = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteReflexion = /* GraphQL */ `
-  subscription OnDeleteReflexion($owner: String!, $sharedUsers: String!) {
-    onDeleteReflexion(owner: $owner, sharedUsers: $sharedUsers) {
+export const onDeleteReflection = /* GraphQL */ `
+  subscription OnDeleteReflection($owner: String!, $sharedUsers: String!) {
+    onDeleteReflection(owner: $owner, sharedUsers: $sharedUsers) {
       id
       createdAt
       title
@@ -145,6 +155,10 @@ export const onDeleteReflexion = /* GraphQL */ `
       indicators
       state
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
@@ -152,6 +166,7 @@ export const onDeleteReflexion = /* GraphQL */ `
       }
       orientationQuestions {
         question
+        answer
       }
       moments {
         nextToken
@@ -177,12 +192,16 @@ export const onCreateMoment = /* GraphQL */ `
       }
       tags
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
         content
       }
-      reflexion {
+      reflection {
         nextToken
       }
       updatedAt
@@ -206,12 +225,16 @@ export const onUpdateMoment = /* GraphQL */ `
       }
       tags
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
         content
       }
-      reflexion {
+      reflection {
         nextToken
       }
       updatedAt
@@ -235,12 +258,16 @@ export const onDeleteMoment = /* GraphQL */ `
       }
       tags
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
         content
       }
-      reflexion {
+      reflection {
         nextToken
       }
       updatedAt
@@ -248,13 +275,13 @@ export const onDeleteMoment = /* GraphQL */ `
     }
   }
 `;
-export const onCreateReflexionMoment = /* GraphQL */ `
-  subscription OnCreateReflexionMoment($owner: String!) {
-    onCreateReflexionMoment(owner: $owner) {
+export const onCreateReflectionMoment = /* GraphQL */ `
+  subscription OnCreateReflectionMoment($owner: String!) {
+    onCreateReflectionMoment(owner: $owner) {
       id
-      reflexionID
+      reflectionID
       momentID
-      reflexion {
+      reflection {
         id
         createdAt
         title
@@ -288,13 +315,13 @@ export const onCreateReflexionMoment = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateReflexionMoment = /* GraphQL */ `
-  subscription OnUpdateReflexionMoment($owner: String!) {
-    onUpdateReflexionMoment(owner: $owner) {
+export const onUpdateReflectionMoment = /* GraphQL */ `
+  subscription OnUpdateReflectionMoment($owner: String!) {
+    onUpdateReflectionMoment(owner: $owner) {
       id
-      reflexionID
+      reflectionID
       momentID
-      reflexion {
+      reflection {
         id
         createdAt
         title
@@ -328,13 +355,13 @@ export const onUpdateReflexionMoment = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteReflexionMoment = /* GraphQL */ `
-  subscription OnDeleteReflexionMoment($owner: String!) {
-    onDeleteReflexionMoment(owner: $owner) {
+export const onDeleteReflectionMoment = /* GraphQL */ `
+  subscription OnDeleteReflectionMoment($owner: String!) {
+    onDeleteReflectionMoment(owner: $owner) {
       id
-      reflexionID
+      reflectionID
       momentID
-      reflexion {
+      reflection {
         id
         createdAt
         title

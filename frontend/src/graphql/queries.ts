@@ -10,12 +10,12 @@ export const checkUserAndShareAsset = /* GraphQL */ `
       alreadyExist
     }
   }
-`
+`;
 export const createSignedUrlForAssets = /* GraphQL */ `
   query CreateSignedUrlForAssets($bucket: String, $key: String) {
     createSignedUrlForAssets(bucket: $bucket, key: $key)
   }
-`
+`;
 export const getProfileSettings = /* GraphQL */ `
   query GetProfileSettings($id: ID!) {
     getProfileSettings(id: $id) {
@@ -32,7 +32,7 @@ export const getProfileSettings = /* GraphQL */ `
       owner
     }
   }
-`
+`;
 export const listProfileSettingss = /* GraphQL */ `
   query ListProfileSettingss(
     $filter: ModelProfileSettingsFilterInput
@@ -54,10 +54,10 @@ export const listProfileSettingss = /* GraphQL */ `
       nextToken
     }
   }
-`
-export const getReflexion = /* GraphQL */ `
-  query GetReflexion($id: ID!) {
-    getReflexion(id: $id) {
+`;
+export const getReflection = /* GraphQL */ `
+  query GetReflection($id: ID!) {
+    getReflection(id: $id) {
       id
       createdAt
       title
@@ -75,6 +75,10 @@ export const getReflexion = /* GraphQL */ `
       indicators
       state
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
@@ -82,6 +86,7 @@ export const getReflexion = /* GraphQL */ `
       }
       orientationQuestions {
         question
+        answer
       }
       moments {
         nextToken
@@ -90,14 +95,14 @@ export const getReflexion = /* GraphQL */ `
       owner
     }
   }
-`
-export const listReflexions = /* GraphQL */ `
-  query ListReflexions(
-    $filter: ModelReflexionFilterInput
+`;
+export const listReflections = /* GraphQL */ `
+  query ListReflections(
+    $filter: ModelReflectionFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listReflexions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listReflections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         createdAt
@@ -117,7 +122,7 @@ export const listReflexions = /* GraphQL */ `
       nextToken
     }
   }
-`
+`;
 export const getMoment = /* GraphQL */ `
   query GetMoment($id: ID!) {
     getMoment(id: $id) {
@@ -134,19 +139,23 @@ export const getMoment = /* GraphQL */ `
       }
       tags
       deleted
+      sharedUsersDetail {
+        id
+        email
+      }
       sharedUsers
       comments {
         createdAt
         content
       }
-      reflexion {
+      reflection {
         nextToken
       }
       updatedAt
       owner
     }
   }
-`
+`;
 export const listMoments = /* GraphQL */ `
   query ListMoments(
     $filter: ModelMomentFilterInput
@@ -169,4 +178,4 @@ export const listMoments = /* GraphQL */ `
       nextToken
     }
   }
-`
+`;
