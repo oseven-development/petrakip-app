@@ -36,7 +36,9 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
 
   return (
     <IonPage>
-      <Header displayBackButton={false}>Reflexionsbericht</Header>
+      <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
+        Reflexionsbericht
+      </Header>
       <IonContent fullscreen>
         <IonCard>
           <IonCardHeader color="tertiary">

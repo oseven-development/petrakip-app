@@ -11,6 +11,7 @@ import {
 import { Header } from '../../components'
 import { listAllReflectionsAPI } from '../../api/'
 import { ReflectionsRouting } from '..'
+import { LargeHeader } from '../../components/header'
 
 export const ReflectionsListView: React.FC = () => {
   const [state, setState] = React.useState<any[]>([])
@@ -19,15 +20,17 @@ export const ReflectionsListView: React.FC = () => {
   }, [])
   return (
     <IonPage>
-      <Header>Reflexionen</Header>
+      <Header
+        shareSlot={
+          <IonButton routerLink={ReflectionsRouting.module} color="primary">
+            Erstellen
+          </IonButton>
+        }
+      >
+        Reflexionen
+      </Header>
       <IonContent fullscreen>
-        <IonButton routerLink={ReflectionsRouting.module} color="primary">
-          Erstellen
-        </IonButton>
-
-        <IonListHeader lines="inset">
-          <IonLabel>Reflexion liste</IonLabel>
-        </IonListHeader>
+        <LargeHeader>Reflexionen</LargeHeader>
 
         <IonList>
           {state.map(item => (

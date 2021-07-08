@@ -35,7 +35,7 @@ export const useUpdateQueryParamState = (
   const UpdateURLAndRoute = (urlParams: UrlParams, route: string) => {
     const query = createNewQuery(urlParams)
 
-    history.push(`${route}?${query}`)
+    history.replace(`${route}?${query}`)
   }
 
   const UpdateURL = (urlParams: UrlParams) => {

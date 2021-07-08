@@ -64,7 +64,10 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
 
   return (
     <IonPage>
-      <Header>Select Moment</Header>
+      <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
+        Select Moment
+      </Header>
+
       <IonContent fullscreen>
         {Object.entries(state).map(([key, value]) => {
           return (
@@ -84,13 +87,11 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
           )
         })}
         <br></br>
-
         <IonButton
-          onClick={() => {
-            history.push(`${ReflectionsRouting.module}${currentUrl}`)
-          }}
+          routerLink={`${ReflectionsRouting.module}${currentUrl}`}
+          color="primary"
         >
-          Fertig
+          Speichern
         </IonButton>
       </IonContent>
     </IonPage>

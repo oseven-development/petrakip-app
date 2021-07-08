@@ -32,13 +32,14 @@ import {
   trashOutline,
 } from 'ionicons/icons'
 
-import { listAllReflectionsAPI, createReflextionAPI } from '../../../api/'
+import { listAllReflectionsAPI, saveReflectionAPI } from '../../../api/'
 
 import { CreateReflexionInput, ReflexionState } from '../../../API'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 import { getLongDateString } from '../../../utils/dateUtils'
+import { ShareOverview } from '../../../components/share/shareOverview'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -148,7 +149,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   const graphQLcall = () => {
     const start = new Date().getTime()
     setLoader(true)
-    createReflextionAPI(createStateObject(state))
+    saveReflectionAPI(createStateObject(state))
       .then(result => {
         const end = new Date().getTime()
         const time = end - start
@@ -174,11 +175,14 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             })
           }
 
+          // Update URI with new Parametes
+          // Like ID and Creation Date
+          UpdateURL(params)
+
+          // Check if the state is awaitingFollowUpQuestions and Display then PopUp
           if (result.state === ReflexionState.awaitingFollowUpQuestions) {
             setShowFollowUpQuestions(true)
           }
-
-          UpdateURL(params)
         }, 1000 - time)
       })
       .catch(() => {
@@ -188,7 +192,26 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
 
   return (
     <IonPage>
-      <Header>Neue Reflexion erstellen</Header>
+      <Header
+        shareSlot={
+          <ShareOverview
+            sharedUsers={[]}
+            assetType={'Reflexion'}
+            shareAsset={(user: any) => {
+              console.log('share add')
+            }}
+            removeAsset={(user: any) => {
+              console.log('share remove')
+            }}
+          />
+        }
+        deleteSlot={() => {
+          console.log('delte')
+        }}
+        customBackRoute="/reflections"
+      >
+        Neue Reflexion erstellen
+      </Header>
       <IonContent fullscreen>
         {/* ############################ Loading ############################ */}
         <IonLoading isOpen={loader} message={'Reflexion wird gespeichert...'} />

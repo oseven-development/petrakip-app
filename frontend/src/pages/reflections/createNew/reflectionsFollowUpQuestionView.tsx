@@ -12,7 +12,7 @@ import {
 import { API, graphqlOperation } from 'aws-amplify'
 import { Header } from '../../../components'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { CreateReflexionInput, Reflexion, ReflexionState } from '../../../API'
+import { UpdateReflexionInput, Reflexion, ReflexionState } from '../../../API'
 
 import { updateReflexion } from '../../../graphql/mutations'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
@@ -34,17 +34,22 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
 
   const updateQuest = async () => {
     const params = new URLSearchParams(location.search)
-    const input: CreateReflexionInput = {
-      id: params.get(ReflectionQueryParamKeys.id) || null,
-      orientationQuestions: [{ question: '123' }, { question: 'asdadsa' }],
-      state: ReflexionState.completed,
-    }
+    const id = params.get(ReflectionQueryParamKeys.id)
+    if (id) {
+      const input: UpdateReflexionInput = {
+        id,
+        // TODO implementation needed
+        // only dummyvalues!
+        orientationQuestions: [{ question: 'dummy' }, { question: 'dummy' }],
+        state: ReflexionState.completed,
+      }
 
-    const res = (await API.graphql(
-      graphqlOperation(updateReflexion, { input }),
-    )) as GraphQLResult<{ createReflexion: Reflexion }>
-    if (res.errors) throw res.errors
-    if (res.data) console.log(res.data)
+      const res = (await API.graphql(
+        graphqlOperation(updateReflexion, { input }),
+      )) as GraphQLResult<{ createReflexion: Reflexion }>
+      if (res.errors) throw res.errors
+      if (res.data) console.log(res.data)
+    }
   }
 
   return (
