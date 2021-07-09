@@ -14,7 +14,7 @@ enum ContentType {
   audio
 }
 
-enum ReflexionState {
+enum ReflectionState {
   started
   awaitingFollowUpQuestions
   completed
@@ -27,6 +27,18 @@ type Comment {
 
 type OrientationQuestions {
   question: String!
+  answer: String!
+}
+
+type CheckShare {
+  uuid: String!
+  email: String!
+  alreadyExist: Boolean!
+}
+
+type sharedUsersDetail {
+  id: String!
+  email: String!
 }
 
 # Model types -> create DynamoDB tables
@@ -37,13 +49,13 @@ type ProfileSettings @model @auth(rules: [{ allow: owner }]) {
   age: Int
 }
 
-type Reflexion
+type Reflection
   @model
   @auth(
     rules: [
       # Defaults to use the "owner" field.
       { allow: owner }
-      # Authorizes every "email" in sharedUsers[] to read the reflexions
+      # Authorizes every "email" in sharedUsers[] to read the Reflections
       { allow: owner, ownerField: "sharedUsers", operations: [read] }
     ]
   ) {
@@ -57,12 +69,14 @@ type Reflexion
   subTopic: String
   niveau: String
   indicators: [String]
-  state: ReflexionState
+  state: ReflectionState
   deleted: Boolean
+  sharedUsersDetail: [sharedUsersDetail]
   sharedUsers: [String]
   comments: [Comment]
   orientationQuestions: [OrientationQuestions]
-  moments: [ReflexionMoment] @connection(keyName: "byReflexion", fields: ["id"])
+  moments: [ReflectionMoment]
+    @connection(keyName: "byReflection", fields: ["id"])
 }
 
 type Moment
@@ -71,7 +85,7 @@ type Moment
     rules: [
       # Defaults to use the "owner" field.
       { allow: owner }
-      # Authorizes every "email" in sharedUsers[] to read the reflexions
+      # Authorizes every "email" in sharedUsers[] to read the reflections
       { allow: owner, ownerField: "sharedUsers", operations: [read] }
     ]
   ) {
@@ -83,29 +97,26 @@ type Moment
   asset: S3Object
   tags: [String]
   deleted: Boolean
+  sharedUsersDetail: [sharedUsersDetail]
   sharedUsers: [String]
   comments: [Comment]
-  reflexion: [ReflexionMoment] @connection(keyName: "byMoment", fields: ["id"])
+  reflection: [ReflectionMoment]
+    @connection(keyName: "byMoment", fields: ["id"])
 }
 
 # Many-to-Many
 # You can implement many to many using two 1-M @connections, an @key, and a joining @model. For example
-type ReflexionMoment
+
+type ReflectionMoment
   @model(queries: null)
-  @key(name: "byReflexion", fields: ["reflexionID", "momentID"])
-  @key(name: "byMoment", fields: ["momentID", "reflexionID"])
+  @key(name: "byReflection", fields: ["reflectionID", "momentID"])
+  @key(name: "byMoment", fields: ["momentID", "reflectionID"])
   @auth(rules: [{ allow: owner }]) {
   id: ID!
-  reflexionID: ID!
+  reflectionID: ID!
   momentID: ID!
-  reflexion: Reflexion! @connection(fields: ["reflexionID"])
+  reflection: Reflection! @connection(fields: ["reflectionID"])
   moment: Moment! @connection(fields: ["momentID"])
-}
-
-type CheckShare {
-  uuid: String
-  email: String
-  alreadyExist: Boolean
 }
 
 type Query {

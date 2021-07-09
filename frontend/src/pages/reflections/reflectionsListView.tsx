@@ -10,7 +10,8 @@ import {
   useIonViewWillEnter,
 } from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
-
+import { IonContent, IonPage, IonItem, IonButton, IonList } from '@ionic/react'
+import { Header } from '../../components'
 import { listAllReflectionsAPI } from '../../api/'
 import { ReflectionsRouting } from '..'
 import { Header, LargeHeader, ListComponent } from '../../components'

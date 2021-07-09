@@ -34,7 +34,7 @@ import {
 
 import { listAllReflectionsAPI, saveReflectionAPI } from '../../../api/'
 
-import { CreateReflexionInput, ReflexionState } from '../../../API'
+import { CreateReflectionInput, ReflectionState } from '../../../API'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
@@ -43,7 +43,7 @@ import { ShareOverview } from '../../../components/share/shareOverview'
 
 interface Props extends RouteComponentProps<{}> {}
 
-interface State extends CreateReflexionInput {
+interface State extends CreateReflectionInput {
   momentIDs: string[]
 }
 
@@ -57,7 +57,7 @@ const defaultState: State = {
   subTopic: '',
   //niveau: String
   //indicators: [String]
-  state: ReflexionState.started,
+  state: ReflectionState.started,
   deleted: false,
   //   sharedUsers: [String]
   //   comments: [Comment]
@@ -91,8 +91,8 @@ const createStateObject = (reactState: State) => {
     delete state.id
   }
 
-  if (reactState.state === ReflexionState.started) {
-    state.state = ReflexionState.awaitingFollowUpQuestions
+  if (reactState.state === ReflectionState.started) {
+    state.state = ReflectionState.awaitingFollowUpQuestions
   }
 
   return state
@@ -119,7 +119,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   )
 
   React.useEffect(() => {
-    if (entryReflexionState === ReflexionState.awaitingFollowUpQuestions) {
+    if (entryReflexionState === ReflectionState.awaitingFollowUpQuestions) {
       setShowFollowUpQuestions(true)
     }
   }, [entryReflexionState, setShowFollowUpQuestions])
@@ -138,7 +138,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
       state:
         (params.get(
           ReflectionQueryParamKeys.reflexionState,
-        ) as ReflexionState) || ReflexionState.started,
+        ) as ReflectionState) || ReflectionState.started,
     }
 
     if (location.pathname === ReflectionsRouting.module) {
@@ -180,7 +180,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           UpdateURL(params)
 
           // Check if the state is awaitingFollowUpQuestions and Display then PopUp
-          if (result.state === ReflexionState.awaitingFollowUpQuestions) {
+          if (result.state === ReflectionState.awaitingFollowUpQuestions) {
             setShowFollowUpQuestions(true)
           }
         }, 1000 - time)
@@ -351,7 +351,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
 
         {/* ############################ Route FollowUpQuestion ############################ */}
         <IonButton
-          disabled={state.state === ReflexionState.started ? true : false}
+          disabled={state.state === ReflectionState.started ? true : false}
           routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
         >
           FollowUpQuestion

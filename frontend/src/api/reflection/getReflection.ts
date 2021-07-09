@@ -1,10 +1,10 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { GetMomentQueryVariables, GetReflexionQuery } from '../../API'
+import { GetMomentQueryVariables, GetReflectionQuery } from '../../API'
 
-const GetReflexionsQuery = /* GraphQL */ `
-  query GetReflexion($id: ID!) {
-    getReflexion(id: $id) {
+const GetReflecionsQuery = /* GraphQL */ `
+  query GetReflecion($id: ID!) {
+    getReflecion(id: $id) {
       id
       createdAt
       title
@@ -44,11 +44,11 @@ const GetReflexionsQuery = /* GraphQL */ `
   }
 `
 
-export const getReflextionAPI = async (id: string) => {
+export const getReflectionAPI = async (id: string) => {
   const input: GetMomentQueryVariables = { id }
   const res = (await API.graphql(
-    graphqlOperation(GetReflexionsQuery, input),
-  )) as GraphQLResult<{ getReflexion: GetReflexionQuery }>
+    graphqlOperation(GetReflecionsQuery, input),
+  )) as GraphQLResult<{ getReflecion: GetReflectionQuery }>
   console.log(res.data)
-  return res.data?.getReflexion
+  return res.data?.getReflecion
 }
