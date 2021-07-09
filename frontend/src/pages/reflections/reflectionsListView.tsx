@@ -1,13 +1,30 @@
 import React from 'react'
+import {
+  IonContent,
+  IonPage,
+  IonItem,
+  IonLabel,
+  IonButton,
+  IonListHeader,
+  IonList,
+  useIonViewWillEnter,
+} from '@ionic/react'
+import { RouteComponentProps } from 'react-router'
 import { IonContent, IonPage, IonItem, IonButton, IonList } from '@ionic/react'
 import { Header } from '../../components'
 import { listAllReflectionsAPI } from '../../api/'
 import { ReflectionsRouting } from '..'
-import { LargeHeader } from '../../components/header'
+import { Header, LargeHeader, ListComponent } from '../../components'
+import { Reflexion } from '../../API'
+import { groupArrayByDate } from '../../utils/dateUtils'
 
-export const ReflectionsListView: React.FC = () => {
-  const [state, setState] = React.useState<any[]>([])
-  React.useEffect(() => {
+import { book } from 'ionicons/icons'
+
+interface Props extends RouteComponentProps<{}> {}
+
+export const ReflectionsListView: React.FC<Props> = ({ history }) => {
+  const [state, setState] = React.useState<Reflexion[]>([])
+  useIonViewWillEnter(() => {
     listAllReflectionsAPI().then(setState).catch(console.error)
   }, [])
   return (
@@ -24,16 +41,16 @@ export const ReflectionsListView: React.FC = () => {
       <IonContent fullscreen>
         <LargeHeader>Reflexionen</LargeHeader>
 
-        <IonList>
-          {state.map(item => (
-            <IonItem key={item.id}>
-              <h1 style={{ fontSize: '0.7em' }}>
-                {item.createdAt} <br /> {item.title} <br /> Moments{' '}
-                {item?.moments?.items?.length}
-              </h1>
-            </IonItem>
-          ))}
-        </IonList>
+        <ListComponent<Reflexion>
+          elements={state}
+          onClickHandler={({ id, title, topic, subTopic, content }) => {
+            history.push(
+              `${ReflectionsRouting.module}?id=${id}&title=${title}&topic=${topic}&sub-topic=${subTopic}&report=${content}`,
+            )
+          }}
+          iconFunction={() => book}
+          sortFunction={groupArrayByDate}
+        ></ListComponent>
       </IonContent>
     </IonPage>
   )
