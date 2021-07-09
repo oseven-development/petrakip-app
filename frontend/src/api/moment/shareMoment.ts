@@ -25,7 +25,7 @@ export const shareMomentAPI = async ({
     }
 
     // removes keys from input which cannot be overritten
-    delete (moment as Moment).reflexion
+    delete (moment as Moment).reflection
     // TODO: Fix TypeError
     //@ts-ignore
     delete (moment as Moment).updatedAt

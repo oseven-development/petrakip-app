@@ -1,13 +1,13 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 
-const ListReflexionsQuery = /* GraphQL */ `
-  query ListReflexions(
-    $filter: ModelReflexionFilterInput
+const ListReflectionsQuery = /* GraphQL */ `
+  query ListReflecions(
+    $filter: ModelReflectionFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listReflexions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listReflections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         createdAt
@@ -32,10 +32,10 @@ const ListReflexionsQuery = /* GraphQL */ `
 export const listAllReflectionsAPI = async () => {
   try {
     const res = (await API.graphql(
-      graphqlOperation(ListReflexionsQuery),
+      graphqlOperation(ListReflectionsQuery),
     )) as GraphQLResult<any>
     if (res.errors) console.log(res.errors)
-    if (res.data) return res.data.listReflexions.items
+    if (res.data) return res.data.listReflections.items
   } catch (error) {
     console.log(error)
   }
