@@ -2,28 +2,22 @@ import React from 'react'
 import {
   IonContent,
   IonPage,
-  IonItem,
-  IonLabel,
   IonButton,
-  IonListHeader,
-  IonList,
   useIonViewWillEnter,
 } from '@ionic/react'
-import { RouteComponentProps } from 'react-router'
-import { IonContent, IonPage, IonItem, IonButton, IonList } from '@ionic/react'
-import { Header } from '../../components'
 import { listAllReflectionsAPI } from '../../api/'
 import { ReflectionsRouting } from '..'
 import { Header, LargeHeader, ListComponent } from '../../components'
-import { Reflexion } from '../../API'
+import { Reflection } from '../../API'
 import { groupArrayByDate } from '../../utils/dateUtils'
 
 import { book } from 'ionicons/icons'
+import { RouteComponentProps } from 'react-router-dom'
 
 interface Props extends RouteComponentProps<{}> {}
 
 export const ReflectionsListView: React.FC<Props> = ({ history }) => {
-  const [state, setState] = React.useState<Reflexion[]>([])
+  const [state, setState] = React.useState<Reflection[]>([])
   useIonViewWillEnter(() => {
     listAllReflectionsAPI().then(setState).catch(console.error)
   }, [])
@@ -36,12 +30,12 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
           </IonButton>
         }
       >
-        Reflexionen
+        Reflectionen
       </Header>
       <IonContent fullscreen>
-        <LargeHeader>Reflexionen</LargeHeader>
+        <LargeHeader>Reflectionen</LargeHeader>
 
-        <ListComponent<Reflexion>
+        <ListComponent<Reflection>
           elements={state}
           onClickHandler={({ id, title, topic, subTopic, content }) => {
             history.push(
