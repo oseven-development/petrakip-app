@@ -14,6 +14,7 @@ interface Item {
   id: string
   createdAt?: string | null | undefined
   title?: string | null | undefined
+  selected?: boolean
 }
 
 interface Props<A extends Item> {
@@ -38,6 +39,7 @@ export function ListComponent<A extends Item>({
           </IonItemDivider>
           {items.map(item => (
             <IonItem
+              color={item.selected ? 'primary' : undefined}
               key={`${item.id}`}
               button
               onClick={e => {
