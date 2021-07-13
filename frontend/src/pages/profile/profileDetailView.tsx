@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonButton } from '@ionic/react'
+import { IonContent, IonPage, IonButton, IonList, IonItem } from '@ionic/react'
 import { Header } from '../../components'
 import { RouteComponentProps } from 'react-router-dom'
 import Auth from '@aws-amplify/auth'
@@ -11,13 +11,20 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
 
   return (
     <IonPage>
-      <Header>Profil</Header>
+      <Header
+        shareSlot={
+          <IonButton onClick={() => Auth.signOut()}>Ausloggen</IonButton>
+        }
+      >
+        Profil
+      </Header>
       <IonContent fullscreen>
-        {platform}
-        <IonButton routerLink="/profile/changepassword" color="primary">
-          Password ändern
-        </IonButton>
-        <IonButton onClick={() => Auth.signOut()}>Ausloggen</IonButton>
+        <IonList>
+          <IonItem>{platform}</IonItem>
+          <IonItem routerLink="/profile/changepassword">
+            Password ändern
+          </IonItem>
+        </IonList>
       </IonContent>
     </IonPage>
   )
