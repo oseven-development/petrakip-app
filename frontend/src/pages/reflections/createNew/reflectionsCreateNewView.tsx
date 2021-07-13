@@ -3,7 +3,9 @@ import React, { memo } from 'react'
 import {
   IonAlert,
   IonButton,
+  IonCol,
   IonContent,
+  IonGrid,
   IonIcon,
   IonInput,
   IonItem,
@@ -16,34 +18,49 @@ import {
   IonLoading,
   IonNote,
   IonPage,
+  IonRow,
   IonText,
   IonToast,
-  useIonAlert,
-  useIonLoading,
 } from '@ionic/react'
 
 import { Header } from '../../../components'
 import { RouteComponentProps } from 'react-router'
 import { useLocation } from 'react-router-dom'
 import {
+  addCircle,
+  aperture,
   checkmarkCircle,
   checkmarkCircleOutline,
+  download,
   star,
   trashOutline,
 } from 'ionicons/icons'
 
-import { listAllReflectionsAPI, saveReflectionAPI } from '../../../api/'
+import { saveReflectionAPI } from '../../../api/'
 
-import { CreateReflectionInput, ReflectionState } from '../../../API'
+import {
+  CreateReflectionInput,
+  Reflection,
+  ReflectionState,
+} from '../../../API'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
-import { getLongDateString } from '../../../utils/dateUtils'
+import {
+  getLocaleDateString,
+  getLongDateString,
+} from '../../../utils/dateUtils'
 import { ShareOverview } from '../../../components/share/shareOverview'
+import { useCustomLoaderOnTrigger } from '../../../hooks'
 
 interface Props extends RouteComponentProps<{}> {}
 
 interface State extends CreateReflectionInput {
+  momentIDs: string[]
+  momentObj: { id: string; title: string; createdAt: string }[]
+}
+
+interface CreateReflectionInputWithMomentIDs extends CreateReflectionInput {
   momentIDs: string[]
 }
 
@@ -63,6 +80,7 @@ const defaultState: State = {
   //   comments: [Comment]
   //orientationQuestions: [OrientationQuestions]
   momentIDs: [],
+  momentObj: [],
 }
 
 const CheckmarkStateIcon: React.FC<{ state: string | null | undefined }> = ({
@@ -75,10 +93,12 @@ const CheckmarkStateIcon: React.FC<{ state: string | null | undefined }> = ({
   />
 )
 
-const createStateObject = (reactState: State) => {
+const createStateObject = (
+  reactState: State,
+): CreateReflectionInputWithMomentIDs => {
   const id = reactState.id
 
-  const state: State = {
+  const state: CreateReflectionInputWithMomentIDs = {
     id,
     createdAt: reactState.createdAt || new Date().toISOString(),
     title: reactState.title || '',
@@ -98,13 +118,31 @@ const createStateObject = (reactState: State) => {
   return state
 }
 
+const shareSlot = (id: string | null | undefined) =>
+  id ? (
+    <ShareOverview
+      sharedUsers={[]}
+      assetType={'Reflexion'}
+      shareAsset={(user: any) => {
+        console.log('share add')
+      }}
+      removeAsset={(user: any) => {
+        console.log('share remove')
+      }}
+    />
+  ) : null
+
+const deleteSlot = (id: string | null | undefined) =>
+  id
+    ? () => {
+        console.log('delte')
+      }
+    : null
+
 export const ReflectionsCreateNewView: React.FC<Props> = ({
   match,
   history,
 }) => {
-  const [message, setMessage] = React.useState({ message: '', display: false })
-  const [loader, setLoader] = React.useState(false)
-
   const [showFollowUpQuestions, setShowFollowUpQuestions] = React.useState(
     false,
   )
@@ -127,6 +165,12 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   React.useEffect(() => {
     const params = new URLSearchParams(location.search)
 
+    const momentObj = params
+      .get(ReflectionQueryParamKeys.moment)
+      ?.split(',')
+      .map(el => el.split('#'))
+      .map(([id, title, createdAt]) => ({ id, title, createdAt }))
+
     const newState: State = {
       id: params.get(ReflectionQueryParamKeys.id) || null,
       createdAt: params.get(ReflectionQueryParamKeys.createdAt) || null,
@@ -134,7 +178,8 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
       content: params.get(ReflectionQueryParamKeys.report) || '',
       topic: params.get(ReflectionQueryParamKeys.topic) || '',
       subTopic: params.get(ReflectionQueryParamKeys.subTopic) || '',
-      momentIDs: params.get(ReflectionQueryParamKeys.moment)?.split(',') || [],
+      momentIDs: momentObj?.map(({ id }) => id) || [],
+      momentObj: momentObj || [],
       state:
         (params.get(
           ReflectionQueryParamKeys.reflexionState,
@@ -146,86 +191,55 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
     }
   }, [location, setState])
 
+  const updateResult = (result: Reflection) => {
+    const params = []
+    if (result.id)
+      params.push({ key: ReflectionQueryParamKeys.id, value: result.id })
+    if (result.createdAt)
+      params.push({
+        key: ReflectionQueryParamKeys.createdAt,
+        value: result.createdAt,
+      })
+    if (result.state) {
+      params.push({
+        key: ReflectionQueryParamKeys.reflexionState,
+        value: result.state,
+      })
+    }
+
+    // Update URI with new Parametes
+    // Like ID and Creation Date
+    UpdateURL(params)
+
+    // Check if the state is awaitingFollowUpQuestions and Display then PopUp
+    if (result.state === ReflectionState.awaitingFollowUpQuestions) {
+      setShowFollowUpQuestions(true)
+    }
+  }
+
+  const [JSXLoader, , caller] = useCustomLoaderOnTrigger({
+    promise: saveReflectionAPI,
+    callback: updateResult,
+    loadingMessage: 'Reflexion wird gespeichert...',
+    toastMessage: 'Reflexion erfolgreich gespeichert!',
+  })
+
   const graphQLcall = () => {
-    const start = new Date().getTime()
-    setLoader(true)
-    saveReflectionAPI(createStateObject(state))
-      .then(result => {
-        const end = new Date().getTime()
-        const time = end - start
-        setTimeout(() => {
-          setLoader(false)
-          setMessage({
-            message: 'Reflexion erfolgreich gespeichert!',
-            display: true,
-          })
-
-          const params = []
-          if (result.id)
-            params.push({ key: ReflectionQueryParamKeys.id, value: result.id })
-          if (result.createdAt)
-            params.push({
-              key: ReflectionQueryParamKeys.createdAt,
-              value: result.createdAt,
-            })
-          if (result.state) {
-            params.push({
-              key: ReflectionQueryParamKeys.reflexionState,
-              value: result.state,
-            })
-          }
-
-          // Update URI with new Parametes
-          // Like ID and Creation Date
-          UpdateURL(params)
-
-          // Check if the state is awaitingFollowUpQuestions and Display then PopUp
-          if (result.state === ReflectionState.awaitingFollowUpQuestions) {
-            setShowFollowUpQuestions(true)
-          }
-        }, 1000 - time)
-      })
-      .catch(() => {
-        setLoader(false)
-      })
+    caller(createStateObject(state))
   }
 
   return (
     <IonPage>
       <Header
-        shareSlot={
-          <ShareOverview
-            sharedUsers={[]}
-            assetType={'Reflexion'}
-            shareAsset={(user: any) => {
-              console.log('share add')
-            }}
-            removeAsset={(user: any) => {
-              console.log('share remove')
-            }}
-          />
-        }
-        deleteSlot={() => {
-          console.log('delte')
-        }}
+        shareSlot={shareSlot(state.id)}
+        deleteSlot={deleteSlot(state.id)}
         customBackRoute="/reflections"
       >
         Neue Reflexion erstellen
       </Header>
       <IonContent fullscreen>
-        {/* ############################ Loading ############################ */}
-        <IonLoading isOpen={loader} message={'Reflexion wird gespeichert...'} />
-
         {/* ############################ Toast ############################ */}
-        <IonToast
-          isOpen={message.display}
-          onDidDismiss={() => setMessage({ message: '', display: false })}
-          message={message.message}
-          duration={2000}
-          position="top"
-          translucent
-          color="primary"
-        />
+        {JSXLoader}
 
         {/* ############################ Alert ############################ */}
         <IonAlert
@@ -325,52 +339,70 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
               state={state.momentIDs.length === 0 ? '' : 'fill'}
             />
           </IonItem>
-          {state.momentIDs.map(item => (
-            <IonItemSliding key={item} id={item}>
-              <IonItem>
-                <IonIcon icon={star} slot="start" />
-                <IonLabel>{item}</IonLabel>
-                <IonNote slot="end">12.03.2020</IonNote>
-              </IonItem>
+          {state.momentObj.map(({ id, title, createdAt }) => {
+            return (
+              <IonItemSliding key={id} id={id}>
+                <IonItem>
+                  <IonIcon icon={star} slot="start" />
+                  <IonLabel>{title}</IonLabel>
+                  <IonNote slot="end">
+                    {getLocaleDateString(new Date(createdAt || ''))}
+                  </IonNote>
+                </IonItem>
 
-              <IonItemOptions side="end">
-                <IonItemOption
-                  expandable
-                  color="danger"
-                  onClick={e => {
-                    //@ts-ignore
-                    document.getElementById(item).close()
-                  }}
-                >
-                  <IonIcon slot="icon-only" icon={trashOutline} />
-                </IonItemOption>
-              </IonItemOptions>
-            </IonItemSliding>
-          ))}
+                <IonItemOptions side="end">
+                  <IonItemOption
+                    expandable
+                    color="danger"
+                    onClick={e => {
+                      //@ts-ignore
+                      document.getElementById(item).close()
+                    }}
+                  >
+                    <IonIcon slot="icon-only" icon={trashOutline} />
+                  </IonItemOption>
+                </IonItemOptions>
+              </IonItemSliding>
+            )
+          })}
         </IonList>
 
-        {/* ############################ Route FollowUpQuestion ############################ */}
-        <IonButton
-          disabled={state.state === ReflectionState.started ? true : false}
-          routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
-        >
-          FollowUpQuestion
-        </IonButton>
-
-        {/* ############################ Save the Reflection ############################ */}
-        <IonButton
-          onClick={graphQLcall}
-          disabled={
-            state.title && state.content && state.subTopic ? undefined : true
-          }
-        >
-          {state.id ? 'Speichern' : 'Erstellen'}
-        </IonButton>
-
-        {/* ############################ DEBBUG! ############################ */}
-        {location.search.split('&').map(item => (
-          <p key={item}>{item}</p>
-        ))}
+        {/* ############################ Buttons ############################ */}
+        <IonGrid>
+          <IonRow>
+            {/* ############################ Route FollowUpQuestion ############################ */}
+            <IonCol>
+              <IonButton
+                expand="block"
+                disabled={
+                  state.state === ReflectionState.started ? true : false
+                }
+                routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
+              >
+                Folgefragen
+                <IonIcon slot="start" icon={aperture}></IonIcon>
+              </IonButton>
+            </IonCol>
+            {/* ############################ Save the Reflection ############################ */}
+            <IonCol>
+              <IonButton
+                expand="block"
+                onClick={graphQLcall}
+                disabled={
+                  state.title && state.content && state.subTopic
+                    ? undefined
+                    : true
+                }
+              >
+                {state.id ? 'Speichern' : 'Erstellen'}
+                <IonIcon
+                  slot="start"
+                  icon={state.id ? download : addCircle}
+                ></IonIcon>
+              </IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   )

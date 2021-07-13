@@ -1,5 +1,10 @@
 import React from 'react'
-import { IonContent, IonPage } from '@ionic/react'
+import {
+  IonContent,
+  IonLoading,
+  IonPage,
+  useIonViewWillEnter,
+} from '@ionic/react'
 import { Header } from '../../../components'
 import { RouteComponentProps } from 'react-router'
 
@@ -13,10 +18,44 @@ import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 
 import listItems from './testTopic'
+import { listAllReflectionsTopicsAPI } from '../../../api/'
+import { useCustomLoaderOnViewEnter } from '../../../hooks'
 interface Props extends RouteComponentProps<{}> {}
 
 export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
   const { UpdateURLAndRoute } = useUpdateQueryParamState(history)
+  const [state, setState] = React.useState<
+    {
+      topicItemLable: string
+      topicItemId: string
+      topicItemDescribe: string
+      subListItems: {
+        subTopicItemId: string
+        subjectLable: string
+        subjectStatusCompleted: boolean
+      }[]
+    }[]
+  >([])
+
+  const calcFinsihedTopics = (subTopics: { subTopic: string }[]) => {
+    const finishedTopicAsArray = subTopics.map(({ subTopic }) => subTopic)
+    const topicList = listItems.map(topic => {
+      topic.subListItems = topic.subListItems.map(subTopics => {
+        subTopics.subjectStatusCompleted = finishedTopicAsArray.includes(
+          subTopics.subjectLable,
+        )
+        return subTopics
+      })
+      return topic
+    })
+    setState(topicList)
+  }
+
+  const [LoadingComponent, loadingState] = useCustomLoaderOnViewEnter({
+    promise: listAllReflectionsTopicsAPI(),
+    callback: calcFinsihedTopics,
+    loadingMessage: 'Themen werden geladen',
+  })
 
   const setMyState = (value: InputSelectValue) => {
     if (value === 'Später wählen') {
@@ -51,9 +90,14 @@ export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
   return (
     <IonPage>
       <Header>Wähle ein Thema</Header>
+      {/* ############################ Loading ############################ */}
+      {LoadingComponent}
+      {/* <IonLoading isOpen={loader} message={'Themen werden geladen'} /> */}
       <IonContent fullscreen>
         {/* topicList must later be load via API, the import is only for testing purpose */}
-        <TopicArea topicList={listItems} selectValue={setMyState} />
+        {!loadingState && (
+          <TopicArea topicList={state} selectValue={setMyState} />
+        )}
       </IonContent>
     </IonPage>
   )
