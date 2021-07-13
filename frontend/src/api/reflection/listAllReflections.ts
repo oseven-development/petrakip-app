@@ -39,6 +39,34 @@ export const listAllReflectionsAPI = async () => {
   } catch (error) {
     console.log(error)
   }
+}
 
-  //   const id = res.data?.createReflexion.id as string
+const ListAllReflectionsTopicsQuery = /* GraphQL */ `
+  query ListReflecions(
+    $filter: ModelReflectionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listReflections(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        subTopic
+      }
+      nextToken
+    }
+  }
+`
+
+type subTopic = { subTopic: string }[]
+
+export const listAllReflectionsTopicsAPI = async (): Promise<subTopic> => {
+  try {
+    const res = (await API.graphql(
+      graphqlOperation(ListAllReflectionsTopicsQuery),
+    )) as GraphQLResult<any>
+    if (res.errors) console.error(res.errors)
+    if (res.data) return res.data.listReflections.items as subTopic
+  } catch (error) {
+    console.error(error)
+  }
+  return []
 }
