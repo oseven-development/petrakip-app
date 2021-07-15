@@ -1,6 +1,6 @@
 import React from 'react'
-import { IonButton, IonContent, IonItem, IonPage, IonText } from '@ionic/react'
-import { Header } from '../../../components'
+import { IonButton, IonContent, IonPage } from '@ionic/react'
+import { Header, ListComponent } from '../../../components'
 import { RouteComponentProps, useLocation } from 'react-router'
 
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
@@ -9,6 +9,8 @@ import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { loadAllMomentsAPI } from '../../../api/'
 import { Moment } from '../../../API'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
+import { getIconFromContentType } from '../../../utils/getContentTypeUtils'
+import { groupArrayByDate } from '../../../utils/dateUtils'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -18,49 +20,43 @@ interface MomentWithSelected extends Moment {
 
 export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
   const location = useLocation()
-  const [state, setState] = React.useState<{
-    [key: string]: MomentWithSelected
-  }>({})
 
+  const [momentsState, setMoments] = React.useState<MomentWithSelected[]>([])
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
 
   React.useEffect(() => {
-    const state: { [key: string]: MomentWithSelected } = {}
-
     const params = new URLSearchParams(location.search)
-    const array = params.get(ReflectionQueryParamKeys.moment)?.split(',')
+    const array = params
+      .get(ReflectionQueryParamKeys.moment)
+      ?.split(',')
+      .map(el => el.split('#'))
+      .map(([id, title, createdAt]) => ({ id, title, createdAt }))
 
     loadAllMomentsAPI().then(moments => {
-      moments.forEach(moment => {
-        if (moment.id) {
-          const preSelected = array?.includes(moment.id)
-          state[moment.id] = { ...moment, selected: preSelected || false }
-        }
+      const nMoments = moments.map(moment => {
+        const k = array?.map(({ id }) => id).includes(moment.id)
+        const t = moment as MomentWithSelected
+        t['selected'] = k || false
+        return t
       })
-      setState(state)
+      setMoments(nMoments)
     })
-  }, [setState, location])
+  }, [setMoments, location.search])
 
-  const setMyState = (key: string) => {
-    setState(state => {
-      const item = state[key]
-      return {
-        ...state,
-        [key]: { ...item, selected: !state[key].selected },
-      }
-    })
-  }
+  const updateState = (k: Moment) => {
+    const i = momentsState.findIndex(element => element.id === k.id)
+    momentsState[i].selected = !momentsState[i].selected
+    setMoments([...momentsState])
 
-  React.useEffect(() => {
-    const selectedMoments = Object.entries(state)
-      .filter(([key, value]) => value.selected)
-      .map(([key]) => key)
+    const selectedMoments = momentsState
+      .filter(value => value.selected)
+      .map(key => `${key.id}#${key.title}#${key.createdAt}`)
       .toString()
 
     UpdateURL([
       { key: ReflectionQueryParamKeys.moment, value: selectedMoments },
     ])
-  }, [UpdateURL, state])
+  }
 
   return (
     <IonPage>
@@ -69,24 +65,15 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
       </Header>
 
       <IonContent fullscreen>
-        {Object.entries(state).map(([key, value]) => {
-          return (
-            <IonItem
-              color={value.selected ? 'primary' : undefined}
-              key={key}
-              id={key}
-              onClick={() => {
-                setMyState(key)
-              }}
-            >
-              <IonText>
-                {value.title}
-                <h6 style={{ fontSize: '0.5em' }}>{key}</h6>
-              </IonText>
-            </IonItem>
-          )
-        })}
-        <br></br>
+        <ListComponent<MomentWithSelected>
+          elements={momentsState}
+          onClickHandler={updateState}
+          iconFunction={({ contentType }) =>
+            getIconFromContentType(contentType)
+          }
+          sortFunction={groupArrayByDate}
+        ></ListComponent>
+
         <IonButton
           routerLink={`${ReflectionsRouting.module}${currentUrl}`}
           color="primary"
