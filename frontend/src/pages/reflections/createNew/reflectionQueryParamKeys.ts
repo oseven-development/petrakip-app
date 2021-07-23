@@ -7,4 +7,5 @@ export enum ReflectionQueryParamKeys {
   'report' = 'report',
   'createdAt' = 'createdAt',
   'reflexionState' = 'reflexionState',
+  'SharedUsers' = 'SharedUsers',
 }

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import {
   IonAlert,
@@ -15,12 +15,10 @@ import {
   IonItemSliding,
   IonLabel,
   IonList,
-  IonLoading,
   IonNote,
   IonPage,
   IonRow,
   IonText,
-  IonToast,
 } from '@ionic/react'
 
 import { Header } from '../../../components'
@@ -29,8 +27,6 @@ import { useLocation } from 'react-router-dom'
 import {
   addCircle,
   aperture,
-  checkmarkCircle,
-  checkmarkCircleOutline,
   download,
   star,
   trashOutline,
@@ -52,25 +48,34 @@ import {
 } from '../../../utils/dateUtils'
 import { ShareOverview } from '../../../components/share/shareOverview'
 import { useCustomLoaderOnTrigger } from '../../../hooks'
+import {
+  createReflectionUpdateObject,
+  reflectionURItoState,
+} from './reflextionUtils'
+import { CheckmarkCircleStateIcon } from '../../../utils/stateIcons'
 
 interface Props extends RouteComponentProps<{}> {}
 
-interface State extends CreateReflectionInput {
+export interface State extends CreateReflectionInput {
   momentIDs: string[]
   momentObj: { id: string; title: string; createdAt: string }[]
+  // sharedUsersDetail: ShareUser[] | null | undefined
 }
 
-interface CreateReflectionInputWithMomentIDs extends CreateReflectionInput {
+export interface CreateReflectionInputWithMomentIDs
+  extends CreateReflectionInput {
   momentIDs: string[]
 }
 
+// TODO @maxhaensel
+// Remove unnecessary stuff
 const defaultState: State = {
   // createdAt: new Date().toISOString(),
-  title: 'asd',
+  title: '',
   //contentType: ContentType
   //asset: S3Object
   //content: String
-  topic: '1 Fachbereich',
+  topic: '',
   subTopic: '',
   //niveau: String
   //indicators: [String]
@@ -79,58 +84,10 @@ const defaultState: State = {
   //   sharedUsers: [String]
   //   comments: [Comment]
   //orientationQuestions: [OrientationQuestions]
+  sharedUsersDetail: [],
   momentIDs: [],
   momentObj: [],
 }
-
-const CheckmarkStateIcon: React.FC<{ state: string | null | undefined }> = ({
-  state,
-}) => (
-  <IonIcon
-    icon={state !== '' ? checkmarkCircle : checkmarkCircleOutline}
-    color={state !== '' ? 'success' : 'medium'}
-    slot="end"
-  />
-)
-
-const createStateObject = (
-  reactState: State,
-): CreateReflectionInputWithMomentIDs => {
-  const id = reactState.id
-
-  const state: CreateReflectionInputWithMomentIDs = {
-    id,
-    createdAt: reactState.createdAt || new Date().toISOString(),
-    title: reactState.title || '',
-    content: reactState.content || '',
-    topic: reactState.topic || '',
-    subTopic: reactState.subTopic || '',
-    momentIDs: reactState.momentIDs,
-  }
-  if (!id) {
-    delete state.id
-  }
-
-  if (reactState.state === ReflectionState.started) {
-    state.state = ReflectionState.awaitingFollowUpQuestions
-  }
-
-  return state
-}
-
-const shareSlot = (id: string | null | undefined) =>
-  id ? (
-    <ShareOverview
-      sharedUsers={[]}
-      assetType={'Reflexion'}
-      shareAsset={(user: any) => {
-        console.log('share add')
-      }}
-      removeAsset={(user: any) => {
-        console.log('share remove')
-      }}
-    />
-  ) : null
 
 const deleteSlot = (id: string | null | undefined) =>
   id
@@ -152,46 +109,42 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   const location = useLocation()
 
   const params = new URLSearchParams(location.search)
+
+  /*
+    Display the Follow-Up-Question Pop-Up
+    only when mounting the view
+  */
   const entryReflexionState = params.get(
     ReflectionQueryParamKeys.reflexionState,
   )
-
   React.useEffect(() => {
     if (entryReflexionState === ReflectionState.awaitingFollowUpQuestions) {
       setShowFollowUpQuestions(true)
     }
   }, [entryReflexionState, setShowFollowUpQuestions])
 
+  /*
+    Update the State when the URI are changing
+  */
   React.useEffect(() => {
-    const params = new URLSearchParams(location.search)
-
-    const momentObj = params
-      .get(ReflectionQueryParamKeys.moment)
-      ?.split(',')
-      .map(el => el.split('#'))
-      .map(([id, title, createdAt]) => ({ id, title, createdAt }))
-
-    const newState: State = {
-      id: params.get(ReflectionQueryParamKeys.id) || null,
-      createdAt: params.get(ReflectionQueryParamKeys.createdAt) || null,
-      title: params.get(ReflectionQueryParamKeys.title) || '',
-      content: params.get(ReflectionQueryParamKeys.report) || '',
-      topic: params.get(ReflectionQueryParamKeys.topic) || '',
-      subTopic: params.get(ReflectionQueryParamKeys.subTopic) || '',
-      momentIDs: momentObj?.map(({ id }) => id) || [],
-      momentObj: momentObj || [],
-      state:
-        (params.get(
-          ReflectionQueryParamKeys.reflexionState,
-        ) as ReflectionState) || ReflectionState.started,
-    }
-
     if (location.pathname === ReflectionsRouting.module) {
+      /*
+        create the State from the URI
+      */
+      const params = new URLSearchParams(location.search)
+      const newState = reflectionURItoState(params)
+      /*
+        set the newState
+      */
       setState(state => ({ ...state, ...newState }))
     }
   }, [location, setState])
 
-  const updateResult = (result: Reflection) => {
+  /*
+    When the reflection is successful update at the server
+    Update the URI as well to sync the state
+   */
+  const updateURIAfterUpdateRelfectionIsFinished = (result: Reflection) => {
     const params = []
     if (result.id)
       params.push({ key: ReflectionQueryParamKeys.id, value: result.id })
@@ -217,16 +170,57 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
     }
   }
 
-  const [JSXLoader, , caller] = useCustomLoaderOnTrigger({
+  /*
+    Inizialize the JSXLoader when updating the Reflection
+  */
+  const [JSXLoader, , triggerUpdateReflection] = useCustomLoaderOnTrigger({
     promise: saveReflectionAPI,
-    callback: updateResult,
+    callback: updateURIAfterUpdateRelfectionIsFinished,
     loadingMessage: 'Reflexion wird gespeichert...',
     toastMessage: 'Reflexion erfolgreich gespeichert!',
   })
 
-  const graphQLcall = () => {
-    caller(createStateObject(state))
+  const updateReflection = () => {
+    triggerUpdateReflection(createReflectionUpdateObject(state))
   }
+
+  const shareSlot = (id: string | null | undefined) =>
+    id ? (
+      <ShareOverview
+        id={id}
+        //@ts-ignore
+        sharedUsers={state.sharedUsersDetail || []}
+        assetType={'Reflection'}
+        shareAsset={user => {
+          const sharedUsersDetail = state.sharedUsersDetail
+
+          if (sharedUsersDetail) {
+            const userExist = !sharedUsersDetail
+              .map(item => item?.id)
+              .includes(user.id)
+            if (userExist) {
+              sharedUsersDetail.push({ id: user.id, email: user.email })
+              const value = sharedUsersDetail
+                .map(key => `${key?.id}#${key?.email}`)
+                .toString()
+              UpdateURL([{ key: 'SharedUsers', value }])
+            }
+          }
+        }}
+        removeAsset={user => {
+          const sharedUsersDetail = state.sharedUsersDetail
+          const sharedUsersDetailFilterd = sharedUsersDetail?.filter(
+            item => item?.id !== user.id,
+          )
+          const value =
+            sharedUsersDetailFilterd
+              ?.map(key => `${key?.id}#${key?.email}`)
+              .toString() || ''
+
+          UpdateURL([{ key: 'SharedUsers', value }])
+        }}
+      />
+    ) : null
 
   return (
     <IonPage>
@@ -290,7 +284,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
               </IonText>
               {state.subTopic === '' ? 'Thema wählen' : state.subTopic}
             </IonLabel>
-            <CheckmarkStateIcon state={state.topic} />
+            <CheckmarkCircleStateIcon state={state.topic} />
           </IonItem>
           {/* ############################  Title ############################ */}
           <IonItemDivider>
@@ -309,7 +303,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
                 ])
               }
             ></IonInput>
-            <CheckmarkStateIcon state={state.title} />
+            <CheckmarkCircleStateIcon state={state.title} />
           </IonItem>
           <IonItemDivider>
             <IonText color="medium">Reflexionsbericht</IonText>
@@ -322,7 +316,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
                 ? state.content?.slice(0, 20).padEnd(23, '.')
                 : 'Schreibe eine Zusammenfassung'}
             </IonLabel>
-            <CheckmarkStateIcon state={state.content} />
+            <CheckmarkCircleStateIcon state={state.content} />
           </IonItem>
 
           {/* ############################  Momentes ############################ */}
@@ -335,7 +329,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             <IonLabel>Neuen Momente hinzufügen</IonLabel>
             <IonNote slot="end">{state.momentIDs.length}</IonNote>
 
-            <CheckmarkStateIcon
+            <CheckmarkCircleStateIcon
               state={state.momentIDs.length === 0 ? '' : 'fill'}
             />
           </IonItem>
@@ -387,7 +381,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             <IonCol>
               <IonButton
                 expand="block"
-                onClick={graphQLcall}
+                onClick={updateReflection}
                 disabled={
                   state.title && state.content && state.subTopic
                     ? undefined
