@@ -37,7 +37,7 @@ const shareOperations = {
 export async function shareAPI<T extends ShareItem>(
   user: ShareUser,
   id: string,
-  ShareType: ShareType,
+  shareType: ShareType,
   key: AssetType,
 ) {
   try {
@@ -60,7 +60,7 @@ export async function shareAPI<T extends ShareItem>(
         sharedUsers: ref.sharedUsers,
       }
 
-      if (ShareType === 'share') {
+      if (shareType === 'share') {
         /*
          when sharedUsers is empty or null, create a array and add the user
         */
@@ -69,9 +69,12 @@ export async function shareAPI<T extends ShareItem>(
           update.sharedUsersDetail = [{ id: user.id, email: user.email }]
         }
 
-        if (update.sharedUsers?.includes(user.id)) {
-          // do nothing, user is allready in the array
-        }
+        /* 
+          if you want some action when the user is already in the array
+          we not need this for our purposes so we do nothing
+        */
+        // if (update.sharedUsers?.includes(user.id)) {
+        // }
 
         /*
          when sharedUsers is not empty or null, add the user to the array
@@ -88,7 +91,7 @@ export async function shareAPI<T extends ShareItem>(
           ]
         }
       }
-      if (ShareType === 'remove') {
+      if (shareType === 'remove') {
         update.sharedUsers = update.sharedUsers?.filter(
           item => item !== user.id,
         )
@@ -121,7 +124,7 @@ export async function shareAPI<T extends ShareItem>(
             ({ moment: { id } }) => id,
           )
           const updateMomentShare = updateMomentId.map(id =>
-            shareAPI(user, id, ShareType, 'Moment'),
+            shareAPI(user, id, shareType, 'Moment'),
           )
           await Promise.all(updateMomentShare)
         } catch (error) {
