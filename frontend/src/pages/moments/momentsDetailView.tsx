@@ -23,9 +23,11 @@ import { getMomentAPI } from '../../api/moment/getMoment'
 import { getMomentAsset } from '../../api/moment/getMomentAsset'
 import { DisplayMedia } from '../../components/media/displayMedia'
 import { removeMomentAPI } from '../../api/moment/deleteMoment'
-import { shareMomentAPI, ShareType } from '../../api/moment/shareMoment'
+
 import { ShareOverview } from '../../components/share/shareOverview'
 import { Auth } from 'aws-amplify'
+import React from 'react'
+import { ShareUser } from '../../types/shareUser'
 export interface Moment {
   title: string
   tags: string[]
@@ -93,20 +95,6 @@ export const MomentsDetailView: React.FC<Props> = props => {
       history.replace('/moments')
     }
   }
-  const shareMoment = async (email: string, shareType: ShareType) => {
-    await shareMomentAPI({
-      moment,
-      sharedUserInformation: { email },
-      shareType: shareType,
-    })
-    setIsToast({
-      present: true,
-      color: 'success',
-      message: `Moment erfolgreich mit ID ${match?.params?.id} ${
-        shareType === 'share' ? ' geteilt' : 'nicht mehr geteilt'
-      }`,
-    })
-  }
 
   const deleteMoment = async (e: any) => {
     await removeMomentAPI({ moment, media })
@@ -119,19 +107,44 @@ export const MomentsDetailView: React.FC<Props> = props => {
     })
   }
 
+  /*
+    add the new user to the local-state
+  */
+  const addShare = (user: ShareUser) => {
+    setMoment((moment: any) => {
+      moment.sharedUsers = [...moment.sharedUsers, user.id]
+      moment.sharedUsersDetail = [...moment.sharedUsersDetail, user]
+      return { ...moment }
+    })
+  }
+
+  /*
+    remove the user from the local-state
+  */
+  const removeShare = (user: ShareUser) => {
+    setMoment((moment: any) => {
+      moment.sharedUsers = [
+        ...moment.sharedUsers.filter((id: string) => id !== user.id),
+      ]
+      moment.sharedUsersDetail = [
+        ...moment.sharedUsersDetail.filter(
+          (userDetail: any) => userDetail.id !== user.id,
+        ),
+      ]
+      return { ...moment }
+    })
+  }
+
   return (
     <IonPage>
       <Header
         shareSlot={
           <ShareOverview
-            sharedUsers={moment.sharedUsers || []}
+            id={match?.params?.id}
+            sharedUsers={moment.sharedUsersDetail || []}
             assetType={'Moment'}
-            shareAsset={(user: any) => {
-              shareMoment(user, 'share')
-            }}
-            removeAsset={(user: any) => {
-              shareMoment(user, 'remove')
-            }}
+            shareAsset={addShare}
+            removeAsset={removeShare}
           />
         }
         deleteSlot={deleteMoment}
