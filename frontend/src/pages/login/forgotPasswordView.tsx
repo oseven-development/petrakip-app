@@ -38,7 +38,7 @@ const ForgotPasswordView: React.FC = (props: any) => {
     presentToast(
       `Fehler: ${
         message ||
-        'Etwas ist schiefgelaufen, bitte versuchen Sie es später noch einmal!'
+        'Etwas ist schiefgelaufen, bitte versuche es später noch einmal!'
       }`,
       2000,
     )
@@ -74,15 +74,14 @@ const ForgotPasswordView: React.FC = (props: any) => {
       <IonContent>
         <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
-          <h2>Zurücksetzen des Passworts</h2>
+          <h2>Passwort zurücksetzen</h2>
           {pageProps.codeSent ? (
             <>
               <p>
-                Zurücksetzen des Passworts für <br />
-                {pageProps.mail}
+                Passwort für <strong>{pageProps.mail}</strong> zurücksetzen
               </p>
               <IonItem class="ion-no-padding">
-                <IonLabel position="stacked">Bestätigungs-Code</IonLabel>
+                <IonLabel position="stacked">Bestätigungscode</IonLabel>
                 <IonInput
                   placeholder="Bestätigungscode eingeben"
                   type="number"

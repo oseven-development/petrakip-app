@@ -38,14 +38,14 @@ const ConfirmSignUpView: React.FC = (props: any) => {
       Auth.resendSignUp(mail).catch(error => {
         presentToast(
           `Fehler: ${
-            error?.message || 'Bitte versuchen Sie es später noch einmal.'
+            error?.message || 'Bitte versuche es später noch einmal.'
           }`,
           2000,
         )
       })
       presentToast('Der Bestätigungscode wurde erneut gesendet', 2000)
     } else {
-      presentToast('Bitte geben sie Ihre Mailadresse an', 2000)
+      presentToast('Bitte gebe deine Mailadresse an', 2000)
     }
   }
 
@@ -55,7 +55,6 @@ const ConfirmSignUpView: React.FC = (props: any) => {
       <IonContent>
         <LargeHeader>Metapholio</LargeHeader>
         <div className="container">
-          {props.authState}
           <h2>Bestätige deine Anmeldung</h2>
           <p>Hierfür wurde dir der Code per Mail zugeschickt:</p>
           <IonCard className="input-card">

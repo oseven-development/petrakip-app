@@ -79,7 +79,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
       setIsToast({
         ...isToast,
         present: true,
-        message: `Moment konnte nicht erstellt werden. Jeder Titel nicht definiert oder Medientyp`,
+        message: `Moment konnte nicht erstellt werden. Entweder Titel oder Medium nicht definiert`,
       })
     } else {
       await saveMomentAPI({ moment, media })
