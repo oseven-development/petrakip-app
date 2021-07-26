@@ -35,10 +35,10 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
           </IonButton>
         }
       >
-        Momente List View
+        Momente
       </Header>
       <IonContent fullscreen>
-        <LargeHeader>Momente List View</LargeHeader>
+        <LargeHeader>Momente</LargeHeader>
 
         <ListComponent<Moment>
           elements={moments}

@@ -81,7 +81,7 @@ const RegisterView: React.FC = ({ authState, onStateChange }: any) => {
       .catch(error => {
         presentToast(
           `Fehler: ${
-            error?.message || 'Bitte versuchen Sie es später noch einmal.'
+            error?.message || 'Bitte versuche es später noch einmal.'
           }`,
           2000,
         )
@@ -241,14 +241,14 @@ const RegisterView: React.FC = ({ authState, onStateChange }: any) => {
                       setShowTermsModal(true)
                     }}
                   >
-                    Terms and Conditions
+                    AGBs
                   </span>{' '}
                   gelesen und akzeptiert habe.
                 </IonLabel>
               </div>
 
               <IonModal isOpen={showTermsModal}>
-                <h1>Terms and Conditions</h1>
+                <h1>AGBs</h1>
                 <IonButton onClick={() => setShowTermsModal(false)}>
                   Gelesen
                 </IonButton>

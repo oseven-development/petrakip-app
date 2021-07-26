@@ -32,7 +32,7 @@ const LoginView: React.FC = (props: any) => {
     presentToast(
       `Fehler: ${
         message ||
-        'Etwas ist schiefgelaufen, bitte versuchen Sie es später noch einmal!'
+        'Etwas ist schiefgelaufen, bitte versuche es später noch einmal!'
       }`,
       2000,
     )
@@ -65,7 +65,7 @@ const LoginView: React.FC = (props: any) => {
         <IonNav>
           <LargeHeader>Metapholio</LargeHeader>
           <div className="container">
-            <p>Willkommen bei Metapholio, bitte melden sie sich an:</p>
+            <p>Willkommen bei Metapholio, bitte melde dich an:</p>
             <IonCard className="input-card">
               <IonCardContent>
                 <IonItem class="ion-no-padding">
