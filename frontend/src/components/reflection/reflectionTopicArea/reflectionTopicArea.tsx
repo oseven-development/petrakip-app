@@ -59,17 +59,24 @@ export const TopicArea: React.FC<Props> = ({ topicList, selectValue }) => {
         | React.MouseEvent<HTMLIonButtonElement, MouseEvent>,
     ) => {
       //@ts-ignore
-      const selectedTopic: string = event.target.getAttribute('data-id')
+      const selectedSubTopic: string = event.target.getAttribute('data-id')
+
+      const currentSelectedLabel = topicList.find(
+        item => item.topicItemId === currentSelected,
+      )
 
       setTimeout(() => {
-        if (selectedTopic === 'Später wählen') {
-          selectValue(selectedTopic)
+        if (selectedSubTopic === 'Später wählen') {
+          selectValue(selectedSubTopic)
         } else {
-          selectValue({ topic: currentSelected ?? '', subTopic: selectedTopic })
+          selectValue({
+            topic: currentSelectedLabel?.topicItemLable ?? '',
+            subTopic: selectedSubTopic,
+          })
         }
       }, 300)
     },
-    [selectValue, currentSelected],
+    [selectValue, currentSelected, topicList],
   )
 
   // Set the currentSelected value to the clicked id
