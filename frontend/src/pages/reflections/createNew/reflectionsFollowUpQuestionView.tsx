@@ -20,6 +20,8 @@ import {
 
 import { updateReflection } from '../../../graphql/mutations'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
+import { useUpdateQueryParamState } from './useUpdateQueryParamState'
+import { ReflectionsRouting } from './reflectionCreateNewRouting'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -34,6 +36,7 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
     'Bist du ein toller lehrmeister',
     'wft was steht hier!',
   ])
+  const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
   React.useEffect(() => {})
 
   const updateQuest = async () => {
@@ -51,6 +54,13 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
         state: ReflectionState.completed,
       }
 
+      UpdateURL([
+        {
+          key: ReflectionQueryParamKeys.reflexionState,
+          value: ReflectionState.completed,
+        },
+      ])
+
       const res = (await API.graphql(
         graphqlOperation(updateReflection, { input }),
       )) as GraphQLResult<{ createReflexion: Reflection }>
@@ -61,7 +71,9 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
 
   return (
     <IonPage>
-      <Header>reflectionsFollowUpQuestion</Header>
+      <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
+        reflectionsFollowUpQuestion
+      </Header>
       <IonContent fullscreen>
         <h1>reflectionsFollowUpQuestion!</h1>
         {!loader &&

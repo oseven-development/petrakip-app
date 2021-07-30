@@ -1,4 +1,5 @@
 export enum ReflectionQueryParamKeys {
+  'state' = 'state',
   'id' = 'id',
   'topic' = 'topic',
   'subTopic' = 'sub-topic',

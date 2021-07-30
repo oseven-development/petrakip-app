@@ -4,13 +4,12 @@ import {
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardTitle,
   IonContent,
   IonGrid,
-  IonItem,
   IonPage,
   IonText,
   IonTextarea,
+  useIonViewDidEnter,
 } from '@ionic/react'
 import { Header } from '../../../components'
 import { RouteComponentProps } from 'react-router'
@@ -28,11 +27,20 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
   const [state, setState] = React.useState('')
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
 
-  // React.useEffect(() => {
-  //   const params = new URLSearchParams(location.search)
-  //   const content = params.get(ReflectionQueryParamKeys.report)
-  //   setState(content || '')
-  // }, [])
+  useIonViewDidEnter(() => {
+    const params = new URLSearchParams(location.search)
+    const content = params.get(ReflectionQueryParamKeys.report)
+    setState(content || '')
+  }, [])
+
+  React.useEffect(() => {
+    UpdateURL([
+      {
+        key: ReflectionQueryParamKeys.report,
+        value: state,
+      },
+    ])
+  }, [state, UpdateURL])
 
   return (
     <IonPage>
@@ -64,18 +72,9 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
             autoGrow
             rows={10}
             debounce={500}
-            // value={state}
-            onIonBlur={() => {
-              console.log('test')
-            }}
+            value={state}
             onIonChange={e => {
-              // setState(e.detail.value!)
-              UpdateURL([
-                {
-                  key: ReflectionQueryParamKeys.report,
-                  value: e.detail.value!,
-                },
-              ])
+              setState(e.detail.value!)
             }}
             defaultValue={'test'}
             placeholder="Enter more information here..."

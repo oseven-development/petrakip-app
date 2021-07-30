@@ -6,11 +6,12 @@ import { RouteComponentProps, useLocation } from 'react-router'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 
-import { loadAllMomentsAPI } from '../../../api/'
 import { Moment } from '../../../API'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 import { getIconFromContentType } from '../../../utils/getContentTypeUtils'
 import { groupArrayByDate } from '../../../utils/dateUtils'
+import { extractDataFromArray } from '../reflectionUtils'
+import { getMomentAPI } from '../../../api/moment/getMoment'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -25,14 +26,12 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
 
   React.useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const array = params
-      .get(ReflectionQueryParamKeys.moment)
-      ?.split(',')
-      .map(el => el.split('#'))
-      .map(([id, title, createdAt]) => ({ id, title, createdAt }))
+    const array = extractDataFromArray<{ id: string }>(
+      new URLSearchParams(location.search),
+      ReflectionQueryParamKeys.moment,
+    )
 
-    loadAllMomentsAPI().then(moments => {
+    getMomentAPI().then(moments => {
       const nMoments = moments.map(moment => {
         const k = array?.map(({ id }) => id).includes(moment.id)
         const t = moment as MomentWithSelected
@@ -48,10 +47,8 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
     momentsState[i].selected = !momentsState[i].selected
     setMoments([...momentsState])
 
-    const selectedMoments = momentsState
-      .filter(value => value.selected)
-      .map(key => `${key.id}#${key.title}#${key.createdAt}`)
-      .toString()
+    const filtered = momentsState.filter(value => value.selected)
+    const selectedMoments = encodeURI(JSON.stringify(filtered))
 
     UpdateURL([
       { key: ReflectionQueryParamKeys.moment, value: selectedMoments },
