@@ -25,7 +25,6 @@ import {
   MomentsDetailView,
   ProgressDetailView,
   ReflectionsCreateNewView,
-  ReflectionsDetailView,
   ReflectionsListView,
   ProfileDetailView,
   ProfileChangePasswordView,
@@ -76,10 +75,6 @@ const App: React.FC = () => (
 
           {/* Reflections routes */}
           <Route exact path={'/reflections'} component={ReflectionsListView} />
-          <Route
-            path={`/reflections/details/:id`}
-            component={ReflectionsDetailView}
-          />
 
           <Route
             exact
