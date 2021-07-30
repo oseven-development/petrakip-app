@@ -27,7 +27,7 @@ const Header: React.FC<Props> = ({
       <IonToolbar>
         <IonButtons slot="start">
           {customBackRoute === undefined ? (
-            <IonBackButton />
+            <IonBackButton text="zurück" />
           ) : (
             <IonButton routerLink={customBackRoute} color="primary">
               <IonIcon color="dark" slot="icon-only" icon={arrowBackOutline} />
