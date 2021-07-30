@@ -45,7 +45,7 @@ const ImageRecorder: React.FC<Props> = ({
       <IonButton
         disabled={disabled}
         color="primary"
-        expand="full"
+        expand="block"
         onClick={() => {
           // @ts-ignore
           fileInput?.current?.click()

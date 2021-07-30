@@ -1,13 +1,53 @@
 import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { listProfileSettingss } from '../../graphql/queries'
 
+export const customListProfileSettingss = /* GraphQL */ `
+  query ListProfileSettingss(
+    $filter: ModelProfileSettingsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listProfileSettingss(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        profilePicture {
+          bucket
+          key
+          region
+          identityId
+        }
+        latestExportKey
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`
+
 export const getProfileAPI = async () => {
   try {
     const result: any = await API.graphql(
-      graphqlOperation(listProfileSettingss),
+      graphqlOperation(customListProfileSettingss),
     )
-    console.log(result.data.listMoments[0])
-    const profilePictureKey = result.data.listMoments[0].profilePicture.key
+    if (result.data.listProfileSettingss.items.length < 1) {
+      return {
+        picture: {
+          name: '',
+          data: '',
+          type: '',
+        },
+        settings: {},
+      }
+    }
+
+    const profilePictureKey =
+      result.data.listProfileSettingss.items[0].profilePicture.key
     const profilePicture: any = await Storage.get(profilePictureKey, {
       download: true,
       level: 'private',
@@ -18,7 +58,7 @@ export const getProfileAPI = async () => {
         data: profilePicture.Body,
         type: profilePicture.Body.type,
       },
-      settings: result.data.listMoments[0],
+      settings: result.data.listProfileSettingss.items[0],
     }
   } catch (error) {
     console.error(error)

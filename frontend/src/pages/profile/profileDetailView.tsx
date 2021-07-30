@@ -8,32 +8,35 @@ import {
   IonImg,
   IonCard,
   IonCardContent,
-  IonCardHeader,
   IonCardSubtitle,
-  IonCardTitle,
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
   IonIcon,
   IonPage,
   IonRow,
   IonText,
   IonSpinner,
   useIonViewWillEnter,
+  useIonAlert,
 } from '@ionic/react'
-import { arrowForward, albums, image, pencil, camera } from 'ionicons/icons'
+import { arrowForward, pencil } from 'ionicons/icons'
 import { ImageRecorder } from '../../components/media/imageRecorder'
 import { Media } from '../../api/moment/saveMoment'
 import { updateProfilePictureAPI } from '../../api/profile/updateProfilePicture'
 import { getProfileAPI } from '../../api/profile/getProfile'
+import {
+  downloadExportData,
+  exportAllData,
+} from '../../api/profile/exportAllData'
 
 interface Props extends RouteComponentProps<{}> {}
 
 export const ProfileDetailView: React.FC<Props> = ({ history }) => {
   const [user, setUser] = useState<any>(undefined)
   const platform = usePlatform()
-  const [profilePicture, setProfilePicture] = useState<Media>({
+  const [present] = useIonAlert()
+  const [profileSettings, setProfileSettings] = useState<any>({
     type: '',
     data: '',
     name: '',
@@ -42,20 +45,32 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
     Auth.currentUserInfo().then(user => setUser(user))
   }, [])
 
-  useEffect(() => {
-    if (user) {
-      console.log('get profile picture')
-    }
-  }, [user])
-
   useIonViewWillEnter(() => {
     getProfileAPI().then(async res => {
-      // Graphql returns a success query with null
-      setProfilePicture(res.picture)
+      console.log(res)
+      setProfileSettings(res)
     })
   })
 
-  console.log(profilePicture)
+  const downloadFile = async (exportUrl: any) => {
+    const exportData = await downloadExportData(exportUrl)
+    console.log(exportData)
+    // Create blob link to download
+    const url = window.URL.createObjectURL(exportData.data)
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute('download', exportData.name)
+
+    // Append to html link element page
+    document.body.appendChild(link)
+
+    // Start download
+    link.click()
+
+    // Clean up and remove the link
+    // @ts-ignore
+    link.parentNode.removeChild(link)
+  }
 
   return (
     <IonPage>
@@ -75,18 +90,8 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
       </Header>
       <IonContent fullscreen>
         <LargeHeader>Profil</LargeHeader>
-
-        {/*
-           <IonList>
-          <IonItem>{platform}</IonItem>
-          <IonItem routerLink="/profile/changepassword">
-            Password ändern
-          </IonItem>
-        </IonList> */}
         {user ? (
           <IonGrid>
-            {/* <IonRow className="ion-justify-content-center"> */}
-
             <IonCard>
               <IonCardContent>
                 <IonRow className="ion-justify-content-center">
@@ -105,8 +110,8 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                         height: 'auto',
                       }}
                       src={
-                        profilePicture.data
-                          ? URL.createObjectURL(profilePicture.data)
+                        profileSettings.picture?.data
+                          ? URL.createObjectURL(profileSettings.picture.data)
                           : `assets/profile-placeholder.png`
                       }
                       alt="test"
@@ -132,14 +137,21 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                     <ImageRecorder
                       setMedia={async media => {
                         await updateProfilePictureAPI(media as Media)
-                        setProfilePicture(media)
+                        setProfileSettings({
+                          ...profileSettings,
+                          picture: media,
+                        })
                       }}
                       buttonLabel={'Profilbild ändern'}
                     />
                   </IonCol>
 
                   <IonCol size="12">
-                    <IonButton color="primary" expand="block">
+                    <IonButton
+                      color="primary"
+                      expand="block"
+                      routerLink="/profile/changepassword"
+                    >
                       <IonIcon
                         icon={pencil}
                         size="small"
@@ -152,39 +164,47 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
               </IonCardContent>
             </IonCard>
 
-            {/* <IonRow>
-              <IonCol size="6">
-                <IonCard>
-                  <IonCardContent>
-                    <IonIcon icon={image} />
-                    <IonCardTitle>147</IonCardTitle>
-                    <IonCardSubtitle>Momente</IonCardSubtitle>
-                  </IonCardContent>
-                </IonCard>
-              </IonCol>
-
-              <IonCol size="6">
-                <IonCard>
-                  <IonCardContent>
-                    <IonIcon icon={albums} />
-                    <IonCardTitle>63</IonCardTitle>
-                    <IonCardSubtitle>Reflexionen</IonCardSubtitle>
-                  </IonCardContent>
-                </IonCard>
-              </IonCol>
-            </IonRow> */}
-
             <IonCard>
               <IonCardContent>
-                <IonRow className="ion-justify-content-between">
+                <IonRow
+                  className="ion-justify-content-between ion-align-items-center"
+                  onClick={async () => {
+                    const AlertArrayActuions = [
+                      {
+                        text: 'Neuer Datenexport',
+                        handler: async () => {
+                          const dataUrl = await exportAllData()
+                          setProfileSettings({
+                            ...profileSettings,
+                            latestExportKey: dataUrl,
+                          })
+                        },
+                      },
+                    ]
+                    if (profileSettings.latestExportKey) {
+                      AlertArrayActuions.push({
+                        text: 'aktuellen Datenexport laden',
+                        handler: async () =>
+                          await downloadFile(profileSettings.latestExportKey),
+                      })
+                    }
+                    present({
+                      header: 'Datenexport',
+                      message:
+                        'Hier kannst du ein Export aller deiner Daten machen.',
+                      buttons: AlertArrayActuions,
+                      // onDidDismiss: e => console.log('did dismiss'),
+                    })
+                  }}
+                >
                   <IonCardSubtitle>Alle Daten exportieren</IonCardSubtitle>
-                  <IonIcon icon={arrowForward} />
+                  <IonIcon size="medium" icon={arrowForward} />
                 </IonRow>
               </IonCardContent>
             </IonCard>
             <IonCard>
               <IonCardContent>
-                <IonRow className="ion-justify-content-between">
+                <IonRow className="ion-justify-content-between ion-align-items-center">
                   <IonCardSubtitle>Account löschen</IonCardSubtitle>
                   <IonIcon icon={arrowForward} />
                 </IonRow>

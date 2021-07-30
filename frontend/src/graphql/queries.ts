@@ -20,13 +20,13 @@ export const getProfileSettings = /* GraphQL */ `
   query GetProfileSettings($id: ID!) {
     getProfileSettings(id: $id) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner
@@ -46,7 +46,7 @@ export const listProfileSettingss = /* GraphQL */ `
     ) {
       items {
         id
-        age
+        latestExportKey
         createdAt
         updatedAt
         owner

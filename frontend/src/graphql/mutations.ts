@@ -9,13 +9,13 @@ export const createProfileSettings = /* GraphQL */ `
   ) {
     createProfileSettings(input: $input, condition: $condition) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner
@@ -29,13 +29,13 @@ export const updateProfileSettings = /* GraphQL */ `
   ) {
     updateProfileSettings(input: $input, condition: $condition) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner
@@ -49,13 +49,13 @@ export const deleteProfileSettings = /* GraphQL */ `
   ) {
     deleteProfileSettings(input: $input, condition: $condition) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner

@@ -6,13 +6,13 @@ export const onCreateProfileSettings = /* GraphQL */ `
   subscription OnCreateProfileSettings($owner: String!) {
     onCreateProfileSettings(owner: $owner) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner
@@ -23,13 +23,13 @@ export const onUpdateProfileSettings = /* GraphQL */ `
   subscription OnUpdateProfileSettings($owner: String!) {
     onUpdateProfileSettings(owner: $owner) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner
@@ -40,13 +40,13 @@ export const onDeleteProfileSettings = /* GraphQL */ `
   subscription OnDeleteProfileSettings($owner: String!) {
     onDeleteProfileSettings(owner: $owner) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner

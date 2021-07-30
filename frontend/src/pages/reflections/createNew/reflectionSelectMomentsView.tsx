@@ -33,7 +33,9 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
       .map(([id, title, createdAt]) => ({ id, title, createdAt }))
 
     loadAllMomentsAPI().then(moments => {
+      // TODO: fix type
       const nMoments = moments.map(moment => {
+        // @ts-ignore
         const k = array?.map(({ id }) => id).includes(moment.id)
         const t = moment as MomentWithSelected
         t['selected'] = k || false
@@ -65,7 +67,7 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
       </Header>
 
       <IonContent fullscreen>
-        <ListComponent<MomentWithSelected>
+        <ListComponent<any>
           elements={momentsState}
           onClickHandler={updateState}
           iconFunction={({ contentType }) =>
