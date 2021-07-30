@@ -1,20 +1,49 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { GetMomentQueryVariables, GetReflectionQuery } from '../../API'
+import {
+  GetMomentQueryVariables,
+  OrientationQuestions,
+  ReflectionState,
+  sharedUsersDetail,
+} from '../../API'
+
+export interface CustomReflection {
+  id: string
+  createdAt: string
+  title: string
+  content: string
+  topic: string
+  subTopic: string
+  indicators: Array<string>
+  state: ReflectionState
+  deleted?: boolean
+  sharedUsersDetail: Array<sharedUsersDetail>
+  sharedUsers: Array<string>
+  comments: Array<Comment>
+  orientationQuestions: Array<OrientationQuestions>
+  moments: {
+    items: {
+      moment: {
+        id: string
+        createdAt: string
+        title: string
+      }
+    }
+    nextToken: string
+  }
+
+  updatedAt: string
+  owner: string | null
+}
 
 const GetReflecionsQuery = /* GraphQL */ `
-  query GetReflecion($id: ID!) {
-    getReflecion(id: $id) {
+  query GetReflection($id: ID!) {
+    getReflection(id: $id) {
       id
       createdAt
       title
       contentType
       content
-      asset {
-        bucket
-        key
-        region
-      }
       topic
       subTopic
       niveau
@@ -22,6 +51,10 @@ const GetReflecionsQuery = /* GraphQL */ `
       state
       deleted
       sharedUsers
+      sharedUsersDetail {
+        id
+        email
+      }
       comments {
         createdAt
         content
@@ -33,11 +66,12 @@ const GetReflecionsQuery = /* GraphQL */ `
         items {
           moment {
             id
+            createdAt
+            title
           }
         }
         nextToken
       }
-
       updatedAt
       owner
     }
@@ -45,10 +79,14 @@ const GetReflecionsQuery = /* GraphQL */ `
 `
 
 export const getReflectionAPI = async (id: string) => {
-  const input: GetMomentQueryVariables = { id }
-  const res = (await API.graphql(
-    graphqlOperation(GetReflecionsQuery, input),
-  )) as GraphQLResult<{ getReflecion: GetReflectionQuery }>
-  console.log(res.data)
-  return res.data?.getReflecion
+  try {
+    const input: GetMomentQueryVariables = { id }
+    const res = (await API.graphql(
+      graphqlOperation(GetReflecionsQuery, input),
+    )) as GraphQLResult<{ getReflection: CustomReflection }>
+    if (res.errors) throw res.errors
+    if (res.data) return res.data.getReflection
+  } catch (error) {
+    console.error(error)
+  }
 }
