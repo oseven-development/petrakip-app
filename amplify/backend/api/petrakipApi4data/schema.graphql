@@ -120,5 +120,5 @@ type ReflectionMoment
 type Query {
   checkUserAndShareAsset(username: String): CheckShare @function(name: "checkUserAndShareAsset-${env}")
   createSignedUrlForAssets(bucket: String, key: String): String @function(name: "createSignedUrlForAssets-${env}")
-  createExportArchive(username: String): String @function(name: "createExportArchive-${env}")
+  createDataExportForUser(userKey: String): String @function(name: "createDataExportForUser-${env}")
 }
