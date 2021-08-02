@@ -2,7 +2,9 @@
   "permissions": {
     "storage": {
       "petrakipBucket4AssetsInMomentsAndReflections": [
-        "read"
+        "create",
+        "read",
+        "update"
       ]
     }
   },

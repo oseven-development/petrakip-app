@@ -34,6 +34,7 @@ interface Props extends RouteComponentProps<{}> {}
 
 export const ProfileDetailView: React.FC<Props> = ({ history }) => {
   const [user, setUser] = useState<any>(undefined)
+
   const platform = usePlatform()
   const [present] = useIonAlert()
   const [profileSettings, setProfileSettings] = useState<any>({
@@ -45,16 +46,21 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
     Auth.currentUserInfo().then(user => setUser(user))
   }, [])
 
-  useIonViewWillEnter(() => {
+  useEffect(() => {
     getProfileAPI().then(async res => {
-      console.log(res)
       setProfileSettings(res)
     })
-  })
+  }, [])
 
-  const downloadFile = async (exportUrl: any) => {
-    const exportData = await downloadExportData(exportUrl)
-    console.log(exportData)
+  const downloadFile = async (useKey: boolean = false) => {
+    let exportData: any
+    if (profileSettings.settings.latestExportKey && useKey) {
+      exportData = await downloadExportData(
+        profileSettings.settings.latestExportKey,
+      )
+    } else {
+      exportData = await exportAllData()
+    }
     // Create blob link to download
     const url = window.URL.createObjectURL(exportData.data)
     const link = document.createElement('a')
@@ -173,7 +179,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                       {
                         text: 'Neuer Datenexport',
                         handler: async () => {
-                          const dataUrl = await exportAllData()
+                          const dataUrl = await downloadFile()
                           setProfileSettings({
                             ...profileSettings,
                             latestExportKey: dataUrl,
@@ -181,11 +187,10 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                         },
                       },
                     ]
-                    if (profileSettings.latestExportKey) {
+                    if (profileSettings.settings.latestExportKey) {
                       AlertArrayActuions.push({
                         text: 'aktuellen Datenexport laden',
-                        handler: async () =>
-                          await downloadFile(profileSettings.latestExportKey),
+                        handler: async () => await downloadFile(true),
                       })
                     }
                     present({

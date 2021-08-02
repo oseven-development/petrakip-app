@@ -16,6 +16,11 @@ export const createSignedUrlForAssets = /* GraphQL */ `
     createSignedUrlForAssets(bucket: $bucket, key: $key)
   }
 `;
+export const createDataExportForUser = /* GraphQL */ `
+  query CreateDataExportForUser($userKey: String) {
+    createDataExportForUser(userKey: $userKey)
+  }
+`;
 export const getProfileSettings = /* GraphQL */ `
   query GetProfileSettings($id: ID!) {
     getProfileSettings(id: $id) {

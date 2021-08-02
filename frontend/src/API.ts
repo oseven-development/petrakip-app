@@ -932,6 +932,14 @@ export type CreateSignedUrlForAssetsQuery = {
   createSignedUrlForAssets?: string | null,
 };
 
+export type CreateDataExportForUserQueryVariables = {
+  userKey?: string | null,
+};
+
+export type CreateDataExportForUserQuery = {
+  createDataExportForUser?: string | null,
+};
+
 export type GetProfileSettingsQueryVariables = {
   id?: string,
 };

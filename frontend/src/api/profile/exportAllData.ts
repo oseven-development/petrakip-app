@@ -3,29 +3,42 @@ import { API, graphqlOperation, Storage, Auth } from 'aws-amplify'
 import { UpdateProfileSettingsInput } from '../../API'
 import { updateProfileSettings } from '../../graphql/mutations'
 import { listProfileSettingss } from '../../graphql/queries'
-// import { createExportArchive } from '../../graphql/queries'
+import { createDataExportForUser } from '../../graphql/queries'
+import { Credentials } from '@aws-amplify/core'
 
 export const exportAllData = async () => {
   try {
-    // const exportLambda: any = await API.graphql(
-    //   graphqlOperation(createExportArchive, {
-    //     username: (await Auth.currentUserInfo()).username,
-    //   }),
-    // )
-    // console.exportLambda(res)
-    // const profileSettings: any = await API.graphql(
-    //   graphqlOperation(listProfileSettingss),
-    // )
-    // const profileInput: UpdateProfileSettingsInput = {
-    //   id: profileSettings.data.listProfileSettingss.items[0].id,
-    //   latestExportKey: exportLambda.data,
-    // }
+    const userKey = `private/${(await Credentials.get()).identityId}`
 
-    // const res: any = (await API.graphql(
-    //   graphqlOperation(updateProfileSettings, { input: profileInput }),
-    // )) as GraphQLResult<{ updateProfileSettings: UpdateProfileSettingsInput }>
+    console.log(userKey)
+    const exportLambda: any = await API.graphql(
+      graphqlOperation(createDataExportForUser, {
+        userKey,
+      }),
+    )
+    console.log(exportLambda)
 
-    return 'profile/profile_picture.png'
+    // get profile Settings of User
+    const profileSettings: any = await API.graphql(
+      graphqlOperation(listProfileSettingss),
+    )
+    //  create updateProfileInput
+    const updateProfileInput: UpdateProfileSettingsInput = {
+      id: profileSettings.data.listProfileSettingss.items[0].id,
+      latestExportKey: exportLambda.data.createDataExportForUser,
+    }
+
+    // update profile with latest export
+    const res: any = await API.graphql(
+      graphqlOperation(updateProfileSettings, { input: updateProfileInput }),
+    )
+    console.log(res)
+
+    const dataFile = await downloadExportData(
+      exportLambda.data.createDataExportForUser,
+    )
+
+    return dataFile
   } catch (error) {
     console.error(error)
     throw error
