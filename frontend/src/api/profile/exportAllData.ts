@@ -18,13 +18,11 @@ export const exportAllDataAPI = async () => {
   try {
     const userKey = `private/${(await Credentials.get()).identityId}`
 
-    console.log(userKey)
     const exportLambda: any = await API.graphql(
       graphqlOperation(createDataExportForUser, {
         userKey,
       }),
     )
-    console.log(exportLambda)
 
     // get profile Settings of User
     const profileSettings: any = await API.graphql(
@@ -37,7 +35,7 @@ export const exportAllDataAPI = async () => {
     }
 
     // update profile with latest export
-    const res: any = await API.graphql(
+    await API.graphql(
       graphqlOperation(updateProfileSettings, { input: updateProfileInput }),
     )
 
