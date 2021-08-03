@@ -1,12 +1,20 @@
-import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { API, graphqlOperation, Storage, Auth } from 'aws-amplify'
+import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { UpdateProfileSettingsInput } from '../../API'
 import { updateProfileSettings } from '../../graphql/mutations'
 import { listProfileSettingss } from '../../graphql/queries'
 import { createDataExportForUser } from '../../graphql/queries'
 import { Credentials } from '@aws-amplify/core'
 
-export const exportAllData = async () => {
+export interface ProfileSettings {
+  picture?: {
+    name: string
+    data: any
+    type: any
+  }
+  settings?: any
+}
+
+export const exportAllDataAPI = async () => {
   try {
     const userKey = `private/${(await Credentials.get()).identityId}`
 
@@ -32,20 +40,22 @@ export const exportAllData = async () => {
     const res: any = await API.graphql(
       graphqlOperation(updateProfileSettings, { input: updateProfileInput }),
     )
-    console.log(res)
 
-    const dataFile = await downloadExportData(
+    const dataFile = await downloadExportDataAPI(
       exportLambda.data.createDataExportForUser,
     )
 
-    return dataFile
+    return {
+      media: dataFile,
+      latestExportKey: exportLambda.data.createDataExportForUser,
+    }
   } catch (error) {
     console.error(error)
     throw error
   }
 }
 
-export const downloadExportData = async (s3Key: string) => {
+export const downloadExportDataAPI = async (s3Key: string) => {
   const exportData: any = await Storage.get(s3Key, {
     download: true,
     level: 'private',

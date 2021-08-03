@@ -17,7 +17,6 @@ import {
   IonRow,
   IonText,
   IonSpinner,
-  useIonViewWillEnter,
   useIonAlert,
 } from '@ionic/react'
 import { arrowForward, pencil } from 'ionicons/icons'
@@ -26,22 +25,26 @@ import { Media } from '../../api/moment/saveMoment'
 import { updateProfilePictureAPI } from '../../api/profile/updateProfilePicture'
 import { getProfileAPI } from '../../api/profile/getProfile'
 import {
-  downloadExportData,
-  exportAllData,
+  downloadExportDataAPI,
+  exportAllDataAPI,
+  ProfileSettings,
 } from '../../api/profile/exportAllData'
 
 interface Props extends RouteComponentProps<{}> {}
+
+interface ExportData {
+  media: Media
+  latestExportKey: string
+}
 
 export const ProfileDetailView: React.FC<Props> = ({ history }) => {
   const [user, setUser] = useState<any>(undefined)
 
   const platform = usePlatform()
   const [present] = useIonAlert()
-  const [profileSettings, setProfileSettings] = useState<any>({
-    type: '',
-    data: '',
-    name: '',
-  })
+  const [profileSettings, setProfileSettings] = useState<
+    ProfileSettings | undefined
+  >(undefined)
   useEffect(() => {
     Auth.currentUserInfo().then(user => setUser(user))
   }, [])
@@ -52,20 +55,21 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
     })
   }, [])
 
-  const downloadFile = async (useKey: boolean = false) => {
-    let exportData: any
-    if (profileSettings.settings.latestExportKey && useKey) {
-      exportData = await downloadExportData(
+  const createOrGetDataExport = async (useKey: boolean = false) => {
+    let exportData: ExportData | any = {}
+    if (profileSettings?.settings?.latestExportKey && useKey) {
+      exportData.media = await downloadExportDataAPI(
         profileSettings.settings.latestExportKey,
       )
+      exportData.latestExportKey = profileSettings.settings.latestExportKey
     } else {
-      exportData = await exportAllData()
+      exportData = await exportAllDataAPI()
     }
     // Create blob link to download
-    const url = window.URL.createObjectURL(exportData.data)
+    const url = window.URL.createObjectURL(exportData.media.data)
     const link = document.createElement('a')
     link.href = url
-    link.setAttribute('download', exportData.name)
+    link.setAttribute('download', exportData.media.name)
 
     // Append to html link element page
     document.body.appendChild(link)
@@ -76,6 +80,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
     // Clean up and remove the link
     // @ts-ignore
     link.parentNode.removeChild(link)
+    return exportData.latestExportKey
   }
 
   return (
@@ -116,7 +121,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                         height: 'auto',
                       }}
                       src={
-                        profileSettings.picture?.data
+                        profileSettings?.picture?.data
                           ? URL.createObjectURL(profileSettings.picture.data)
                           : `assets/profile-placeholder.png`
                       }
@@ -145,7 +150,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                         await updateProfilePictureAPI(media as Media)
                         setProfileSettings({
                           ...profileSettings,
-                          picture: media,
+                          picture: media as Media,
                         })
                       }}
                       buttonLabel={'Profilbild ändern'}
@@ -179,18 +184,18 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                       {
                         text: 'Neuer Datenexport',
                         handler: async () => {
-                          const dataUrl = await downloadFile()
+                          const dataUrl: string = await createOrGetDataExport()
                           setProfileSettings({
                             ...profileSettings,
-                            latestExportKey: dataUrl,
+                            settings: { latestExportKey: dataUrl },
                           })
                         },
                       },
                     ]
-                    if (profileSettings.settings.latestExportKey) {
+                    if (profileSettings?.settings?.latestExportKey) {
                       AlertArrayActuions.push({
                         text: 'aktuellen Datenexport laden',
-                        handler: async () => await downloadFile(true),
+                        handler: async () => await createOrGetDataExport(true),
                       })
                     }
                     present({
