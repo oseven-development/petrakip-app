@@ -29,6 +29,7 @@ import {
   exportAllDataAPI,
   ProfileSettings,
 } from '../../api/profile/exportAllData'
+import { deleteProfileAPI } from '../../api/profile/deleteProfile'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -214,7 +215,25 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
             </IonCard>
             <IonCard>
               <IonCardContent>
-                <IonRow className="ion-justify-content-between ion-align-items-center">
+                <IonRow
+                  className="ion-justify-content-between ion-align-items-center"
+                  onClick={async () => {
+                    present({
+                      header: 'Account löschen',
+                      message: 'Möchtest du deinen Account wirklich löschen?',
+                      buttons: [
+                        {
+                          text: 'Ja ich möchte meinen Account löschen',
+                          handler: async () => {
+                            await deleteProfileAPI()
+                            window.location.reload()
+                          },
+                        },
+                      ],
+                      // onDidDismiss: e => console.log('did dismiss'),
+                    })
+                  }}
+                >
                   <IonCardSubtitle>Account löschen</IonCardSubtitle>
                   <IonIcon icon={arrowForward} />
                 </IonRow>
