@@ -4,7 +4,7 @@ type S3Object {
   bucket: String!
   key: String!
   region: String!
-  identityId: String!
+  identityId: String
 }
 
 enum ContentType {
@@ -45,8 +45,8 @@ type sharedUsersDetail {
 
 type ProfileSettings @model @auth(rules: [{ allow: owner }]) {
   id: ID!
-  profileImage: S3Object
-  age: Int
+  profilePicture: S3Object
+  latestExportKey: String
 }
 
 type Reflection
@@ -75,8 +75,7 @@ type Reflection
   sharedUsers: [String]
   comments: [Comment]
   orientationQuestions: [OrientationQuestions]
-  moments: [ReflectionMoment]
-    @connection(keyName: "byReflection", fields: ["id"])
+  moments: [ReflectionMoment] @connection(keyName: "byReflection", fields: ["id"])
 }
 
 type Moment
@@ -100,8 +99,7 @@ type Moment
   sharedUsersDetail: [sharedUsersDetail]
   sharedUsers: [String]
   comments: [Comment]
-  reflection: [ReflectionMoment]
-    @connection(keyName: "byMoment", fields: ["id"])
+  reflection: [ReflectionMoment] @connection(keyName: "byMoment", fields: ["id"])
 }
 
 # Many-to-Many
@@ -120,8 +118,7 @@ type ReflectionMoment
 }
 
 type Query {
-  checkUserAndShareAsset(username: String): CheckShare
-    @function(name: "checkUserAndShareAsset-${env}")
-  createSignedUrlForAssets(bucket: String, key: String): String
-    @function(name: "createSignedUrlForAssets-${env}")
+  checkUserAndShareAsset(username: String): CheckShare @function(name: "checkUserAndShareAsset-${env}")
+  createSignedUrlForAssets(bucket: String, key: String): String @function(name: "createSignedUrlForAssets-${env}")
+  createDataExportForUser(userKey: String): String @function(name: "createDataExportForUser-${env}")
 }

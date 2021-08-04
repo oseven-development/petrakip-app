@@ -11,7 +11,7 @@ import {
 import { getLocaleDateString } from '../../utils/dateUtils'
 
 interface Item {
-  id: string
+  id?: string
   createdAt?: string | null | undefined
   title?: string | null | undefined
   selected?: boolean
