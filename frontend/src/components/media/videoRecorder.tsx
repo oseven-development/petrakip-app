@@ -23,7 +23,7 @@ const VideoRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
     })
   }
 
-  return platform === 'xx' ? (
+  return platform === 'not defined' ? (
     <div>not implemented</div>
   ) : (
     <>
