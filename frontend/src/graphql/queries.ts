@@ -16,17 +16,22 @@ export const createSignedUrlForAssets = /* GraphQL */ `
     createSignedUrlForAssets(bucket: $bucket, key: $key)
   }
 `;
+export const createDataExportForUser = /* GraphQL */ `
+  query CreateDataExportForUser($userKey: String) {
+    createDataExportForUser(userKey: $userKey)
+  }
+`;
 export const getProfileSettings = /* GraphQL */ `
   query GetProfileSettings($id: ID!) {
     getProfileSettings(id: $id) {
       id
-      profileImage {
+      profilePicture {
         bucket
         key
         region
         identityId
       }
-      age
+      latestExportKey
       createdAt
       updatedAt
       owner
@@ -46,7 +51,7 @@ export const listProfileSettingss = /* GraphQL */ `
     ) {
       items {
         id
-        age
+        latestExportKey
         createdAt
         updatedAt
         owner

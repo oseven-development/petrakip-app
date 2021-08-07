@@ -58,6 +58,20 @@
           ]
         }
       ]
+    },
+    "createDataExportForUser": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "petrakipBucket4AssetsInMomentsAndReflections",
+          "attributes": [
+            "BucketName"
+          ]
+        }
+      ]
     }
   }
 }

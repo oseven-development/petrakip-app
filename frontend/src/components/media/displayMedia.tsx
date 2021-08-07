@@ -7,7 +7,7 @@ import { useLocation } from 'react-router'
 interface Props {
   children: Media
 }
-export const DisplayMedia: React.FC<Props> = ({ children }) => {
+const DisplayMediaWrapper: React.FC<Props> = ({ children }) => {
   const hasParameter = useLocation().pathname.includes('details')
   return (
     <div
@@ -52,3 +52,4 @@ export const DisplayMedia: React.FC<Props> = ({ children }) => {
     </div>
   )
 }
+export const DisplayMedia = React.memo(DisplayMediaWrapper)

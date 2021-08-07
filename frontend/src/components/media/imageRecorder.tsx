@@ -1,15 +1,21 @@
-import { IonButton } from '@ionic/react'
+import { IonButton, IonIcon } from '@ionic/react'
 import React, { Dispatch, SetStateAction, useRef } from 'react'
 import { Media } from '../../api/moment/saveMoment'
+import { camera } from 'ionicons/icons'
 
 import { usePlatform } from '../../hooks/usePlatform'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
-  disabled: boolean
+  disabled?: boolean
+  buttonLabel?: string
 }
 
-const ImageRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
+const ImageRecorder: React.FC<Props> = ({
+  setMedia,
+  disabled = false,
+  buttonLabel = 'Foto aufnehmen',
+}) => {
   const platform = usePlatform()
   const fileInput = useRef(null)
 
@@ -39,13 +45,14 @@ const ImageRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
       <IonButton
         disabled={disabled}
         color="primary"
-        expand="full"
+        expand="block"
         onClick={() => {
           // @ts-ignore
           fileInput?.current?.click()
         }}
       >
-        Foto aufnehmen
+        <IonIcon icon={camera} size="small" style={{ paddingRight: 4 }} />
+        {buttonLabel}
       </IonButton>
     </>
   )

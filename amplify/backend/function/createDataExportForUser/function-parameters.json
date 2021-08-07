@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "storage": {
+      "petrakipBucket4AssetsInMomentsAndReflections": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

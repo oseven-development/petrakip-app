@@ -27,12 +27,19 @@ export const saveMomentAPI = async ({
   try {
     const updateState = moment.id ? 'update' : 'create'
     // upload asset media file to s3 when new moment is created or media is updated
-    if (media.type !== 'text' && moment?.asset?.key !== media.name) {
+    if (
+      media.type !== 'text' &&
+      moment?.asset?.key !== `assets/${media.name}`
+    ) {
       // casting as s3Metadata, because .put is return Object, which can not be adjusted with an interface
-      const s3MetaData = (await Storage.put(media.name, media.data, {
-        contentType: media.type,
-        level: 'private',
-      })) as s3MetaData
+      const s3MetaData = (await Storage.put(
+        `assets/${media.name}`,
+        media.data,
+        {
+          contentType: media.type,
+          level: 'private',
+        },
+      )) as s3MetaData
 
       moment.asset = {
         bucket: awsExports.aws_user_files_s3_bucket,
