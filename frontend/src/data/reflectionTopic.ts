@@ -1,4 +1,4 @@
-const array = [
+export const reflectionTopics = [
   {
     topicItemLable: '1 Fachinhalte',
     topicItemId: '1-fachinhalte',
@@ -290,4 +290,3 @@ const array = [
     ],
   },
 ]
-export default array

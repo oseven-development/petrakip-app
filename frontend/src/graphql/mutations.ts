@@ -205,6 +205,7 @@ export const createMoment = /* GraphQL */ `
       title
       contentType
       content
+      isFavorite
       asset {
         bucket
         key
@@ -241,6 +242,7 @@ export const updateMoment = /* GraphQL */ `
       title
       contentType
       content
+      isFavorite
       asset {
         bucket
         key
@@ -277,6 +279,7 @@ export const deleteMoment = /* GraphQL */ `
       title
       contentType
       content
+      isFavorite
       asset {
         bucket
         key
@@ -333,6 +336,7 @@ export const createReflectionMoment = /* GraphQL */ `
         title
         contentType
         content
+        isFavorite
         tags
         deleted
         sharedUsers
@@ -376,6 +380,7 @@ export const updateReflectionMoment = /* GraphQL */ `
         title
         contentType
         content
+        isFavorite
         tags
         deleted
         sharedUsers
@@ -419,6 +424,7 @@ export const deleteReflectionMoment = /* GraphQL */ `
         title
         contentType
         content
+        isFavorite
         tags
         deleted
         sharedUsers

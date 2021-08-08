@@ -35,7 +35,6 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
       </Header>
       <IonContent fullscreen>
         <LargeHeader>Reflexionen</LargeHeader>
-
         <ListComponent<Reflection>
           elements={state}
           onClickHandler={reflection => {

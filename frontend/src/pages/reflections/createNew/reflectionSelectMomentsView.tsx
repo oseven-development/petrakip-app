@@ -1,5 +1,5 @@
 import React from 'react'
-import { IonButton, IonContent, IonPage } from '@ionic/react'
+import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
 import { Header, ListComponent } from '../../../components'
 import { RouteComponentProps, useLocation } from 'react-router'
 
@@ -12,6 +12,7 @@ import { getIconFromContentType } from '../../../utils/getContentTypeUtils'
 import { groupArrayByDate } from '../../../utils/dateUtils'
 import { extractDataFromArray } from '../reflectionUtils'
 import { getMomentAPI } from '../../../api/moment/getMoment'
+import { save } from 'ionicons/icons'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -71,14 +72,14 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
           }
           sortFunction={groupArrayByDate}
         ></ListComponent>
-
-        <IonButton
-          routerLink={`${ReflectionsRouting.module}${currentUrl}`}
-          color="primary"
-        >
-          Speichern
-        </IonButton>
       </IonContent>
+      <IonButton
+        expand="block"
+        routerLink={`${ReflectionsRouting.module}${currentUrl}`}
+      >
+        <IonIcon slot="start" icon={save}></IonIcon>
+        Speichern
+      </IonButton>
     </IonPage>
   )
 }

@@ -4,13 +4,17 @@ import { RouteComponentProps, useLocation } from 'react-router'
 import {
   IonButton,
   IonContent,
+  IonIcon,
   IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
   IonLoading,
   IonPage,
 } from '@ionic/react'
 
 import { API, graphqlOperation } from 'aws-amplify'
-import { Header } from '../../../components'
+import { Header, LargeHeader } from '../../../components'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import {
   UpdateReflectionInput,
@@ -20,8 +24,8 @@ import {
 
 import { updateReflection } from '../../../graphql/mutations'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
-import { useUpdateQueryParamState } from './useUpdateQueryParamState'
-import { ReflectionsRouting } from './reflectionCreateNewRouting'
+import { followUpQuestions } from '../../../data/reflectionFollowUpQuestions'
+import { checkmarkCircle } from 'ionicons/icons'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -31,12 +35,7 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
 }) => {
   const location = useLocation()
   const [loader, setLoader] = React.useState(true)
-  const [question, setQuestion] = React.useState([
-    'Wie fühlst du dich',
-    'Bist du ein toller lehrmeister',
-    'wft was steht hier!',
-  ])
-  const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
+  const [question, setQuestion] = React.useState(followUpQuestions)
   React.useEffect(() => {})
 
   const updateQuest = async () => {
@@ -54,12 +53,12 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
         state: ReflectionState.completed,
       }
 
-      UpdateURL([
-        {
-          key: ReflectionQueryParamKeys.reflexionState,
-          value: ReflectionState.completed,
-        },
-      ])
+      // UpdateURL([
+      //   {
+      //     key: ReflectionQueryParamKeys.reflexionState,
+      //     value: ReflectionState.completed,
+      //   },
+      // ])
 
       const res = (await API.graphql(
         graphqlOperation(updateReflection, { input }),
@@ -71,20 +70,18 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
 
   return (
     <IonPage>
-      <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
-        reflectionsFollowUpQuestion
-      </Header>
+      <Header>Folge Fragen</Header>
       <IonContent fullscreen>
-        <h1>reflectionsFollowUpQuestion!</h1>
-        {!loader &&
-          question.map(items => (
-            <React.Fragment key={items}>
-              <h3>{items}</h3>
-              <IonInput placeholder="deine Antwort"></IonInput>
-            </React.Fragment>
-          ))}
-
-        <IonButton onClick={updateQuest}>Update ID</IonButton>
+        <LargeHeader>Folge Fragen</LargeHeader>
+        <IonList>
+          {!loader &&
+            question.map(items => (
+              <IonItem key={items.question}>
+                <IonLabel position="stacked">{items.question}</IonLabel>
+                <IonInput placeholder="deine Antwort"></IonInput>
+              </IonItem>
+            ))}
+        </IonList>
         <IonLoading
           cssClass="my-custom-class"
           isOpen={loader}
@@ -93,6 +90,10 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
           duration={2500}
         />
       </IonContent>
+      <IonButton expand="block" onClick={updateQuest}>
+        <IonIcon slot="start" icon={checkmarkCircle}></IonIcon>
+        beantworten
+      </IonButton>
     </IonPage>
   )
 }

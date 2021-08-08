@@ -24,6 +24,7 @@ import { institutions } from '../../data/institutions'
 import './login.css'
 import Auth from '@aws-amplify/auth'
 import { LargeHeader } from '../../components/header'
+import { AGB } from '../../data/agb'
 
 interface UserProps {
   mail: string
@@ -248,7 +249,8 @@ const RegisterView: React.FC = ({ authState, onStateChange }: any) => {
               </div>
 
               <IonModal isOpen={showTermsModal}>
-                <h1>AGBs</h1>
+                <AGB />
+
                 <IonButton onClick={() => setShowTermsModal(false)}>
                   Gelesen
                 </IonButton>

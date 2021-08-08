@@ -10,6 +10,10 @@ import {
   IonButton,
   IonToast,
   useIonViewWillEnter,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonIcon,
 } from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
 import { useState } from 'react'
@@ -28,6 +32,8 @@ import { ShareOverview } from '../../components/share/shareOverview'
 import { Auth } from 'aws-amplify'
 import React from 'react'
 import { ShareUser } from '../../types/shareUser'
+import { momentTags } from '../../data/momentTags'
+import { addCircle, save, star, starOutline } from 'ionicons/icons'
 export interface Moment {
   title: string
   tags: string[]
@@ -48,7 +54,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
     data: '',
     name: '',
   })
-  const [moment, setMoment] = useState<any>({ title: '', tags: [''] })
+  const [moment, setMoment]: any = useState<any>({ title: '', tags: [''] })
   const [isSharedMoment, setIsSharedMoment] = useState<boolean>(false)
 
   useIonViewWillEnter(() => {
@@ -92,6 +98,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
           match?.params?.id ? 'geändert' : 'erstellt'
         }`,
       })
+
       history.replace('/moments')
     }
   }
@@ -139,13 +146,32 @@ export const MomentsDetailView: React.FC<Props> = props => {
     <IonPage>
       <Header
         shareSlot={
-          <ShareOverview
-            id={match?.params?.id}
-            sharedUsers={moment.sharedUsersDetail || []}
-            assetType={'Moment'}
-            shareAsset={addShare}
-            removeAsset={removeShare}
-          />
+          <>
+            {match?.params?.id && (
+              <IonButton
+                onClick={() => {
+                  const currentIsFavorite = moment.isFavorite
+                    ? moment.isFavorite
+                    : false
+                  setMoment({ ...moment, isFavorite: !currentIsFavorite })
+                }}
+              >
+                <IonIcon
+                  color="warning"
+                  slot="icon-only"
+                  icon={moment.isFavorite ? star : starOutline}
+                />
+              </IonButton>
+            )}
+
+            <ShareOverview
+              id={match?.params?.id}
+              sharedUsers={moment.sharedUsersDetail || []}
+              assetType={'Moment'}
+              shareAsset={addShare}
+              removeAsset={removeShare}
+            />
+          </>
         }
         deleteSlot={deleteMoment}
       >
@@ -191,29 +217,51 @@ export const MomentsDetailView: React.FC<Props> = props => {
               }
             >
               {/* TODO: neeed correct tags */}
-              <IonSelectOption value="bacon">Bacon</IonSelectOption>
-              <IonSelectOption value="olives">Black Olives</IonSelectOption>
-              <IonSelectOption value="xcheese">Extra Cheese</IonSelectOption>
-              <IonSelectOption value="peppers">Green Peppers</IonSelectOption>
-              <IonSelectOption value="mushrooms">Mushrooms</IonSelectOption>
-              <IonSelectOption value="onions">Onions</IonSelectOption>
-              <IonSelectOption value="pepperoni">Pepperoni</IonSelectOption>
-              <IonSelectOption value="pineapple">Pineapple</IonSelectOption>
-              <IonSelectOption value="sausage">Sausage</IonSelectOption>
-              <IonSelectOption value="Spinach">Spinach</IonSelectOption>
+              {momentTags.map((tag: any) => (
+                <IonSelectOption value={tag.value}>{tag.label}</IonSelectOption>
+              ))}
             </IonSelect>
           </IonItem>
         </IonList>
-
-        <AudioRecorder setMedia={setMedia} disabled={isSharedMoment} />
-
-        <VideoRecorder setMedia={setMedia} disabled={isSharedMoment} />
-
-        <ImageRecorder setMedia={setMedia} disabled={isSharedMoment} />
-
-        <TextRecorder setMedia={setMedia} disabled={isSharedMoment} />
+        <IonGrid>
+          <IonRow>
+            <IonCol size="6">
+              <AudioRecorder
+                setMedia={setMedia}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+              <VideoRecorder
+                setMedia={setMedia}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+            </IonCol>
+            <IonCol size="6">
+              <ImageRecorder
+                setMedia={setMedia}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+              <TextRecorder
+                setMedia={setMedia}
+                media={media}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
-      <IonButton expand="full" onClick={saveMoment} disabled={isSharedMoment}>
+      <IonButton
+        expand="block"
+        onClick={() => saveMoment()}
+        disabled={isSharedMoment}
+      >
+        <IonIcon
+          slot="start"
+          icon={match?.params?.id ? save : addCircle}
+        ></IonIcon>
         Moment {match?.params?.id ? 'ändern' : 'erstellen'}
       </IonButton>
       <IonToast

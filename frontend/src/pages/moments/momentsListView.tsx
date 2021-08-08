@@ -13,11 +13,14 @@ import { groupArrayByDate } from '../../utils/dateUtils'
 // import { MomentList } from '../../components/moment/momentList'
 import { Moment } from '../../API'
 import { getIconFromContentType } from '../../utils/getContentTypeUtils'
+import { FilterDialog, FilterToggle } from '../../components/filter/filter'
 
 interface Props extends RouteComponentProps<{}> {}
 
 export const MomentsListView: React.FC<Props> = ({ history }) => {
   const [moments, setMoments] = useState<Moment[]>([])
+  const [momentsFiltered, setMomentsFiltered] = useState<Moment[]>([])
+  const [showFilter, setShowFilter] = useState(false)
 
   // useIonViewWillEnter because of navigation benefits
   useIonViewWillEnter(() => {
@@ -28,18 +31,30 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
     <IonPage>
       <Header
         shareSlot={
-          <IonButton routerLink="/moments/create" color="primary">
-            Erstellen
-          </IonButton>
+          <>
+            <FilterToggle
+              showFilter={showFilter}
+              setShowFilter={setShowFilter}
+            ></FilterToggle>
+
+            <IonButton routerLink="/moments/create" color="primary">
+              Erstellen
+            </IonButton>
+          </>
         }
       >
         Momente
       </Header>
       <IonContent fullscreen>
         <LargeHeader>Momente</LargeHeader>
-
-        <ListComponent<Moment>
+        <FilterDialog
+          showFilter={showFilter}
           elements={moments}
+          setElements={setMomentsFiltered}
+        ></FilterDialog>
+        {/* TODO: fix type error.  -> added isFavorite screwed up your logic @maxhaensel */}
+        <ListComponent<any>
+          elements={momentsFiltered}
           onClickHandler={moment => {
             history.push({
               pathname: `/moments/details/${moment.id}`,

@@ -5,7 +5,6 @@ import {
   IonButton,
   IonCol,
   IonContent,
-  IonGrid,
   IonIcon,
   IonInput,
   IonItem,
@@ -22,7 +21,7 @@ import {
 import { Header } from '../../../components'
 import { RouteComponentProps } from 'react-router'
 import { useLocation } from 'react-router-dom'
-import { addCircle, aperture, download, star } from 'ionicons/icons'
+import { addCircle, aperture, save, star } from 'ionicons/icons'
 
 import { delteReflectionAPI, saveReflectionAPI } from '../../../api/'
 
@@ -339,42 +338,33 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
         </IonList>
 
         {/* ############################ Buttons ############################ */}
-        <IonGrid>
-          <IonRow>
-            {/* ############################ Route FollowUpQuestion ############################ */}
-            <IonCol>
-              <IonButton
-                expand="block"
-                disabled={
-                  state.state === ReflectionState.started ? true : false
-                }
-                routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
-              >
-                Folgefragen
-                <IonIcon slot="start" icon={aperture}></IonIcon>
-              </IonButton>
-            </IonCol>
-            {/* ############################ Save the Reflection ############################ */}
-            <IonCol>
-              <IonButton
-                expand="block"
-                onClick={updateReflection}
-                disabled={
-                  state.title && state.content && state.subTopic
-                    ? undefined
-                    : true
-                }
-              >
-                {state.id ? 'Speichern' : 'Erstellen'}
-                <IonIcon
-                  slot="start"
-                  icon={state.id ? download : addCircle}
-                ></IonIcon>
-              </IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
       </IonContent>
+      <IonRow>
+        {/* ############################ Route FollowUpQuestion ############################ */}
+        <IonCol>
+          <IonButton
+            expand="block"
+            disabled={state.state === ReflectionState.started ? true : false}
+            routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
+          >
+            Folgefragen
+            <IonIcon slot="start" icon={aperture}></IonIcon>
+          </IonButton>
+        </IonCol>
+        {/* ############################ Save the Reflection ############################ */}
+        <IonCol>
+          <IonButton
+            expand="block"
+            onClick={updateReflection}
+            disabled={
+              state.title && state.content && state.subTopic ? undefined : true
+            }
+          >
+            {state.id ? 'Speichern' : 'Erstellen'}
+            <IonIcon slot="start" icon={state.id ? save : addCircle}></IonIcon>
+          </IonButton>
+        </IonCol>
+      </IonRow>
     </IonPage>
   )
 }
