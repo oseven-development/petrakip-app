@@ -5,6 +5,7 @@ import {
   IonButton,
   IonContent,
   IonGrid,
+  IonIcon,
   IonInput,
   IonItem,
   IonLabel,
@@ -25,6 +26,7 @@ import {
 import { updateReflection } from '../../../graphql/mutations'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { followUpQuestions } from '../../../data/reflectionFollowUpQuestions'
+import { checkmarkCircle } from 'ionicons/icons'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -74,7 +76,6 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
               </IonItem>
             ))}
         </IonList>
-        <IonButton onClick={updateQuest}>beantworten</IonButton>
         <IonLoading
           cssClass="my-custom-class"
           isOpen={loader}
@@ -83,6 +84,10 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
           duration={2500}
         />
       </IonContent>
+      <IonButton expand="block" onClick={updateQuest}>
+        <IonIcon slot="start" icon={checkmarkCircle}></IonIcon>
+        beantworten
+      </IonButton>
     </IonPage>
   )
 }

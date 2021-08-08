@@ -12,7 +12,7 @@ import {
   IonInput,
   IonContent,
 } from '@ionic/react'
-import { share } from 'ionicons/icons'
+import { closeCircle, share } from 'ionicons/icons'
 import React, { useState } from 'react'
 import { checkUserAndShareAssetAPI, shareAPI } from '../../api/index'
 import { useCustomLoaderOnTrigger } from '../../hooks'
@@ -141,10 +141,11 @@ const ShareOverview: React.FC<Props> = ({
 
         <IonButton
           color="primary"
-          expand="full"
+          expand="block"
           onClick={() => setShowModal(false)}
         >
-          Freigabe beenden
+          <IonIcon slot="start" icon={closeCircle}></IonIcon>
+          Freigabe schließen
         </IonButton>
       </IonModal>
       <IonButton onClick={() => setShowModal(true)}>

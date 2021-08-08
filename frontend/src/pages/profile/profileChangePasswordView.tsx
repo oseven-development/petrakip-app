@@ -102,22 +102,21 @@ export const ProfileChangePasswordView: React.FC<Props> = ({ history }) => {
                   />
                 </IonItem>
               </IonCard>
-
-              <IonButton
-                expand="block"
-                fill="outline"
-                disabled={
-                  state.newPassword === '' ||
-                  state.oldPassword === '' ||
-                  state.newPassword !== state.newPasswordVerify
-                }
-                onClick={changePassword}
-              >
-                Passwort ändern!
-              </IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
+        <IonButton
+          expand="block"
+          fill="outline"
+          disabled={
+            state.newPassword === '' ||
+            state.oldPassword === '' ||
+            state.newPassword !== state.newPasswordVerify
+          }
+          onClick={changePassword}
+        >
+          Passwort ändern!
+        </IonButton>
       </IonContent>
     </IonPage>
   )

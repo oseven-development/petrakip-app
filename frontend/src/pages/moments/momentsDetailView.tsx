@@ -10,6 +10,10 @@ import {
   IonButton,
   IonToast,
   useIonViewWillEnter,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonIcon,
 } from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
 import { useState } from 'react'
@@ -29,6 +33,7 @@ import { Auth } from 'aws-amplify'
 import React from 'react'
 import { ShareUser } from '../../types/shareUser'
 import { momentTags } from '../../data/momentTags'
+import { addCircle, save } from 'ionicons/icons'
 export interface Moment {
   title: string
   tags: string[]
@@ -198,16 +203,40 @@ export const MomentsDetailView: React.FC<Props> = props => {
             </IonSelect>
           </IonItem>
         </IonList>
-
-        <AudioRecorder setMedia={setMedia} disabled={isSharedMoment} />
-
-        <VideoRecorder setMedia={setMedia} disabled={isSharedMoment} />
-
-        <ImageRecorder setMedia={setMedia} disabled={isSharedMoment} />
-
-        <TextRecorder setMedia={setMedia} disabled={isSharedMoment} />
+        <IonGrid>
+          <IonRow>
+            <IonCol size="6">
+              <AudioRecorder
+                setMedia={setMedia}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+              <VideoRecorder
+                setMedia={setMedia}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+            </IonCol>
+            <IonCol size="6">
+              <ImageRecorder
+                setMedia={setMedia}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+              <TextRecorder
+                setMedia={setMedia}
+                disabled={isSharedMoment}
+                style={{ height: 80 }}
+              />
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
-      <IonButton expand="full" onClick={saveMoment} disabled={isSharedMoment}>
+      <IonButton expand="block" onClick={saveMoment} disabled={isSharedMoment}>
+        <IonIcon
+          slot="start"
+          icon={match?.params?.id ? save : addCircle}
+        ></IonIcon>
         Moment {match?.params?.id ? 'ändern' : 'erstellen'}
       </IonButton>
       <IonToast
