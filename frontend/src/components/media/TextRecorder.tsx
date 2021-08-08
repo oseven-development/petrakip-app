@@ -7,19 +7,24 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
-import { text } from 'ionicons/icons'
+import { closeCircle, text } from 'ionicons/icons'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { Media } from '../../api/moment/saveMoment'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
+  media?: Media
   disabled: boolean
   style?: any
 }
 
-const TextRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
+const TextRecorder: React.FC<Props> = ({
+  setMedia,
+  disabled,
+  style,
+  media,
+}) => {
   const [showModal, setShowModal] = useState(false)
-
   return (
     <>
       <IonModal isOpen={showModal}>
@@ -31,6 +36,7 @@ const TextRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
         <IonTextarea
           className="ion-padding"
           autofocus
+          value={media?.data ? media.data : undefined}
           placeholder="Text hier eingeben"
           onIonChange={e =>
             setMedia({
@@ -41,11 +47,8 @@ const TextRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
           }
         ></IonTextarea>
 
-        <IonButton
-          color="primary"
-          expand="full"
-          onClick={() => setShowModal(false)}
-        >
+        <IonButton expand="block" onClick={() => setShowModal(false)}>
+          <IonIcon slot="start" icon={closeCircle}></IonIcon>
           Eingabe beenden
         </IonButton>
       </IonModal>

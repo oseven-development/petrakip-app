@@ -225,6 +225,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
               />
               <TextRecorder
                 setMedia={setMedia}
+                media={media}
                 disabled={isSharedMoment}
                 style={{ height: 80 }}
               />
