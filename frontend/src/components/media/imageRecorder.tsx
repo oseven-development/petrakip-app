@@ -9,12 +9,14 @@ interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
   disabled?: boolean
   buttonLabel?: string
+  style?: any
 }
 
 const ImageRecorder: React.FC<Props> = ({
   setMedia,
   disabled = false,
   buttonLabel = 'Foto aufnehmen',
+  style,
 }) => {
   const platform = usePlatform()
   const fileInput = useRef(null)
@@ -46,12 +48,13 @@ const ImageRecorder: React.FC<Props> = ({
         disabled={disabled}
         color="primary"
         expand="block"
+        style={{ whiteSpace: 'break-spaces', ...style }}
         onClick={() => {
           // @ts-ignore
           fileInput?.current?.click()
         }}
       >
-        <IonIcon icon={camera} size="small" style={{ paddingRight: 4 }} />
+        <IonIcon slot="start" icon={camera} size="medium" />
         {buttonLabel}
       </IonButton>
     </>

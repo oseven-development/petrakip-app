@@ -164,11 +164,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                       expand="block"
                       routerLink="/profile/changepassword"
                     >
-                      <IonIcon
-                        icon={pencil}
-                        size="small"
-                        style={{ paddingRight: 4 }}
-                      />
+                      <IonIcon icon={pencil} size="medium" slot="start" />
                       Passwort ändern
                     </IonButton>
                   </IonCol>

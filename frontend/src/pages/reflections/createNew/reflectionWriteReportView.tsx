@@ -7,6 +7,7 @@ import {
   IonCardTitle,
   IonContent,
   IonGrid,
+  IonIcon,
   IonItem,
   IonPage,
   IonText,
@@ -18,6 +19,7 @@ import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
+import { save } from 'ionicons/icons'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -80,15 +82,15 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
             defaultValue={'test'}
             placeholder="Enter more information here..."
           ></IonTextarea>
-
-          <IonButton
-            routerLink={`${ReflectionsRouting.module}${currentUrl}`}
-            color="primary"
-          >
-            Speichern
-          </IonButton>
         </IonGrid>
       </IonContent>
+      <IonButton
+        expand="block"
+        routerLink={`${ReflectionsRouting.module}${currentUrl}`}
+      >
+        <IonIcon slot="start" icon={save}></IonIcon>
+        Speichern
+      </IonButton>
     </IonPage>
   )
 }

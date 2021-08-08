@@ -1,20 +1,23 @@
 import {
   IonButton,
   IonHeader,
+  IonIcon,
   IonModal,
   IonTextarea,
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
+import { text } from 'ionicons/icons'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { Media } from '../../api/moment/saveMoment'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
   disabled: boolean
+  style?: any
 }
 
-const TextRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
+const TextRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
@@ -48,10 +51,12 @@ const TextRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
       </IonModal>
       <IonButton
         color="primary"
-        expand="full"
+        expand="block"
         disabled={disabled}
+        style={{ whiteSpace: 'break-spaces', ...style }}
         onClick={() => setShowModal(true)}
       >
+        <IonIcon slot="start" icon={text} size="medium" />
         Text eingeben
       </IonButton>
     </>

@@ -1,4 +1,5 @@
-import { IonButton } from '@ionic/react'
+import { IonButton, IonIcon } from '@ionic/react'
+import { videocam } from 'ionicons/icons'
 import React, { Dispatch, SetStateAction, useRef } from 'react'
 import { Media } from '../../api/moment/saveMoment'
 
@@ -7,9 +8,10 @@ import { usePlatform } from '../../hooks/usePlatform'
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
   disabled: boolean
+  style?: any
 }
 
-const VideoRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
+const VideoRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
   const platform = usePlatform()
   const fileInput = useRef(null)
 
@@ -38,13 +40,15 @@ const VideoRecorder: React.FC<Props> = ({ setMedia, disabled }) => {
       />
       <IonButton
         color="primary"
-        expand="full"
+        expand="block"
         disabled={disabled}
+        style={{ whiteSpace: 'break-spaces', ...style }}
         onClick={() => {
           // @ts-ignore
           fileInput?.current?.click()
         }}
       >
+        <IonIcon slot="start" icon={videocam} size="medium" />
         Video aufnehmen
       </IonButton>
     </>
