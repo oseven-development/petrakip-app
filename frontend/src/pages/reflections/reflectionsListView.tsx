@@ -34,8 +34,9 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
       </Header>
       <IonContent fullscreen>
         <LargeHeader>Reflectionen</LargeHeader>
+        {/* TODO: fix type error.  -> added isFavorite screwed up your logic @maxhaensel */}
 
-        <ListComponent<Reflection>
+        <ListComponent<any>
           elements={state}
           onClickHandler={({ id, title, topic, subTopic, content }) => {
             history.push(

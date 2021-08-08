@@ -136,6 +136,7 @@ export const getMoment = /* GraphQL */ `
       title
       contentType
       content
+      isFavorite
       asset {
         bucket
         key
@@ -174,6 +175,7 @@ export const listMoments = /* GraphQL */ `
         title
         contentType
         content
+        isFavorite
         tags
         deleted
         sharedUsers

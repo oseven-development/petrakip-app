@@ -55,7 +55,8 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
           elements={moments}
           setElements={setMomentsFiltered}
         ></FilterDialog>
-        <ListComponent<Moment>
+        {/* TODO: fix type error.  -> added isFavorite screwed up your logic @maxhaensel */}
+        <ListComponent<any>
           elements={momentsFiltered}
           onClickHandler={moment => {
             history.push({
