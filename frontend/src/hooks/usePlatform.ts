@@ -5,10 +5,11 @@ enum Platform {
   ios = 'ios',
   android = 'android',
   web = 'web',
+  notDefined = 'not defined',
 }
 
 export const usePlatform = () => {
-  const [platform, setPlatform] = useState('')
+  const [platform, setPlatform] = useState(Platform.notDefined)
 
   useEffect(() => {
     async function getPlatform() {
