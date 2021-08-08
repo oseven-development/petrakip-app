@@ -64,19 +64,19 @@ export type ModelSizeInput = {
 
 export type ProfileSettings = {
   __typename: "ProfileSettings",
-  id?: string,
-  profilePicture?: S3Object,
+  id: string,
+  profilePicture?: S3Object | null,
   latestExportKey?: string | null,
-  createdAt?: string,
-  updatedAt?: string,
+  createdAt: string,
+  updatedAt: string,
   owner?: string | null,
 };
 
 export type S3Object = {
   __typename: "S3Object",
-  bucket?: string,
-  key?: string,
-  region?: string,
+  bucket: string,
+  key: string,
+  region: string,
   identityId?: string | null,
 };
 
@@ -87,7 +87,7 @@ export type UpdateProfileSettingsInput = {
 };
 
 export type DeleteProfileSettingsInput = {
-  id?: string | null,
+  id: string,
 };
 
 export type CreateReflectionInput = {
@@ -174,12 +174,12 @@ export type ModelBooleanInput = {
 
 export type Reflection = {
   __typename: "Reflection",
-  id?: string,
+  id: string,
   createdAt?: string | null,
   title?: string | null,
   contentType?: ContentType | null,
   content?: string | null,
-  asset?: S3Object,
+  asset?: S3Object | null,
   topic?: string | null,
   subTopic?: string | null,
   niveau?: string | null,
@@ -190,27 +190,27 @@ export type Reflection = {
   sharedUsers?: Array< string | null > | null,
   comments?:  Array<Comment | null > | null,
   orientationQuestions?:  Array<OrientationQuestions | null > | null,
-  moments?: ModelReflectionMomentConnection,
-  updatedAt?: string,
+  moments?: ModelReflectionMomentConnection | null,
+  updatedAt: string,
   owner?: string | null,
 };
 
 export type sharedUsersDetail = {
   __typename: "sharedUsersDetail",
-  id?: string,
-  email?: string,
+  id: string,
+  email: string,
 };
 
 export type Comment = {
   __typename: "Comment",
-  createdAt?: string,
-  content?: string,
+  createdAt: string,
+  content: string,
 };
 
 export type OrientationQuestions = {
   __typename: "OrientationQuestions",
-  question?: string,
-  answer?: string,
+  question: string,
+  answer: string,
 };
 
 export type ModelReflectionMomentConnection = {
@@ -221,32 +221,32 @@ export type ModelReflectionMomentConnection = {
 
 export type ReflectionMoment = {
   __typename: "ReflectionMoment",
-  id?: string,
-  reflectionID?: string,
-  momentID?: string,
-  reflection?: Reflection,
-  moment?: Moment,
-  createdAt?: string,
-  updatedAt?: string,
+  id: string,
+  reflectionID: string,
+  momentID: string,
+  reflection: Reflection,
+  moment: Moment,
+  createdAt: string,
+  updatedAt: string,
   owner?: string | null,
 };
 
 export type Moment = {
   __typename: "Moment",
-  id?: string,
+  id: string,
   createdAt?: string | null,
-  title?: string,
+  title: string,
   contentType?: ContentType | null,
   content?: string | null,
   isFavorite?: boolean | null,
-  asset?: S3Object,
+  asset?: S3Object | null,
   tags?: Array< string | null > | null,
   deleted?: boolean | null,
   sharedUsersDetail?:  Array<sharedUsersDetail | null > | null,
   sharedUsers?: Array< string | null > | null,
   comments?:  Array<Comment | null > | null,
-  reflection?: ModelReflectionMomentConnection,
-  updatedAt?: string,
+  reflection?: ModelReflectionMomentConnection | null,
+  updatedAt: string,
   owner?: string | null,
 };
 
@@ -270,7 +270,7 @@ export type UpdateReflectionInput = {
 };
 
 export type DeleteReflectionInput = {
-  id?: string | null,
+  id: string,
 };
 
 export type CreateMomentInput = {
@@ -317,7 +317,7 @@ export type UpdateMomentInput = {
 };
 
 export type DeleteMomentInput = {
-  id?: string | null,
+  id: string,
 };
 
 export type CreateReflectionMomentInput = {
@@ -357,14 +357,14 @@ export type UpdateReflectionMomentInput = {
 };
 
 export type DeleteReflectionMomentInput = {
-  id?: string | null,
+  id: string,
 };
 
 export type CheckShare = {
   __typename: "CheckShare",
-  uuid?: string,
-  email?: string,
-  alreadyExist?: boolean,
+  uuid: string,
+  email: string,
+  alreadyExist: boolean,
 };
 
 export type ModelProfileSettingsFilterInput = {
@@ -427,7 +427,7 @@ export type ModelMomentConnection = {
 };
 
 export type CreateProfileSettingsMutationVariables = {
-  input?: CreateProfileSettingsInput,
+  input: CreateProfileSettingsInput,
   condition?: ModelProfileSettingsConditionInput | null,
 };
 
@@ -450,7 +450,7 @@ export type CreateProfileSettingsMutation = {
 };
 
 export type UpdateProfileSettingsMutationVariables = {
-  input?: UpdateProfileSettingsInput,
+  input: UpdateProfileSettingsInput,
   condition?: ModelProfileSettingsConditionInput | null,
 };
 
@@ -473,7 +473,7 @@ export type UpdateProfileSettingsMutation = {
 };
 
 export type DeleteProfileSettingsMutationVariables = {
-  input?: DeleteProfileSettingsInput,
+  input: DeleteProfileSettingsInput,
   condition?: ModelProfileSettingsConditionInput | null,
 };
 
@@ -496,7 +496,7 @@ export type DeleteProfileSettingsMutation = {
 };
 
 export type CreateReflectionMutationVariables = {
-  input?: CreateReflectionInput,
+  input: CreateReflectionInput,
   condition?: ModelReflectionConditionInput | null,
 };
 
@@ -547,7 +547,7 @@ export type CreateReflectionMutation = {
 };
 
 export type UpdateReflectionMutationVariables = {
-  input?: UpdateReflectionInput,
+  input: UpdateReflectionInput,
   condition?: ModelReflectionConditionInput | null,
 };
 
@@ -598,7 +598,7 @@ export type UpdateReflectionMutation = {
 };
 
 export type DeleteReflectionMutationVariables = {
-  input?: DeleteReflectionInput,
+  input: DeleteReflectionInput,
   condition?: ModelReflectionConditionInput | null,
 };
 
@@ -649,7 +649,7 @@ export type DeleteReflectionMutation = {
 };
 
 export type CreateMomentMutationVariables = {
-  input?: CreateMomentInput,
+  input: CreateMomentInput,
   condition?: ModelMomentConditionInput | null,
 };
 
@@ -692,7 +692,7 @@ export type CreateMomentMutation = {
 };
 
 export type UpdateMomentMutationVariables = {
-  input?: UpdateMomentInput,
+  input: UpdateMomentInput,
   condition?: ModelMomentConditionInput | null,
 };
 
@@ -735,7 +735,7 @@ export type UpdateMomentMutation = {
 };
 
 export type DeleteMomentMutationVariables = {
-  input?: DeleteMomentInput,
+  input: DeleteMomentInput,
   condition?: ModelMomentConditionInput | null,
 };
 
@@ -778,7 +778,7 @@ export type DeleteMomentMutation = {
 };
 
 export type CreateReflectionMomentMutationVariables = {
-  input?: CreateReflectionMomentInput,
+  input: CreateReflectionMomentInput,
   condition?: ModelReflectionMomentConditionInput | null,
 };
 
@@ -826,7 +826,7 @@ export type CreateReflectionMomentMutation = {
 };
 
 export type UpdateReflectionMomentMutationVariables = {
-  input?: UpdateReflectionMomentInput,
+  input: UpdateReflectionMomentInput,
   condition?: ModelReflectionMomentConditionInput | null,
 };
 
@@ -874,7 +874,7 @@ export type UpdateReflectionMomentMutation = {
 };
 
 export type DeleteReflectionMomentMutationVariables = {
-  input?: DeleteReflectionMomentInput,
+  input: DeleteReflectionMomentInput,
   condition?: ModelReflectionMomentConditionInput | null,
 };
 
@@ -952,7 +952,7 @@ export type CreateDataExportForUserQuery = {
 };
 
 export type GetProfileSettingsQueryVariables = {
-  id?: string,
+  id: string,
 };
 
 export type GetProfileSettingsQuery = {
@@ -995,7 +995,7 @@ export type ListProfileSettingssQuery = {
 };
 
 export type GetReflectionQueryVariables = {
-  id?: string,
+  id: string,
 };
 
 export type GetReflectionQuery = {
@@ -1075,7 +1075,7 @@ export type ListReflectionsQuery = {
 };
 
 export type GetMomentQueryVariables = {
-  id?: string,
+  id: string,
 };
 
 export type GetMomentQuery = {
@@ -1144,7 +1144,7 @@ export type ListMomentsQuery = {
 };
 
 export type OnCreateProfileSettingsSubscriptionVariables = {
-  owner?: string,
+  owner: string,
 };
 
 export type OnCreateProfileSettingsSubscription = {
@@ -1166,7 +1166,7 @@ export type OnCreateProfileSettingsSubscription = {
 };
 
 export type OnUpdateProfileSettingsSubscriptionVariables = {
-  owner?: string,
+  owner: string,
 };
 
 export type OnUpdateProfileSettingsSubscription = {
@@ -1188,7 +1188,7 @@ export type OnUpdateProfileSettingsSubscription = {
 };
 
 export type OnDeleteProfileSettingsSubscriptionVariables = {
-  owner?: string,
+  owner: string,
 };
 
 export type OnDeleteProfileSettingsSubscription = {
@@ -1210,8 +1210,8 @@ export type OnDeleteProfileSettingsSubscription = {
 };
 
 export type OnCreateReflectionSubscriptionVariables = {
-  owner?: string,
-  sharedUsers?: string,
+  owner: string,
+  sharedUsers: string,
 };
 
 export type OnCreateReflectionSubscription = {
@@ -1261,8 +1261,8 @@ export type OnCreateReflectionSubscription = {
 };
 
 export type OnUpdateReflectionSubscriptionVariables = {
-  owner?: string,
-  sharedUsers?: string,
+  owner: string,
+  sharedUsers: string,
 };
 
 export type OnUpdateReflectionSubscription = {
@@ -1312,8 +1312,8 @@ export type OnUpdateReflectionSubscription = {
 };
 
 export type OnDeleteReflectionSubscriptionVariables = {
-  owner?: string,
-  sharedUsers?: string,
+  owner: string,
+  sharedUsers: string,
 };
 
 export type OnDeleteReflectionSubscription = {
@@ -1363,8 +1363,8 @@ export type OnDeleteReflectionSubscription = {
 };
 
 export type OnCreateMomentSubscriptionVariables = {
-  owner?: string,
-  sharedUsers?: string,
+  owner: string,
+  sharedUsers: string,
 };
 
 export type OnCreateMomentSubscription = {
@@ -1406,8 +1406,8 @@ export type OnCreateMomentSubscription = {
 };
 
 export type OnUpdateMomentSubscriptionVariables = {
-  owner?: string,
-  sharedUsers?: string,
+  owner: string,
+  sharedUsers: string,
 };
 
 export type OnUpdateMomentSubscription = {
@@ -1449,8 +1449,8 @@ export type OnUpdateMomentSubscription = {
 };
 
 export type OnDeleteMomentSubscriptionVariables = {
-  owner?: string,
-  sharedUsers?: string,
+  owner: string,
+  sharedUsers: string,
 };
 
 export type OnDeleteMomentSubscription = {
@@ -1492,7 +1492,7 @@ export type OnDeleteMomentSubscription = {
 };
 
 export type OnCreateReflectionMomentSubscriptionVariables = {
-  owner?: string,
+  owner: string,
 };
 
 export type OnCreateReflectionMomentSubscription = {
@@ -1539,7 +1539,7 @@ export type OnCreateReflectionMomentSubscription = {
 };
 
 export type OnUpdateReflectionMomentSubscriptionVariables = {
-  owner?: string,
+  owner: string,
 };
 
 export type OnUpdateReflectionMomentSubscription = {
@@ -1586,7 +1586,7 @@ export type OnUpdateReflectionMomentSubscription = {
 };
 
 export type OnDeleteReflectionMomentSubscriptionVariables = {
-  owner?: string,
+  owner: string,
 };
 
 export type OnDeleteReflectionMomentSubscription = {
