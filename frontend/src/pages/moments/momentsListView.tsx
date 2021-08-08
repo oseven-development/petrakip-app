@@ -24,7 +24,10 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
 
   // useIonViewWillEnter because of navigation benefits
   useIonViewWillEnter(() => {
-    getMomentAPI().then(setMoments)
+    getMomentAPI().then(res => {
+      setMoments(res)
+      setMomentsFiltered(res)
+    })
   })
 
   return (
