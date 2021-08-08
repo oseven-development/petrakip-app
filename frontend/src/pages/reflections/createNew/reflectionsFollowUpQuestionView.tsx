@@ -4,13 +4,17 @@ import { RouteComponentProps, useLocation } from 'react-router'
 import {
   IonButton,
   IonContent,
+  IonGrid,
   IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
   IonLoading,
   IonPage,
 } from '@ionic/react'
 
 import { API, graphqlOperation } from 'aws-amplify'
-import { Header } from '../../../components'
+import { Header, LargeHeader } from '../../../components'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import {
   UpdateReflectionInput,
@@ -20,6 +24,7 @@ import {
 
 import { updateReflection } from '../../../graphql/mutations'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
+import { followUpQuestions } from '../../../data/reflectionFollowUpQuestions'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -29,11 +34,7 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
 }) => {
   const location = useLocation()
   const [loader, setLoader] = React.useState(true)
-  const [question, setQuestion] = React.useState([
-    'Wie fühlst du dich',
-    'Bist du ein toller lehrmeister',
-    'wft was steht hier!',
-  ])
+  const [question, setQuestion] = React.useState(followUpQuestions)
   React.useEffect(() => {})
 
   const updateQuest = async () => {
@@ -61,18 +62,19 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
 
   return (
     <IonPage>
-      <Header>reflectionsFollowUpQuestion</Header>
+      <Header>Folge Fragen</Header>
       <IonContent fullscreen>
-        <h1>reflectionsFollowUpQuestion!</h1>
-        {!loader &&
-          question.map(items => (
-            <React.Fragment key={items}>
-              <h3>{items}</h3>
-              <IonInput placeholder="deine Antwort"></IonInput>
-            </React.Fragment>
-          ))}
-
-        <IonButton onClick={updateQuest}>Update ID</IonButton>
+        <LargeHeader>Folge Fragen</LargeHeader>
+        <IonList>
+          {!loader &&
+            question.map(items => (
+              <IonItem key={items.question}>
+                <IonLabel position="stacked">{items.question}</IonLabel>
+                <IonInput placeholder="deine Antwort"></IonInput>
+              </IonItem>
+            ))}
+        </IonList>
+        <IonButton onClick={updateQuest}>beantworten</IonButton>
         <IonLoading
           cssClass="my-custom-class"
           isOpen={loader}
