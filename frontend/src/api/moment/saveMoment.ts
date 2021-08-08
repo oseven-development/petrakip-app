@@ -63,12 +63,14 @@ export const saveMomentAPI = async ({
       return res.data?.createMoment
     } else if (updateState === 'update') {
       // deletes field from object which are not used in update
+      // FIXME: Could be a potential bug -> might remove reflection from moment when updated
       delete (moment as Moment).reflection
       // TODO: Fix TypeError
       //@ts-ignore
       delete (moment as Moment).updatedAt
       delete (moment as Moment).owner
 
+      console.log(moment)
       const res: any = (await API.graphql(
         graphqlOperation(updateMoment, { input: moment }),
       )) as GraphQLResult<{ updateMoment: UpdateMomentInput }>

@@ -93,6 +93,7 @@ type Moment
   title: String!
   contentType: ContentType
   content: String
+  isFavorite: Boolean
   asset: S3Object
   tags: [String]
   deleted: Boolean

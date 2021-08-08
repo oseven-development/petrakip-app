@@ -12,6 +12,7 @@ import {
   useIonViewWillEnter,
 } from '@ionic/react'
 import { Auth } from 'aws-amplify'
+import { star } from 'ionicons/icons'
 import React from 'react'
 import { usePlatform } from '../../hooks/usePlatform'
 import { getLocaleDateString } from '../../utils/dateUtils'
@@ -27,6 +28,7 @@ interface Item {
   title?: string | null | undefined
   selected?: boolean
   owner?: string | null | undefined
+  isFavorite: boolean | null
 }
 
 interface Props<A extends Item> {
@@ -83,6 +85,7 @@ export function ListComponent<A extends Item>({
         </IonText>
         <p>{getLocaleDateString(new Date(item.createdAt || ''))}</p>
       </IonLabel>
+      {item.isFavorite && <IonIcon color="warning" size="small" icon={star} />}
     </IonItem>
   )
 

@@ -33,7 +33,7 @@ import { Auth } from 'aws-amplify'
 import React from 'react'
 import { ShareUser } from '../../types/shareUser'
 import { momentTags } from '../../data/momentTags'
-import { addCircle, save } from 'ionicons/icons'
+import { addCircle, save, star, starOutline } from 'ionicons/icons'
 export interface Moment {
   title: string
   tags: string[]
@@ -54,7 +54,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
     data: '',
     name: '',
   })
-  const [moment, setMoment] = useState<any>({ title: '', tags: [''] })
+  const [moment, setMoment]: any = useState<any>({ title: '', tags: [''] })
   const [isSharedMoment, setIsSharedMoment] = useState<boolean>(false)
 
   useIonViewWillEnter(() => {
@@ -98,6 +98,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
           match?.params?.id ? 'geändert' : 'erstellt'
         }`,
       })
+
       history.replace('/moments')
     }
   }
@@ -145,13 +146,32 @@ export const MomentsDetailView: React.FC<Props> = props => {
     <IonPage>
       <Header
         shareSlot={
-          <ShareOverview
-            id={match?.params?.id}
-            sharedUsers={moment.sharedUsersDetail || []}
-            assetType={'Moment'}
-            shareAsset={addShare}
-            removeAsset={removeShare}
-          />
+          <>
+            {match?.params?.id && (
+              <IonButton
+                onClick={() => {
+                  const currentIsFavorite = moment.isFavorite
+                    ? moment.isFavorite
+                    : false
+                  setMoment({ ...moment, isFavorite: !currentIsFavorite })
+                }}
+              >
+                <IonIcon
+                  color="warning"
+                  slot="icon-only"
+                  icon={moment.isFavorite ? star : starOutline}
+                />
+              </IonButton>
+            )}
+
+            <ShareOverview
+              id={match?.params?.id}
+              sharedUsers={moment.sharedUsersDetail || []}
+              assetType={'Moment'}
+              shareAsset={addShare}
+              removeAsset={removeShare}
+            />
+          </>
         }
         deleteSlot={deleteMoment}
       >
@@ -233,7 +253,11 @@ export const MomentsDetailView: React.FC<Props> = props => {
           </IonRow>
         </IonGrid>
       </IonContent>
-      <IonButton expand="block" onClick={saveMoment} disabled={isSharedMoment}>
+      <IonButton
+        expand="block"
+        onClick={() => saveMoment()}
+        disabled={isSharedMoment}
+      >
         <IonIcon
           slot="start"
           icon={match?.params?.id ? save : addCircle}
