@@ -28,7 +28,7 @@ interface Item {
   title?: string | null | undefined
   selected?: boolean
   owner?: string | null | undefined
-  isFavorite: boolean | null
+  isFavorite?: boolean | null
 }
 
 interface Props<A extends Item> {
