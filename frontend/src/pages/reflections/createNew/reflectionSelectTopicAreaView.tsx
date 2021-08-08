@@ -17,7 +17,7 @@ import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 
-import listItems from './testTopic'
+import { reflectionTopics } from '../../../data/reflectionTopic'
 import { listAllReflectionsTopicsAPI } from '../../../api/'
 import { useCustomLoaderOnViewEnter } from '../../../hooks'
 interface Props extends RouteComponentProps<{}> {}
@@ -39,7 +39,7 @@ export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
 
   const calcFinsihedTopics = (subTopics: { subTopic: string }[]) => {
     const finishedTopicAsArray = subTopics.map(({ subTopic }) => subTopic)
-    const topicList = listItems.map(topic => {
+    const topicList = reflectionTopics.map(topic => {
       topic.subListItems = topic.subListItems.map(subTopics => {
         subTopics.subjectStatusCompleted = finishedTopicAsArray.includes(
           subTopics.subjectLable,

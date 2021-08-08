@@ -28,6 +28,7 @@ import { ShareOverview } from '../../components/share/shareOverview'
 import { Auth } from 'aws-amplify'
 import React from 'react'
 import { ShareUser } from '../../types/shareUser'
+import { momentTags } from '../../data/momentTags'
 export interface Moment {
   title: string
   tags: string[]
@@ -191,16 +192,9 @@ export const MomentsDetailView: React.FC<Props> = props => {
               }
             >
               {/* TODO: neeed correct tags */}
-              <IonSelectOption value="bacon">Bacon</IonSelectOption>
-              <IonSelectOption value="olives">Black Olives</IonSelectOption>
-              <IonSelectOption value="xcheese">Extra Cheese</IonSelectOption>
-              <IonSelectOption value="peppers">Green Peppers</IonSelectOption>
-              <IonSelectOption value="mushrooms">Mushrooms</IonSelectOption>
-              <IonSelectOption value="onions">Onions</IonSelectOption>
-              <IonSelectOption value="pepperoni">Pepperoni</IonSelectOption>
-              <IonSelectOption value="pineapple">Pineapple</IonSelectOption>
-              <IonSelectOption value="sausage">Sausage</IonSelectOption>
-              <IonSelectOption value="Spinach">Spinach</IonSelectOption>
+              {momentTags.map((tag: any) => (
+                <IonSelectOption value={tag.value}>{tag.label}</IonSelectOption>
+              ))}
             </IonSelect>
           </IonItem>
         </IonList>
