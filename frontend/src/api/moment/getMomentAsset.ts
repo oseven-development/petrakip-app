@@ -1,33 +1,18 @@
 import { API, Auth, graphqlOperation, Storage } from 'aws-amplify'
-import { ContentType } from '../../API'
+import { S3Object } from '../../API'
 import { createSignedUrlForAssets } from '../../graphql/queries'
 import { Media } from './saveMoment'
 
-export interface S3Object {
-  bucket: string
-  key: string
-  region: string
-  identityId: string
-}
-
 export const getMomentAsset = async ({
   asset,
-  contentType,
   content,
   owner,
 }: {
-  asset: S3Object
-  contentType: ContentType
-  content: string | undefined
+  asset?: S3Object | null
+  content?: string | null
   owner: string
 }): Promise<Media> => {
-  if (contentType === ContentType.text) {
-    return {
-      name: 'note',
-      data: content,
-      type: 'text',
-    }
-  } else {
+  if (asset) {
     const currentUser = (await Auth.currentUserInfo()).username
 
     const result: any =
@@ -42,6 +27,11 @@ export const getMomentAsset = async ({
       data: result.Body,
       type: result.Body.type,
     }
+  }
+  return {
+    name: 'note',
+    data: content,
+    type: 'text',
   }
 }
 
