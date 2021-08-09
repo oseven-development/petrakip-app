@@ -57,7 +57,6 @@ export function createReflectionUpdateObject(
   if (reactState.state === ReflectionState.started) {
     state.state = ReflectionState.awaitingFollowUpQuestions
   }
-
   return state
 }
 
@@ -92,7 +91,6 @@ export function reflectionStatetoURI({
   if (createdAt) {
     arr.push(`${ReflectionQueryParamKeys.createdAt}=${createdAt}`)
   }
-
   if (state) {
     arr.push(`${ReflectionQueryParamKeys.reflexionState}=${state}`)
   }
@@ -104,12 +102,16 @@ export function reflectionStatetoURI({
       )}`,
     )
   }
-
   if (moments?.items !== undefined) {
+    //@ts-ignore
+    const data = moments?.items.map(({ moment: { id, title, createdAt } }) => ({
+      id,
+      title,
+      createdAt,
+    }))
+
     arr.push(
-      `${ReflectionQueryParamKeys.moment}=${encodeURI(
-        JSON.stringify(moments?.items),
-      )}`,
+      `${ReflectionQueryParamKeys.moment}=${encodeURI(JSON.stringify(data))}`,
     )
   }
   return arr.join('&').toString()
