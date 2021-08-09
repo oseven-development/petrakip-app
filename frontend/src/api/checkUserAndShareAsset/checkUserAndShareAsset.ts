@@ -19,5 +19,5 @@ export const checkUserAndShareAssetAPI = async (
   } catch (error) {
     throw error.errors
   }
-  throw new Error('somthing faild')
+  throw new Error('somthing failed')
 }

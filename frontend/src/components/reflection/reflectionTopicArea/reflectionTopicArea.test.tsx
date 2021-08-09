@@ -54,8 +54,8 @@ describe('main suite', () => {
 
   test.each`
     mainElementId                  | subElementId                    | result
-    ${'5-motivieren-und-anleiten'} | ${'5.3-zeitmanagement'}         | ${{ topic: '5-motivieren-und-anleiten', subTopic: '5.3-zeitmanagement' }}
-    ${'7-planen-und-evaluieren'}   | ${'7.1-leitideen-und-lehrplan'} | ${{ topic: '7-planen-und-evaluieren', subTopic: '7.1-leitideen-und-lehrplan' }}
+    ${'5-motivieren-und-anleiten'} | ${'5.3-zeitmanagement'}         | ${{ topic: '5 Motivieren und Anleiten', subTopic: '5.3 Zeitmanagement' }}
+    ${'7-planen-und-evaluieren'}   | ${'7.1-leitideen-und-lehrplan'} | ${{ topic: '7 Planen und Evaluieren', subTopic: '7.1 Leitideen und Lehrplan' }}
   `(
     '`when click on $subElementId the function should emit $result`',
     ({ mainElementId, subElementId, result }) => {

@@ -4,7 +4,6 @@ import { RouteComponentProps, useLocation } from 'react-router'
 import {
   IonButton,
   IonContent,
-  IonGrid,
   IonIcon,
   IonInput,
   IonItem,
@@ -53,6 +52,13 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
         ],
         state: ReflectionState.completed,
       }
+
+      // UpdateURL([
+      //   {
+      //     key: ReflectionQueryParamKeys.reflexionState,
+      //     value: ReflectionState.completed,
+      //   },
+      // ])
 
       const res = (await API.graphql(
         graphqlOperation(updateReflection, { input }),

@@ -21,6 +21,10 @@ const ListReflectionsQuery = /* GraphQL */ `
         state
         deleted
         sharedUsers
+        sharedUsersDetail {
+          id
+          email
+        }
         updatedAt
         owner
       }

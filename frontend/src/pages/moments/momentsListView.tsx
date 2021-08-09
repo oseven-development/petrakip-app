@@ -24,9 +24,9 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
 
   // useIonViewWillEnter because of navigation benefits
   useIonViewWillEnter(() => {
-    getMomentAPI({}).then(res => {
-      setMoments(res.items)
-      setMomentsFiltered(res.items)
+    getMomentAPI().then(res => {
+      setMoments(res)
+      setMomentsFiltered(res)
     })
   })
 
@@ -55,8 +55,7 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
           elements={moments}
           setElements={setMomentsFiltered}
         ></FilterDialog>
-        {/* TODO: fix type error.  -> added isFavorite screwed up your logic @maxhaensel */}
-        <ListComponent<any>
+        <ListComponent<Moment>
           elements={momentsFiltered}
           onClickHandler={moment => {
             history.push({

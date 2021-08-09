@@ -5,13 +5,10 @@ import {
   IonButton,
   IonCol,
   IonContent,
-  IonGrid,
   IonIcon,
   IonInput,
   IonItem,
   IonItemDivider,
-  IonItemOption,
-  IonItemOptions,
   IonItemSliding,
   IonLabel,
   IonList,
@@ -24,22 +21,16 @@ import {
 import { Header } from '../../../components'
 import { RouteComponentProps } from 'react-router'
 import { useLocation } from 'react-router-dom'
-import {
-  addCircle,
-  aperture,
-  download,
-  save,
-  star,
-  trashOutline,
-} from 'ionicons/icons'
+import { addCircle, aperture, save, star } from 'ionicons/icons'
 
-import { saveReflectionAPI } from '../../../api/'
+import { delteReflectionAPI, saveReflectionAPI } from '../../../api/'
 
 import {
   CreateReflectionInput,
   Reflection,
   ReflectionState,
 } from '../../../API'
+
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
@@ -52,7 +43,7 @@ import { useCustomLoaderOnTrigger } from '../../../hooks'
 import {
   createReflectionUpdateObject,
   reflectionURItoState,
-} from './reflextionUtils'
+} from '../reflectionUtils'
 import { CheckmarkCircleStateIcon } from '../../../utils/stateIcons'
 
 interface Props extends RouteComponentProps<{}> {}
@@ -68,23 +59,12 @@ export interface CreateReflectionInputWithMomentIDs
   momentIDs: string[]
 }
 
-// TODO @maxhaensel
-// Remove unnecessary stuff
 const defaultState: State = {
-  // createdAt: new Date().toISOString(),
   title: '',
-  //contentType: ContentType
-  //asset: S3Object
-  //content: String
   topic: '',
   subTopic: '',
-  //niveau: String
-  //indicators: [String]
   state: ReflectionState.started,
   deleted: false,
-  //   sharedUsers: [String]
-  //   comments: [Comment]
-  //orientationQuestions: [OrientationQuestions]
   sharedUsersDetail: [],
   momentIDs: [],
   momentObj: [],
@@ -93,7 +73,8 @@ const defaultState: State = {
 const deleteSlot = (id: string | null | undefined) =>
   id
     ? () => {
-        console.log('delte')
+        console.log(id)
+        delteReflectionAPI(id)
       }
     : null
 
@@ -201,9 +182,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
               .includes(user.id)
             if (userExist) {
               sharedUsersDetail.push({ id: user.id, email: user.email })
-              const value = sharedUsersDetail
-                .map(key => `${key?.id}#${key?.email}`)
-                .toString()
+              const value = encodeURI(JSON.stringify(sharedUsersDetail))
               UpdateURL([{ key: 'SharedUsers', value }])
             }
           }
@@ -213,11 +192,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           const sharedUsersDetailFilterd = sharedUsersDetail?.filter(
             item => item?.id !== user.id,
           )
-          const value =
-            sharedUsersDetailFilterd
-              ?.map(key => `${key?.id}#${key?.email}`)
-              .toString() || ''
-
+          const value = encodeURI(JSON.stringify(sharedUsersDetailFilterd))
           UpdateURL([{ key: 'SharedUsers', value }])
         }}
       />
@@ -230,7 +205,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
         deleteSlot={deleteSlot(state.id)}
         customBackRoute="/reflections"
       >
-        Neue Reflexion erstellen
+        {state.id ? 'Reflexion bearbeiten' : 'Neue Reflexion erstellen'}
       </Header>
       <IonContent fullscreen>
         {/* ############################ Toast ############################ */}
@@ -337,7 +312,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           {state.momentObj.map(({ id, title, createdAt }) => {
             return (
               <IonItemSliding key={id} id={id}>
-                <IonItem>
+                <IonItem routerLink={`/moments/details/${id}`}>
                   <IonIcon icon={star} slot="start" />
                   <IonLabel>{title}</IonLabel>
                   <IonNote slot="end">
@@ -345,7 +320,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
                   </IonNote>
                 </IonItem>
 
-                <IonItemOptions side="end">
+                {/* <IonItemOptions side="end">
                   <IonItemOption
                     expandable
                     color="danger"
@@ -356,7 +331,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
                   >
                     <IonIcon slot="icon-only" icon={trashOutline} />
                   </IonItemOption>
-                </IonItemOptions>
+                </IonItemOptions> */}
               </IonItemSliding>
             )
           })}

@@ -62,8 +62,9 @@ export const MomentsDetailView: React.FC<Props> = props => {
       getMomentAPI({ id: match?.params?.id })
         .then(async res => {
           // Graphql returns a success query with null
-          if (res) {
+          if (res.asset && res.contentType && res.content && res.owner) {
             const loadedMediaAsset = await getMomentAsset({
+              // @ts-ignore
               asset: res.asset,
               contentType: res.contentType,
               content: res.content,

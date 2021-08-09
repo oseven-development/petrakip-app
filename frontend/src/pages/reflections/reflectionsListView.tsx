@@ -5,7 +5,7 @@ import {
   IonButton,
   useIonViewWillEnter,
 } from '@ionic/react'
-import { listAllReflectionsAPI } from '../../api/'
+import { getReflectionAPI, listAllReflectionsAPI } from '../../api/'
 import { ReflectionsRouting } from '..'
 import { Header, LargeHeader, ListComponent } from '../../components'
 import { Reflection } from '../../API'
@@ -13,6 +13,7 @@ import { groupArrayByDate } from '../../utils/dateUtils'
 
 import { book } from 'ionicons/icons'
 import { RouteComponentProps } from 'react-router-dom'
+import { reflectionStatetoURI } from './reflectionUtils'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -30,18 +31,22 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
           </IonButton>
         }
       >
-        Reflectionen
+        Reflexionen
       </Header>
       <IonContent fullscreen>
-        <LargeHeader>Reflectionen</LargeHeader>
-        {/* TODO: fix type error.  -> added isFavorite screwed up your logic @maxhaensel */}
-
-        <ListComponent<any>
+        <LargeHeader>Reflexionen</LargeHeader>
+        <ListComponent<Reflection>
           elements={state}
-          onClickHandler={({ id, title, topic, subTopic, content }) => {
-            history.push(
-              `${ReflectionsRouting.module}?id=${id}&title=${title}&topic=${topic}&sub-topic=${subTopic}&report=${content}`,
-            )
+          onClickHandler={reflection => {
+            getReflectionAPI(reflection.id)
+              .then(ref => {
+                if (ref) {
+                  history.push(
+                    `${ReflectionsRouting.module}?${reflectionStatetoURI(ref)}`,
+                  )
+                }
+              })
+              .catch(console.error)
           }}
           iconFunction={() => book}
           sortFunction={groupArrayByDate}

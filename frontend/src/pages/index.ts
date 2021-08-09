@@ -12,7 +12,6 @@ export { ProgressDetailView } from './progress/progressDetailView'
 /* Reflections */
 export { ReflectionsRouting } from './reflections/createNew/reflectionCreateNewRouting'
 export { ReflectionsListView } from './reflections/reflectionsListView'
-export { ReflectionsDetailView } from './reflections/reflectionsDetailView'
 export { ReflectionsCreateNewView } from './reflections/createNew/reflectionsCreateNewView'
 export { ReflectionSelectMomentsView } from './reflections/createNew/reflectionSelectMomentsView'
 export { ReflectionSelectTopicAreaView } from './reflections/createNew/reflectionSelectTopicAreaView'

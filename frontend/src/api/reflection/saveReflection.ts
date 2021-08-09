@@ -168,17 +168,13 @@ async function apiCall<T>({
   query,
   key,
 }: Operation): Promise<T | undefined> {
-  const res = (await API.graphql(
-    graphqlOperation(query, { input }),
-  )) as GraphQLResult<{ [key: string]: T }>
-  if (res.errors) throw res.errors
-  if (res.data) return res.data[key]
-}
-
-// FIXME REMOVE LATER
-export const loadAllMomentsAPI = async (): Promise<Moment[]> => {
-  const res = (await API.graphql(
-    graphqlOperation(listMoments),
-  )) as GraphQLResult<{ listMoments: { items: Moment[] } }>
-  return res.data?.listMoments.items || []
+  try {
+    const res = (await API.graphql(
+      graphqlOperation(query, { input }),
+    )) as GraphQLResult<{ [key: string]: T }>
+    if (res.errors) throw res.errors
+    if (res.data) return res.data[key]
+  } catch (error) {
+    console.error(error)
+  }
 }
