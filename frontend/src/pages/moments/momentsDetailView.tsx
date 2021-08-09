@@ -62,22 +62,18 @@ export const MomentsDetailView: React.FC<Props> = props => {
       getMomentAPI({ id: match?.params?.id })
         .then(async res => {
           // Graphql returns a success query with null
-          if (res.asset && res.contentType && res.content && res.owner) {
+          if (res.contentType && res.owner) {
             const loadedMediaAsset = await getMomentAsset({
-              // @ts-ignore
               asset: res.asset,
-              contentType: res.contentType,
               content: res.content,
               owner: res.owner,
             })
             setMedia(loadedMediaAsset)
-            setMoment(res)
-            setIsSharedMoment(
-              res.owner !== (await Auth.currentUserInfo()).username,
-            )
-          } else {
-            history.replace('/moments')
           }
+          setMoment(res)
+          setIsSharedMoment(
+            res.owner !== (await Auth.currentUserInfo()).username,
+          )
         })
         .catch(err => history.replace('/moments'))
     }
