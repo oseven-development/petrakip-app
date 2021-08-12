@@ -5,7 +5,7 @@ on:
     paths: [amplify/**]
 
 jobs:
-  test:
+  deploy:
     name: test amplify-cli-action
     runs-on: ubuntu-latest
     env:
