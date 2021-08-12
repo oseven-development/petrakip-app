@@ -1,0 +1,36 @@
+name: 'Deploy backend'
+on: 
+  push:
+    branches: [main]
+    paths: [amplify/**]
+
+jobs:
+  test:
+    name: test amplify-cli-action
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: eu-central-1
+      AMPLIFY_ENV: production
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: configure amplify
+      uses: ambientlight/amplify-cli-action@0.3.0
+      with:
+        amplify_command: configure
+        amplify_env: ${{ env.production }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ env.AWS_REGION }}
+    
+    - name: deploy
+      uses: ambientlight/amplify-cli-action@0.3.0
+      with:
+        amplify_command: push
+        amplify_env: ${{ env.production }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ env.AWS_REGION }}
