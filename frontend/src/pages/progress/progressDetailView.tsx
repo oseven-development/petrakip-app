@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
+
 import {
   IonCard,
   IonCardContent,
@@ -9,32 +12,26 @@ import {
   IonProgressBar,
   useIonViewWillEnter,
 } from '@ionic/react'
-import { useState } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+
+import { Header, LargeHeader } from '../../components'
 import { listAllReflectionsAPI } from '../../api/'
 import { Reflection, ReflectionState } from '../../API'
-import { Header, LargeHeader } from '../../components'
-import { Auth } from 'aws-amplify'
 
 interface Props extends RouteComponentProps<{}> {}
 
 export const ProgressDetailView: React.FC<Props> = ({ history }) => {
   const [reflections, setReflections] = useState<Reflection[]>([])
-  const [completedReflections, setCompletedReflections] = useState<any>(
-    undefined,
-  )
+  const [completedReflections, setCompletedReflections] = useState<number>(0)
   useIonViewWillEnter(() => {
     listAllReflectionsAPI()
       .then(res => {
         setReflections(res)
         setCompletedReflections(
-          res.filter((r: any) => r.state === ReflectionState.completed).length,
+          res.filter(({ state }) => state === ReflectionState.completed).length,
         )
       })
       .catch(console.error)
   }, [])
-
-  console.log(reflections)
   return (
     <IonPage>
       <Header>Fortschritt</Header>

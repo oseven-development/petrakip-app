@@ -1,18 +1,21 @@
 import React from 'react'
-import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
-import { Header, ListComponent } from '../../../components'
 import { RouteComponentProps, useLocation } from 'react-router'
+
+import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
+import { save } from 'ionicons/icons'
+
+import { Header, ListComponent } from '../../../components'
+
+import { useUpdateQueryParamState } from './useUpdateQueryParamState'
+
+import { getIconFromContentType, groupArrayByDate } from '../../../utils/'
+import { extractDataFromArray } from '../reflectionUtils'
+
+import { Moment } from '../../../API'
+import { getMomentAPI } from '../../../api/'
 
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-
-import { Moment } from '../../../API'
-import { useUpdateQueryParamState } from './useUpdateQueryParamState'
-import { getIconFromContentType } from '../../../utils/getContentTypeUtils'
-import { groupArrayByDate } from '../../../utils/dateUtils'
-import { extractDataFromArray } from '../reflectionUtils'
-import { getMomentAPI } from '../../../api/moment/getMoment'
-import { save } from 'ionicons/icons'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -64,7 +67,7 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
       </Header>
 
       <IonContent fullscreen>
-        <ListComponent<any>
+        <ListComponent<Moment>
           elements={momentsState}
           onClickHandler={updateState}
           iconFunction={({ contentType }) =>
@@ -76,6 +79,7 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
       <IonButton
         expand="block"
         routerLink={`${ReflectionsRouting.module}${currentUrl}`}
+        routerDirection="back"
       >
         <IonIcon slot="start" icon={save}></IonIcon>
         Speichern

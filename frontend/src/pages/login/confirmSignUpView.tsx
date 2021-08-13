@@ -11,7 +11,7 @@ import {
   useIonToast,
 } from '@ionic/react'
 import React, { useState } from 'react'
-import { Header, LargeHeader } from '../../components/header'
+import { Header, LargeHeader } from '../../components'
 import './login.css'
 
 const ConfirmSignUpView: React.FC = (props: any) => {

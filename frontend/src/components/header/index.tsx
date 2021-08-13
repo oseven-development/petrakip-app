@@ -8,20 +8,38 @@ import {
   IonIcon,
 } from '@ionic/react'
 import { arrowBackOutline, trash } from 'ionicons/icons'
+import React from 'react'
 
 interface Props {
   children: string | string[]
-  shareSlot?: any
-  deleteSlot?: any
+  iconSlot?: JSX.Element[]
+  deleteSlot?: (e: any) => void
   customBackRoute?: string
+  disabled?: boolean
 }
 
 const Header: React.FC<Props> = ({
   children,
-  shareSlot,
+  iconSlot,
   deleteSlot,
   customBackRoute,
+  disabled = false,
 }) => {
+  const HeaderButtons = () =>
+    !disabled &&
+    (iconSlot || deleteSlot) && (
+      <IonButtons slot="end">
+        {iconSlot?.map((el, i) => (
+          <React.Fragment key={el.type + i}>{el}</React.Fragment>
+        ))}
+        {deleteSlot && (
+          <IonButton onClick={deleteSlot}>
+            <IonIcon color="danger" slot="icon-only" icon={trash} />
+          </IonButton>
+        )}
+      </IonButtons>
+    )
+
   return (
     <IonHeader>
       <IonToolbar>
@@ -35,16 +53,7 @@ const Header: React.FC<Props> = ({
           )}
         </IonButtons>
         <IonTitle>{children}</IonTitle>
-        {(shareSlot || deleteSlot) && (
-          <IonButtons slot="end">
-            {shareSlot}
-            {deleteSlot && (
-              <IonButton onClick={deleteSlot}>
-                <IonIcon color="danger" slot="icon-only" icon={trash} />
-              </IonButton>
-            )}
-          </IonButtons>
-        )}
+        {HeaderButtons()}
       </IonToolbar>
     </IonHeader>
   )

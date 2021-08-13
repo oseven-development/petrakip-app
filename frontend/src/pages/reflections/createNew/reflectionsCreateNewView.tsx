@@ -1,4 +1,8 @@
 import React from 'react'
+import { RouteComponentProps } from 'react-router'
+import { useLocation } from 'react-router-dom'
+
+import { addCircle, aperture, save, star } from 'ionicons/icons'
 
 import {
   IonAlert,
@@ -9,19 +13,29 @@ import {
   IonInput,
   IonItem,
   IonItemDivider,
-  IonItemSliding,
   IonLabel,
   IonList,
   IonNote,
   IonPage,
   IonRow,
   IonText,
+  useIonViewWillEnter,
 } from '@ionic/react'
 
-import { Header } from '../../../components'
-import { RouteComponentProps } from 'react-router'
-import { useLocation } from 'react-router-dom'
-import { addCircle, aperture, save, star } from 'ionicons/icons'
+import { Header, ShareOverview } from '../../../components'
+
+import { useCustomLoaderOnTrigger } from '../../../hooks'
+
+import {
+  createReflectionUpdateObject,
+  reflectionURItoState,
+} from '../reflectionUtils'
+
+import {
+  getLocaleDateString,
+  getLongDateString,
+  CheckmarkCircleStateIcon,
+} from '../../../utils'
 
 import { delteReflectionAPI, saveReflectionAPI } from '../../../api/'
 
@@ -29,29 +43,20 @@ import {
   CreateReflectionInput,
   Reflection,
   ReflectionState,
+  SharedUsersDetailInput,
 } from '../../../API'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
-import {
-  getLocaleDateString,
-  getLongDateString,
-} from '../../../utils/dateUtils'
-import { ShareOverview } from '../../../components/share/shareOverview'
-import { useCustomLoaderOnTrigger } from '../../../hooks'
-import {
-  createReflectionUpdateObject,
-  reflectionURItoState,
-} from '../reflectionUtils'
-import { CheckmarkCircleStateIcon } from '../../../utils/stateIcons'
+
+import { CheckShareUser, ShareUser } from '../../../types/shareUser'
 
 interface Props extends RouteComponentProps<{}> {}
 
 export interface State extends CreateReflectionInput {
   momentIDs: string[]
   momentObj: { id: string; title: string; createdAt: string }[]
-  // sharedUsersDetail: ShareUser[] | null | undefined
 }
 
 export interface CreateReflectionInputWithMomentIDs
@@ -70,14 +75,6 @@ const defaultState: State = {
   momentObj: [],
 }
 
-const deleteSlot = (id: string | null | undefined) =>
-  id
-    ? () => {
-        console.log(id)
-        delteReflectionAPI(id)
-      }
-    : null
-
 export const ReflectionsCreateNewView: React.FC<Props> = ({
   match,
   history,
@@ -85,7 +82,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   const [showFollowUpQuestions, setShowFollowUpQuestions] = React.useState(
     false,
   )
-
+  const [sharedItem, setSharedItem] = React.useState<boolean>(false)
   const [state, setState] = React.useState<State>(defaultState)
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
   const location = useLocation()
@@ -96,14 +93,21 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
     Display the Follow-Up-Question Pop-Up
     only when mounting the view
   */
-  const entryReflexionState = params.get(
-    ReflectionQueryParamKeys.reflexionState,
-  )
-  React.useEffect(() => {
-    if (entryReflexionState === ReflectionState.awaitingFollowUpQuestions) {
+  useIonViewWillEnter(() => {
+    const entryReflexionState = params.get(
+      ReflectionQueryParamKeys.reflexionState,
+    )
+    const shareState = Boolean(params.get('sharedItem'))
+
+    setSharedItem(shareState)
+
+    if (
+      entryReflexionState === ReflectionState.awaitingFollowUpQuestions &&
+      !shareState
+    ) {
       setShowFollowUpQuestions(true)
     }
-  }, [entryReflexionState, setShowFollowUpQuestions])
+  }, [params])
 
   /*
     Update the State when the URI are changing
@@ -166,46 +170,62 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
     triggerUpdateReflection(createReflectionUpdateObject(state))
   }
 
-  const shareSlot = (id: string | null | undefined) =>
-    id ? (
-      <ShareOverview
-        id={id}
-        //@ts-ignore
-        sharedUsers={state.sharedUsersDetail || []}
-        assetType={'Reflection'}
-        shareAsset={user => {
-          const sharedUsersDetail = state.sharedUsersDetail
+  /*
+  Add and Remove a Share
+  Render The ShareOverview
+  */
+  const shareAsset = (user: CheckShareUser) => {
+    const sharedUsersDetail = state.sharedUsersDetail
+    if (sharedUsersDetail) {
+      const userExist = !sharedUsersDetail
+        .map(item => item?.id)
+        .includes(user.id)
+      if (userExist) {
+        sharedUsersDetail.push({ id: user.id, email: user.email })
+        const value = encodeURI(JSON.stringify(sharedUsersDetail))
+        UpdateURL([{ key: 'SharedUsers', value }])
+      }
+    }
+  }
+  const removeAsset = (user: ShareUser) => {
+    const sharedUsersDetail = state.sharedUsersDetail
+    const sharedUsersDetailFilterd = sharedUsersDetail?.filter(
+      item => item?.id !== user.id,
+    )
+    const value = encodeURI(JSON.stringify(sharedUsersDetailFilterd))
+    UpdateURL([{ key: 'SharedUsers', value }])
+  }
+  const shareSlot = (id: string) => (
+    <ShareOverview
+      id={id}
+      sharedUsers={(state.sharedUsersDetail as SharedUsersDetailInput[]) || []}
+      assetType={'Reflection'}
+      shareAsset={shareAsset}
+      removeAsset={removeAsset}
+    />
+  )
 
-          if (sharedUsersDetail) {
-            const userExist = !sharedUsersDetail
-              .map(item => item?.id)
-              .includes(user.id)
-            if (userExist) {
-              sharedUsersDetail.push({ id: user.id, email: user.email })
-              const value = encodeURI(JSON.stringify(sharedUsersDetail))
-              UpdateURL([{ key: 'SharedUsers', value }])
-            }
-          }
-        }}
-        removeAsset={user => {
-          const sharedUsersDetail = state.sharedUsersDetail
-          const sharedUsersDetailFilterd = sharedUsersDetail?.filter(
-            item => item?.id !== user.id,
-          )
-          const value = encodeURI(JSON.stringify(sharedUsersDetailFilterd))
-          UpdateURL([{ key: 'SharedUsers', value }])
-        }}
-      />
-    ) : null
+  /*
+  Delete a Reflection
+  */
+  const deleteSlot = (id: string) => () => {
+    delteReflectionAPI(id)
+    history.push(ReflectionsRouting.module)
+  }
 
   return (
     <IonPage>
       <Header
-        shareSlot={shareSlot(state.id)}
-        deleteSlot={deleteSlot(state.id)}
+        disabled={sharedItem}
+        iconSlot={state.id ? [shareSlot(state.id)] : []}
+        deleteSlot={state.id ? deleteSlot(state.id) : undefined}
         customBackRoute="/reflections"
       >
-        {state.id ? 'Reflexion bearbeiten' : 'Neue Reflexion erstellen'}
+        {!sharedItem
+          ? state.id
+            ? 'Reflexion bearbeiten'
+            : 'Neue Reflexion erstellen'
+          : 'Geteilte Reflexion'}
       </Header>
       <IonContent fullscreen>
         {/* ############################ Toast ############################ */}
@@ -253,6 +273,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           <IonItem
             lines="none"
             routerLink={`${ReflectionsRouting.selectTopic}${currentUrl}`}
+            disabled={sharedItem}
           >
             <IonLabel>
               <IonText color="medium">
@@ -266,7 +287,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           <IonItemDivider>
             <IonText color="medium">Title</IonText>
           </IonItemDivider>
-          <IonItem lines="none">
+          <IonItem lines="none" disabled={sharedItem}>
             <IonInput
               value={state.title}
               placeholder="Title (optional)"
@@ -281,10 +302,13 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             ></IonInput>
             <CheckmarkCircleStateIcon state={state.title} />
           </IonItem>
+
+          {/* ############################  Report ############################ */}
           <IonItemDivider>
             <IonText color="medium">Reflexionsbericht</IonText>
           </IonItemDivider>
           <IonItem
+            disabled={sharedItem}
             routerLink={`${ReflectionsRouting.writeReport}${currentUrl}`}
           >
             <IonLabel>
@@ -300,6 +324,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             <IonText color="medium">Momente</IonText>
           </IonItemDivider>
           <IonItem
+            disabled={sharedItem}
             routerLink={`${ReflectionsRouting.selectMoments}${currentUrl}`}
           >
             <IonLabel>Neuen Momente hinzufügen</IonLabel>
@@ -309,62 +334,52 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
               state={state.momentIDs.length === 0 ? '' : 'fill'}
             />
           </IonItem>
-          {state.momentObj.map(({ id, title, createdAt }) => {
-            return (
-              <IonItemSliding key={id} id={id}>
-                <IonItem routerLink={`/moments/details/${id}`}>
-                  <IonIcon icon={star} slot="start" />
-                  <IonLabel>{title}</IonLabel>
-                  <IonNote slot="end">
-                    {getLocaleDateString(new Date(createdAt || ''))}
-                  </IonNote>
-                </IonItem>
-
-                {/* <IonItemOptions side="end">
-                  <IonItemOption
-                    expandable
-                    color="danger"
-                    onClick={e => {
-                      //@ts-ignore
-                      document.getElementById(item).close()
-                    }}
-                  >
-                    <IonIcon slot="icon-only" icon={trashOutline} />
-                  </IonItemOption>
-                </IonItemOptions> */}
-              </IonItemSliding>
-            )
-          })}
+          {state.momentObj.map(({ id, title, createdAt }) => (
+            <IonItem key={id} id={id} routerLink={`/moments/details/${id}`}>
+              <IonIcon icon={star} slot="start" />
+              <IonLabel>{title}</IonLabel>
+              <IonNote slot="end">
+                {getLocaleDateString(new Date(createdAt || ''))}
+              </IonNote>
+            </IonItem>
+          ))}
         </IonList>
 
         {/* ############################ Buttons ############################ */}
       </IonContent>
-      <IonRow>
-        {/* ############################ Route FollowUpQuestion ############################ */}
-        <IonCol>
-          <IonButton
-            expand="block"
-            disabled={state.state === ReflectionState.started ? true : false}
-            routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
-          >
-            Folgefragen
-            <IonIcon slot="start" icon={aperture}></IonIcon>
-          </IonButton>
-        </IonCol>
-        {/* ############################ Save the Reflection ############################ */}
-        <IonCol>
-          <IonButton
-            expand="block"
-            onClick={updateReflection}
-            disabled={
-              state.title && state.content && state.subTopic ? undefined : true
-            }
-          >
-            {state.id ? 'Speichern' : 'Erstellen'}
-            <IonIcon slot="start" icon={state.id ? save : addCircle}></IonIcon>
-          </IonButton>
-        </IonCol>
-      </IonRow>
+      {!sharedItem && (
+        <IonRow>
+          {/* ############################ Route FollowUpQuestion ############################ */}
+          <IonCol>
+            <IonButton
+              expand="block"
+              disabled={state.state === ReflectionState.started ? true : false}
+              routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
+            >
+              Folgefragen
+              <IonIcon slot="start" icon={aperture}></IonIcon>
+            </IonButton>
+          </IonCol>
+          {/* ############################ Save the Reflection ############################ */}
+          <IonCol>
+            <IonButton
+              expand="block"
+              onClick={updateReflection}
+              disabled={
+                state.title && state.content && state.subTopic
+                  ? undefined
+                  : true
+              }
+            >
+              {state.id ? 'Speichern' : 'Erstellen'}
+              <IonIcon
+                slot="start"
+                icon={state.id ? save : addCircle}
+              ></IonIcon>
+            </IonButton>
+          </IonCol>
+        </IonRow>
+      )}
     </IonPage>
   )
 }

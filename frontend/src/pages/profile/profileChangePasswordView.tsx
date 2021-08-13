@@ -1,5 +1,8 @@
 import React from 'react'
 import { Auth } from 'aws-amplify'
+import { RouteComponentProps } from 'react-router-dom'
+
+import { checkmarkCircleOutline, checkmarkCircle } from 'ionicons/icons'
 import {
   IonButton,
   IonCard,
@@ -14,8 +17,6 @@ import {
   IonRow,
 } from '@ionic/react'
 import { Header } from '../../components'
-import { RouteComponentProps } from 'react-router-dom'
-import { checkmarkCircleOutline, checkmarkCircle } from 'ionicons/icons'
 
 const CheckmarkStateIcon: React.FC<{ state: string | null | undefined }> = ({
   state,

@@ -1,3 +1,9 @@
+import React, { useState } from 'react'
+import { RouteComponentProps } from 'react-router'
+import { Auth } from 'aws-amplify'
+
+import { addCircle, save, star, starOutline } from 'ionicons/icons'
+
 import {
   IonContent,
   IonPage,
@@ -15,29 +21,34 @@ import {
   IonCol,
   IonIcon,
 } from '@ionic/react'
-import { RouteComponentProps } from 'react-router'
-import { useState } from 'react'
-import { AudioRecorder } from '../../components/media/audioRecorder'
-import { VideoRecorder } from '../../components/media/videoRecorder'
-import { ImageRecorder } from '../../components/media/imageRecorder'
-import { LargeHeader, Header } from '../../components/header'
-import { TextRecorder } from '../../components/media/TextRecorder'
-import { saveMomentAPI, Media } from '../../api/moment/saveMoment'
-import { getMomentAPI } from '../../api/moment/getMoment'
-import { getMomentAsset } from '../../api/moment/getMomentAsset'
-import { DisplayMedia } from '../../components/media/displayMedia'
-import { removeMomentAPI } from '../../api/moment/deleteMoment'
 
-import { ShareOverview } from '../../components/share/shareOverview'
-import { Auth } from 'aws-amplify'
-import React from 'react'
+import {
+  LargeHeader,
+  Header,
+  ShareOverview,
+  AudioRecorder,
+  VideoRecorder,
+  ImageRecorder,
+  TextRecorder,
+  DisplayMedia,
+} from '../../components'
+
+import {
+  getMomentAPI,
+  getMomentAsset,
+  removeMomentAPI,
+  saveMomentAPI,
+} from '../../api/'
+
+import { Media } from '../../api/moment/saveMoment'
 import { ShareUser } from '../../types/shareUser'
 import { momentTags } from '../../data/momentTags'
-import { addCircle, save, star, starOutline } from 'ionicons/icons'
+
 export interface Moment {
   title: string
   tags: string[]
 }
+
 interface Props extends RouteComponentProps<{}> {
   id: string
 }
@@ -54,7 +65,10 @@ export const MomentsDetailView: React.FC<Props> = props => {
     data: '',
     name: '',
   })
-  const [moment, setMoment]: any = useState<any>({ title: '', tags: [''] })
+  const [moment, setMoment] = useState<any>({
+    title: '',
+    tags: [''],
+  })
   const [isSharedMoment, setIsSharedMoment] = useState<boolean>(false)
 
   useIonViewWillEnter(() => {
@@ -142,34 +156,32 @@ export const MomentsDetailView: React.FC<Props> = props => {
   return (
     <IonPage>
       <Header
-        shareSlot={
-          <>
-            {match?.params?.id && (
-              <IonButton
-                onClick={() => {
-                  const currentIsFavorite = moment.isFavorite
-                    ? moment.isFavorite
-                    : false
-                  setMoment({ ...moment, isFavorite: !currentIsFavorite })
-                }}
-              >
-                <IonIcon
-                  color="warning"
-                  slot="icon-only"
-                  icon={moment.isFavorite ? star : starOutline}
-                />
-              </IonButton>
-            )}
-
-            <ShareOverview
-              id={match?.params?.id}
-              sharedUsers={moment.sharedUsersDetail || []}
-              assetType={'Moment'}
-              shareAsset={addShare}
-              removeAsset={removeShare}
-            />
-          </>
-        }
+        disabled={!Boolean(moment.id)}
+        iconSlot={[
+          match?.params?.id && (
+            <IonButton
+              onClick={() => {
+                const currentIsFavorite = moment.isFavorite
+                  ? moment.isFavorite
+                  : false
+                setMoment({ ...moment, isFavorite: !currentIsFavorite })
+              }}
+            >
+              <IonIcon
+                color="warning"
+                slot="icon-only"
+                icon={moment.isFavorite ? star : starOutline}
+              />
+            </IonButton>
+          ),
+          <ShareOverview
+            id={match?.params?.id}
+            sharedUsers={moment.sharedUsersDetail || []}
+            assetType={'Moment'}
+            shareAsset={addShare}
+            removeAsset={removeShare}
+          />,
+        ]}
         deleteSlot={deleteMoment}
       >
         Moment {match?.params?.id ? 'ändern' : 'erstellen'}
@@ -214,8 +226,10 @@ export const MomentsDetailView: React.FC<Props> = props => {
               }
             >
               {/* TODO: neeed correct tags */}
-              {momentTags.map((tag: any) => (
-                <IonSelectOption value={tag.value}>{tag.label}</IonSelectOption>
+              {momentTags.map(tag => (
+                <IonSelectOption key={tag.value} value={tag.value}>
+                  {tag.label}
+                </IonSelectOption>
               ))}
             </IonSelect>
           </IonItem>

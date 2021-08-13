@@ -94,7 +94,6 @@ export function reflectionStatetoURI({
   if (state) {
     arr.push(`${ReflectionQueryParamKeys.reflexionState}=${state}`)
   }
-
   if (sharedUsersDetail) {
     arr.push(
       `${ReflectionQueryParamKeys.SharedUsers}=${encodeURI(
@@ -114,6 +113,7 @@ export function reflectionStatetoURI({
       `${ReflectionQueryParamKeys.moment}=${encodeURI(JSON.stringify(data))}`,
     )
   }
+
   return arr.join('&').toString()
 }
 

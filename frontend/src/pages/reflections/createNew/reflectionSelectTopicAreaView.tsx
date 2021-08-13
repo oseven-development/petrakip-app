@@ -1,25 +1,24 @@
 import React from 'react'
-import {
-  IonContent,
-  IonLoading,
-  IonPage,
-  useIonViewWillEnter,
-} from '@ionic/react'
-import { Header } from '../../../components'
+import { IonContent, IonPage } from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
+
+import { Header } from '../../../components'
 
 import {
   TopicArea,
   InputSelectValue,
 } from '../../../components/reflection/reflectionTopicArea/reflectionTopicArea'
+
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 
-import { reflectionTopics } from '../../../data/reflectionTopic'
 import { listAllReflectionsTopicsAPI } from '../../../api/'
 import { useCustomLoaderOnViewEnter } from '../../../hooks'
+
+import { reflectionTopics } from '../../../data/reflectionTopic'
+
 interface Props extends RouteComponentProps<{}> {}
 
 export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
@@ -92,7 +91,6 @@ export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
       <Header>Wähle ein Thema</Header>
       {/* ############################ Loading ############################ */}
       {LoadingComponent}
-      {/* <IonLoading isOpen={loader} message={'Themen werden geladen'} /> */}
       <IonContent fullscreen>
         {/* topicList must later be load via API, the import is only for testing purpose */}
         {!loadingState && (

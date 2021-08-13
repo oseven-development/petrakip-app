@@ -23,7 +23,7 @@ import {
 import { institutions } from '../../data/institutions'
 import './login.css'
 import Auth from '@aws-amplify/auth'
-import { LargeHeader } from '../../components/header'
+import { LargeHeader } from '../../components'
 import { AGB } from '../../data/agb'
 
 interface UserProps {
