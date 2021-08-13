@@ -13,7 +13,6 @@ import {
   CreateReflectionInput,
   CreateReflectionMomentInput,
   DeleteReflectionMomentInput,
-  Moment,
   Reflection,
   ReflectionMoment,
 } from '../../API'
@@ -112,50 +111,56 @@ export const saveReflectionAPI = async (
     const result = await apiCall<Reflection>(operation[updateState]).catch(
       reject,
     )
-
+    console.log('create :', result)
     if (result) {
       const connectionArray: Promise<
         CreateReflectionMomentInput | DeleteReflectionMomentInput | undefined
       >[] = []
 
+      // use empty array if the Reflection is new created
+      let filterdResult: ReflectionMoment[] = []
+      // use the connections that already exist
       if (result.moments?.items) {
-        const filterdResult = result.moments?.items.filter(
+        filterdResult = result.moments?.items.filter(
           item => item != null,
         ) as ReflectionMoment[]
-
-        filterdResult.forEach(({ id, moment }) => {
-          if (id && moment?.id && !reflection.momentIDs?.includes(moment.id)) {
-            const input: DeleteReflectionMomentInput = {
-              id,
-            }
-            const runner = apiCall<ReflectionMoment>({
-              input,
-              key: 'deleteReflectionMoment',
-              query: deleteReflectionMoment,
-            })
-            connectionArray.push(runner)
-          }
-        })
-
-        reflection.momentIDs?.forEach(id => {
-          const cuid = filterdResult
-            .map(({ moment }) => moment?.id)
-            .filter(item => item !== undefined) as string[]
-
-          if (result?.id && !cuid.includes(id)) {
-            const input: CreateReflectionMomentInput = {
-              reflectionID: result.id,
-              momentID: id,
-            }
-            const runner = apiCall<ReflectionMoment>({
-              input,
-              key: 'createReflectionMoment',
-              query: createReflectionMoment,
-            })
-            connectionArray.push(runner)
-          }
-        })
       }
+
+      // loop and delete all ReflectionMoment that no longer needed
+      filterdResult.forEach(({ id, moment }) => {
+        if (id && moment?.id && !reflection.momentIDs?.includes(moment.id)) {
+          const input: DeleteReflectionMomentInput = {
+            id,
+          }
+          const runner = apiCall<ReflectionMoment>({
+            input,
+            key: 'deleteReflectionMoment',
+            query: deleteReflectionMoment,
+          })
+          connectionArray.push(runner)
+        }
+      })
+
+      // loop and add all ReflectionMoment they are added
+      reflection.momentIDs?.forEach(id => {
+        const cuid = filterdResult
+          .map(({ moment }) => moment?.id)
+          .filter(item => item !== undefined) as string[]
+
+        if (result?.id && !cuid.includes(id)) {
+          const input: CreateReflectionMomentInput = {
+            reflectionID: result.id,
+            momentID: id,
+          }
+          const runner = apiCall<ReflectionMoment>({
+            input,
+            key: 'createReflectionMoment',
+            query: createReflectionMoment,
+          })
+          connectionArray.push(runner)
+        }
+      })
+
       await Promise.all(connectionArray).catch(reject)
       resolve(result)
     }

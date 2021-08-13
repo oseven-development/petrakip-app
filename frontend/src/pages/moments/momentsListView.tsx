@@ -1,19 +1,19 @@
-import {
-  IonContent,
-  IonPage,
-  IonButton,
-  useIonViewWillEnter,
-} from '@ionic/react'
-
-import { Header, LargeHeader, ListComponent } from '../../components'
-import { RouteComponentProps } from 'react-router'
 import { useState } from 'react'
-import { getMomentAPI } from '../../api/moment/getMoment'
-import { groupArrayByDate } from '../../utils/dateUtils'
-// import { MomentList } from '../../components/moment/momentList'
+import { IonContent, IonPage, useIonViewWillEnter } from '@ionic/react'
+import { RouteComponentProps } from 'react-router'
+
+import {
+  CreateButton,
+  Header,
+  LargeHeader,
+  ListComponent,
+  FilterDialog,
+  FilterToggle,
+} from '../../components'
+
+import { getMomentAPI } from '../../api/'
 import { Moment } from '../../API'
-import { getIconFromContentType } from '../../utils/getContentTypeUtils'
-import { FilterDialog, FilterToggle } from '../../components/filter/filter'
+import { groupArrayByDate, getIconFromContentType } from '../../utils'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -33,18 +33,13 @@ export const MomentsListView: React.FC<Props> = ({ history }) => {
   return (
     <IonPage>
       <Header
-        shareSlot={
-          <>
-            <FilterToggle
-              showFilter={showFilter}
-              setShowFilter={setShowFilter}
-            ></FilterToggle>
-
-            <IonButton routerLink="/moments/create" color="primary">
-              Erstellen
-            </IonButton>
-          </>
-        }
+        iconSlot={[
+          <FilterToggle
+            showFilter={showFilter}
+            setShowFilter={setShowFilter}
+          ></FilterToggle>,
+          <CreateButton routerLink={'/moments/create'} />,
+        ]}
       >
         Momente
       </Header>

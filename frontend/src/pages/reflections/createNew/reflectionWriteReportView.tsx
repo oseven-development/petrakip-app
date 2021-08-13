@@ -1,4 +1,8 @@
 import React from 'react'
+import { RouteComponentProps } from 'react-router'
+
+import { save } from 'ionicons/icons'
+
 import {
   IonButton,
   IonCard,
@@ -12,13 +16,12 @@ import {
   IonTextarea,
   useIonViewDidEnter,
 } from '@ionic/react'
-import { Header } from '../../../components'
-import { RouteComponentProps } from 'react-router'
-import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 
+import { Header } from '../../../components'
+
+import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-import { save } from 'ionicons/icons'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -73,7 +76,7 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
           <IonTextarea
             autoGrow
             rows={10}
-            debounce={500}
+            debounce={300}
             value={state}
             onIonChange={e => {
               setState(e.detail.value!)
@@ -86,6 +89,7 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
       <IonButton
         expand="block"
         routerLink={`${ReflectionsRouting.module}${currentUrl}`}
+        routerDirection="back"
       >
         <IonIcon slot="start" icon={save}></IonIcon>
         Speichern

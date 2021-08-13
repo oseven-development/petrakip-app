@@ -1,18 +1,19 @@
 import React from 'react'
-import {
-  IonContent,
-  IonPage,
-  IonButton,
-  useIonViewWillEnter,
-} from '@ionic/react'
-import { getReflectionAPI, listAllReflectionsAPI } from '../../api/'
-import { ReflectionsRouting } from '..'
-import { Header, LargeHeader, ListComponent } from '../../components'
-import { Reflection } from '../../API'
-import { groupArrayByDate } from '../../utils/dateUtils'
-
-import { book } from 'ionicons/icons'
 import { RouteComponentProps } from 'react-router-dom'
+import { IonContent, IonPage, useIonViewWillEnter } from '@ionic/react'
+import { book } from 'ionicons/icons'
+
+import {
+  CreateButton,
+  Header,
+  LargeHeader,
+  ListComponent,
+} from '../../components'
+
+import { groupArrayByDate } from '../../utils'
+import { ReflectionsRouting } from '..'
+import { Reflection } from '../../API'
+import { getReflectionAPI, listAllReflectionsAPI } from '../../api/'
 import { reflectionStatetoURI } from './reflectionUtils'
 
 interface Props extends RouteComponentProps<{}> {}
@@ -22,14 +23,25 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
   useIonViewWillEnter(() => {
     listAllReflectionsAPI().then(setState).catch(console.error)
   }, [])
+
+  const onClickRouting = (reflection: Reflection, sharedItem: boolean) => {
+    getReflectionAPI(reflection.id)
+      .then(ref => {
+        if (ref) {
+          history.push(
+            `${ReflectionsRouting.module}?${
+              sharedItem ? 'sharedItem=true&' : ''
+            }${reflectionStatetoURI(ref)}`,
+          )
+        }
+      })
+      .catch(console.error)
+  }
+
   return (
     <IonPage>
       <Header
-        shareSlot={
-          <IonButton routerLink={ReflectionsRouting.module} color="primary">
-            Erstellen
-          </IonButton>
-        }
+        iconSlot={[<CreateButton routerLink={ReflectionsRouting.module} />]}
       >
         Reflexionen
       </Header>
@@ -37,17 +49,7 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
         <LargeHeader>Reflexionen</LargeHeader>
         <ListComponent<Reflection>
           elements={state}
-          onClickHandler={reflection => {
-            getReflectionAPI(reflection.id)
-              .then(ref => {
-                if (ref) {
-                  history.push(
-                    `${ReflectionsRouting.module}?${reflectionStatetoURI(ref)}`,
-                  )
-                }
-              })
-              .catch(console.error)
-          }}
+          onClickHandler={onClickRouting}
           iconFunction={() => book}
           sortFunction={groupArrayByDate}
         ></ListComponent>

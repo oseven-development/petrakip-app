@@ -32,7 +32,7 @@ const ShareOverview: React.FC<Props> = ({
   shareAsset: _shareAssetCallback,
   removeAsset: _removeAssetCallback,
   assetType,
-  sharedUsers,
+  sharedUsers = [],
 }) => {
   const [showModal, setShowModal] = useState(false)
   const [newShareUser, setNewShareUser] = useState<string>('')

@@ -1,5 +1,6 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
+import { Reflection } from '../../API'
 
 const ListReflectionsQuery = /* GraphQL */ `
   query ListReflecions(
@@ -33,15 +34,17 @@ const ListReflectionsQuery = /* GraphQL */ `
   }
 `
 
-export const listAllReflectionsAPI = async () => {
+export const listAllReflectionsAPI = async (): Promise<Reflection[]> => {
   try {
     const res = (await API.graphql(
       graphqlOperation(ListReflectionsQuery),
     )) as GraphQLResult<any>
-    if (res.errors) console.log(res.errors)
+    if (res.errors) throw res.errors
     if (res.data) return res.data.listReflections.items
+    return []
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 

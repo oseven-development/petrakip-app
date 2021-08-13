@@ -33,7 +33,7 @@ interface Item {
 
 interface Props<A extends Item> {
   elements: A[]
-  onClickHandler: (A: A) => void
+  onClickHandler: (A: A, sharedItem: boolean) => void
   iconFunction: (A: A) => string
   sortFunction: (A: A[]) => { [key: string]: A[] }
 }
@@ -65,7 +65,7 @@ export function ListComponent<A extends Item>({
       button
       onClick={e => {
         e.preventDefault()
-        onClickHandler(item)
+        onClickHandler(item, !state)
       }}
       detail
     >

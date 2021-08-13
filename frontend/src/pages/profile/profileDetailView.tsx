@@ -1,8 +1,8 @@
-import { Header, LargeHeader } from '../../components'
+import { useEffect, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import Auth from '@aws-amplify/auth'
-import { usePlatform } from '../../hooks/usePlatform'
-import { useEffect, useState } from 'react'
+
+import { arrowForward, pencil } from 'ionicons/icons'
 import {
   IonButton,
   IonImg,
@@ -19,17 +19,26 @@ import {
   IonSpinner,
   useIonAlert,
 } from '@ionic/react'
-import { arrowForward, pencil } from 'ionicons/icons'
-import { ImageRecorder } from '../../components/media/imageRecorder'
-import { Media } from '../../api/moment/saveMoment'
-import { updateProfilePictureAPI } from '../../api/profile/updateProfilePicture'
-import { getProfileAPI } from '../../api/profile/getProfile'
+
 import {
+  Header,
+  LargeHeader,
+  LogoutButton,
+  ImageRecorder,
+} from '../../components'
+
+import { usePlatform } from '../../hooks'
+
+import {
+  updateProfilePictureAPI,
+  getProfileAPI,
   downloadExportDataAPI,
   exportAllDataAPI,
-  ProfileSettings,
-} from '../../api/profile/exportAllData'
-import { deleteProfileAPI } from '../../api/profile/deleteProfile'
+  deleteProfileAPI,
+} from '../../api/'
+
+import { Media } from '../../api/moment/saveMoment'
+import { ProfileSettings } from '../../api/profile/exportAllData'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -41,7 +50,6 @@ interface ExportData {
 export const ProfileDetailView: React.FC<Props> = ({ history }) => {
   const [user, setUser] = useState<any>(undefined)
 
-  const platform = usePlatform()
   const [present] = useIonAlert()
   const [profileSettings, setProfileSettings] = useState<
     ProfileSettings | undefined
@@ -86,20 +94,7 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
 
   return (
     <IonPage>
-      <Header
-        shareSlot={
-          <IonButton
-            onClick={() => {
-              Auth.signOut()
-              history.replace('/moments')
-            }}
-          >
-            Ausloggen
-          </IonButton>
-        }
-      >
-        Profil
-      </Header>
+      <Header iconSlot={[<LogoutButton />]}>Profil</Header>
       <IonContent fullscreen>
         <LargeHeader>Profil</LargeHeader>
         {user ? (

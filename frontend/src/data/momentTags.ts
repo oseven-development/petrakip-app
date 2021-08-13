@@ -7,4 +7,4 @@ export const momentTags = [
   { value: 'onions', label: 'Zwiebeln' },
   { value: 'pepperoni', label: 'Pepperoni' },
   { value: 'pineapple', label: 'Ananas' },
-]
+] as const

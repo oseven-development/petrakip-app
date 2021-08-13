@@ -15,7 +15,7 @@ import {
 
 import './login.css'
 import Amplify from '@aws-amplify/core'
-import { Header, LargeHeader } from '../../components/header'
+import { Header, LargeHeader } from '../../components'
 
 const LoginView: React.FC = (props: any) => {
   const [mail, setMail] = useState('')

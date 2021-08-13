@@ -9,7 +9,7 @@
 //   useIonToast,
 // } from '@ionic/react'
 import React, { useEffect, useState } from 'react'
-// import { Header, LargeHeader } from '../../components/header'
+// import { Header, LargeHeader } from '../../components'
 import './login.css'
 
 const VerifyAccountView: React.FC = (props: any) => {
