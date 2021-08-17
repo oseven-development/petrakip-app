@@ -1,5 +1,6 @@
 import React from 'react'
-import { RouteComponentProps, useLocation } from 'react-router'
+import { RouteComponentProps } from 'react-router'
+import { useLocation } from 'react-router-dom'
 
 import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
 import { save } from 'ionicons/icons'

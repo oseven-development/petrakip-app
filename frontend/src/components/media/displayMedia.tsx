@@ -2,7 +2,7 @@ import React from 'react'
 import { Media } from '../../api/moment/saveMoment'
 import { getContentTypeFromMimeType } from '../../utils/getContentTypeUtils'
 import { IonImg, IonSpinner, IonTextarea } from '@ionic/react'
-import { useLocation } from 'react-router'
+import { useLocation } from 'react-router-dom'
 
 interface Props {
   children: Media

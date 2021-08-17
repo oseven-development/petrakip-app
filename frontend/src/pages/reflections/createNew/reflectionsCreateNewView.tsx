@@ -87,6 +87,8 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
   const location = useLocation()
 
+  console.log(location)
+
   const params = new URLSearchParams(location.search)
 
   /*

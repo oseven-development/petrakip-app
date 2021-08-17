@@ -1,5 +1,8 @@
 import React from 'react'
-import { RouteComponentProps, useLocation } from 'react-router'
+import { RouteComponentProps } from 'react-router'
+
+import { useLocation } from 'react-router-dom'
+
 import { API, graphqlOperation } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 
