@@ -87,8 +87,6 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
   const location = useLocation()
 
-  console.log(location)
-
   const params = new URLSearchParams(location.search)
 
   /*
@@ -312,6 +310,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           <IonItem
             disabled={sharedItem}
             routerLink={`${ReflectionsRouting.writeReport}${currentUrl}`}
+            routerDirection="forward"
           >
             <IonLabel>
               {state.content !== ''
