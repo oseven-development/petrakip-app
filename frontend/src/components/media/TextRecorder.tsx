@@ -36,6 +36,7 @@ const TextRecorder: React.FC<Props> = ({
         <IonTextarea
           className="ion-padding"
           autofocus
+          autoGrow
           value={media?.data ? media.data : undefined}
           placeholder="Text hier eingeben"
           onIonChange={e =>
