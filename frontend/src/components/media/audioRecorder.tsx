@@ -3,10 +3,9 @@ import { mic } from 'ionicons/icons'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 
 import { Media } from '../../api/moment/saveMoment'
-import { useAudio } from '../../hooks/useNativeMedia'
 
 import { usePlatform } from '../../hooks/usePlatform'
-import { useWebMediaRecorder, audioOptions } from '../../hooks/useWebMedia'
+import { useVoiceMediaRecorder } from '../../hooks/useWebMedia'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
@@ -15,45 +14,19 @@ interface Props {
 }
 
 const AudioRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
-  const { audioCapture, doAudioCapture } = useAudio()
+  // const { audioCapture, doAudioCapture } = useAudio()
   const platform = usePlatform()
   const [audioURL, isRecording, toggleRecording]: [
     Media,
     boolean,
     any, //TODO: how to handle function
-  ] = useWebMediaRecorder(audioOptions)
+  ] = useVoiceMediaRecorder(platform)
 
   useEffect(() => {
-    // setMedia(audioURL)
-    //setMedia({ name: 'audio', data: audioCapture, type: 'wav' })
+    setMedia(audioURL)
+  }, [setMedia, audioURL])
 
-    async function fetchData() {
-      // You can await here
-      console.log('start Fetch')
-      console.log(audioCapture)
-      let blob = await fetch(audioCapture).then(r => r.blob())
-      console.log(blob.type)
-      console.log(blob.size)
-
-      // ...
-    }
-    fetchData()
-  }, [audioCapture, setMedia])
-
-  return platform === 'ios' ? (
-    <IonButton
-      color="primary"
-      expand="block"
-      onClick={() => {
-        doAudioCapture()
-      }}
-      style={{ whiteSpace: 'break-spaces', ...style }}
-    >
-      <IonIcon slot="start" icon={mic} size="medium" />
-      Audio nicht verfügbar
-      {audioCapture}
-    </IonButton>
-  ) : (
+  return (
     <IonButton
       color="primary"
       expand="block"
