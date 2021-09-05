@@ -7,16 +7,49 @@ import {
   CaptureImageOptions,
   CaptureAudioOptions,
 } from '@ionic-native/media-capture'
+import { Capacitor } from '@capacitor/core'
+
+import { Camera, CameraOptions } from '@ionic-native/camera'
 
 export function usePhoto() {
-  const [photoCapture, setPhotoCapture] = useState({})
+  const [photoCapture, setPhotoCapture] = useState<string>('')
+
+  const cameraOptions: CameraOptions = {
+    quality: 100,
+    destinationType: Camera.DestinationType.DATA_URL,
+    encodingType: Camera.EncodingType.JPEG,
+    mediaType: Camera.MediaType.PICTURE,
+    allowEdit: true,
+  }
 
   const doPhotoCapture = async () => {
-    const options: CaptureImageOptions = { limit: 1 }
-    // @TODO: Fix any
-    const capture: any = await MediaCapture.captureImage(options)
+    // const options: CaptureImageOptions = { limit: 1 }
+    // const capture = await MediaCapture.captureImage(options)
+    // console.log(capture)
+    // if (Array.isArray(capture)) {
+    // Capacitor.convertFileSrc
+    //   setPhotoCapture(capture[0].fullPath)
+    //   console.log(capture[0].fullPath)
+    // } else {
+    //   setPhotoCapture('ERROR')
+    // }
 
-    setPhotoCapture((capture[0] as MediaFile).fullPath)
+    const gelleryOptions: CameraOptions = {
+      quality: 100,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.DATA_URL,
+      allowEdit: true,
+    }
+
+    Camera.getPicture(cameraOptions).then(
+      imgData => {
+        console.log('image data =>  ', imgData)
+        setPhotoCapture(`data:image/jpeg;base64,${imgData}`)
+      },
+      err => {
+        console.log(err)
+      },
+    )
   }
   return {
     photoCapture,
@@ -43,14 +76,16 @@ export function useVideo() {
 }
 
 export function useAudio() {
-  const [audioCapture, setAudioCapture] = useState({})
+  const [audioCapture, setAudioCapture] = useState('')
 
   const doAudioCapture = async () => {
     const options: CaptureAudioOptions = { limit: 1, duration: 30 }
     // @TODO: Fix any
-    const capture: any = await MediaCapture.captureAudio(options)
+    const capture = await MediaCapture.captureAudio(options)
 
-    setAudioCapture((capture[0] as MediaFile).fullPath)
+    if (Array.isArray(capture)) {
+      setAudioCapture(Capacitor.convertFileSrc(capture[0].fullPath))
+    }
   }
   return {
     audioCapture,

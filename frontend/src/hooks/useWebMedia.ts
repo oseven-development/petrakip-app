@@ -26,7 +26,7 @@ export const useWebMediaRecorder = (
     // Lazily obtain recorder first time we're recording.
     if (!recorder) {
       if (isRecording) {
-        requestRecorder(options).then(setRecorder, console.error)
+        requestRecorder(options).then(setRecorder).catch(console.error)
       }
       return
     }
