@@ -5,7 +5,8 @@ import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { Media } from '../../api/moment/saveMoment'
 
 import { usePlatform } from '../../hooks/usePlatform'
-import { useWebMediaRecorder, audioOptions } from '../../hooks/useWebMedia'
+import { useVoiceMediaRecorder } from '../../hooks/useWebMedia'
+
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
   disabled: boolean
@@ -13,29 +14,19 @@ interface Props {
 }
 
 const AudioRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
+  // const { audioCapture, doAudioCapture } = useAudio()
   const platform = usePlatform()
   const [audioURL, isRecording, toggleRecording]: [
     Media,
     boolean,
     any, //TODO: how to handle function
-  ] = useWebMediaRecorder(audioOptions)
+  ] = useVoiceMediaRecorder(platform)
 
   useEffect(() => {
     setMedia(audioURL)
-  }, [audioURL, setMedia])
+  }, [setMedia, audioURL])
 
-  return platform === 'ios' ? (
-    <IonButton
-      color="primary"
-      expand="block"
-      disabled
-      onClick={toggleRecording}
-      style={{ whiteSpace: 'break-spaces', ...style }}
-    >
-      <IonIcon slot="start" icon={mic} size="medium" />
-      Audio nicht verfügbar
-    </IonButton>
-  ) : (
+  return (
     <IonButton
       color="primary"
       expand="block"
