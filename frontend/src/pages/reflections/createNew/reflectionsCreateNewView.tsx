@@ -19,17 +19,14 @@ import {
   IonPage,
   IonRow,
   IonText,
-  useIonViewWillEnter,
+  useIonViewDidEnter,
 } from '@ionic/react'
 
 import { Header, ShareOverview } from '../../../components'
 
-import { useCustomLoaderOnTrigger } from '../../../hooks'
+import { useCustomLoaderOnTrigger, useDebounce } from '../../../hooks'
 
-import {
-  createReflectionUpdateObject,
-  reflectionURItoState,
-} from '../reflectionUtils'
+import { createReflectionUpdateObject } from '../reflectionUtils'
 
 import {
   getLocaleDateString,
@@ -47,8 +44,6 @@ import {
 } from '../../../API'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
-import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 
 import { CheckShareUser, ShareUser } from '../../../types/shareUser'
 
@@ -84,72 +79,22 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   )
   const [sharedItem, setSharedItem] = React.useState<boolean>(false)
   const [state, setState] = React.useState<State>(defaultState)
-  const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
+
   const location = useLocation()
-
-  const params = new URLSearchParams(location.search)
-
-  /*
-    Display the Follow-Up-Question Pop-Up
-    only when mounting the view
-  */
-  useIonViewWillEnter(() => {
-    const entryReflexionState = params.get(
-      ReflectionQueryParamKeys.reflexionState,
-    )
-    const shareState = Boolean(params.get('sharedItem'))
-
-    setSharedItem(shareState)
-
-    if (
-      entryReflexionState === ReflectionState.awaitingFollowUpQuestions &&
-      !shareState
-    ) {
-      setShowFollowUpQuestions(true)
-    }
-  }, [params])
-
-  /*
-    Update the State when the URI are changing
-  */
-  React.useEffect(() => {
-    if (location.pathname === ReflectionsRouting.module) {
-      /*
-        create the State from the URI
-      */
-      const params = new URLSearchParams(location.search)
-      const newState = reflectionURItoState(params)
-      /*
-        set the newState
-      */
-      setState(state => ({ ...state, ...newState }))
-    }
-  }, [location, setState])
 
   /*
     When the reflection is successful update at the server
     Update the URI as well to sync the state
    */
   const updateURIAfterUpdateRelfectionIsFinished = (result: Reflection) => {
-    const params = []
-    if (result.id)
-      params.push({ key: ReflectionQueryParamKeys.id, value: result.id })
-    if (result.createdAt)
-      params.push({
-        key: ReflectionQueryParamKeys.createdAt,
-        value: result.createdAt,
-      })
-    if (result.state) {
-      params.push({
-        key: ReflectionQueryParamKeys.reflexionState,
-        value: result.state,
-      })
-    }
-
+    setState(state => {
+      state.createdAt = result.createdAt
+      state.state = result.state
+      state.id = result.id
+      return { ...state }
+    })
     // Update URI with new Parametes
     // Like ID and Creation Date
-    UpdateURL(params)
-
     // Check if the state is awaitingFollowUpQuestions and Display then PopUp
     if (result.state === ReflectionState.awaitingFollowUpQuestions) {
       setShowFollowUpQuestions(true)
@@ -175,25 +120,34 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   Render The ShareOverview
   */
   const shareAsset = (user: CheckShareUser) => {
-    const sharedUsersDetail = state.sharedUsersDetail
-    if (sharedUsersDetail) {
-      const userExist = !sharedUsersDetail
-        .map(item => item?.id)
-        .includes(user.id)
-      if (userExist) {
-        sharedUsersDetail.push({ id: user.id, email: user.email })
-        const value = encodeURI(JSON.stringify(sharedUsersDetail))
-        UpdateURL([{ key: 'SharedUsers', value }])
+    setState(state => {
+      if (state.sharedUsersDetail && state.sharedUsers) {
+        state.sharedUsers.push(user.id)
+        state.sharedUsersDetail.push({ id: user.id, email: user.email })
+      } else {
+        state.sharedUsers = [user.id]
+        state.sharedUsersDetail = [{ id: user.id, email: user.email }]
       }
-    }
+      return { ...state }
+    })
   }
   const removeAsset = (user: ShareUser) => {
     const sharedUsersDetail = state.sharedUsersDetail
+    const sharedUsers = state.sharedUsers
+
+    const sharedUsersFilterd = sharedUsers?.filter(id => id !== user.id)
+
     const sharedUsersDetailFilterd = sharedUsersDetail?.filter(
       item => item?.id !== user.id,
     )
-    const value = encodeURI(JSON.stringify(sharedUsersDetailFilterd))
-    UpdateURL([{ key: 'SharedUsers', value }])
+
+    setState(state => {
+      if (state.sharedUsersDetail && state.sharedUsers) {
+        state.sharedUsers = sharedUsersFilterd
+        state.sharedUsersDetail = sharedUsersDetailFilterd
+      }
+      return { ...state }
+    })
   }
   const shareSlot = (id: string) => (
     <ShareOverview
@@ -210,8 +164,39 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   */
   const deleteSlot = (id: string) => () => {
     delteReflectionAPI(id)
-    history.push(ReflectionsRouting.module)
+    history.replace('/reflections')
   }
+
+  // NEW!!!!! #######################################################
+
+  const [debouncedSearchTerm, pendingState] = useDebounce(state, 300)
+
+  // Load URL-Data into State
+  useIonViewDidEnter(() => {
+    setState(defaultState)
+    const params = new URLSearchParams(location.search)
+    const urlState = params.get('state')
+    if (urlState) {
+      const stateJson = JSON.parse(urlState)
+      setState(stateJson)
+      if (
+        stateJson.state === ReflectionState.awaitingFollowUpQuestions &&
+        !stateJson.sharedState
+      ) {
+        setShowFollowUpQuestions(true)
+      }
+    }
+  }, [location.search])
+
+  React.useEffect(() => {
+    //@ts-ignore
+    setSharedItem(state.sharedState)
+  }, [state])
+
+  React.useEffect(() => {
+    const jsonState = JSON.stringify(debouncedSearchTerm)
+    history.push(`${history.location.pathname}?state=${jsonState}`)
+  }, [debouncedSearchTerm, history])
 
   return (
     <IonPage>
@@ -227,10 +212,10 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             : 'Neue Reflexion erstellen'
           : 'Geteilte Reflexion'}
       </Header>
+
       <IonContent fullscreen>
         {/* ############################ Toast ############################ */}
         {JSXLoader}
-
         {/* ############################ Alert ############################ */}
         <IonAlert
           isOpen={showFollowUpQuestions}
@@ -245,12 +230,11 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
               text: 'Ja!',
               handler: () =>
                 history.push(
-                  `${ReflectionsRouting.followUpQuestion}${currentUrl}`,
+                  `${ReflectionsRouting.followUpQuestion}${location.search}`,
                 ),
             },
           ]}
         />
-
         <IonList>
           {/* ############################ created at ############################ */}
           <IonItemDivider>
@@ -272,7 +256,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           </IonItemDivider>
           <IonItem
             lines="none"
-            routerLink={`${ReflectionsRouting.selectTopic}${currentUrl}`}
+            routerLink={`${ReflectionsRouting.selectTopic}${location.search}`}
             disabled={sharedItem}
           >
             <IonLabel>
@@ -291,14 +275,13 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             <IonInput
               value={state.title}
               placeholder="Title (optional)"
-              onIonChange={e =>
-                UpdateURL([
-                  {
-                    key: ReflectionQueryParamKeys.title,
-                    value: e.detail.value!,
-                  },
-                ])
-              }
+              onIonChange={e => {
+                const k = e.detail.value
+                setState(state => {
+                  state.title = k
+                  return { ...state }
+                })
+              }}
             ></IonInput>
             <CheckmarkCircleStateIcon state={state.title} />
           </IonItem>
@@ -309,11 +292,11 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           </IonItemDivider>
           <IonItem
             disabled={sharedItem}
-            routerLink={`${ReflectionsRouting.writeReport}${currentUrl}`}
+            routerLink={`${ReflectionsRouting.writeReport}${location.search}`}
             routerDirection="forward"
           >
             <IonLabel>
-              {state.content !== ''
+              {state.content
                 ? state.content?.slice(0, 20).padEnd(23, '.')
                 : 'Schreibe eine Zusammenfassung'}
             </IonLabel>
@@ -326,7 +309,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           </IonItemDivider>
           <IonItem
             disabled={sharedItem}
-            routerLink={`${ReflectionsRouting.selectMoments}${currentUrl}`}
+            routerLink={`${ReflectionsRouting.selectMoments}${location.search}`}
           >
             <IonLabel>Neuen Momente hinzufügen</IonLabel>
             <IonNote slot="end">{state.momentIDs.length}</IonNote>
@@ -345,7 +328,6 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             </IonItem>
           ))}
         </IonList>
-
         {/* ############################ Buttons ############################ */}
       </IonContent>
       {!sharedItem && (
@@ -355,7 +337,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             <IonButton
               expand="block"
               disabled={state.state === ReflectionState.started ? true : false}
-              routerLink={`${ReflectionsRouting.followUpQuestion}${currentUrl}`}
+              routerLink={`${ReflectionsRouting.followUpQuestion}${location.search}`}
             >
               Folgefragen
               <IonIcon slot="start" icon={aperture}></IonIcon>

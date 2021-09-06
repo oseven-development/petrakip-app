@@ -9,10 +9,7 @@ import {
   InputSelectValue,
 } from '../../../components/reflection/reflectionTopicArea/reflectionTopicArea'
 
-import { useUpdateQueryParamState } from './useUpdateQueryParamState'
-
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 
 import { listAllReflectionsTopicsAPI } from '../../../api/'
 import { useCustomLoaderOnViewEnter } from '../../../hooks'
@@ -21,8 +18,10 @@ import { reflectionTopics } from '../../../data/reflectionTopic'
 
 interface Props extends RouteComponentProps<{}> {}
 
-export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
-  const { UpdateURLAndRoute } = useUpdateQueryParamState(history)
+export const ReflectionSelectTopicAreaView: React.FC<Props> = ({
+  history,
+  location,
+}) => {
   const [state, setState] = React.useState<
     {
       topicItemLable: string
@@ -57,33 +56,20 @@ export const ReflectionSelectTopicAreaView: React.FC<Props> = ({ history }) => {
   })
 
   const setMyState = (value: InputSelectValue) => {
-    if (value === 'Später wählen') {
-      UpdateURLAndRoute(
-        [
-          {
-            key: ReflectionQueryParamKeys.topic,
-            value: '',
-          },
-          {
-            key: ReflectionQueryParamKeys.subTopic,
-            value: '',
-          },
-        ],
-        ReflectionsRouting.module,
-      )
-    } else {
-      const params = [
-        {
-          key: ReflectionQueryParamKeys.topic,
-          value: value.topic,
-        },
-        {
-          key: ReflectionQueryParamKeys.subTopic,
-          value: value.subTopic,
-        },
-      ]
+    const params = new URLSearchParams(location.search)
+    const K = params.get('state')
+    if (K) {
+      const stateJson = JSON.parse(K)
+      if (value === 'Später wählen') {
+        stateJson.topic = ''
+        stateJson.subTopic = ''
+      } else {
+        stateJson.topic = value.topic
+        stateJson.subTopic = value.subTopic
+      }
 
-      UpdateURLAndRoute(params, ReflectionsRouting.module)
+      const jsonState = JSON.stringify(stateJson)
+      history.replace(`${ReflectionsRouting.module}?state=${jsonState}`)
     }
   }
   return (
