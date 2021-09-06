@@ -111,7 +111,6 @@ export const saveReflectionAPI = async (
     const result = await apiCall<Reflection>(operation[updateState]).catch(
       reject,
     )
-    console.log('create :', result)
     if (result) {
       const connectionArray: Promise<
         CreateReflectionMomentInput | DeleteReflectionMomentInput | undefined

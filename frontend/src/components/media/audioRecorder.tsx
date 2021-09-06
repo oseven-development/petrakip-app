@@ -1,11 +1,10 @@
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { IonButton, IonIcon } from '@ionic/react'
 import { mic } from 'ionicons/icons'
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
 
 import { Media } from '../../api/moment/saveMoment'
 
-import { usePlatform } from '../../hooks/usePlatform'
-import { useVoiceMediaRecorder } from '../../hooks/useWebMedia'
+import { usePlatform, useVoiceMediaRecorder } from '../../hooks'
 
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>

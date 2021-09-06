@@ -79,7 +79,6 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
         graphqlOperation(updateReflection, { input }),
       )) as GraphQLResult<{ createReflexion: Reflection }>
       if (res.errors) throw res.errors
-      if (res.data) console.log(res.data)
 
       //@ts-ignore
       setState(state => {
