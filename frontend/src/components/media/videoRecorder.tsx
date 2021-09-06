@@ -34,7 +34,7 @@ const VideoRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
         hidden
         type="file"
         accept="video/*"
-        capture="camcorder"
+        // capture="camcorder"
         onChange={onSelectFile}
         disabled={disabled}
       />

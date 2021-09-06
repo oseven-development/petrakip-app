@@ -3,8 +3,6 @@ import React, { Dispatch, SetStateAction, useRef } from 'react'
 import { Media } from '../../api/moment/saveMoment'
 import { camera } from 'ionicons/icons'
 
-import { usePlatform } from '../../hooks/usePlatform'
-
 interface Props {
   setMedia: Dispatch<SetStateAction<Media>>
   disabled?: boolean
@@ -18,7 +16,6 @@ const ImageRecorder: React.FC<Props> = ({
   buttonLabel = 'Foto aufnehmen',
   style,
 }) => {
-  const platform = usePlatform()
   const fileInput = useRef(null)
 
   const onSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,16 +28,14 @@ const ImageRecorder: React.FC<Props> = ({
     })
   }
 
-  return platform === 'not defined' ? (
-    <div>not implemented</div>
-  ) : (
+  return (
     <>
       <input
         ref={fileInput}
         hidden
         type="file"
         accept="image/*"
-        capture="camcorder"
+        // capture="camcorder"
         onChange={onSelectFile}
         disabled={disabled}
       />

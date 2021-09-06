@@ -1,7 +1,7 @@
 import { getPlatforms } from '@ionic/react'
 import { useState, useEffect } from 'react'
 
-enum Platform {
+export enum Platform {
   ios = 'ios',
   android = 'android',
   web = 'web',
