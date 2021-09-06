@@ -17,7 +17,7 @@ import {
   useIonViewDidEnter,
 } from '@ionic/react'
 
-import { Header } from '../../../components'
+// import { Header } from '../../../components'
 
 import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
@@ -31,6 +31,7 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
 }) => {
   const [state, setState] = React.useState('')
   const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
+  // console.log('component render')
 
   useIonViewDidEnter(() => {
     const params = new URLSearchParams(location.search)
@@ -49,9 +50,11 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
 
   return (
     <IonPage>
-      <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
+      {/* Header cause an input-delay */}
+      {/* <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
         Reflexionsbericht
-      </Header>
+      </Header> */}
+
       <IonContent fullscreen>
         <IonCard>
           <IonCardHeader color="tertiary">
@@ -68,20 +71,17 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
           </IonCardContent>
         </IonCard>
 
-        <IonGrid>
+        <IonGrid class="ion-padding-start ion-padding-end">
           <IonText color="primary">
             <h1>Reflexionsbericht</h1>
           </IonText>
-
           <IonTextarea
-            autoGrow
-            rows={10}
             debounce={300}
+            autoGrow
             value={state}
             onIonChange={e => {
               setState(e.detail.value!)
             }}
-            defaultValue={'test'}
             placeholder="Enter more information here..."
           ></IonTextarea>
         </IonGrid>
