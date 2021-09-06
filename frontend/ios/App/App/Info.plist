@@ -49,11 +49,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Take Photos for Moments</string>
+	<string>Für Momente wird deine Kamera benötigt</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Store Photo</string>
+	<string>Die Foto-Library wird benötigt</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Brauche Mikro</string>
+	<string>Das Mikrofon wird benötigt</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>
