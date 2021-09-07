@@ -88,11 +88,6 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
     }
   }
 
-  React.useEffect(() => {
-    const jsonState = JSON.stringify(debouncedSearchTerm)
-    history.push(`${history.location.pathname}?state=${jsonState}`)
-  }, [history, debouncedSearchTerm])
-
   return (
     <IonPage>
       <Header
