@@ -12,7 +12,6 @@ import {
   IonGrid,
   IonIcon,
   IonPage,
-  IonSpinner,
   IonText,
   IonTextarea,
   useIonViewDidEnter,
@@ -21,7 +20,6 @@ import {
 // import { Header } from '../../../components'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-import { useDebounce } from '../../../hooks'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -30,21 +28,15 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
   location,
 }) => {
   const [state, setState] = React.useState<{ content: string }>()
-  const [debouncedSearchTerm, pendingState] = useDebounce(state, 1000)
 
   useIonViewDidEnter(() => {
     const params = new URLSearchParams(location.search)
-    const K = params.get('state')
-    if (K) {
-      const stateJson = JSON.parse(K)
+    const urlState = params.get('state')
+    if (urlState) {
+      const stateJson = JSON.parse(urlState)
       setState(stateJson)
     }
-  }, [])
-
-  React.useEffect(() => {
-    const jsonState = JSON.stringify(debouncedSearchTerm)
-    history.replace(`${history.location.pathname}?state=${jsonState}`)
-  }, [debouncedSearchTerm, history])
+  }, [location.search])
 
   return (
     <IonPage>
@@ -87,20 +79,13 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
         </IonGrid>
       </IonContent>
       <IonButton
-        disabled={pendingState}
         expand="block"
         routerLink={`${ReflectionsRouting.module}?state=${JSON.stringify(
           state,
         )}`}
         routerDirection="back"
       >
-        {pendingState ? (
-          <IonSpinner />
-        ) : (
-          <IonIcon slot="start" icon={save}></IonIcon>
-        )}
-
-        {!pendingState && ' Speichern'}
+        <IonIcon slot="start" icon={save}></IonIcon> Speichern
       </IonButton>
     </IonPage>
   )

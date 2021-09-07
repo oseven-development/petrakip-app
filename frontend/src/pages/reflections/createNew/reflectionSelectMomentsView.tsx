@@ -19,7 +19,6 @@ import { Moment } from '../../../API'
 import { getMomentAPI } from '../../../api/'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-import { useDebounce } from '../../../hooks'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -31,21 +30,18 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
   const location = useLocation()
 
   const [state, setState] = React.useState({})
-  const [debouncedSearchTerm, pendingState] = useDebounce(state, 1000)
-
   const [momentsState, setMoments] = React.useState<MomentWithSelected[]>([])
 
   useIonViewDidEnter(() => {
     const params = new URLSearchParams(location.search)
     const urlState = params.get('state')
     if (urlState) {
-      const state = JSON.parse(urlState)
-      setState(state)
-
+      const jsonState = JSON.parse(urlState)
+      setState(jsonState)
       getMomentAPI().then(moments => {
         const nMoments = moments.map(moment => {
           // @ts-ignore
-          const k = state.momentObj?.map(({ id }) => id).includes(moment.id)
+          const k = jsonState.momentIDs?.includes(moment.id)
           const t = moment as MomentWithSelected
           t['selected'] = k || false
           return t
@@ -53,7 +49,7 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
         setMoments(nMoments)
       })
     }
-  }, [])
+  }, [location.search])
 
   const updateState = (k: Moment) => {
     const i = momentsState.findIndex(element => element.id === k.id)
@@ -75,17 +71,11 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
     })
   }
 
-  React.useEffect(() => {
-    const jsonState = JSON.stringify(debouncedSearchTerm)
-    history.push(`${history.location.pathname}?state=${jsonState}`)
-  }, [debouncedSearchTerm, history])
-
   return (
     <IonPage>
       <Header
-        disabled={pendingState}
         customBackRoute={`${ReflectionsRouting.module}?state=${JSON.stringify(
-          debouncedSearchTerm,
+          state,
         )}`}
       >
         Select Moment
@@ -102,10 +92,10 @@ export const ReflectionSelectMomentsView: React.FC<Props> = ({ history }) => {
         ></ListComponent>
       </IonContent>
       <IonButton
-        disabled={pendingState}
+        // disabled={pendingState}
         expand="block"
         routerLink={`${ReflectionsRouting.module}?state=${JSON.stringify(
-          debouncedSearchTerm,
+          state,
         )}`}
         routerDirection="back"
       >

@@ -79,7 +79,6 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   )
   const [sharedItem, setSharedItem] = React.useState<boolean>(false)
   const [state, setState] = React.useState<State>(defaultState)
-
   const location = useLocation()
 
   /*
@@ -164,7 +163,38 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   */
   const deleteSlot = (id: string) => () => {
     delteReflectionAPI(id)
-    history.replace('/reflections')
+    history.push('/reflections')
+  }
+
+  const params = new URLSearchParams(location.search)
+  // Load URL-Data into State
+  useIonViewDidEnter(() => {
+    setState(defaultState)
+    const urlState = params.get('state')
+    if (urlState) {
+      const stateJson = JSON.parse(urlState)
+      setState(stateJson)
+      setSharedItem(stateJson.sharedState)
+      if (
+        stateJson.state === ReflectionState.awaitingFollowUpQuestions &&
+        !stateJson.sharedState
+      ) {
+        setShowFollowUpQuestions(true)
+      }
+    }
+  }, [location.search])
+
+  // React.useEffect(() => {
+  //   const jsonState = JSON.stringify(debouncedSearchTerm)
+  //   history.replace(`${history.location.pathname}?state=${jsonState}`)
+  // }, [debouncedSearchTerm, history])
+
+  function updateURLandRoute(url: string) {
+    history.push(`${url}?state=${JSON.stringify(state)}`)
+  }
+
+  function createRouterLink(url: string) {
+    return `${url}?state=${JSON.stringify(state)}`
   }
 
   // NEW!!!!! #######################################################
@@ -229,9 +259,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             {
               text: 'Ja!',
               handler: () =>
-                history.push(
-                  `${ReflectionsRouting.followUpQuestion}${location.search}`,
-                ),
+                updateURLandRoute(ReflectionsRouting.followUpQuestion),
             },
           ]}
         />
@@ -256,7 +284,8 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           </IonItemDivider>
           <IonItem
             lines="none"
-            routerLink={`${ReflectionsRouting.selectTopic}${location.search}`}
+            routerLink={createRouterLink(ReflectionsRouting.selectTopic)}
+            routerDirection="forward"
             disabled={sharedItem}
           >
             <IonLabel>
@@ -292,7 +321,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           </IonItemDivider>
           <IonItem
             disabled={sharedItem}
-            routerLink={`${ReflectionsRouting.writeReport}${location.search}`}
+            routerLink={createRouterLink(ReflectionsRouting.writeReport)}
             routerDirection="forward"
           >
             <IonLabel>
@@ -309,7 +338,8 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           </IonItemDivider>
           <IonItem
             disabled={sharedItem}
-            routerLink={`${ReflectionsRouting.selectMoments}${location.search}`}
+            routerLink={createRouterLink(ReflectionsRouting.selectMoments)}
+            routerDirection="forward"
           >
             <IonLabel>Neuen Momente hinzufügen</IonLabel>
             <IonNote slot="end">{state.momentIDs.length}</IonNote>
@@ -337,7 +367,8 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             <IonButton
               expand="block"
               disabled={state.state === ReflectionState.started ? true : false}
-              routerLink={`${ReflectionsRouting.followUpQuestion}${location.search}`}
+              routerLink={createRouterLink(ReflectionsRouting.followUpQuestion)}
+              routerDirection="forward"
             >
               Folgefragen
               <IonIcon slot="start" icon={aperture}></IonIcon>

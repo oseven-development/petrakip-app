@@ -33,7 +33,6 @@ import {
 } from '../../../API'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-import { useDebounce } from '../../../hooks'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -47,7 +46,6 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
     id: string
     state: ReflectionState
   }>()
-  const [debouncedSearchTerm, pendingState] = useDebounce(state, 100)
   const [loader, setLoader] = React.useState(true)
   const [question, setQuestion] = React.useState(followUpQuestions)
 
@@ -98,7 +96,9 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
   return (
     <IonPage>
       <Header
-        customBackRoute={`${ReflectionsRouting.module}${location.search}`}
+        customBackRoute={`${ReflectionsRouting.module}?state=${JSON.stringify(
+          state,
+        )}`}
       >
         Folgefragen
       </Header>
