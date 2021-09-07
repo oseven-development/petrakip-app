@@ -40,11 +40,9 @@ export const ProfileChangePasswordView: React.FC<Props> = ({ history }) => {
   const changePassword = () => {
     Auth.currentAuthenticatedUser()
       .then(user => {
-        console.log(user)
         return Auth.changePassword(user, state.oldPassword, state.newPassword)
       })
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }
   return (
     <IonPage>

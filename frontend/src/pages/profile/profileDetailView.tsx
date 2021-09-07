@@ -195,7 +195,6 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                       message:
                         'Hier kannst du ein Export aller deiner Daten machen.',
                       buttons: AlertArrayActuions,
-                      // onDidDismiss: e => console.log('did dismiss'),
                     })
                   }}
                 >
@@ -221,7 +220,6 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
                           },
                         },
                       ],
-                      // onDidDismiss: e => console.log('did dismiss'),
                     })
                   }}
                 >

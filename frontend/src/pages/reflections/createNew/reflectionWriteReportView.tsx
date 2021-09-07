@@ -12,6 +12,7 @@ import {
   IonGrid,
   IonIcon,
   IonPage,
+  IonSpinner,
   IonText,
   IonTextarea,
   useIonViewDidEnter,
@@ -19,9 +20,8 @@ import {
 
 // import { Header } from '../../../components'
 
-import { useUpdateQueryParamState } from './useUpdateQueryParamState'
-import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
+import { useDebounce } from '../../../hooks'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -29,32 +29,25 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
   history,
   location,
 }) => {
-  const [state, setState] = React.useState('')
-  const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
-  // console.log('component render')
+  const [state, setState] = React.useState<{ content: string }>()
+  const [debouncedSearchTerm, pendingState] = useDebounce(state, 1000)
 
   useIonViewDidEnter(() => {
     const params = new URLSearchParams(location.search)
-    const content = params.get(ReflectionQueryParamKeys.report)
-    setState(content || '')
+    const K = params.get('state')
+    if (K) {
+      const stateJson = JSON.parse(K)
+      setState(stateJson)
+    }
   }, [])
 
   React.useEffect(() => {
-    UpdateURL([
-      {
-        key: ReflectionQueryParamKeys.report,
-        value: state,
-      },
-    ])
-  }, [state, UpdateURL])
+    const jsonState = JSON.stringify(debouncedSearchTerm)
+    history.replace(`${history.location.pathname}?state=${jsonState}`)
+  }, [debouncedSearchTerm, history])
 
   return (
     <IonPage>
-      {/* Header cause an input-delay */}
-      {/* <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
-        Reflexionsbericht
-      </Header> */}
-
       <IonContent fullscreen>
         <IonCard>
           <IonCardHeader color="tertiary">
@@ -76,23 +69,38 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
             <h1>Reflexionsbericht</h1>
           </IonText>
           <IonTextarea
-            debounce={300}
             autoGrow
-            value={state}
+            value={state?.content}
             onIonChange={e => {
-              setState(e.detail.value!)
+              const k = e.detail.value
+              if (k) {
+                //@ts-ignore
+                setState(state => {
+                  //@ts-ignore
+                  state.content = k
+                  return { ...state }
+                })
+              }
             }}
             placeholder="Enter more information here..."
           ></IonTextarea>
         </IonGrid>
       </IonContent>
       <IonButton
+        disabled={pendingState}
         expand="block"
-        routerLink={`${ReflectionsRouting.module}${currentUrl}`}
+        routerLink={`${ReflectionsRouting.module}?state=${JSON.stringify(
+          state,
+        )}`}
         routerDirection="back"
       >
-        <IonIcon slot="start" icon={save}></IonIcon>
-        Speichern
+        {pendingState ? (
+          <IonSpinner />
+        ) : (
+          <IonIcon slot="start" icon={save}></IonIcon>
+        )}
+
+        {!pendingState && ' Speichern'}
       </IonButton>
     </IonPage>
   )

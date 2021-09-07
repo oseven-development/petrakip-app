@@ -6,7 +6,7 @@ export const deleteProfileAPI = async () => {
     await user.deleteUser()
     Auth.signOut()
   } catch (error) {
-    console.log(error)
+    console.error(error)
     throw error
   }
 }

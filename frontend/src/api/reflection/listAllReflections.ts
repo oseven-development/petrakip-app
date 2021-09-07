@@ -43,7 +43,7 @@ export const listAllReflectionsAPI = async (): Promise<Reflection[]> => {
     if (res.data) return res.data.listReflections.items
     return []
   } catch (error) {
-    console.log(error)
+    console.error(error)
     throw error
   }
 }

@@ -59,9 +59,7 @@ export const useVoiceMediaRecorder = (
 
         if (hasPermission) {
           if (isRecording) {
-            VoiceRecorder.startRecording()
-              .then((result: GenericResponse) => console.log(result.value))
-              .catch(error => console.log(error))
+            VoiceRecorder.startRecording().catch(error => console.error(error))
           } else {
             VoiceRecorder.stopRecording()
               .then(async (result: RecordingData) => {
@@ -77,7 +75,7 @@ export const useVoiceMediaRecorder = (
                   type: result.value.mimeType,
                 })
               })
-              .catch(error => console.log(error))
+              .catch(error => console.error(error))
           }
         }
       }

@@ -14,7 +14,6 @@ import { groupArrayByDate } from '../../utils'
 import { ReflectionsRouting } from '..'
 import { Reflection } from '../../API'
 import { getReflectionAPI, listAllReflectionsAPI } from '../../api/'
-import { reflectionStatetoURI } from './reflectionUtils'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -28,11 +27,14 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
     getReflectionAPI(reflection.id)
       .then(ref => {
         if (ref) {
-          history.push(
-            `${ReflectionsRouting.module}?${
-              sharedItem ? 'sharedItem=true&' : ''
-            }${reflectionStatetoURI(ref)}`,
-          )
+          // @ts-ignore
+          ref.momentIDs = [...ref.moments.items.map(item => item.moment.id)]
+          // @ts-ignore
+          ref.momentObj = [...ref.moments.items.map(item => item.moment)]
+          // @ts-ignore
+          ref.sharedState = sharedItem
+          const jsonState = JSON.stringify(ref)
+          history.push(`${ReflectionsRouting.module}?state=${jsonState}`)
         }
       })
       .catch(console.error)

@@ -18,15 +18,13 @@ import {
   IonList,
   IonLoading,
   IonPage,
+  useIonViewDidEnter,
 } from '@ionic/react'
 
 import { Header, LargeHeader } from '../../../components'
 
 import { updateReflection } from '../../../graphql/mutations'
-import { ReflectionQueryParamKeys } from './reflectionQueryParamKeys'
 import { followUpQuestions } from '../../../data/reflectionFollowUpQuestions'
-
-import { useUpdateQueryParamState } from './useUpdateQueryParamState'
 
 import {
   UpdateReflectionInput,
@@ -35,6 +33,7 @@ import {
 } from '../../../API'
 
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
+import { useDebounce } from '../../../hooks'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -42,23 +41,36 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
   match,
   history,
 }) => {
-  const { currentUrl, UpdateURL } = useUpdateQueryParamState(history)
   const location = useLocation()
+
+  const [state, setState] = React.useState<{
+    id: string
+    state: ReflectionState
+  }>()
+  const [debouncedSearchTerm, pendingState] = useDebounce(state, 100)
   const [loader, setLoader] = React.useState(true)
   const [question, setQuestion] = React.useState(followUpQuestions)
-  React.useEffect(() => {})
 
-  const updateQuest = async () => {
+  // Load URL-Data into State
+  useIonViewDidEnter(() => {
     const params = new URLSearchParams(location.search)
-    const id = params.get(ReflectionQueryParamKeys.id)
-    if (id) {
+    const urlState = params.get('state')
+    if (urlState) {
+      const stateJson = JSON.parse(urlState)
+      setState(stateJson)
+    }
+  }, [location.search])
+
+  const updateQuestion = async () => {
+    if (state?.id) {
       const input: UpdateReflectionInput = {
-        id,
+        id: state?.id,
         // TODO implementation needed
         // only dummyvalues!
         orientationQuestions: [
-          { question: 'dummy', answer: 'sample' },
-          { question: 'dummy', answer: 'sample' },
+          { question: 'frage 1', answer: 'sample answer' },
+          { question: 'frage 2', answer: 'sample answer' },
+          { question: 'frage 3', answer: 'sample answer' },
         ],
         state: ReflectionState.completed,
       }
@@ -67,20 +79,27 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
         graphqlOperation(updateReflection, { input }),
       )) as GraphQLResult<{ createReflexion: Reflection }>
       if (res.errors) throw res.errors
-      if (res.data) console.log(res.data)
 
-      UpdateURL([
-        {
-          key: ReflectionQueryParamKeys.reflexionState,
-          value: ReflectionState.completed,
-        },
-      ])
+      //@ts-ignore
+      setState(state => {
+        //@ts-ignore
+        state.state = ReflectionState.completed
+
+        return { ...state }
+      })
     }
   }
 
+  React.useEffect(() => {
+    const jsonState = JSON.stringify(debouncedSearchTerm)
+    history.push(`${history.location.pathname}?state=${jsonState}`)
+  }, [history, debouncedSearchTerm])
+
   return (
     <IonPage>
-      <Header customBackRoute={`${ReflectionsRouting.module}${currentUrl}`}>
+      <Header
+        customBackRoute={`${ReflectionsRouting.module}${location.search}`}
+      >
         Folgefragen
       </Header>
       <IonContent fullscreen>
@@ -101,7 +120,7 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
           duration={2500}
         />
       </IonContent>
-      <IonButton expand="block" onClick={updateQuest}>
+      <IonButton expand="block" onClick={updateQuestion}>
         <IonIcon slot="start" icon={checkmarkCircle}></IonIcon>
         beantworten
       </IonButton>

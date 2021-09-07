@@ -10,8 +10,8 @@ export function CheckmarkCircleStateIcon({
 }) {
   return (
     <IonIcon
-      icon={state !== '' ? checkmarkCircle : checkmarkCircleOutline}
-      color={state !== '' ? 'success' : 'medium'}
+      icon={state ? checkmarkCircle : checkmarkCircleOutline}
+      color={state ? 'success' : 'medium'}
       slot="end"
     />
   )

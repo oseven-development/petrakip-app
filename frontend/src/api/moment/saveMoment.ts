@@ -70,7 +70,6 @@ export const saveMomentAPI = async ({
       delete (moment as Moment).updatedAt
       delete (moment as Moment).owner
 
-      console.log(moment)
       const res: any = (await API.graphql(
         graphqlOperation(updateMoment, { input: moment }),
       )) as GraphQLResult<{ updateMoment: UpdateMomentInput }>
