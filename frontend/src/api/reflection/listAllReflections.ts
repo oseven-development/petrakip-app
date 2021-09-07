@@ -56,6 +56,7 @@ const ListAllReflectionsTopicsQuery = /* GraphQL */ `
   ) {
     listReflections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        owner
         subTopic
       }
       nextToken
@@ -63,7 +64,7 @@ const ListAllReflectionsTopicsQuery = /* GraphQL */ `
   }
 `
 
-type subTopic = { subTopic: string }[]
+type subTopic = { subTopic: string; owner: string }[]
 
 export const listAllReflectionsTopicsAPI = async (): Promise<subTopic> => {
   try {

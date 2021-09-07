@@ -15,6 +15,7 @@ import { listAllReflectionsTopicsAPI } from '../../../api/'
 import { useCustomLoaderOnViewEnter } from '../../../hooks'
 
 import { reflectionTopics } from '../../../data/reflectionTopic'
+import { Auth } from 'aws-amplify'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -35,8 +36,13 @@ export const ReflectionSelectTopicAreaView: React.FC<Props> = ({
     }[]
   >([])
 
-  const calcFinsihedTopics = (subTopics: { subTopic: string }[]) => {
-    const finishedTopicAsArray = subTopics.map(({ subTopic }) => subTopic)
+  const calcFinsihedTopics = async (
+    subTopics: { subTopic: string; owner: string }[],
+  ) => {
+    const user = await Auth.currentUserInfo()
+    const finishedTopicAsArray = subTopics
+      .filter(({ owner }) => owner === user.username)
+      .map(({ subTopic }) => subTopic)
     const topicList = reflectionTopics.map(topic => {
       topic.subListItems = topic.subListItems.map(subTopics => {
         subTopics.subjectStatusCompleted = finishedTopicAsArray.includes(
