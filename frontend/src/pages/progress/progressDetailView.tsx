@@ -16,18 +16,24 @@ import {
 import { Header, LargeHeader } from '../../components'
 import { listAllReflectionsAPI } from '../../api/'
 import { Reflection, ReflectionState } from '../../API'
+import { Auth } from 'aws-amplify'
 
 interface Props extends RouteComponentProps<{}> {}
 
 export const ProgressDetailView: React.FC<Props> = ({ history }) => {
   const [reflections, setReflections] = useState<Reflection[]>([])
   const [completedReflections, setCompletedReflections] = useState<number>(0)
-  useIonViewWillEnter(() => {
+  useIonViewWillEnter(async () => {
+    const { username } = await Auth.currentUserInfo()
+
     listAllReflectionsAPI()
       .then(res => {
-        setReflections(res)
+        const resFilterdByUser = res.filter(({ owner }) => owner === username)
+        setReflections(resFilterdByUser)
         setCompletedReflections(
-          res.filter(({ state }) => state === ReflectionState.completed).length,
+          resFilterdByUser.filter(
+            ({ state }) => state === ReflectionState.completed,
+          ).length,
         )
       })
       .catch(console.error)
