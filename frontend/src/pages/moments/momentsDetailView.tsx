@@ -43,6 +43,7 @@ import {
 import { Media } from '../../api/moment/saveMoment'
 import { ShareUser } from '../../types/shareUser'
 import { momentTags } from '../../data/momentTags'
+import { useCustomLoaderOnTrigger } from '../../hooks'
 
 export interface Moment {
   title: string
@@ -94,24 +95,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
   })
 
   const saveMoment = async () => {
-    if (moment.title.length === 0 || media.type === '') {
-      setIsToast({
-        ...isToast,
-        present: true,
-        message: `Moment konnte nicht erstellt werden. Entweder Titel oder Medium nicht definiert`,
-      })
-    } else {
-      await saveMomentAPI({ moment, media })
-      setIsToast({
-        present: true,
-        color: 'success',
-        message: `Moment erfolgreich ${
-          match?.params?.id ? 'geändert' : 'erstellt'
-        }`,
-      })
-
-      history.replace('/moments')
-    }
+    triggerUpdateReflection({ moment, media })
   }
 
   const deleteMoment = async (e: any) => {
@@ -153,8 +137,24 @@ export const MomentsDetailView: React.FC<Props> = props => {
     })
   }
 
+  const updateURIAfterUpdateRelfectionIsFinished = () => {
+    setTimeout(() => {
+      history.replace('/moments')
+    }, 500)
+  }
+  /*
+    Inizialize the JSXLoader when updating the Reflection
+  */
+  const [JSXLoader, , triggerUpdateReflection] = useCustomLoaderOnTrigger({
+    promise: saveMomentAPI,
+    callback: updateURIAfterUpdateRelfectionIsFinished,
+    loadingMessage: 'Moment wird gespeichert...',
+    toastMessage: 'Moment erfolgreich gespeichert!',
+  })
+
   return (
     <IonPage>
+      {JSXLoader}
       <Header
         disabled={!Boolean(moment.id)}
         iconSlot={[
@@ -184,11 +184,11 @@ export const MomentsDetailView: React.FC<Props> = props => {
         ]}
         deleteSlot={deleteMoment}
       >
-        Moment {match?.params?.id ? 'ändern' : 'erstellen'}
+        Moment {match?.params?.id ? 'speichern' : 'erstellen'}
       </Header>
       <IonContent fullscreen>
         <LargeHeader>
-          Moment {match?.params?.id ? 'ändern' : 'erstellen'}
+          Moment {match?.params?.id ? 'bearbeiten' : 'erstellen'}
         </LargeHeader>
         <DisplayMedia>{media}</DisplayMedia>
 
@@ -267,13 +267,15 @@ export const MomentsDetailView: React.FC<Props> = props => {
       <IonButton
         expand="block"
         onClick={() => saveMoment()}
-        disabled={isSharedMoment}
+        disabled={
+          isSharedMoment || moment.title.length === 0 || media.type === ''
+        }
       >
         <IonIcon
           slot="start"
           icon={match?.params?.id ? save : addCircle}
         ></IonIcon>
-        Moment {match?.params?.id ? 'ändern' : 'erstellen'}
+        Moment {match?.params?.id ? 'speichern' : 'erstellen'}
       </IonButton>
       <IonToast
         isOpen={isToast.present}
