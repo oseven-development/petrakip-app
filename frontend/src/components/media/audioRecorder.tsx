@@ -1,16 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
-import {
-  IonButton,
-  IonCol,
-  IonGrid,
-  IonIcon,
-  IonItem,
-  IonLoading,
-  IonModal,
-  IonRow,
-  IonSpinner,
-  IonText,
-} from '@ionic/react'
+import { IonButton, IonIcon, IonModal, IonSpinner, IonText } from '@ionic/react'
 import { mic } from 'ionicons/icons'
 
 import { Media } from '../../api/moment/saveMoment'
@@ -45,14 +34,29 @@ const AudioRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
 
   return (
     <>
-      <IonModal isOpen={isRecording} cssClass="my-custom-class">
-        <IonGrid>
-          <IonRow class="ion-align-items-center">
+      <IonModal isOpen={isRecording}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 16,
+            }}
+          >
+            <IonIcon icon={mic} style={{ fontSize: 80 }} />
             <IonText>Aufnahme läuft {timer} Sekunden</IonText>
             <IonSpinner name="dots" />
 
             <IonButton
-              expand="full"
+              expand="block"
               onClick={() => {
                 toggleRecording()
                 setTimer(0)
@@ -60,8 +64,8 @@ const AudioRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
             >
               Aufnahme Beenden
             </IonButton>
-          </IonRow>
-        </IonGrid>
+          </div>
+        </div>
       </IonModal>
 
       <IonButton

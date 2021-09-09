@@ -54,7 +54,8 @@ const FilterDialog: React.FC<Props> = ({
         .filter((x: any, i: any, a: any) => a.indexOf(x) === i)
         .map((e: any) => ({
           [e]: { label: e, isChecked: false },
-        })),
+        }))
+        .filter((x: any) => Object.keys(x)[0].length > 0),
     )
     // @ts-ignore
     setFilterTags(preparedFilterTags)

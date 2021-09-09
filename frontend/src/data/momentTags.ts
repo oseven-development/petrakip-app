@@ -1,10 +1,10 @@
 export const momentTags = [
-  { value: 'bacon', label: 'Bacon' },
-  { value: 'olives', label: 'Schwarze Oliven' },
-  { value: 'xcheese', label: 'Extra Käse' },
-  { value: 'peppers', label: 'Paprika' },
-  { value: 'mushrooms', label: 'Pilze' },
-  { value: 'onions', label: 'Zwiebeln' },
-  { value: 'pepperoni', label: 'Pepperoni' },
-  { value: 'pineapple', label: 'Ananas' },
+  { value: 'bacon', label: 'bacon' },
+  { value: 'olives', label: 'olives' },
+  { value: 'xcheese', label: 'xcheese' },
+  { value: 'peppers', label: 'peppers' },
+  { value: 'mushrooms', label: 'mushrooms' },
+  { value: 'onions', label: 'onions' },
+  { value: 'pepperoni', label: 'pepperoni' },
+  { value: 'pineapple', label: 'pineapple' },
 ] as const

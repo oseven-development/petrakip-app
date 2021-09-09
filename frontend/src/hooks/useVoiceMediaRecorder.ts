@@ -41,7 +41,10 @@ export const useVoiceMediaRecorder = (
       // TODO: Add Type later
       const handleData = (e: BlobEvent) => {
         setAudioURL({
-          name: `audio-${new Date().toISOString()}.${extension(e.data.type)}`,
+          name: `audio-${new Date()
+            .toISOString()
+            .replaceAll(':', '_')
+            .replaceAll('/', '_')}.${extension(e.data.type)}`,
           data: e.data,
           type: e.data.type,
         })
@@ -68,9 +71,10 @@ export const useVoiceMediaRecorder = (
                 )
                 const blob = await base64Response.blob()
                 setAudioURL({
-                  name: `audio-${new Date().toISOString()}.${extension(
-                    result.value.mimeType,
-                  )}`,
+                  name: `audio-${new Date()
+                    .toISOString()
+                    .replaceAll(':', '_')
+                    .replaceAll('/', '_')}.aac`,
                   data: blob,
                   type: result.value.mimeType,
                 })
