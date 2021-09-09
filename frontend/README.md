@@ -6,9 +6,9 @@ This documentation is the documentation for how to start, build and deploy the a
 
 | library/framework | version |
 | ----------------- | ------- |
-| react             | 17.0.1  |
-| ionic             | 5.5.0   |
-| capacitor         | 2.4.7   |
+| react             | 17.0.2  |
+| ionic             | 5.6.5   |
+| capacitor         | 3.1.2   |
 | aws-amplify       | 3.3.27  |
 
 ## 📖 Resources
@@ -33,51 +33,51 @@ This documentation is the documentation for how to start, build and deploy the a
 1. install all packages
 
 ```bash
-yarn
+npm i
 ```
 
 2a. serve ionic app _**(recommended)**_
 
 ```bash
-yarn serve
+npm run serve
 ```
 
 2b. serve react app
 
 ```bash
-yarn start
+npm run start
 ```
 
 # Deploying To Device Using Capacitor/CLI
 
 ```bash
-yarn ionic build
-yarn ionic cap sync ios
+npm run ionic build
+npm run  ionic cap sync ios
 ```
 
 After you make changes to web code, you typically run the following command.
 
 ```bash
-yarn ionic cap copy ios
+npm run ionic cap copy ios
 ```
 
 After changes to native code/plugins
 
 ```bash
-yarn ionic cap sync ios
+npm run ionic cap sync ios
 ```
 
 Open up the IDE
 
 ```bash
-yarn ionic cap open ios
+npm run ionic cap open ios
 ```
 
 Using Live Reload To Debug Application
 When developing the remainder of the application, I used live reload commands which are listed below.
 
 ```bash
-yarn ionic cap run ios -l --external
+npm run ionic cap run ios -l --external
 
-yarn ionic cap run android -l --external
+npm run ionic cap run android -l --external
 ```
