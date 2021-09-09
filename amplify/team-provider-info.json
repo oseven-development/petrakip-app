@@ -51,6 +51,10 @@
         "createSignedUrlForAssets": {
           "deploymentBucketName": "amplify-petrakipapp-max-210036-deployment",
           "s3Key": "amplify-builds/createSignedUrlForAssets-782f5a57484c524d3656-build.zip"
+        },
+        "createDataExportForUser": {
+          "deploymentBucketName": "amplify-petrakipapp-max-210036-deployment",
+          "s3Key": "amplify-builds/createDataExportForUser-45647753666c35507166-build.zip"
         }
       }
     }
