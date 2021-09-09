@@ -20,11 +20,6 @@ enum ReflectionState {
   completed
 }
 
-type Comment {
-  createdAt: AWSDateTime!
-  content: String!
-}
-
 type OrientationQuestions {
   question: String!
   answer: String!
@@ -62,18 +57,13 @@ type Reflection
   id: ID!
   createdAt: AWSDateTime
   title: String
-  contentType: ContentType
   content: String
-  asset: S3Object
   topic: String
   subTopic: String
-  niveau: String
-  indicators: [String]
   state: ReflectionState
   deleted: Boolean
   sharedUsersDetail: [sharedUsersDetail]
   sharedUsers: [String]
-  comments: [Comment]
   orientationQuestions: [OrientationQuestions]
   moments: [ReflectionMoment] @connection(keyName: "byReflection", fields: ["id"])
 }
@@ -99,7 +89,6 @@ type Moment
   deleted: Boolean
   sharedUsersDetail: [sharedUsersDetail]
   sharedUsers: [String]
-  comments: [Comment]
   reflection: [ReflectionMoment] @connection(keyName: "byMoment", fields: ["id"])
 }
 
