@@ -71,18 +71,9 @@ export const createReflection = /* GraphQL */ `
       id
       createdAt
       title
-      contentType
       content
-      asset {
-        bucket
-        key
-        region
-        identityId
-      }
       topic
       subTopic
-      niveau
-      indicators
       state
       deleted
       sharedUsersDetail {
@@ -90,10 +81,6 @@ export const createReflection = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       orientationQuestions {
         question
         answer
@@ -115,18 +102,9 @@ export const updateReflection = /* GraphQL */ `
       id
       createdAt
       title
-      contentType
       content
-      asset {
-        bucket
-        key
-        region
-        identityId
-      }
       topic
       subTopic
-      niveau
-      indicators
       state
       deleted
       sharedUsersDetail {
@@ -134,10 +112,6 @@ export const updateReflection = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       orientationQuestions {
         question
         answer
@@ -159,18 +133,9 @@ export const deleteReflection = /* GraphQL */ `
       id
       createdAt
       title
-      contentType
       content
-      asset {
-        bucket
-        key
-        region
-        identityId
-      }
       topic
       subTopic
-      niveau
-      indicators
       state
       deleted
       sharedUsersDetail {
@@ -178,10 +143,6 @@ export const deleteReflection = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       orientationQuestions {
         question
         answer
@@ -219,10 +180,6 @@ export const createMoment = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       reflection {
         nextToken
       }
@@ -256,10 +213,6 @@ export const updateMoment = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       reflection {
         nextToken
       }
@@ -293,10 +246,6 @@ export const deleteMoment = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       reflection {
         nextToken
       }
@@ -318,12 +267,9 @@ export const createReflectionMoment = /* GraphQL */ `
         id
         createdAt
         title
-        contentType
         content
         topic
         subTopic
-        niveau
-        indicators
         state
         deleted
         sharedUsers
@@ -362,12 +308,9 @@ export const updateReflectionMoment = /* GraphQL */ `
         id
         createdAt
         title
-        contentType
         content
         topic
         subTopic
-        niveau
-        indicators
         state
         deleted
         sharedUsers
@@ -406,12 +349,9 @@ export const deleteReflectionMoment = /* GraphQL */ `
         id
         createdAt
         title
-        contentType
         content
         topic
         subTopic
-        niveau
-        indicators
         state
         deleted
         sharedUsers

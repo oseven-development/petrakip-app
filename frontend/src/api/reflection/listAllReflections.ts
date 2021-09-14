@@ -13,12 +13,9 @@ const ListReflectionsQuery = /* GraphQL */ `
         id
         createdAt
         title
-        contentType
         content
         topic
         subTopic
-        niveau
-        indicators
         state
         deleted
         sharedUsers

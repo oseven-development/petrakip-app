@@ -66,18 +66,9 @@ export const getReflection = /* GraphQL */ `
       id
       createdAt
       title
-      contentType
       content
-      asset {
-        bucket
-        key
-        region
-        identityId
-      }
       topic
       subTopic
-      niveau
-      indicators
       state
       deleted
       sharedUsersDetail {
@@ -85,10 +76,6 @@ export const getReflection = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       orientationQuestions {
         question
         answer
@@ -112,12 +99,9 @@ export const listReflections = /* GraphQL */ `
         id
         createdAt
         title
-        contentType
         content
         topic
         subTopic
-        niveau
-        indicators
         state
         deleted
         sharedUsers
@@ -150,10 +134,6 @@ export const getMoment = /* GraphQL */ `
         email
       }
       sharedUsers
-      comments {
-        createdAt
-        content
-      }
       reflection {
         nextToken
       }

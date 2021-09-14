@@ -14,12 +14,10 @@ export interface CustomReflection {
   content: string
   topic: string
   subTopic: string
-  indicators: Array<string>
   state: ReflectionState
   deleted?: boolean
   sharedUsersDetail: Array<sharedUsersDetail>
   sharedUsers: Array<string>
-  comments: Array<Comment>
   orientationQuestions: Array<OrientationQuestions>
   moments: {
     items: {
@@ -31,7 +29,6 @@ export interface CustomReflection {
     }
     nextToken: string
   }
-
   updatedAt: string
   owner: string | null
 }
@@ -42,22 +39,15 @@ const GetReflecionsQuery = /* GraphQL */ `
       id
       createdAt
       title
-      contentType
       content
       topic
       subTopic
-      niveau
-      indicators
       state
       deleted
       sharedUsers
       sharedUsersDetail {
         id
         email
-      }
-      comments {
-        createdAt
-        content
       }
       orientationQuestions {
         question
