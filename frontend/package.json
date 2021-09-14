@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
+    "ionic": "ionic",
     "start": "react-scripts start",
     "serve": "ionic serve",
     "build": "react-scripts build",
