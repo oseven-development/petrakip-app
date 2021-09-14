@@ -303,7 +303,7 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
           <IonItem lines="none" disabled={sharedItem}>
             <IonInput
               value={state.title}
-              placeholder="Title (optional)"
+              placeholder="Title"
               onIonChange={e => {
                 const k = e.detail.value
                 setState(state => {
