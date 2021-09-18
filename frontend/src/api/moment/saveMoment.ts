@@ -9,7 +9,7 @@ import { Credentials } from '@aws-amplify/core'
 // Can't use Moment from API.ts due to __typename
 export interface Media {
   name: string
-  // @TODO Fix any
+  // TODO Fix any
   data: File | string | any
   type: string
 }

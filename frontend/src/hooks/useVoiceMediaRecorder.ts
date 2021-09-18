@@ -38,7 +38,6 @@ export const useVoiceMediaRecorder = (
       }
 
       // Obtain the audio when ready.
-      // TODO: Add Type later
       const handleData = (e: BlobEvent) => {
         setAudioURL({
           name: `audio-${new Date()
