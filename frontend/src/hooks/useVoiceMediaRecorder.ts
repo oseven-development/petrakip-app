@@ -10,7 +10,7 @@ import { Platform } from './usePlatform'
 
 export const useVoiceMediaRecorder = (
   platform: Platform,
-): [Media, boolean, Function] => {
+): [Media, boolean, () => void] => {
   const [audioURL, setAudioURL] = useState<Media>({
     name: '',
     data: '',
@@ -19,9 +19,9 @@ export const useVoiceMediaRecorder = (
   const [isRecording, setIsRecording] = useState(false)
   const [recorder, setRecorder] = useState<MediaRecorder | undefined>(undefined)
 
-  // effect for not-ios
+  // effect for web
   useEffect(() => {
-    if (platform !== Platform.ios) {
+    if (platform !== Platform.ios && platform !== Platform.android) {
       // Lazily obtain recorder first time we're recording.
       if (!recorder) {
         if (isRecording) {
@@ -54,9 +54,9 @@ export const useVoiceMediaRecorder = (
     }
   }, [recorder, isRecording, platform])
 
-  // effect for ios
+  // effect for ios & android
   useEffect(() => {
-    if (platform === Platform.ios) {
+    if (platform === Platform.ios || platform === Platform.android) {
       const runFunction = async () => {
         const hasPermission = await VoiceRecorder.requestAudioRecordingPermission()
 
