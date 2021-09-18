@@ -15,11 +15,9 @@ interface Props {
 const AudioRecorder: React.FC<Props> = ({ setMedia, disabled, style }) => {
   const platform = usePlatform()
   const [timer, setTimer] = React.useState(0)
-  const [audioURL, isRecording, toggleRecording]: [
-    Media,
-    boolean,
-    any, //TODO: how to handle function
-  ] = useVoiceMediaRecorder(platform)
+  const [audioURL, isRecording, toggleRecording] = useVoiceMediaRecorder(
+    platform,
+  )
 
   useEffect(() => {
     setMedia(audioURL)
