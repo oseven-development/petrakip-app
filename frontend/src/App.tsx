@@ -1,8 +1,4 @@
-import {
-  ConfirmSignIn,
-  RequireNewPassword,
-  withAuthenticator,
-} from 'aws-amplify-react'
+import { RequireNewPassword, withAuthenticator } from 'aws-amplify-react'
 
 import {
   IonApp,
@@ -137,8 +133,6 @@ const App: React.FC = () => (
   </IonApp>
 )
 
-// export default App
-// TODO: https://docs.amplify.aws/lib/auth/customui/q/platform/js#customize-text-labels
 export default withAuthenticator(App, false, [
   <LoginView />,
   <RegisterView />,
