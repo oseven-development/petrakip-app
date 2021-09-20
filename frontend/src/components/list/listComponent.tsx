@@ -93,6 +93,7 @@ export function ListComponent<A extends Item>({
     <>
       <div className={platform === 'ios' ? 'ion-padding' : ''}>
         <IonSegment
+          value={state ? Ownership.belongsToUser : Ownership.sharedFromOther}
           onIonChange={e =>
             setState(e.detail.value === Ownership.belongsToUser)
           }
