@@ -1,5 +1,4 @@
 import { API, graphqlOperation, Storage } from 'aws-amplify'
-import { listProfileSettingss } from '../../graphql/queries'
 
 export const customListProfileSettingss = /* GraphQL */ `
   query ListProfileSettingss(
@@ -35,6 +34,7 @@ export const getProfileAPI = async () => {
     const result: any = await API.graphql(
       graphqlOperation(customListProfileSettingss),
     )
+    console.log(result)
     if (result.data.listProfileSettingss.items.length < 1) {
       return {
         picture: {
@@ -45,20 +45,30 @@ export const getProfileAPI = async () => {
         settings: {},
       }
     }
-
-    const profilePictureKey =
-      result.data.listProfileSettingss.items[0].profilePicture.key
-    const profilePicture: any = await Storage.get(profilePictureKey, {
-      download: true,
-      level: 'private',
-    })
-    return {
-      picture: {
-        name: profilePictureKey,
-        data: profilePicture.Body,
-        type: profilePicture.Body.type,
-      },
-      settings: result.data.listProfileSettingss.items[0],
+    if (result.data.listProfileSettingss.items[0].profilePicture) {
+      const profilePictureKey =
+        result.data.listProfileSettingss.items[0].profilePicture.key
+      const profilePicture: any = await Storage.get(profilePictureKey, {
+        download: true,
+        level: 'private',
+      })
+      return {
+        picture: {
+          name: profilePictureKey,
+          data: profilePicture.Body,
+          type: profilePicture.Body.type,
+        },
+        settings: result.data.listProfileSettingss.items[0],
+      }
+    } else {
+      return {
+        picture: {
+          name: '',
+          data: '',
+          type: '',
+        },
+        settings: result.data.listProfileSettingss.items[0],
+      }
     }
   } catch (error) {
     console.error(error)

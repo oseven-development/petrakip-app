@@ -49,6 +49,7 @@ interface ExportData {
 
 export const ProfileDetailView: React.FC<Props> = ({ history }) => {
   const [user, setUser] = useState<any>(undefined)
+  const platform = usePlatform()
 
   const [present] = useIonAlert()
   const [profileSettings, setProfileSettings] = useState<
@@ -74,22 +75,36 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
     } else {
       exportData = await exportAllDataAPI()
     }
-    // Create blob link to download
-    const url = window.URL.createObjectURL(exportData.media.data)
-    const link = document.createElement('a')
-    link.href = url
-    link.setAttribute('download', exportData.media.name)
+    console.log(platform)
+    if (platform !== 'web') {
+      // Create blob link to download
+      const url = window.URL.createObjectURL(exportData.media.data)
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', exportData.media.name)
 
-    // Append to html link element page
-    document.body.appendChild(link)
+      // Append to html link element page
+      document.body.appendChild(link)
 
-    // Start download
-    link.click()
+      // Start download
+      link.click()
 
-    // Clean up and remove the link
-    // @ts-ignore
-    link.parentNode.removeChild(link)
-    return exportData.latestExportKey
+      // Clean up and remove the link
+      // @ts-ignore
+      link.parentNode.removeChild(link)
+      return exportData.latestExportKey
+    } else {
+      console.log(exportData)
+      present({
+        header: 'Datenexport link',
+        message: exportData.media.signedUrl,
+        // buttons: [
+        //   'Cancel',
+        //   { text: 'Ok', handler: (d) => console.log('ok pressed') },
+        // ],
+        // onDidDismiss: (e) => console.log('did dismiss'),
+      })
+    }
   }
 
   return (
