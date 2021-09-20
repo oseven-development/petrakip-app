@@ -18,7 +18,7 @@
   "dependencies": {
     "@aws-amplify/ui-react": "^1.0.7",
     "@capacitor/android": "^3.2.2",
-    "@capacitor/cli": "^3.2.0",
+    "@capacitor/cli": "^3.2.3",
     "@capacitor/ios": "^3.1.2",
     "@ionic-native/camera": "^5.36.0",
     "@ionic-native/core": "^5.33.0",
