@@ -3,6 +3,7 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
+  IonCheckbox,
   IonContent,
   IonInput,
   IonItem,
@@ -16,13 +17,22 @@ import {
 import './login.css'
 import Amplify from '@aws-amplify/core'
 import { Header, LargeHeader } from '../../components'
+import { Auth } from 'aws-amplify'
 
 const LoginView: React.FC = (props: any) => {
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
   const [presentToast] = useIonToast()
 
+  const [rememberMe, setRememberMe] = React.useState(true)
+
   const [loginLoading, setLoginLoading] = useState(false)
+
+  React.useEffect(() => {
+    Auth.configure({
+      storage: rememberMe ? window.localStorage : window.sessionStorage,
+    })
+  }, [rememberMe])
 
   if (props.authState !== 'signIn') {
     return null
@@ -66,6 +76,20 @@ const LoginView: React.FC = (props: any) => {
           <LargeHeader>Metapholio</LargeHeader>
           <div className="container">
             <p>Willkommen bei Metapholio, bitte melde dich an:</p>
+
+            <IonItem>
+              <IonLabel>
+                Anmeldung wird {rememberMe ? '' : 'nicht'} gespeichert
+              </IonLabel>
+              <IonCheckbox
+                slot="end"
+                checked={rememberMe}
+                onClick={() => {
+                  setRememberMe(v => !v)
+                }}
+              />
+            </IonItem>
+
             <IonCard className="input-card">
               <IonCardContent>
                 <IonItem class="ion-no-padding">
