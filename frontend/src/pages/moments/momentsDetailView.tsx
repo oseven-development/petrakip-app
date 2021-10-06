@@ -69,6 +69,8 @@ export const MomentsDetailView: React.FC<Props> = props => {
   const [moment, setMoment] = useState<any>({
     title: '',
     tags: [''],
+    sharedUsers: [],
+    sharedUsersDetail: [],
   })
   const [isSharedMoment, setIsSharedMoment] = useState<boolean>(false)
 

@@ -320,7 +320,6 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
             <IonText color="medium">Reflexionsbericht</IonText>
           </IonItemDivider>
           <IonItem
-            disabled={sharedItem}
             routerLink={createRouterLink(ReflectionsRouting.writeReport)}
             routerDirection="forward"
           >
