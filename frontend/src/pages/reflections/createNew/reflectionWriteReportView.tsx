@@ -40,10 +40,12 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
       const stateJson = JSON.parse(urlState)
       setState(stateJson)
       setIsShareReflection(
-        stateJson.owner !== (await Auth.currentUserInfo()).username,
+        !(stateJson.owner !== (await Auth.currentUserInfo()).username),
       )
     }
   }, [location.search])
+
+  console.log(isSharedReflection)
 
   return (
     <IonPage>
@@ -69,7 +71,7 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
           </IonText>
           <IonTextarea
             autoGrow
-            disabled={isSharedReflection}
+            disabled={!isSharedReflection}
             value={state?.content}
             onIonChange={e => {
               const k = e.detail.value
@@ -93,7 +95,7 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
         )}`}
         routerDirection="back"
       >
-        {isSharedReflection ? (
+        {!isSharedReflection ? (
           <>
             <IonIcon slot="start" icon={closeCircle}></IonIcon> Schließen
           </>
