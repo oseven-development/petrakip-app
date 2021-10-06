@@ -75,7 +75,6 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
     } else {
       exportData = await exportAllDataAPI()
     }
-    console.log(platform)
     if (platform !== 'web') {
       // Create blob link to download
       const url = window.URL.createObjectURL(exportData.media.data)
@@ -94,7 +93,6 @@ export const ProfileDetailView: React.FC<Props> = ({ history }) => {
       link.parentNode.removeChild(link)
       return exportData.latestExportKey
     } else {
-      console.log(exportData)
       present({
         header: 'Datenexport link',
         message: exportData.media.signedUrl,

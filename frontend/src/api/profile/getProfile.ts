@@ -34,7 +34,6 @@ export const getProfileAPI = async () => {
     const result: any = await API.graphql(
       graphqlOperation(customListProfileSettingss),
     )
-    console.log(result)
     if (result.data.listProfileSettingss.items.length < 1) {
       return {
         picture: {
