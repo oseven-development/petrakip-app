@@ -44,6 +44,7 @@ export const ReflectionsListView: React.FC<Props> = ({ history }) => {
     <IonPage>
       <Header
         iconSlot={[<CreateButton routerLink={ReflectionsRouting.module} />]}
+        disableBackButton={true}
       >
         Reflexionen
       </Header>

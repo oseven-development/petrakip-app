@@ -15,6 +15,7 @@ interface Props {
   iconSlot?: JSX.Element[]
   deleteSlot?: (e: any) => void
   customBackRoute?: string
+  disableBackButton?: boolean
   disabled?: boolean
 }
 
@@ -23,6 +24,7 @@ const Header: React.FC<Props> = ({
   iconSlot,
   deleteSlot,
   customBackRoute,
+  disableBackButton,
   disabled = false,
 }) => {
   const HeaderButtons = () =>
@@ -44,7 +46,7 @@ const Header: React.FC<Props> = ({
     <IonHeader>
       <IonToolbar>
         <IonButtons slot="start">
-          {customBackRoute === undefined ? (
+          {disableBackButton ? null : customBackRoute === undefined ? (
             <IonBackButton text="zurück" />
           ) : (
             <IonButton routerLink={customBackRoute} color="primary">
