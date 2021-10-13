@@ -78,11 +78,15 @@ export const ReflectionsFollowUpQuestionView: React.FC<Props> = ({
       )) as GraphQLResult<{ createReflexion: Reflection }>
       if (res.errors) throw res.errors
 
+      state.state = ReflectionState.completed
+      history.push(
+        `${ReflectionsRouting.module}?state=${JSON.stringify(state)}`,
+      )
+
       //@ts-ignore
       setState(state => {
         //@ts-ignore
         state.state = ReflectionState.completed
-
         return { ...state }
       })
     }
