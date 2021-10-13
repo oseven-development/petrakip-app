@@ -17,10 +17,7 @@ import {
   useIonViewDidEnter,
 } from '@ionic/react'
 
-// import { Header } from '../../../components'
-
 import { ReflectionsRouting } from './reflectionCreateNewRouting'
-import { Auth } from 'aws-amplify'
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -28,10 +25,10 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
   history,
   location,
 }) => {
-  const [state, setState] = React.useState<{ content: string }>()
-  const [isSharedReflection, setIsShareReflection] = React.useState<boolean>(
-    false,
-  )
+  const [state, setState] = React.useState<{
+    content: string
+    sharedState?: boolean
+  }>()
 
   useIonViewDidEnter(async () => {
     const params = new URLSearchParams(location.search)
@@ -39,13 +36,8 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
     if (urlState) {
       const stateJson = JSON.parse(urlState)
       setState(stateJson)
-      setIsShareReflection(
-        !(stateJson.owner !== (await Auth.currentUserInfo()).username),
-      )
     }
   }, [location.search])
-
-  console.log(isSharedReflection)
 
   return (
     <IonPage>
@@ -71,7 +63,7 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
           </IonText>
           <IonTextarea
             autoGrow
-            disabled={!isSharedReflection}
+            disabled={state?.sharedState || false}
             value={state?.content}
             onIonChange={e => {
               const k = e.detail.value
@@ -95,7 +87,7 @@ export const ReflectionWriteReportView: React.FC<Props> = ({
         )}`}
         routerDirection="back"
       >
-        {!isSharedReflection ? (
+        {state?.sharedState ? (
           <>
             <IonIcon slot="start" icon={closeCircle}></IonIcon> Schließen
           </>
