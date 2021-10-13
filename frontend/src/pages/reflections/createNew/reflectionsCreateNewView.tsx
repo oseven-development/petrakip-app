@@ -163,7 +163,10 @@ export const ReflectionsCreateNewView: React.FC<Props> = ({
   */
   const deleteSlot = (id: string) => () => {
     delteReflectionAPI(id)
-    history.push('/reflections')
+      .then(() => {
+        history.push('/reflections')
+      })
+      .catch(console.error)
   }
 
   const params = new URLSearchParams(location.search)
