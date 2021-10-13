@@ -41,7 +41,7 @@ import {
 } from '../../api/'
 
 import { Media } from '../../api/moment/saveMoment'
-import { ShareUser } from '../../types/shareUser'
+import { CheckShareUser, ShareUser } from '../../types/shareUser'
 import { momentTags } from '../../data/momentTags'
 import { useCustomLoaderOnTrigger } from '../../hooks'
 
@@ -114,10 +114,12 @@ export const MomentsDetailView: React.FC<Props> = props => {
   /*
     add the new user to the local-state
   */
-  const addShare = (user: ShareUser) => {
+  const addShare = ({ id, email }: CheckShareUser) => {
+    const shareUser: ShareUser = { id, email }
+
     setMoment((moment: any) => {
-      moment.sharedUsers = [...moment.sharedUsers, user.id]
-      moment.sharedUsersDetail = [...moment.sharedUsersDetail, user]
+      moment.sharedUsers = [...moment.sharedUsers, shareUser.id]
+      moment.sharedUsersDetail = [...moment.sharedUsersDetail, shareUser]
       return { ...moment }
     })
   }
@@ -142,7 +144,7 @@ export const MomentsDetailView: React.FC<Props> = props => {
   const updateURIAfterUpdateRelfectionIsFinished = () => {
     setTimeout(() => {
       history.replace('/moments')
-    }, 500)
+    }, 1000)
   }
   /*
     Inizialize the JSXLoader when updating the Reflection
